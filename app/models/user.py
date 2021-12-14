@@ -7,9 +7,13 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    profile_pic = db.Column(db.String(255), nullable=False, default='https://media.discordapp.net/attachments/917541871457275925/918846475897798727/default-user.jpeg')
+    cover_photo = db.Column(db.String(255), nullable=False, default='https://res.cloudinary.com/photofinder/image/upload/v1639506962/orionthemes-placeholder-image_twhbxf.jpg')
     hashed_password = db.Column(db.String(255), nullable=False)
+    createdAt = db.Column(db.DateTime, nullable=False)
 
     @property
     def password(self):
@@ -28,3 +32,5 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+
+    posts = db.relationship('Post', back_populates='users', cascade='all, delete-orphan')
