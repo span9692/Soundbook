@@ -2,7 +2,7 @@
 
 
 This is the README for the Capstone project from App Academy.
-The project was inspired by Eventbrite and built using Javascript,
+The project was inspired by Facebook and built using Javascript,
 React.js and Redux for the front end and Python with Flask for the backend.
 
 # Project Installation
