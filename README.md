@@ -1,134 +1,80 @@
-# Flask React Project
+# JamOut
 
-This is the starter for the Flask React project.
+## JamOut at a Glance
 
-## Getting started
+JamOut is a full stack PERN app that allows users to find other musicians within a selected radius of an inputted zip code, filtered by the instruments they play and the genres they are interested in. Logged in users can favorite other users and instant message with other users, by way of the socket.io library. Users can also upload songs to their profile pages to demonstrate the types of music they like to make. Currently, JamOut is only seeded with users in the Southern California area, particularly Los Angeles County, the Inland Empire, and San Diego County.
 
-1. Clone this repository (only this branch)
+## Application Architecture
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+JamOut is built on a React frontend with an Express backend, using PostgreSQL as a database. The PostgreSQL PostGIS extension is also used to allow for distance queries.
 
-2. Install dependencies
+## Frontend Overview
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+JamOut does the vast majority of its application logic on the backend, but display/interaction logic on the frontend is managed using several technologies.
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+### Frontend Technologies Used
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+#### React 
 
-   ```bash
-   pipenv shell
-   ```
+JamOut is a React application. All display logic is handled by the React libraries.
 
-   ```bash
-   flask db upgrade
-   ```
+#### Redux
 
-   ```bash
-   flask seed all
-   ```
+JamOut makes extensive use of Redux. All state management is handled with Redux, with thunks making API calls to the backend server for data. 
 
-   ```bash
-   flask run
-   ```
+#### Socket.io
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+Socket.io is used to emit messages to the backend, so that users can receive chat messages instantly.
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+#### Amazon Serverless Image Handler
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+Amazon Serverless Image Handler is used to transform user profile pictures into the sizes appropriate for display on Jamout, without having to worry about whether the image is being cropped correctly or not. This allows for users to be able to upload any image as a profile picture and ensuring that the relevant portion of the picture will be displayed on the site.
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+#### React H5 Audio Player
 
-## Deploy to Heroku
+The React H5 Audio Player library is used to allow users to play songs that have been uploaded to user profiles. While the audio player manages playing and pausing tracks, the skip track forward, skip track backward, the now playing feature, and song library had to be implemented from scratch.
 
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+## Backend Overview
 
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
+JamOut uses an Express server with a PostgreSQL database, with the PostGIS extension enabled in order to allow for distance queries. 
 
-   ```bash
-   heroku login
-   ```
+### Backend Technologies Used
 
-6. Login to the heroku container registry
+#### ExpressJS
 
-   ```bash
-   heroku container:login
-   ```
+Express was an easy choice to make for the JamOut server. The simple data flow from the frontend to the backend with JavaScript at the core of both made for quick, easy development, with little worry about the data types being sent and received.
 
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
+#### PostgreSQL
 
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
+PostgreSQL was the database of choice because it is simple to work with, and is easily manipulable using Sequelize.
 
-9. Release your docker container to heroku
+#### PostGIS
 
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
+The PostGIS PostgreSQL extension is enabled in JamOut to allow for the use of geography points in the database, which allow for spatial queries. This allows users to search for other users within a particular user-supplied zip code when searching for other musicians.
 
-10. set up your database
+PostGIS is also used to transfrom latitude and longitude coordinates into geography points. Any time a user signs up or changes their zip code, the Google Geocoder API is called to retrieve the latitude and longitude coordinates for the supplied zip code. When latitude and longitude coordinates are inserted/updated, a trigger inside of PostgreSQL calls a function inside of PostgreSQL that uses PostGIS to generate a new geography point based on the provided latitude and longitude.
 
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
+#### Sequelize
 
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
+Sequelize was the ORM of choice for JamOut because of how nicely it integrates with PostgreSQL. All table management and data seeding was handled neatly and simply by way of Sequelize.
 
-12. profit
+#### Google Geocoder API
 
-### For M1 Mac users
+The Google Geocoder API is used when users sign up for accounts and update their account information. The Geocoder takes the zip code the user provides for their location and transforms it into latitude and longitude coordinates. Those coordinates are used by PostGIS in the backend to create a geography point, which is used when users perform searches, allowing users to limit search results to users within a particular radius of a zip code supplied in the search. The Geocoder API also translates the zip code supplied in searches into latitudes and longitues.
 
-(Replaces **Step 8**)
+#### Socket.io
 
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
+Socket.io was used on the backend to manage incoming messages and to distribute messages over sockets to the appropriate chat windows for instant messaging.
 
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
+#### AWS S3
 
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
+Amazon Web Services S3 was used to allow users to upload both songs and images to be used on JamOut.
 
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+#### Faker
 
-3. Use docker to push the image to the Heroku container registry:
+The npm faker library was used extensively to create users for JamOut.
 
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+## Conclusion and Next Steps
+
+While I am largely happy with JamOut's functionality, there are a number of design issues I'm unhappy with. As I have little design experience, I had to make choices that were functional, but not necessarily great, and I would like to take the time to redesign some of the visual aspects of the site so that it is more appealing to look at. Beyond that, I plan to implement the ability for users to edit and delete instant messages, which they currently cannot do. I also plan to implement zip code verification when users search and create/update profiles, as real zip codes are necessary for proper site functionality. 
