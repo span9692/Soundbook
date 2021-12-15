@@ -1,18 +1,38 @@
 .splash-page-container {
     position: relative;
-    min-height: 96vh;
+    height: fit-content;
     display: flex;
-
-
+    justify-content: center;
+    padding-top: 15vh;
+    width: 100%;
 }
 
-/* .splash-page-content {
-    padding-bottom: 2.5rem;
-} */
+.splash-left {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 3%;
+    flex-direction: column;
+    padding-right: 3%;
+    width: 30vw;
+}
+
+.splash-right {
+    padding-left: 3%;
+}
+
+.splash-text {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: blue;
+    font-size: 7vh;
+    font-weight: bolder;
+}
+
+.splash-subtitle {
+    font-size: 4vh;
+}
 
 #footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 3vh; /* footer height*/
 }

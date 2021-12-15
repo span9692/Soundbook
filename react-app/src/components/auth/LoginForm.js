@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './loginform.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -25,6 +26,10 @@ const LoginForm = () => {
     if (!password) validateErrors.push('Please enter a valid password')
 
     return validateErrors
+  }
+
+  const demoLogin = () => {
+    dispatch(login('demo@aa.io', 'password'))
   }
 
   const onLogin = async (e) => {
@@ -52,7 +57,7 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form onSubmit={onLogin} className='login-form'>
       {validationErrors.length > 0 && (
       <div>
         <ul>
@@ -74,9 +79,9 @@ const LoginForm = () => {
           </div>
         ))}
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
+      <div className='loginpadding'>
         <input
+          className='loginField fieldSizing form-font'
           name='email'
           type='text'
           placeholder='Email'
@@ -84,16 +89,25 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
+      <div className='loginpadding'>
         <input
+          className='loginField fieldSizing form-font'
           name='password'
           type='password'
           placeholder='Password'
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
+      </div>
+      <div className='loginpadding'>
+        <button type='submit' className='form-font splashBtn pointer fieldSizing'>Log In</button>
+      </div>
+      <div className='loginpadding' id='demoBtn'>
+        <button type='button' onClick={() => demoLogin()} className='form-font splashBtn pointer fieldSizing'>Demo Login</button>
+      </div>
+      <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+      <div>
+        <button type='button' className='form-font newAccBtn pointer fieldSizing'>Create new account</button>
       </div>
     </form>
   );

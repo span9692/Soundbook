@@ -5,15 +5,15 @@ function Splash() {
     return (
         <>
             <div className='splash-page-container'>
-                <div>
-                    <div>
+                <div className='splash-left'>
+                    <div className='splash-text'>
                         facebook
                     </div>
-                    <div>
-                        connect with artists around the world
+                    <div className='splash-subtitle'>
+                        Connect with artists and the world around you on Facebook.
                     </div>
                 </div>
-                <div className='splash-page-content'>
+                <div className='splash-right'>
                     <LoginForm />
                 </div>
             </div>

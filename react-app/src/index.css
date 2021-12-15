@@ -2,3 +2,7 @@
 body {
     background: #f0f2f5;
 }
+
+.pointer {
+    cursor: pointer;
+}
