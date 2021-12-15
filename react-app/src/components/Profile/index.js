@@ -10,8 +10,10 @@ function Profile() {
             <div>
                 <div className='profile-images'>
                     <img className='cover-photo' src={user.cover_photo}></img>
-                    <div>
-                        <img className='profile-photo' src='https://res.cloudinary.com/photofinder/image/upload/v1639338101/kid%20friendly%20profile%20pics/HtwPZgej_400x400_itffcg.jpg'></img>
+                    <img className='profile-photo' src='https://res.cloudinary.com/photofinder/image/upload/v1639338101/kid%20friendly%20profile%20pics/HtwPZgej_400x400_itffcg.jpg'></img>
+                    <div className='profile-content'>
+                        {user.first_name} {user.last_name}
+
                     </div>
                 </div>
             </div>

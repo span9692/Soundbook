@@ -3,7 +3,7 @@
     justify-content: center;
     /* width: fit-content; */
     position: relative;
-    padding-bottom: 6vw;
+    padding-bottom: 7vw;
 }
 
 .cover-photo {
@@ -16,11 +16,26 @@
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }
 
+.profile-pic {
+    display: flex;
+    justify-content: center;
+}
+
 .profile-photo {
     width: 8vw;
     height: 8vw;
     position: absolute;
     bottom: 0;
-    /* left: 0; */
+    left: 27%;
     border-radius: 50%;
+    border: 3px grey solid;
+}
+
+.profile-content {
+    position: absolute;
+    left: 37%;
+    bottom: 7%;
+    font-size: 50px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
 }
