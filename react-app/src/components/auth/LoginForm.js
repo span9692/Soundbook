@@ -7,11 +7,32 @@ const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [validationErrors, setValidationErrors] = useState([])
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const validate = () => {
+    const validateErrors = [];
+    if (
+      !email ||
+      !email
+      .toLocaleLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )
+    ) validateErrors.push("Please enter a valid e-mail")
+
+    if (!password) validateErrors.push('Please enter a valid password')
+
+    return validateErrors
+  }
+
   const onLogin = async (e) => {
     e.preventDefault();
+    let errors = validate();
+
+    if (errors.length > 0) return setValidationErrors(errors);
+
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
@@ -32,9 +53,25 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={onLogin}>
+      {validationErrors.length > 0 && (
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+        <ul>
+          {validationErrors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      </div>
+      )}
+      <div>
+        {errors.map((error) => (
+          <div key={error}>
+            {error.includes('password')
+              ? null
+              : error.includes('email')
+              ? 'Invalid login. Please recheck email/password'
+              : error
+            }
+          </div>
         ))}
       </div>
       <div>
