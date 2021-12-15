@@ -1,38 +1,27 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-// import '/navbar.css'
+import './navbar.css'
 
 const NavBar = () => {
   return (
-    <nav>
-      <ul>
-        {/* <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+    <>
+      <div className='nav-container'>
+        <div className='nav-left'>
+
+        </div>
+        <div className='nav-mid'>
+
+        </div>
+        <div className='nav-right'>
+          <NavLink to='/users/:userId' exact={true} activeClassName='active'>
+            Profile
           </NavLink>
-        </li> */}
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
+
           <LogoutButton />
-        </li>
-      </ul>
-    </nav>
+        </div>
+      </div>
+    </>
   );
 }
 
