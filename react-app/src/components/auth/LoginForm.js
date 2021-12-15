@@ -75,9 +75,9 @@ const LoginForm = () => {
           </div>
         ))}
       </div>
-      <div loginpadding>
+      <div className='loginpadding'>
         <input
-          className='loginField'
+          className='loginField fieldSizing form-font'
           name='email'
           type='text'
           placeholder='Email'
@@ -85,9 +85,9 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
       </div>
-      <div loginpadding>
+      <div className='loginpadding'>
         <input
-          className='loginField'
+          className='loginField fieldSizing form-font'
           name='password'
           type='password'
           placeholder='Password'
@@ -95,11 +95,15 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
       </div>
-      <div loginpadding>
-        <button type='submit' className='splashBtn'>Log In</button>
+      <div className='loginpadding'>
+        <button type='submit' className='form-font splashBtn pointer fieldSizing'>Log In</button>
       </div>
-      <div loginpadding>
-        <button type='submit' className='splashBtn'>Demo Login</button>
+      <div className='loginpadding' id='demoBtn'>
+        <button type='button' className='form-font splashBtn pointer fieldSizing'>Demo Login</button>
+      </div>
+      <hr size='1' width='100%' color='#dddfe2'></hr>
+      <div className='loginpadding'>
+        <button type='button' className='form-font newAccBtn pointer fieldSizing'>Create new account</button>
       </div>
     </form>
   );

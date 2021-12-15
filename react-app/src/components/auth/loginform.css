@@ -2,7 +2,14 @@
     /* border: black 1px solid; */
     padding: 2vh;
     background: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
+    width: 30vw;
+    height: fit-content;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.form-font {
+    font-size: 1.2rem;
 }
 
 .splashBtn {
@@ -12,14 +19,48 @@
     border-radius: 5px;
     color: white;
     font-weight: bold;
+    outline: none;
 }
 
 .loginField {
     border: 1px solid #dddfe2;
+    width: 97%;
     border-radius: 5px;
     color: 1px solid #dddfe2;
 }
 
+.loginField:focus {
+    outline: none;
+    border-color: #1b6dda;
+}
+
+.splashBtn:hover {
+    background-color: #1b6dda;
+    border-color: #1b6dda;
+}
+
 .loginpadding {
-    bottom-padding: 1vh;
+    padding-bottom: 1.5vh;
+}
+
+#demoBtn {
+    padding-bottom: 0px;
+}
+
+.newAccBtn {
+    width: 100%;
+    background-color: #42b72a;
+    border-color: #42b72a;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.newAccBtn:hover {
+    background-color: #36a420;
+    border-color: #36a420;
+}
+
+.fieldSizing {
+    height: 5.5vh;
 }
