@@ -53,7 +53,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/home' />;
+    return <Redirect to='/feed' />;
   }
 
   return (

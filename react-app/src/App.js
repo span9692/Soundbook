@@ -32,7 +32,7 @@ function App() {
         <Route path='/' exact={true}>
           <Splash />
         </Route>
-        <ProtectedRoute path='/home' exact={true}>
+        <ProtectedRoute path='/feed' exact={true}>
           <NavBar />
         </ProtectedRoute>
         <Route path='/sign-up' exact={true}>

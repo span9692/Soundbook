@@ -1,0 +1,25 @@
+.nav-container {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    background-color: white;
+    position: absolute;
+    height: 12vh;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.nav-left {
+    width: 18%;
+}
+
+.nav-mid {
+    widtH: 68%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-right {
+    width: 18%;
+}
