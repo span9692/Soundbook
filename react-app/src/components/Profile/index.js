@@ -7,9 +7,11 @@ function Profile() {
 
     return (
         <>
-            <div className='profile-images'>
-                {/* <img className='cover-photo' src='https://res.cloudinary.com/photofinder/image/upload/v1639594414/fb%20cover%20photo/NWA_ws2bjn.jpg'></img> */}
-                <img className='cover-photo' src={user.cover_photo}></img>
+            <div>
+                <div className='profile-images'>
+                    <img className='cover-photo' src={user.cover_photo}></img>
+                    <img className='profile-photo' src='https://res.cloudinary.com/photofinder/image/upload/v1639338101/kid%20friendly%20profile%20pics/HtwPZgej_400x400_itffcg.jpg'></img>
+                </div>
             </div>
         </>
     )
