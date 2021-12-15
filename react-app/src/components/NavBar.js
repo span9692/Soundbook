@@ -7,13 +7,13 @@ const NavBar = () => {
   return (
     <nav>
       <ul>
-        <li>
+        {/* <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
-        </li>
+        </li> */}
         <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
+          <NavLink to='/' exact={true} activeClassName='active'>
             Login
           </NavLink>
         </li>
