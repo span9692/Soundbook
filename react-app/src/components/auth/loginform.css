@@ -16,4 +16,10 @@
 
 .loginField {
     border: 1px solid #dddfe2;
+    border-radius: 5px;
+    color: 1px solid #dddfe2;
+}
+
+.loginpadding {
+    bottom-padding: 1vh;
 }

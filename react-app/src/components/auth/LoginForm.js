@@ -75,7 +75,7 @@ const LoginForm = () => {
           </div>
         ))}
       </div>
-      <div>
+      <div loginpadding>
         <input
           className='loginField'
           name='email'
@@ -85,7 +85,7 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
       </div>
-      <div>
+      <div loginpadding>
         <input
           className='loginField'
           name='password'
@@ -95,10 +95,10 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
       </div>
-      <div>
+      <div loginpadding>
         <button type='submit' className='splashBtn'>Log In</button>
       </div>
-      <div>
+      <div loginpadding>
         <button type='submit' className='splashBtn'>Demo Login</button>
       </div>
     </form>
