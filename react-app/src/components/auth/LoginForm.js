@@ -101,7 +101,7 @@ const LoginForm = () => {
       <div className='loginpadding' id='demoBtn'>
         <button type='button' className='form-font splashBtn pointer fieldSizing'>Demo Login</button>
       </div>
-      <hr size='1' width='100%' color='#dddfe2'></hr>
+      <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
       <div className='loginpadding'>
         <button type='button' className='form-font newAccBtn pointer fieldSizing'>Create new account</button>
       </div>

@@ -15,7 +15,7 @@
 .splashBtn {
     width: 100%;
     background-color: #1877f2;
-    border-color: #1877f2;
+    border: none;
     border-radius: 5px;
     color: white;
     font-weight: bold;
@@ -24,8 +24,9 @@
 
 .loginField {
     border: 1px solid #dddfe2;
-    width: 97%;
+    width: 95.6%;
     border-radius: 5px;
+    padding-left: 20px;
     color: 1px solid #dddfe2;
 }
 
@@ -50,7 +51,7 @@
 .newAccBtn {
     width: 100%;
     background-color: #42b72a;
-    border-color: #42b72a;
+    border: none;
     border-radius: 5px;
     color: white;
     font-weight: bold;
@@ -64,3 +65,4 @@
 .fieldSizing {
     height: 5.5vh;
 }
+
