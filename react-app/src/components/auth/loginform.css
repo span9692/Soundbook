@@ -1,5 +1,4 @@
 .login-form {
-    /* border: black 1px solid; */
     padding: 2vh;
     background: #fff;
     border-radius: 10px;
@@ -65,4 +64,3 @@
 .fieldSizing {
     height: 5.5vh;
 }
-

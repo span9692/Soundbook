@@ -28,6 +28,10 @@ const LoginForm = () => {
     return validateErrors
   }
 
+  const demoLogin = () => {
+    dispatch(login('demo@aa.io', 'password'))
+  }
+
   const onLogin = async (e) => {
     e.preventDefault();
     let errors = validate();
@@ -99,7 +103,7 @@ const LoginForm = () => {
         <button type='submit' className='form-font splashBtn pointer fieldSizing'>Log In</button>
       </div>
       <div className='loginpadding' id='demoBtn'>
-        <button type='button' className='form-font splashBtn pointer fieldSizing'>Demo Login</button>
+        <button type='button' onClick={() => demoLogin()} className='form-font splashBtn pointer fieldSizing'>Demo Login</button>
       </div>
       <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
       <div>
