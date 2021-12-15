@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './loginform.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -52,7 +53,7 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form onSubmit={onLogin} className='login-form'>
       {validationErrors.length > 0 && (
       <div>
         <ul>
@@ -75,8 +76,8 @@ const LoginForm = () => {
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
         <input
+          className='loginField'
           name='email'
           type='text'
           placeholder='Email'
@@ -85,15 +86,20 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
         <input
+          className='loginField'
           name='password'
           type='password'
           placeholder='Password'
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
+      </div>
+      <div>
+        <button type='submit' className='splashBtn'>Log In</button>
+      </div>
+      <div>
+        <button type='submit' className='splashBtn'>Demo Login</button>
       </div>
     </form>
   );

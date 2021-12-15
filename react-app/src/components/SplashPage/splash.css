@@ -1,18 +1,20 @@
 .splash-page-container {
     position: relative;
-    min-height: 96vh;
+    min-height: 100vh;
     display: flex;
-
-
+    justify-content: center;
+    align-items: center;
 }
 
-/* .splash-page-content {
-    padding-bottom: 2.5rem;
-} */
+.splash-text {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: blue;
+    font-size: 5vh;
+    font-weight: bold;
+}
 
 #footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 3vh; /* footer height*/
 }

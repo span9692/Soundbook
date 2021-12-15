@@ -1,0 +1,19 @@
+.login-form {
+    /* border: black 1px solid; */
+    padding: 2vh;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.splashBtn {
+    width: 100%;
+    background-color: #1877f2;
+    border-color: #1877f2;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.loginField {
+    border: 1px solid #dddfe2;
+}

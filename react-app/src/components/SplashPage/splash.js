@@ -6,14 +6,14 @@ function Splash() {
         <>
             <div className='splash-page-container'>
                 <div>
-                    <div>
+                    <div className='splash-text'>
                         facebook
                     </div>
                     <div>
                         connect with artists around the world
                     </div>
                 </div>
-                <div className='splash-page-content'>
+                <div>
                     <LoginForm />
                 </div>
             </div>
