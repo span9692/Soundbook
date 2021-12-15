@@ -1,3 +1,13 @@
+.profile-container {
+    background-color: white;
+}
+
+.profile-background-color {
+    background-color: white;
+    left: 0;
+    width: 100%;
+}
+
 .profile-images {
     display: flex;
     justify-content: center;
@@ -34,8 +44,34 @@
 .profile-content {
     position: absolute;
     left: 37%;
-    bottom: 7%;
-    font-size: 50px;
+    bottom: 5%;
+    font-size: 4em;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
+}
+
+/* .profile-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-color: white;
+} */
+
+.profile-nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-bottom: 2.4vh;
+}
+
+.nav-links {
+    display: flex;
+}
+.profile-nav-links {
+    margin-left: 3rem;
+}
+
+.edit-profile-btn {
+    margin-right: 3rem;
 }
