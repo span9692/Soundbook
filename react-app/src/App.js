@@ -6,9 +6,9 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import User from './components/User';
 import { authenticate } from './store/session';
 import Splash from './components/SplashPage/splash';
+import Profile from './components/Profile';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,7 +45,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <NavBar />
-          <User />
+          <Profile />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

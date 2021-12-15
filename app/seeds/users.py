@@ -3,7 +3,7 @@ from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(first_name='Demo', last_name='User', email='demo@aa.io', password='password')
+    demo = User(first_name='Demo', last_name='User', email='demo@aa.io', password='password', cover_photo='https://res.cloudinary.com/photofinder/image/upload/v1639594414/fb%20cover%20photo/NWA_ws2bjn.jpg')
     Sean = User(first_name='Sean', last_name='Pan', email='span@gmail.com', password='password')
     Kanye = User(first_name='Kanye', last_name='West', email='kwest@gmail.com', password='password')
     # marnie = User(
