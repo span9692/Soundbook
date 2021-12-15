@@ -1,14 +1,19 @@
+.profile-background-color {
+    background-color: white;
+    left: 0;
+    width: 100%;
+}
+
 .profile-images {
+    background: linear-gradient(rgb(206, 204, 204), white);
     display: flex;
     justify-content: center;
-    /* width: fit-content; */
     position: relative;
-    padding-bottom: 6vw;
+    padding-bottom: 7vw;
 }
 
 .cover-photo {
     object-fit: cover;
-    /* object-fit: none; */
     width: 50vw;
     max-height: 50vh;
     border-bottom-left-radius: 8px;
@@ -16,11 +21,53 @@
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }
 
+.profile-pic {
+    display: flex;
+    justify-content: center;
+}
+
 .profile-photo {
     width: 8vw;
     height: 8vw;
     position: absolute;
     bottom: 0;
-    /* left: 0; */
+    left: 27%;
     border-radius: 50%;
+    border: 3px grey solid;
+}
+
+.profile-content {
+    position: absolute;
+    left: 37%;
+    bottom: 5%;
+    font-size: 4em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+/* .profile-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-color: white;
+} */
+
+.profile-nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-bottom: 2.4vh;
+    background-color: white;
+}
+
+.nav-links {
+    display: flex;
+}
+.profile-nav-links {
+    margin-left: 3rem;
+}
+
+.edit-profile-btn {
+    margin-right: 3rem;
 }
