@@ -5,7 +5,7 @@ from app.models import db, User
 def seed_users():
     demo = User(first_name='Demo', last_name='User', email='demo@aa.io', password='password')
     Sean = User(first_name='Sean', last_name='Pan', email='span@gmail.com', password='password')
-    Sharon = User(first_name='Sharon', last_name='Truong', email='struong@aa.io', password='password')
+    Kanye = User(first_name='Kanye', last_name='West', email='kwest@gmail.com', password='password')
     # marnie = User(
     #     username='marnie', email='marnie@aa.io', password='password')
     # bobbie = User(
@@ -13,7 +13,7 @@ def seed_users():
 
     db.session.add(demo)
     db.session.add(Sean)
-    db.session.add(Sharon)
+    db.session.add(Kanye)
 
     db.session.commit()
 
