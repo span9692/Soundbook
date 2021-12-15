@@ -1,0 +1,26 @@
+.profile-images {
+    display: flex;
+    justify-content: center;
+    /* width: fit-content; */
+    position: relative;
+    padding-bottom: 6vw;
+}
+
+.cover-photo {
+    object-fit: cover;
+    /* object-fit: none; */
+    width: 50vw;
+    max-height: 50vh;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.profile-photo {
+    width: 8vw;
+    height: 8vw;
+    position: absolute;
+    bottom: 0;
+    /* left: 0; */
+    border-radius: 50%;
+}
