@@ -32,6 +32,7 @@
 }
 
 .profile-photo {
+    object-fit: cover;
     width: 8vw;
     height: 8vw;
     position: absolute;
@@ -53,9 +54,9 @@
 .profile-nav {
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 80vw;
     padding-bottom: 1vh;
-    padding-left: 2vw;
+    padding-left: 10vw;
     background-color: white;
     color: rgb(151, 151, 151);
 }
@@ -63,7 +64,7 @@
 .profile-text:hover {
     /* color: #2282ff; */
     cursor: pointer;
-    background-color: rgb(238, 238, 238);;
+    background-color: rgb(238, 238, 238);
     border-radius: 8px;
     /* text-decoration: underline 3px #2282ff; */
 }

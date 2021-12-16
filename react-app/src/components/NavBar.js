@@ -7,7 +7,8 @@ import './navbar.css'
 
 const NavBar = () => {
   const dispatch = useDispatch()
-  const userId = useSelector(state => state.session.user.id)
+  const user = useSelector(state => state.session.user)
+  const userId = user.id
 
   useEffect(()=> {
     dispatch(getUsers)
@@ -17,20 +18,25 @@ const NavBar = () => {
     <>
       <div className='nav-container'>
         <div className='nav-left'>
-          <Link to='/feed'>Feed</Link>
-          Search bar
+          <Link className='fontAwesomeness1' to='/feed'><i class="fab fa-facebook"></i></Link>
+          <div>
+            Search bar
+          </div>
         </div>
         <div className='nav-mid'>
-          <Link to={`/users/${userId}`}>Profile</Link>
-          Video
-          Github
-          LinkedIn
-          Personal Website
+          <Link className='fontAwesomeness' to={`/users/${userId}`}><i class="fas fa-home"></i></Link>
+          <a className='fontAwesomeness' href="https://www.google.com/"><i class="fas fa-video"></i></a>
+          <a className='fontAwesomeness' href="https://github.com/span9692"><i class="fab fa-github"></i></a>
+          <a className='fontAwesomeness' href="https://www.linkedin.com/in/sean-pan-395a4593/"><i class="fab fa-linkedin"></i></a>
+          <a className='fontAwesomeness' href="https://www.google.com/"><i class="fas fa-address-card"></i></a>
         </div>
         <div className='nav-right'>
-          <NavLink to={`/users/${userId}`} exact={true} activeClassName='active'>
-            Profile
-          </NavLink>
+          <Link className='firstName-profile-nav' to={`/users/${userId}`} exact={true}>
+            <div className='navbar-profile-container'>
+              <img className='navbar-profile-pic' src={user.profile_pic}></img>
+              <span className='name-color'>{user.first_name}</span>
+            </div>
+          </Link>
 
           <LogoutButton />
         </div>
