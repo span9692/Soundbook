@@ -229,3 +229,46 @@
 .boxBtn:hover {
     background-color: rgb(238, 238, 238);
 }
+
+/* POSTS */
+.post-name-date {
+    display: flex;
+    margin-bottom: .8rem;
+}
+
+.name-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-name {
+    font-weight: bold;
+}
+
+.post-date {
+    font-size: .8rem;
+    color: grey;
+}
+
+.like-comment {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-height: 1rem;
+}
+
+.like-post-button,
+.comment-button {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    border-radius: 12px;
+    color: rgb(107, 107, 107);
+}
+
+.like-post-button:hover,
+.comment-button:hover {
+    background-color: rgb(238, 238, 238);
+}

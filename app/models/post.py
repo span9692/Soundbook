@@ -1,4 +1,5 @@
 from .db import db
+# from app.models import User
 from sqlalchemy.sql import func
 
 class Post(db.Model):
@@ -13,14 +14,13 @@ class Post(db.Model):
 
     users = db.relationship('User', back_populates='posts')
     comments = db.relationship('Comment', back_populates='posts', cascade='all, delete-orphan')
-    
+
     def to_dict(self):
         return {
             "id": self.id,
             "post_content": self.post_content,
             "owner_id": self.owner_id,
             "profile_id": self.profile_id,
-            "first_name": self.users.first_name,
             "createdAt": self.createdAt,
             "updatedAt": self.updatedAt
         }

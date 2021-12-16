@@ -105,11 +105,39 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                             </div>
                         </div>
                     </div>
-                    {allPosts.map(post =>(
-                        <div className='post-box containers'>
-                            asdf
+                    {/* {allPosts.map(post =>(
+                        <div key={post.id} className='post-box containers'>
+                            <img src={allUsers[post['id']].profile_pic}></img>
                         </div>
-                    ))}
+                    ))} */}
+                    <div className='post-box containers'>
+                        <div className='post-name-date'>
+                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                            <div className='name-date'>
+                                <span className='post-name'>Kanye West</span>
+                                <span className='post-date'>Dec 14, 2021</span>
+                            </div>
+                        </div>
+                        <div>
+                            My name Kanye West. I'm successful. I left Kim because it takes her 5 hours to get ready. TF?
+                        </div>
+                        <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+                        <div className='like-comment'>
+                            <div class='pointer'>
+                                <span className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
+                            </div>
+                            <div class='pointer'>
+                                <span className='comment-button'><i class="far fa-comment"></i> Comment</span>
+                            </div>
+                        </div>
+                        <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+
+                        {/* map the comments */}
+
+                        
+
+
+                    </div>
                 </div>
             </div>
         </>

@@ -14,15 +14,15 @@ def seed_comments():
 
 
     db.session.add(comment1)
-    db.session.add(comment1)
-    db.session.add(comment1)
-    db.session.add(comment1)
-    db.session.add(comment1)
-    db.session.add(comment1)
-    db.session.add(comment1)
-    db.session.add(comment1)
-    db.session.add(comment1)
-    db.session.add(comment1)
+    db.session.add(comment2)
+    db.session.add(comment3)
+    db.session.add(comment4)
+    db.session.add(comment5)
+    db.session.add(comment6)
+    db.session.add(comment7)
+    db.session.add(comment8)
+    db.session.add(comment9)
+    db.session.add(comment10)
 
     db.session.commit()
 
