@@ -3,10 +3,6 @@
     width: 100%
 }
 
-.containers {
-    background-color: white;
-}
-
 .intro-container {
     display: flex;
     flex-direction: column;
@@ -17,6 +13,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     margin-top: 1rem;
+    background-color: white;
 }
 
 .intro-container > span,
@@ -112,4 +109,25 @@
 
 .edit-profileBtn3:hover {
     background-color: rgb(238, 238, 238);
+}
+
+.posted-photos {
+    width: 9.5rem;
+    height: 9.5rem;
+    border-radius: 12px;
+    margin: 2px;
+    box-sizing: border-box;
+    object-fit: cover;
+}
+
+.photos-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.nine-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }

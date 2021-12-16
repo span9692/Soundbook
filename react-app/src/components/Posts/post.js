@@ -1,6 +1,11 @@
 import './posts.css'
 
-function Posts({profile_owner}) {
+function Posts({profile_owner, profile_photos}) {
+
+    if (profile_photos.length > 9) {
+        profile_photos = profile_photos.slice(0,9)
+    }
+
     return (
         <>
             <div className='post-container'>
@@ -55,7 +60,17 @@ function Posts({profile_owner}) {
                             <span className='profile-labels'>Photos</span>
                             <span className='edit-profileBtn3'>See All Photos</span>
                         </div>
+                        <div className='nine-images'>
+                            {profile_photos.map(photo, index => (
+                                <img key={index} className='posted-photos' src={photo.photo}></img>
+                            ))}
+                        </div>
                     </div>
+
+
+
+
+
 
                     <div className='photos-container containers'>
                         <span className='profile-labels profile-nav-links profile-text'>Friends</span>
