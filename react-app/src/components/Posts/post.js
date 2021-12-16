@@ -9,7 +9,7 @@ function Posts({profile_owner}) {
                         <span className='profile-labels'>Intro</span>
                         <div className='category-row icon'>
                             <div className='icon-row'>
-                                <i class="fas fa-graduation-cap"></i>
+                                <i className="fas fa-graduation-cap"></i>
                             </div>
                             <div>
                                 <span className='row-Data'>Education</span>
@@ -17,7 +17,7 @@ function Posts({profile_owner}) {
                         </div>
                         <div className='category-row icon'>
                             <div className='icon-row'>
-                                <i class="fas fa-briefcase"></i>
+                                <i className="fas fa-briefcase"></i>
                             </div>
                             <div>
                                 <span className='row-Data'>Company</span>
@@ -25,7 +25,7 @@ function Posts({profile_owner}) {
                         </div>
                         <div className='category-row icon'>
                             <div className='icon-row'>
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i className="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
                                 <span className='row-Data'>Location</span>
@@ -33,7 +33,7 @@ function Posts({profile_owner}) {
                         </div>
                         <div className='category-row icon'>
                             <div className='icon-row'>
-                                <i class="fas fa-birthday-cake"></i>
+                                <i className="fas fa-birthday-cake"></i>
                             </div>
                             <div>
                                 <span className='row-Data'>Birthday</span>
@@ -41,7 +41,7 @@ function Posts({profile_owner}) {
                         </div>
                         <div className='category-row icon'>
                             <div className='icon-row'>
-                                <i class="fas fa-tag"></i>
+                                <i className="fas fa-tag"></i>
                             </div>
                             <div>
                                 <span className='row-Data'>Joined Year</span>
@@ -51,11 +51,14 @@ function Posts({profile_owner}) {
                     </div>
 
                     <div className='photos-container containers'>
-                        <span className='profile-labels'>Photos</span>
+                        <div className='photos-label'>
+                            <span className='profile-labels'>Photos</span>
+                            <span className='edit-profileBtn3'>See All Photos</span>
+                        </div>
                     </div>
 
                     <div className='photos-container containers'>
-                        <span className='profile-labels'>Friends</span>
+                        <span className='profile-labels profile-nav-links profile-text'>Friends</span>
                     </div>
 
                 </div>

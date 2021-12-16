@@ -9,4 +9,12 @@ class Photo(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     createdAt = db.Column(db.DateTime(timezone=False), default=func.now())
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "photo": self.photo,
+            "owner_id": self.owner_id,
+            "createdAt": self.createdAt
+        }
+
     users = db.relationship('User', back_populates='photos')

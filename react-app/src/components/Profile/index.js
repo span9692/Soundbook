@@ -4,15 +4,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../../store/user'
 import './profile.css'
 import Posts from '../Posts/post'
+import { getPhotos } from '../../store/photo'
 
 function Profile() {
     const dispatch = useDispatch()
     const { userId } = useParams()
     const allUsers = useSelector(state => Object.values(state.user))
+    const profile_photos = useSelector(state => Object.values(state.photo))
     const profile_owner = allUsers.filter(user => user.id === +userId)[0]
+
+    console.log('profile_photos', profile_photos)
 
     useEffect(()=> {
         dispatch(getUsers())
+        dispatch(getPhotos(+userId))
     }, [dispatch])
 
     return (
@@ -46,7 +51,7 @@ function Profile() {
 
                 </div >
                 <div className='mainColumn'>
-                    <Posts profile_owner={profile_owner}/>
+                    <Posts profile_owner={profile_owner} profile_photos={profile_photos}/>
                 </div>
                 <div className='sideColumn'>
 

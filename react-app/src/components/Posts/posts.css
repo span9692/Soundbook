@@ -16,7 +16,6 @@
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-    margin-bottom: 1rem;
     margin-top: 1rem;
 }
 
@@ -83,4 +82,34 @@
 
 .edit-profileBtn1:hover {
     background-color: rgb(226, 226, 226);
+}
+
+.photos-label {
+    display:flex;
+    justify-content: space-between;
+    /* padding: 5px; */
+}
+
+.profile-nav-links {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 0px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.edit-profileBtn3 {
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    color: #1877f2;
+    font-size: .9rem;
+    font-weight: 600;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.edit-profileBtn3:hover {
+    background-color: rgb(238, 238, 238);
 }
