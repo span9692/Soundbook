@@ -64,3 +64,17 @@
 .fieldSizing {
     height: 5.5vh;
 }
+
+.logoutBtn {
+    color: rgb(105, 105, 105);
+    font-weight:bolder;
+    font-size: .9rem;
+    padding: .7rem;
+    margin-right: 1.5rem;
+}
+
+.logoutBtn:hover {
+    background-color: rgb(238, 238, 238);
+    border-radius: 500px;
+    cursor: pointer;
+}

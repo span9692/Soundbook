@@ -40,5 +40,38 @@
 
 .nav-right {
     width: 33%;
-    /* text-align: right; */
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navbar-profile-container {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-profile-pic {
+    border-radius: 50%;
+    width: 2rem;
+    margin-right: .3rem;
+}
+
+.firstName-profile-nav {
+    text-decoration: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: .3rem;
+    padding-top: .3rem;
+}
+
+.name-color {
+    color: rgb(105, 105, 105);
+    font-weight:bolder;
+    font-size: .9rem;
+}
+
+.firstName-profile-nav:hover {
+    background-color: rgb(238, 238, 238);
+    border-radius: 500px;
 }

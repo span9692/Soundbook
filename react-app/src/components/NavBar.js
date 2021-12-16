@@ -7,7 +7,8 @@ import './navbar.css'
 
 const NavBar = () => {
   const dispatch = useDispatch()
-  const userId = useSelector(state => state.session.user.id)
+  const user = useSelector(state => state.session.user)
+  const userId = user.id
 
   useEffect(()=> {
     dispatch(getUsers)
@@ -28,9 +29,12 @@ const NavBar = () => {
           <a className='fontAwesomeness' href="https://www.google.com/"><i class="fas fa-address-card"></i></a>
         </div>
         <div className='nav-right'>
-          <NavLink to={`/users/${userId}`} exact={true} activeClassName='active'>
-            Profile
-          </NavLink>
+          <Link className='firstName-profile-nav' to={`/users/${userId}`} exact={true}>
+            <div className='navbar-profile-container'>
+              <img className='navbar-profile-pic' src={user.profile_pic}></img>
+              <span className='name-color'>{user.first_name}</span>
+            </div>
+          </Link>
 
           <LogoutButton />
         </div>
