@@ -84,7 +84,7 @@
 .photos-label {
     display:flex;
     justify-content: space-between;
-    /* padding: 5px; */
+    padding-bottom: 1rem;
 }
 
 .profile-nav-links {
@@ -114,7 +114,6 @@
 .posted-photos {
     width: 9.5rem;
     height: 9.5rem;
-    border-radius: 12px;
     margin: 2px;
     box-sizing: border-box;
     object-fit: cover;
@@ -130,4 +129,20 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+}
+
+.image-index-0 {
+    border-top-left-radius: 12px;
+}
+
+.image-index-2 {
+    border-top-right-radius: 12px;
+}
+
+.image-index-6 {
+    border-bottom-left-radius: 12px;
+}
+
+.image-index-8 {
+    border-bottom-right-radius: 12px;
 }

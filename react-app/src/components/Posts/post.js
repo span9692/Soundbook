@@ -61,8 +61,12 @@ function Posts({profile_owner, profile_photos}) {
                             <span className='edit-profileBtn3'>See All Photos</span>
                         </div>
                         <div className='nine-images'>
-                            {profile_photos.map(photo, index => (
-                                <img key={index} className='posted-photos' src={photo.photo}></img>
+                            {profile_photos.map((photo, index) => (
+                                <img key={index} className={index === 0 ? 'posted-photos image-index-0'
+                            : [index === 2 ? 'posted-photos image-index-2'
+                            : [index === 6 ? 'posted-photos image-index-6'
+                            : [index === 8 ? 'posted-photos image-index-8'
+                            : 'posted-photos']]]} src={photo.photo}></img>
                             ))}
                         </div>
                     </div>
