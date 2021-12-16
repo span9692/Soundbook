@@ -1,0 +1,148 @@
+.post-container {
+    display: flex;
+    width: 100%
+}
+
+.intro-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.containers {
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    margin-top: 1rem;
+    background-color: white;
+}
+
+.intro-container > span,
+.intro-container > div {
+    margin-bottom: 1rem;
+}
+
+.category-row {
+    display: flex;
+}
+
+.user-info {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-content {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-labels {
+    font-weight: bold;
+}
+
+.icon {
+    color: grey;
+    display: flex;
+    margin-left: 1.5rem;
+}
+
+.icon-row {
+    width: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.row-Data {
+    margin-left: 1rem;
+}
+
+.fas {
+    margin: auto;
+}
+
+.profile-nav-links1 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 10px;
+}
+
+.edit-profileBtn1 {
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    color: rgb(87, 87, 87);
+}
+
+.edit-profileBtn1:hover {
+    background-color: rgb(226, 226, 226);
+}
+
+.photos-label {
+    display:flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.profile-nav-links {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 0px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.edit-profileBtn3 {
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    color: #1877f2;
+    font-size: .9rem;
+    font-weight: 600;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.edit-profileBtn3:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.posted-photos {
+    width: 9.5rem;
+    height: 9.5rem;
+    margin: 2px;
+    box-sizing: border-box;
+    object-fit: cover;
+}
+
+.photos-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.nine-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.image-index-0 {
+    border-top-left-radius: 12px;
+}
+
+.image-index-2 {
+    border-top-right-radius: 12px;
+}
+
+.image-index-6 {
+    border-bottom-left-radius: 12px;
+}
+
+.image-index-8 {
+    border-bottom-right-radius: 12px;
+}

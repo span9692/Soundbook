@@ -3,15 +3,21 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../../store/user'
 import './profile.css'
+import Posts from '../Posts/post'
+import { getPhotos } from '../../store/photo'
 
 function Profile() {
     const dispatch = useDispatch()
     const { userId } = useParams()
     const allUsers = useSelector(state => Object.values(state.user))
+    const profile_photos = useSelector(state => Object.values(state.photo))
     const profile_owner = allUsers.filter(user => user.id === +userId)[0]
+
+    console.log('profile_photos', profile_photos)
 
     useEffect(()=> {
         dispatch(getUsers())
+        dispatch(getPhotos(+userId))
     }, [dispatch])
 
     return (
@@ -25,15 +31,30 @@ function Profile() {
                             {profile_owner?.first_name} {profile_owner?.last_name}
                         </div>
                     </div>
-                    <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='60%' color='#dddfe2'></hr>
+                    {/* hr styling style={{marginTop:  1+'rem', marginBottom: 1+'rem'}}  */}
+                    <hr size='1' width='55%' color='#dddfe2'></hr>
                     <div className='profile-nav'>
                         <div className='nav-links'>
-                            <div className='profile-nav-links'>Posts</div><div className='profile-nav-links'>About</div><div className='profile-nav-links'>Friends</div><div className='profile-nav-links'>Photos</div>
+                            <div className='profile-nav-links profile-text'>Posts</div>
+                            <div className='profile-nav-links profile-text'>About</div>
+                            <div className='profile-nav-links profile-text'>Friends</div>
+                            <div className='profile-nav-links profile-text'>Photos</div>
                         </div>
                         <div className='edit-profile-btn'>
-                            <div>Edit Profile</div>
+                            <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className='profile-bottom-half'>
+                <div className='sideColumn'>
+
+                </div >
+                <div className='mainColumn'>
+                    <Posts profile_owner={profile_owner} profile_photos={profile_photos}/>
+                </div>
+                <div className='sideColumn'>
+
                 </div>
             </div>
         </>
