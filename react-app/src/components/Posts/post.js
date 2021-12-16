@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './posts.css'
 
-function Posts({profile_owner, profile_photos, allPosts}) {
+function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
     const [post, setPost] = useState('')
 
     if (profile_photos.length > 9) {

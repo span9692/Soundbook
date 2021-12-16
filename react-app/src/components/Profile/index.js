@@ -13,8 +13,9 @@ function Profile() {
     const allUsers = useSelector(state => Object.values(state.user))
     const profile_photos = useSelector(state => Object.values(state.photo))
     const profile_owner = allUsers.filter(user => user.id === +userId)[0]
-    const allPosts = useSelector(state => Object.values(state.post))
+    const allPosts = useSelector(state => Object.values(state.post)).filter(el => el.profile_id === +userId)
     console.log('allPosts', allPosts)
+    console.log('allUsers', allUsers)
 
     useEffect(()=> {
         dispatch(getUsers())
@@ -53,7 +54,7 @@ function Profile() {
 
                 </div >
                 <div className='mainColumn'>
-                    <Posts profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts}/>
+                    <Posts profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allUser={allUsers}/>
                 </div>
                 <div className='sideColumn'>
 
