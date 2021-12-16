@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../../store/user'
 import './profile.css'
+import Posts from '../Posts/post'
 
 function Profile() {
     const dispatch = useDispatch()
@@ -25,15 +26,30 @@ function Profile() {
                             {profile_owner?.first_name} {profile_owner?.last_name}
                         </div>
                     </div>
-                    <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='60%' color='#dddfe2'></hr>
+                    {/* hr styling style={{marginTop:  1+'rem', marginBottom: 1+'rem'}}  */}
+                    <hr size='1' width='55%' color='#dddfe2'></hr>
                     <div className='profile-nav'>
                         <div className='nav-links'>
-                            <div className='profile-nav-links'>Posts</div><div className='profile-nav-links'>About</div><div className='profile-nav-links'>Friends</div><div className='profile-nav-links'>Photos</div>
+                            <div className='profile-nav-links profile-text'>Posts</div>
+                            <div className='profile-nav-links profile-text'>About</div>
+                            <div className='profile-nav-links profile-text'>Friends</div>
+                            <div className='profile-nav-links profile-text'>Photos</div>
                         </div>
                         <div className='edit-profile-btn'>
-                            <div>Edit Profile</div>
+                            <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i> Edit Profile</button>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className='profile-bottom-half'>
+                <div className='sideColumn'>
+
+                </div >
+                <div className='mainColumn'>
+                    <Posts profile_owner={profile_owner}/>
+                </div>
+                <div className='sideColumn'>
+
                 </div>
             </div>
         </>
