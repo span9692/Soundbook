@@ -13,6 +13,7 @@
 
 .nav-left {
     width: 33%;
+    margin-left: 1rem;
 }
 
 .nav-mid {
@@ -25,6 +26,15 @@
 .fontAwesomeness {
     font-size: 1.6vw;
     color: grey;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    padding-bottom: .3rem;
+    padding-top: .3rem;
+}
+
+.fontAwesomeness1 {
+    font-size: 1.6vw;
+    color: #2282ff;
     padding-left: 1.2rem;
     padding-right: 1.2rem;
     padding-bottom: .3rem;

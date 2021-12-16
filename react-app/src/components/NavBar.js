@@ -18,7 +18,7 @@ const NavBar = () => {
     <>
       <div className='nav-container'>
         <div className='nav-left'>
-          <Link to='/feed'>Feed</Link>
+          <Link className='fontAwesomeness1' to='/feed'><i class="fab fa-facebook"></i></Link>
           Search bar
         </div>
         <div className='nav-mid'>
