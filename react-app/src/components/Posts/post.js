@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import './posts.css'
 
 function Posts({profile_owner, profile_photos}) {
+    const [post, setPost] = useState('')
 
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0,9)
@@ -71,18 +73,28 @@ function Posts({profile_owner, profile_photos}) {
                         </div>
                     </div>
 
-
-
-
-
-
-                    <div className='photos-container containers'>
+                    <div className='friends-container containers'>
                         <span className='profile-labels profile-nav-links profile-text'>Friends</span>
                     </div>
-
                 </div>
-                <div className='post-content'>
-                    asdfsdf
+
+                <div className='post-container-right'>
+                    <div className='post-container containers'>
+                        {/* <div> */}
+                            <div className='post-name-row'>
+                                <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                                <form className='post-form'>
+                                    <input
+                                        className='post-field'
+                                        type='text'
+                                        placeholder="What's on your mind?"
+                                        value={post}
+                                        onChange={(e) => setPost(e.target.value)}
+                                    />
+                                </form>
+                            </div>
+                        {/* </div> */}
+                    </div>
                 </div>
             </div>
         </>
