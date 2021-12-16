@@ -36,7 +36,7 @@ function Profile() {
                             <div className='profile-nav-links profile-text'>Photos</div>
                         </div>
                         <div className='edit-profile-btn'>
-                            <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i> Edit Profile</button>
+                            <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
                         </div>
                     </div>
                 </div>

@@ -6,13 +6,52 @@ function Posts({profile_owner}) {
             <div className='post-container'>
                 <div className='user-info'>
                     <div className='intro-container containers'>
-                        <span>Intro</span>
-                        <div><i class="fas fa-graduation-cap"></i>Education</div>
-                        <div><i class="fas fa-briefcase"></i>Company</div>
-                        <div><i class="fas fa-map-marker-alt"></i>Location</div>
-                        <div><i class="fas fa-birthday-cake"></i>Birthday</div>
-                        <div><i class="fas fa-tag"></i>Joined Year</div>
+                        <span className='profile-labels'>Intro</span>
+                        <div className='category-row icon'>
+                            <div className='icon-row'>
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <span className='row-Data'>Education</span>
+                            </div>
+                        </div>
+                        <div className='category-row icon'>
+                            <div className='icon-row'>
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <span className='row-Data'>Company</span>
+                            </div>
+                        </div>
+                        <div className='category-row icon'>
+                            <div className='icon-row'>
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <span className='row-Data'>Location</span>
+                            </div>
+                        </div>
+                        <div className='category-row icon'>
+                            <div className='icon-row'>
+                                <i class="fas fa-birthday-cake"></i>
+                            </div>
+                            <div>
+                                <span className='row-Data'>Birthday</span>
+                            </div>
+                        </div>
+                        <div className='category-row icon'>
+                            <div className='icon-row'>
+                                <i class="fas fa-tag"></i>
+                            </div>
+                            <div>
+                                <span className='row-Data'>Joined Year</span>
+                            </div>
+                        </div>
+                        <button className='profile-nav-links1 edit-profileBtn1'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
+
+
                     </div>
+
                     <div className='photos-container containers'>
 
                     </div>
