@@ -1,3 +1,7 @@
+.profile-container {
+    border-bottom: 2px rgb(214, 214, 214) solid;
+}
+
 .profile-background-color {
     background-color: white;
     left: 0;
@@ -44,14 +48,6 @@
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
 }
-
-/* .profile-nav {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-    border-color: white;
-} */
 
 .profile-nav {
     display: flex;

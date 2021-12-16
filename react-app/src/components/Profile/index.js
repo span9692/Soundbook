@@ -7,7 +7,7 @@ function Profile() {
 
     return (
         <>
-            <div>
+            <div className='profile-container'>
                 <div className='profile-background-color'>
                     <div className='profile-images'>
                         <img className='cover-photo' src={user.cover_photo}></img>
