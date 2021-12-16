@@ -63,7 +63,7 @@
 .profile-text:hover {
     /* color: #2282ff; */
     cursor: pointer;
-    background-color: rgb(238, 238, 238);;
+    background-color: rgb(238, 238, 238);
     border-radius: 8px;
     /* text-decoration: underline 3px #2282ff; */
 }

@@ -21,11 +21,11 @@ const NavBar = () => {
           Search bar
         </div>
         <div className='nav-mid'>
-          <Link to={`/users/${userId}`}>Profile</Link>
-          Video
-          Github
-          LinkedIn
-          Personal Website
+          <Link className='fontAwesomeness' to={`/users/${userId}`}><i class="fas fa-home"></i></Link>
+          <a className='fontAwesomeness' href="https://www.google.com/"><i class="fas fa-video"></i></a>
+          <a className='fontAwesomeness' href="https://github.com/span9692"><i class="fab fa-github"></i></a>
+          <a className='fontAwesomeness' href="https://www.linkedin.com/in/sean-pan-395a4593/"><i class="fab fa-linkedin"></i></a>
+          <a className='fontAwesomeness' href="https://www.google.com/"><i class="fas fa-address-card"></i></a>
         </div>
         <div className='nav-right'>
           <NavLink to={`/users/${userId}`} exact={true} activeClassName='active'>

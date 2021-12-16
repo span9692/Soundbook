@@ -112,8 +112,8 @@
 }
 
 .posted-photos {
-    width: 9.5rem;
-    height: 9.5rem;
+    width: 9rem;
+    height: 9rem;
     margin: 2px;
     box-sizing: border-box;
     object-fit: cover;
