@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './posts.css'
 
-function Posts({profile_owner, profile_photos}) {
+function Posts({profile_owner, profile_photos, allPosts}) {
     const [post, setPost] = useState('')
 
     if (profile_photos.length > 9) {
@@ -80,35 +80,36 @@ function Posts({profile_owner, profile_photos}) {
 
                 <div className='post-container-right'>
                     <div className='post-box containers'>
-                        {/* <div> */}
-                            <div className='post-name-row'>
-                                <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
-                                <form className='post-form'>
-                                    <input
-                                        className='post-field'
-                                        type='text'
-                                        placeholder="What's on your mind?"
-                                        value={post}
-                                        onChange={(e) => setPost(e.target.value)}
-                                    />
-                                </form>
+                        <div className='post-name-row'>
+                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                            <form className='post-form'>
+                                <input
+                                    className='post-field'
+                                    type='text'
+                                    placeholder="What's on your mind?"
+                                    value={post}
+                                    onChange={(e) => setPost(e.target.value)}
+                                />
+                            </form>
+                        </div>
+                        <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+                        <div className='post-box-buttons'>
+                            <div class='boxBtn pointer'>
+                                <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
-                            <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
-                            <div className='post-box-buttons'>
-                                {/* <div> */}
-                                    <div class='boxBtn'>
-                                        <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
-                                    </div>
-                                {/* </div> */}
-                                <div class='boxBtn'>
-                                    <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
-                                </div>
-                                <div class='boxBtn'>
-                                    <i class="far fa-laugh"></i> <span className='postBtns'>Feeling</span>
-                                </div>
+                            <div class='boxBtn pointer'>
+                                <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
                             </div>
-                        {/* </div> */}
+                            <div class='boxBtn pointer'>
+                                <i class="far fa-laugh"></i> <span className='postBtns'>Feeling</span>
+                            </div>
+                        </div>
                     </div>
+                    {allPosts.map(post =>(
+                        <div className='post-box containers'>
+                            asdf
+                        </div>
+                    ))}
                 </div>
             </div>
         </>

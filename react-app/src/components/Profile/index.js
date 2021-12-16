@@ -5,6 +5,7 @@ import { getUsers } from '../../store/user'
 import './profile.css'
 import Posts from '../Posts/post'
 import { getPhotos } from '../../store/photo'
+import { getPosts } from '../../store/post'
 
 function Profile() {
     const dispatch = useDispatch()
@@ -12,12 +13,13 @@ function Profile() {
     const allUsers = useSelector(state => Object.values(state.user))
     const profile_photos = useSelector(state => Object.values(state.photo))
     const profile_owner = allUsers.filter(user => user.id === +userId)[0]
-
-    console.log('profile_photos', profile_photos)
+    const allPosts = useSelector(state => Object.values(state.post))
+    console.log('allPosts', allPosts)
 
     useEffect(()=> {
         dispatch(getUsers())
         dispatch(getPhotos(+userId))
+        dispatch(getPosts(+userId))
     }, [dispatch])
 
     return (
@@ -51,7 +53,7 @@ function Profile() {
 
                 </div >
                 <div className='mainColumn'>
-                    <Posts profile_owner={profile_owner} profile_photos={profile_photos}/>
+                    <Posts profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts}/>
                 </div>
                 <div className='sideColumn'>
 
