@@ -48,12 +48,14 @@ function Posts({profile_owner}) {
                             </div>
                         </div>
                         <button className='profile-nav-links1 edit-profileBtn1'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
-
-
                     </div>
 
                     <div className='photos-container containers'>
+                        <span className='profile-labels'>Photos</span>
+                    </div>
 
+                    <div className='photos-container containers'>
+                        <span className='profile-labels'>Friends</span>
                     </div>
 
                 </div>

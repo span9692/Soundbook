@@ -1,0 +1,42 @@
+from app.models import db, Photo
+
+def seed_photos():
+    photo1 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639631811/ice%20cube%20nwa/download_aks9px.jpg', owner_id=1)
+    photo2 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639631812/ice%20cube%20nwa/635798662187573581-NWA_vggzgr.jpg', owner_id=1)
+    photo3 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639631812/ice%20cube%20nwa/998d2388-7754-4457-8faf-b7dcd640aeca_t6ejwk.jpg', owner_id=1)
+    photo4 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639631812/ice%20cube%20nwa/1-ICE-CUBE_le7lsz.jpg', owner_id=1)
+    photo5 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639631812/ice%20cube%20nwa/145931062_3e053b4af9_b_sbtbag.jpg', owner_id=1)
+    photo6 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639631812/ice%20cube%20nwa/Ice-Cube-2015_blgqwc.jpg', owner_id=1)
+    photo7 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639631813/ice%20cube%20nwa/IceCube_Toronto2006_nemd8h.jpg', owner_id=1)
+    photo8 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639631812/ice%20cube%20nwa/la-1512109111-ew3xhywr3t-snap-image_g2zmkj.jpg', owner_id=1)
+    photo9 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639632210/ice%20cube%20nwa/ows_143171219245947_vbqr2f.jpg', owner_id=1)
+    photo10 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639632210/ice%20cube%20nwa/54d42bd51c625_-_esq-cube-de_xp0w74.jpg', owner_id=1)
+    photo11 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639632448/dr%20dre%20nwa/drdre_gngmnv.jpg', owner_id=2)
+    photo12 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639632449/dr%20dre%20nwa/dr-dre-tom-ford-fw-2020-billboard-1548_b6d8un.jpg', owner_id=2)
+    photo13 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639632449/dr%20dre%20nwa/skynews-dr-dre-hospital-brain-aneurysm_5228641_zl40lz.jpg', owner_id=2)
+    photo14 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639632448/dr%20dre%20nwa/140127075600_bnztbb.jpg', owner_id=2)
+    photo15 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639632449/dr%20dre%20nwa/Dr-Dre-2003_ewppdv.jpg', owner_id=2)
+    photo16 = Photo(photo='https://res.cloudinary.com/photofinder/image/upload/v1639632449/dr%20dre%20nwa/dr-dre-7-million-extravagant-purchases-ex-wife-1200x675_yvlrms.jpg', owner_id=2)
+
+    db.session.add(photo1)
+    db.session.add(photo2)
+    db.session.add(photo3)
+    db.session.add(photo4)
+    db.session.add(photo5)
+    db.session.add(photo6)
+    db.session.add(photo7)
+    db.session.add(photo8)
+    db.session.add(photo9)
+    db.session.add(photo10)
+    db.session.add(photo11)
+    db.session.add(photo12)
+    db.session.add(photo13)
+    db.session.add(photo14)
+    db.session.add(photo15)
+    db.session.add(photo16)
+
+    db.session.commit()
+
+def undo_photos():
+    db.session.execute('TRUNCATE photos RESTART IDENTITY CASCADE;')
+    db.session.commit()

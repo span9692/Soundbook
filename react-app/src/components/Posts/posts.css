@@ -10,14 +10,14 @@
 .intro-container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
 }
 
 .containers {
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .intro-container > span,
