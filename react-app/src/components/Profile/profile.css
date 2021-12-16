@@ -32,6 +32,7 @@
 }
 
 .profile-photo {
+    object-fit: cover;
     width: 8vw;
     height: 8vw;
     position: absolute;

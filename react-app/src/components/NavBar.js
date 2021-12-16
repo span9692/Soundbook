@@ -19,7 +19,9 @@ const NavBar = () => {
       <div className='nav-container'>
         <div className='nav-left'>
           <Link className='fontAwesomeness1' to='/feed'><i class="fab fa-facebook"></i></Link>
-          Search bar
+          <div>
+            Search bar
+          </div>
         </div>
         <div className='nav-mid'>
           <Link className='fontAwesomeness' to={`/users/${userId}`}><i class="fas fa-home"></i></Link>
