@@ -53,9 +53,9 @@
 .profile-nav {
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 80vw;
     padding-bottom: 1vh;
-    padding-left: 2vw;
+    padding-left: 10vw;
     background-color: white;
     color: rgb(151, 151, 151);
 }

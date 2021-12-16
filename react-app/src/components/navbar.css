@@ -1,6 +1,6 @@
 .nav-container {
     display: flex;
-    width: 100vw;
+    width: 100%;
     align-items: center;
     background-color: white;
     position: absolute;
@@ -40,5 +40,5 @@
 
 .nav-right {
     width: 33%;
-    right: 0;
+    /* text-align: right; */
 }
