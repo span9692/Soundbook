@@ -79,7 +79,7 @@ function Posts({profile_owner, profile_photos}) {
                 </div>
 
                 <div className='post-container-right'>
-                    <div className='post-container containers'>
+                    <div className='post-box containers'>
                         {/* <div> */}
                             <div className='post-name-row'>
                                 <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
@@ -92,6 +92,20 @@ function Posts({profile_owner, profile_photos}) {
                                         onChange={(e) => setPost(e.target.value)}
                                     />
                                 </form>
+                            </div>
+                            <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+                            <div className='post-box-buttons'>
+                                {/* <div> */}
+                                    <div class='boxBtn'>
+                                        <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
+                                    </div>
+                                {/* </div> */}
+                                <div class='boxBtn'>
+                                    <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
+                                </div>
+                                <div class='boxBtn'>
+                                    <i class="far fa-laugh"></i> <span className='postBtns'>Feeling</span>
+                                </div>
                             </div>
                         {/* </div> */}
                     </div>
