@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsers } from '../store/user';
 import './navbar.css'
 
 const NavBar = () => {
-
+  const dispatch = useDispatch()
   const userId = useSelector(state => state.session.user.id)
+
+  useEffect(()=> {
+    dispatch(getUsers)
+}, [dispatch])
 
   return (
     <>
@@ -16,7 +21,7 @@ const NavBar = () => {
           Search bar
         </div>
         <div className='nav-mid'>
-          <Link to='/users'>Profile</Link>
+          <Link to={`/users/${userId}`}>Profile</Link>
           Video
           Github
           LinkedIn

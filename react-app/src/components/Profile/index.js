@@ -1,19 +1,28 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { getUsers } from '../../store/user'
 import './profile.css'
 
 function Profile() {
-    const user = useSelector(state => state.session.user)
-    console.log(user)
+    const dispatch = useDispatch()
+    const { userId } = useParams()
+    const allUsers = useSelector(state => Object.values(state.user))
+    const profile_owner = allUsers.filter(user => user.id === +userId)[0]
+
+    useEffect(()=> {
+        dispatch(getUsers())
+    }, [dispatch])
 
     return (
         <>
-            <div>
+            <div className='profile-container'>
                 <div className='profile-background-color'>
                     <div className='profile-images'>
-                        <img className='cover-photo' src={user.cover_photo}></img>
-                        <img className='profile-photo' src='https://res.cloudinary.com/photofinder/image/upload/v1639338101/kid%20friendly%20profile%20pics/HtwPZgej_400x400_itffcg.jpg'></img>
+                        <img className='cover-photo' src={profile_owner?.cover_photo}></img>
+                        <img className='profile-photo' src={profile_owner?.profile_pic}></img>
                         <div className='profile-content'>
-                            {user.first_name} {user.last_name}
+                            {profile_owner?.first_name} {profile_owner?.last_name}
                         </div>
                     </div>
                     <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='60%' color='#dddfe2'></hr>
