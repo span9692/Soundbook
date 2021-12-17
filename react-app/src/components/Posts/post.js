@@ -139,9 +139,16 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                         <div key={post.id} className='post-box last-post containers'>
                             <div className='post-name-date'>
                                 <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
-                                <div className='name-date'>
-                                    <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
-                                    <span className='post-date'>{post.createdAt}</span>
+                                <div className='edit-delete-post-btn-container'>
+                                    <div className='name-date'>
+                                        <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
+                                        <span className='post-date'>{post.createdAt}</span>
+                                    </div>
+                                    <div>
+                                        <div className='trash-can-post'>fd
+                                            <i class="fas fa-trash-alt"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div>
