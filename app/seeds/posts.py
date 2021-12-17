@@ -5,11 +5,13 @@ def seed_posts():
     post2 = Post(post_content='New album droppin sometime next month, best be ready for some heat', owner_id=1, profile_id=1)
     post3 = Post(post_content='this site is dope', owner_id=1, profile_id=1)
     post4 = Post(post_content='Yo wut up Cube?', owner_id=2, profile_id=1)
+    post5 = Post(post_content='yo', owner_id=2, profile_id=2)
 
     db.session.add(post1)
     db.session.add(post2)
     db.session.add(post3)
     db.session.add(post4)
+    db.session.add(post5)
 
     db.session.commit()
 

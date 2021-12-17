@@ -2,11 +2,15 @@ import { useState } from 'react'
 import './posts.css'
 
 function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
-    const [post, setPost] = useState('')
+    const [postValue, setPostValue] = useState('')
 
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0,9)
     }
+
+    // allUsers[post['id']].profile_pic
+    // console.log('allUsers', allUsers)
+    // console.log('allUsers[post[\'id\']]', allUsers[post['1']])
 
     return (
         <>
@@ -87,8 +91,8 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                                     className='post-field'
                                     type='text'
                                     placeholder="What's on your mind?"
-                                    value={post}
-                                    onChange={(e) => setPost(e.target.value)}
+                                    value={postValue}
+                                    onChange={(e) => setPostValue(e.target.value)}
                                 />
                             </form>
                         </div>
@@ -107,21 +111,22 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                     </div>
                     {/* {allPosts.map(post =>(
                         <div key={post.id} className='post-box containers'>
-                            <img src={allUsers[post['id']].profile_pic}></img>
+                            <img src={allUsers[post['owner_id']].profile_pic}></img>
                         </div>
                     ))} */}
 
                     {/* maps the posts */}
-                    <div className='post-box containers'>
+                    {allPosts.map(post =>(
+                    <div key={post.id} className='post-box containers'>
                         <div className='post-name-date'>
-                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                            <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
                             <div className='name-date'>
-                                <span className='post-name'>Kanye West</span>
-                                <span className='post-date'>Dec 14, 2021</span>
+                                <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
+                                <span className='post-date'>{post.createdAt}</span>
                             </div>
                         </div>
                         <div>
-                            My name Kanye West. I'm successful. I left Kim because it takes her 5 hours to get ready. TF? #hellnah #kobesystem
+                            {post.post_content}
                         </div>
                         <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                         <div className='like-comment'>
@@ -150,7 +155,7 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
 
 
 
-                    </div>
+                    </div>))}
 
                 </div>
             </div>
