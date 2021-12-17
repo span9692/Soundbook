@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import './posts.css'
 
-function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
+function Posts({profile_owner, profile_photos, allPosts, allUsers, allComments}) {
     const [postValue, setPostValue] = useState('')
 
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0,9)
     }
+
+    console.log('allComments', allComments)
 
     return (
         <>

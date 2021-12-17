@@ -20,6 +20,7 @@ class Comment(db.Model):
             "comment_content": self.comment_content,
             "user_id": self.user_id,
             "post_id": self.post_id,
+            "poster_info": self.users.to_dict(),
             "createdAt": self.createdAt,
             "updatedAt": self.updatedAt
         }
