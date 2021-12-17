@@ -10,6 +10,7 @@ const showPosts = data => {
 export const getPosts = (id) => async dispatch => {
   const response = await fetch(`/api/post/${id}`)
   const data = await response.json()
+  console.log('data mmmmmmmmmmmmmmm', data)
   dispatch(showPosts(data))
 }
 
