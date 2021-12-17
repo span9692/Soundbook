@@ -6,5 +6,4 @@ photo_routes = Blueprint('photos', __name__)
 @photo_routes.route('/<int:id>')
 def photos(id):
     photos = Photo.query.filter(Photo.owner_id == id)
-    print('ppppppppppppppppppppppppp', photos, 'ppppppppppppppppppppppppppppppp')
     return {'photos': [photo.to_dict() for photo in photos]}
