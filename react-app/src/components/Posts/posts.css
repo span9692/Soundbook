@@ -206,6 +206,7 @@
     padding-bottom: .6rem;
     border-radius: 500px;
     padding-left: 1rem;
+    margin-right: .5rem;
     font-size: 1rem;
 }
 
@@ -216,7 +217,7 @@
     padding-top: .7rem;
     padding-bottom: .7rem;
     border-radius: 500px;
-    color: rgb(151, 151, 151);
+    color: rgb(131, 131, 131)
 }
 
 .save-edit-button:hover {
@@ -253,7 +254,7 @@
 
 .postBtns {
     font-weight: bold;
-    color: rgb(151, 151, 151);
+    color: rgb(131, 131, 131);
 }
 
 .boxBtn {
@@ -328,7 +329,7 @@
     padding-right: .5rem;
     border-radius: 12px;
     font-weight: bold;
-    color: rgb(145, 144, 144);
+    color: rgb(131, 131, 131)
 }
 
 .like-post-button:hover,

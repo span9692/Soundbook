@@ -182,7 +182,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                         value={editValue}
                                         onChange={(e) => setEditValue(e.target.value)}
                                     />
-                                <span className='save-edit-button'>Save</span>
+                                    <span className='save-edit-button'>Save</span>
                                 </form> : post.post_content
                                 }
                             </div>
