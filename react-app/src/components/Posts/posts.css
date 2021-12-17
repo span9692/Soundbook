@@ -192,6 +192,11 @@
     font-size: 1rem;
 }
 
+.edit-Form-Field {
+    display: flex;
+    align-items: center;
+}
+
 .show-post-edit-field {
     /* display: none; */
     width: 100%;
@@ -202,6 +207,21 @@
     border-radius: 500px;
     padding-left: 1rem;
     font-size: 1rem;
+}
+
+.save-edit-button {
+    font-weight: bold;
+    padding-left: .6rem;
+    padding-right: .6rem;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    border-radius: 500px;
+    color: rgb(151, 151, 151);
+}
+
+.save-edit-button:hover {
+    background-color: rgb(238, 238, 238);
+    cursor: pointer;
 }
 
 .post-field:hover {
