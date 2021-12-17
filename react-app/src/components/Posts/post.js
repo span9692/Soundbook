@@ -29,8 +29,11 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     }
 
     const removePost = (postId) => {
-        console.log('postId', postId)
         dispatch(deletePost(postId))
+    }
+
+    const editPost = (postId) => {
+        console.log('postId', postId)
     }
 
     return (
@@ -109,7 +112,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                 <div className='post-container-right'>
                     <div className='post-box containers'>
                         <div className='post-name-row'>
-                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                            <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
                             <form className='post-form' id='add-post-form'>
                                 <input
                                     className='post-field'
@@ -149,10 +152,16 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                         <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
                                         <span className='post-date'>{post.createdAt}</span>
                                     </div>
-                                    <div>
+                                    <div className='edit-delete-button-container'>
+                                        <div onClick={ ()=> editPost(post.id) } className='trash-can-post'>
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </div>
+                                        { loggedUser.id === profile_owner.id || post.owner_id === loggedUser.id ?
                                         <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
                                             <i class="fas fa-trash-alt"></i>
                                         </div>
+                                        : null
+                                        }
                                     </div>
                                 </div>
                             </div>

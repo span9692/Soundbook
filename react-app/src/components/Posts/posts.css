@@ -253,6 +253,15 @@
     width: 100%;
 }
 
+.edit-delete-button-container {
+    display: flex;
+    color: grey;
+}
+
+.trash-can-post{
+    margin-left: .5rem;
+}
+
 .trash-can-post:hover {
     cursor: pointer;
 }

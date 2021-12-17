@@ -48,6 +48,12 @@ export const deletePost = (postId) => async dispatch => {
   }
 }
 
+    // console.log('loggedUser', loggedUser?.id) // object of logged in owner
+    // console.log('profile_owner', profile_owner?.id) // object of owner of profile_page
+    // console.log('profile_photos', profile_photos) // array of objects of all photos by the owner
+    // console.log('allPosts', allPosts) // array of objects of all comments on the profile page
+    // console.log('allComments', allComments) //array of all comments
+
 export default function reducer(state = {}, action) {
   let newState;
     switch (action.type) {
