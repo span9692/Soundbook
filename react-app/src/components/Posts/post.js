@@ -151,6 +151,7 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
 
 
                     </div>
+
                 </div>
             </div>
         </>

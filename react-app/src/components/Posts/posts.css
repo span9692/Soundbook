@@ -230,6 +230,7 @@
     background-color: rgb(238, 238, 238);
 }
 
+
 /* POSTS */
 .post-name-date {
     display: flex;
@@ -310,3 +311,4 @@
 .like-unlike {
     font-weight: bold;
 }
+
