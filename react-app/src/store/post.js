@@ -1,5 +1,6 @@
-const GET_ALL_POSTS = 'users/GET_ALL_Posts'
-const CREATE_NEW_POST = 'users/CREATE_NEW_POST'
+const GET_ALL_POSTS = 'posts/GET_ALL_Posts'
+const CREATE_NEW_POST = 'posts/CREATE_NEW_POST'
+const DELETE_POST = 'posts/DELETE_POST'
 
 const showPosts = data => {
   return {
@@ -11,6 +12,13 @@ const showPosts = data => {
 const newPost = data => {
   return {
     type: CREATE_NEW_POST,
+    data
+  }
+}
+
+const removeOnePost = data => {
+  return {
+    type: DELETE_POST,
     data
   }
 }
@@ -31,6 +39,15 @@ export const createPost = (data) => async dispatch => {
   dispatch(newPost(post))
 }
 
+export const deletePost = (postId) => async dispatch => {
+  const response = await fetch(`/api/post/${postId}`, {
+    method: "DELETE"
+  })
+  if (response.ok) {
+    dispatch(removeOnePost(postId))
+  }
+}
+
 export default function reducer(state = {}, action) {
   let newState;
     switch (action.type) {
@@ -41,6 +58,10 @@ export default function reducer(state = {}, action) {
         case CREATE_NEW_POST:
           newState = {...state}
           newState[action.data['id']] = action.data
+          return newState
+        case DELETE_POST:
+          newState = {...state}
+          delete newState[action.data]
           return newState
       default:
         return state;

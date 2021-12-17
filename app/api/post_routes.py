@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from app.models.db import db
 from app.models import Post, User, Comment
 
@@ -43,3 +43,10 @@ def new_posts():
     db.session.add(newPost)
     db.session.commit()
     return newPost.to_dict()
+
+@post_routes.route('/<int:id>', methods=["DELETE"])
+def delete_posts(id):
+    post = Post.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+    return jsonify({'message': f'Post {id} has been deleted'}), 200

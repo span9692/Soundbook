@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { createPost } from '../../store/post'
+import { createPost, deletePost } from '../../store/post'
 import './posts.css'
 
 function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComments }) {
@@ -26,6 +26,11 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
             profile_id: profile_owner.id
         }))
         setPostValue('')
+    }
+
+    const removePost = (postId) => {
+        console.log('postId', postId)
+        dispatch(deletePost(postId))
     }
 
     return (
@@ -145,7 +150,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                         <span className='post-date'>{post.createdAt}</span>
                                     </div>
                                     <div>
-                                        <div className='trash-can-post'>
+                                        <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
                                             <i class="fas fa-trash-alt"></i>
                                         </div>
                                     </div>
