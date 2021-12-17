@@ -145,7 +145,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                         <span className='post-date'>{post.createdAt}</span>
                                     </div>
                                     <div>
-                                        <div className='trash-can-post'>fd
+                                        <div className='trash-can-post'>
                                             <i class="fas fa-trash-alt"></i>
                                         </div>
                                     </div>

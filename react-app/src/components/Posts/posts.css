@@ -253,10 +253,6 @@
     width: 100%;
 }
 
-.fa-trash-alt {
-    cursor: pointer;
-}
-
 .trash-can-post:hover {
     cursor: pointer;
 }
