@@ -1,6 +1,9 @@
+import Posts from "../components/Posts/post"
+
 const GET_ALL_POSTS = 'posts/GET_ALL_Posts'
 const CREATE_NEW_POST = 'posts/CREATE_NEW_POST'
 const DELETE_POST = 'posts/DELETE_POST'
+const EDIT_POST = 'posts/EDIT_POST'
 
 const showPosts = data => {
   return {
@@ -19,6 +22,13 @@ const newPost = data => {
 const removeOnePost = data => {
   return {
     type: DELETE_POST,
+    data
+  }
+}
+
+const modifyPost = data => {
+  return {
+    type: EDIT_POST,
     data
   }
 }
@@ -48,11 +58,13 @@ export const deletePost = (postId) => async dispatch => {
   }
 }
 
-    // console.log('loggedUser', loggedUser?.id) // object of logged in owner
-    // console.log('profile_owner', profile_owner?.id) // object of owner of profile_page
-    // console.log('profile_photos', profile_photos) // array of objects of all photos by the owner
-    // console.log('allPosts', allPosts) // array of objects of all comments on the profile page
-    // console.log('allComments', allComments) //array of all comments
+export const changePost = (data) => async dispatch => {
+  const response = await fetch('/api/post/edit', {
+    method: "PUT",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(data)
+  })
+}
 
 export default function reducer(state = {}, action) {
   let newState;

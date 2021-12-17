@@ -50,3 +50,9 @@ def delete_posts(id):
     db.session.delete(post)
     db.session.commit()
     return jsonify({'message': f'Post {id} has been deleted'}), 200
+
+@post_routes.route('/edit', methods=['PUT'])
+def edit_post():
+    data = request.get_json()
+    print('mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm', data, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
+    return {"asdf":"asdf"}

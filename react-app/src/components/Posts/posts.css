@@ -192,6 +192,18 @@
     font-size: 1rem;
 }
 
+.show-post-edit-field {
+    /* display: none; */
+    width: 100%;
+    background-color: rgb(238, 238, 238);
+    border: hidden;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    border-radius: 500px;
+    padding-left: 1rem;
+    font-size: 1rem;
+}
+
 .post-field:hover {
     background-color: rgb(224, 224, 224);
 }

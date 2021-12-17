@@ -6,6 +6,9 @@ import './posts.css'
 function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComments }) {
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
+    const [editValue, setEditValue] = useState('')
+    const [edit, setEdit] = useState(false)
+    const [editId, setEditId] = useState("")
 
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0, 9)
@@ -34,6 +37,10 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
 
     const editPost = (postId) => {
         console.log('postId', postId)
+    }
+
+    const showEditField = () => {
+        setEdit(!edit)
     }
 
     return (
@@ -153,7 +160,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                         <span className='post-date'>{post.createdAt}</span>
                                     </div>
                                     <div className='edit-delete-button-container'>
-                                        <div onClick={ ()=> editPost(post.id) } className='trash-can-post'>
+                                        <div onClick={ () => {editId ? setEditId("") : setEditId(post.id); setEditValue(post.post_content)} } className='trash-can-post'>
                                             <i class="fas fa-pencil-alt"></i>
                                         </div>
                                         { loggedUser.id === profile_owner.id || post.owner_id === loggedUser.id ?
@@ -166,7 +173,17 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                 </div>
                             </div>
                             <div>
-                                {post.post_content}
+                                {editId == post.id ?
+                                <form>
+                                    <input
+                                        className='show-post-edit-field'
+                                        type='text'
+                                        // placeholder={post?.post_content}
+                                        value={editValue}
+                                        onChange={(e) => setEditValue(e.target.value)}
+                                    />
+                                </form> : post.post_content
+                                }
                             </div>
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                             <div className='like-comment'>
