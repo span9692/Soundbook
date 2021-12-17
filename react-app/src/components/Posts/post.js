@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './posts.css'
 
-function Posts({profile_owner, profile_photos}) {
+function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
     const [post, setPost] = useState('')
 
     if (profile_photos.length > 9) {
@@ -80,35 +80,78 @@ function Posts({profile_owner, profile_photos}) {
 
                 <div className='post-container-right'>
                     <div className='post-box containers'>
-                        {/* <div> */}
-                            <div className='post-name-row'>
-                                <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
-                                <form className='post-form'>
-                                    <input
-                                        className='post-field'
-                                        type='text'
-                                        placeholder="What's on your mind?"
-                                        value={post}
-                                        onChange={(e) => setPost(e.target.value)}
-                                    />
-                                </form>
+                        <div className='post-name-row'>
+                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                            <form className='post-form'>
+                                <input
+                                    className='post-field'
+                                    type='text'
+                                    placeholder="What's on your mind?"
+                                    value={post}
+                                    onChange={(e) => setPost(e.target.value)}
+                                />
+                            </form>
+                        </div>
+                        <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+                        <div className='post-box-buttons'>
+                            <div class='boxBtn pointer'>
+                                <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
-                            <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
-                            <div className='post-box-buttons'>
-                                {/* <div> */}
-                                    <div class='boxBtn'>
-                                        <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
-                                    </div>
-                                {/* </div> */}
-                                <div class='boxBtn'>
-                                    <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
-                                </div>
-                                <div class='boxBtn'>
-                                    <i class="far fa-laugh"></i> <span className='postBtns'>Feeling</span>
-                                </div>
+                            <div class='boxBtn pointer'>
+                                <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
                             </div>
-                        {/* </div> */}
+                            <div class='boxBtn pointer'>
+                                <i class="far fa-laugh"></i> <span className='postBtns'>Feeling</span>
+                            </div>
+                        </div>
                     </div>
+                    {/* {allPosts.map(post =>(
+                        <div key={post.id} className='post-box containers'>
+                            <img src={allUsers[post['id']].profile_pic}></img>
+                        </div>
+                    ))} */}
+
+                    {/* maps the posts */}
+                    <div className='post-box containers'>
+                        <div className='post-name-date'>
+                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                            <div className='name-date'>
+                                <span className='post-name'>Kanye West</span>
+                                <span className='post-date'>Dec 14, 2021</span>
+                            </div>
+                        </div>
+                        <div>
+                            My name Kanye West. I'm successful. I left Kim because it takes her 5 hours to get ready. TF? #hellnah #kobesystem
+                        </div>
+                        <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+                        <div className='like-comment'>
+                            <div class='pointer'>
+                                <span className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
+                            </div>
+                            <div class='pointer'>
+                                <span className='comment-button'><i class="far fa-comment"></i> Comment</span>
+                            </div>
+                        </div>
+                        <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+
+                        {/* map the comments */}
+                        <div className='post-name-comment'>
+                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                            <div>
+                                <div className='name-comment'>
+                                    <span className='post-comment-name'>Kanye West</span>
+                                    <span className='post-comment'>Git down gurl go ahead git down. Git down gurl go ahead git down. Git down gurl go ahead git down.</span>
+                                </div>
+                                <div>
+                                    <span className='comment-detail'><span className='like-unlike pointer'>Like</span> &bull; Dec 25, 2021</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
                 </div>
             </div>
         </>

@@ -16,6 +16,10 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     createdAt = db.Column(db.DateTime(timezone=False), default=func.now())
 
+    posts = db.relationship('Post', back_populates='users', cascade='all, delete-orphan')
+    photos = db.relationship('Photo', back_populates='users', cascade='all, delete-orphan')
+    comments = db.relationship('Comment', back_populates='users', cascade='all, delete-orphan')
+
     @property
     def password(self):
         return self.hashed_password
@@ -24,12 +28,14 @@ class User(db.Model, UserMixin):
     def password(self, password):
         self.hashed_password = generate_password_hash(password)
 
+
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
         return {
             'id': self.id,
+            # 'posts': [post.to_dict() for post in self.posts],
             'first_name': self.first_name,
             'last_name': self.last_name,
             'email': self.email,
@@ -37,7 +43,3 @@ class User(db.Model, UserMixin):
             'cover_photo': self.cover_photo,
             'createdAt': self.createdAt
         }
-
-    posts = db.relationship('Post', back_populates='users', cascade='all, delete-orphan')
-    photos = db.relationship('Photo', back_populates='users', cascade='all, delete-orphan')
-    comments = db.relationship('Comment', back_populates='users', cascade='all, delete-orphan')

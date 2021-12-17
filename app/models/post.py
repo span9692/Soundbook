@@ -1,4 +1,5 @@
 from .db import db
+# from app.models import User
 from sqlalchemy.sql import func
 
 class Post(db.Model):
@@ -7,8 +8,19 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     post_content = db.Column(db.String(500), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    profile_id = db.Column(db.Integer, nullable=False)
     createdAt = db.Column(db.DateTime(timezone=False), default=func.now())
     updatedAt = db.Column(db.DateTime(timezone=False), default=func.now())
 
     users = db.relationship('User', back_populates='posts')
     comments = db.relationship('Comment', back_populates='posts', cascade='all, delete-orphan')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "post_content": self.post_content,
+            "owner_id": self.owner_id,
+            "profile_id": self.profile_id,
+            "createdAt": self.createdAt,
+            "updatedAt": self.updatedAt
+        }
