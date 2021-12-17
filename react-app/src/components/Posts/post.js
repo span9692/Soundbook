@@ -77,7 +77,10 @@ function Posts({ profile_owner, profile_photos, allPosts, allComments }) {
                     </div>
 
                     <div className='friends-container containers'>
-                        <span className='profile-labels profile-nav-links profile-text'>Friends</span>
+                        <div className='photos-label1'>
+                            <span className='profile-labels'>Friends</span>
+                            <span className='edit-profileBtn3'>See All Friends</span>
+                        </div>
                     </div>
                 </div>
 

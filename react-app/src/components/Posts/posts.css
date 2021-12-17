@@ -89,6 +89,12 @@
     padding-bottom: 1rem;
 }
 
+.photos-label1 {
+    display:flex;
+    justify-content: space-between;
+    /* padding-bottom: 1rem; */
+}
+
 .profile-nav-links {
     font-size: 1rem;
     font-weight: 600;
