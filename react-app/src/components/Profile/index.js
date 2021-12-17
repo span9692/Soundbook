@@ -36,7 +36,7 @@ function Profile() {
                         </div>
                     </div>
                     {/* hr styling style={{marginTop:  1+'rem', marginBottom: 1+'rem'}}  */}
-                    <hr size='1' width='55%' color='#dddfe2'></hr>
+                    <hr style={{marginLeft:  19.4+'vw'}} size='1' width='63%' color='#dddfe2'></hr>
                     <div className='profile-nav'>
                         <div className='nav-links'>
                             <div className='profile-nav-links profile-text'>Posts</div>

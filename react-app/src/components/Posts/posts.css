@@ -3,6 +3,18 @@
     width: 100%;
 }
 
+.user-info {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-container-right {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
 .intro-container {
     display: flex;
     flex-direction: column;
@@ -25,18 +37,6 @@
 
 .category-row {
     display: flex;
-}
-
-.user-info {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-}
-
-.post-container-right {
-    width: 55%;
-    display: flex;
-    flex-direction: column;
 }
 
 .profile-labels {
