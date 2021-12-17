@@ -301,3 +301,12 @@
     font-size: .9rem;
     margin-right: .4rem;
 }
+
+.comment-detail {
+    font-size: .8rem;
+    margin-left: 1rem;
+}
+
+.like-unlike {
+    font-weight: bold;
+}

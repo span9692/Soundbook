@@ -137,13 +137,15 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                         {/* map the comments */}
                         <div className='post-name-comment'>
                             <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
-                            <div className='name-comment'>
-                                <span className='post-comment-name'>Kanye West</span>
-                                <span className='post-comment'>Git down gurl go ahead git down. Git down gurl go ahead git down. Git down gurl go ahead git down.</span>
+                            <div>
+                                <div className='name-comment'>
+                                    <span className='post-comment-name'>Kanye West</span>
+                                    <span className='post-comment'>Git down gurl go ahead git down. Git down gurl go ahead git down. Git down gurl go ahead git down.</span>
+                                </div>
+                                <div>
+                                    <span className='comment-detail'><span className='like-unlike pointer'>Like</span> &bull; Dec 25, 2021</span>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <span>Like &bull; Dec 25, 2021</span>
                         </div>
 
 
