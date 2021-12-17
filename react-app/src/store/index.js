@@ -4,12 +4,14 @@ import session from './session'
 import user from './user'
 import photo from './photo'
 import post from './post'
+import comment from './comment'
 
 const rootReducer = combineReducers({
   session,
   user,
   photo,
-  post
+  post,
+  comment
 });
 
 

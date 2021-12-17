@@ -232,6 +232,10 @@
 
 
 /* POSTS */
+.last-post:last-child {
+    margin-bottom: 1.3rem;
+}
+
 .post-name-date {
     display: flex;
     margin-bottom: .8rem;
@@ -277,12 +281,22 @@
 
 .post-name-comment {
     display: flex;
-    /* margin-bottom: .8rem; */
+    margin-bottom: .8rem;
+}
+
+.last-comment:last-child {
+    margin-bottom: 0rem!important;
+}
+
+.width-fix {
+    width: 100%;
+    padding-right: 1rem;
 }
 
 .name-comment {
     display: flex;
     flex-direction: column;
+    width: 100%;
     background-color: rgb(238, 238, 238);
     padding-top: .5rem;
     padding-bottom: .5rem;
@@ -315,4 +329,3 @@
 .like-unlike2 {
     font-weight: bold;
 }
-
