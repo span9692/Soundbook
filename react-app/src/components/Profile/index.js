@@ -11,6 +11,7 @@ import { getComments } from '../../store/comment'
 function Profile() {
     const dispatch = useDispatch()
     const { userId } = useParams()
+    const loggedUser = useSelector(state => state.session.user)
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
     const profile_photos = useSelector(state => Object.values(state.photo))
@@ -58,7 +59,7 @@ function Profile() {
 
                 </div >
                 <div className='mainColumn'>
-                    <Posts profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments}/>
+                    <Posts loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments}/>
                 </div>
                 <div className='sideColumn'>
 

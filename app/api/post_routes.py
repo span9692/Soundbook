@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from app.models.db import db
 from app.models import Post, User, Comment
 
@@ -31,3 +31,15 @@ def posts(id):
 
     posts = Post.query.filter(Post.profile_id == id)
     return {'posts': [post.to_dict() for post in posts]}
+
+@post_routes.route('/new', methods=['POST'])
+def new_posts():
+    data = request.get_json()
+    newPost = Post(
+        post_content=data['post_content'],
+        owner_id=data['owner_id'],
+        profile_id=data['profile_id']
+    )
+    db.session.add(newPost)
+    db.session.commit()
+    return newPost.to_dict()

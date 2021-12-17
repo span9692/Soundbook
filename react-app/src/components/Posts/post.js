@@ -1,15 +1,32 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { createPost } from '../../store/post'
 import './posts.css'
 
-function Posts({ profile_owner, profile_photos, allPosts, allComments }) {
+function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComments }) {
+    const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
 
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0, 9)
     }
+    // console.log('loggedUser', loggedUser?.id) // object of logged in owner
+    // console.log('profile_owner', profile_owner?.id) // object of owner of profile_page
+    // console.log('profile_photos', profile_photos) // array of objects of all photos by the owner
+    // console.log('allPosts', allPosts) // array of objects of all comments on the profile page
+    // console.log('allComments', allComments) //array of all comments
 
     const reversed = []
     allPosts.forEach(el => reversed.unshift(el))
+
+    const addPost = () => {
+        dispatch(createPost({
+            post_content: postValue,
+            owner_id: loggedUser.id,
+            profile_id: profile_owner.id
+        }))
+        setPostValue('')
+    }
 
     return (
         <>
@@ -88,7 +105,7 @@ function Posts({ profile_owner, profile_photos, allPosts, allComments }) {
                     <div className='post-box containers'>
                         <div className='post-name-row'>
                             <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
-                            <form className='post-form'>
+                            <form className='post-form' id='add-post-form'>
                                 <input
                                     className='post-field'
                                     type='text'
@@ -100,7 +117,7 @@ function Posts({ profile_owner, profile_photos, allPosts, allComments }) {
                         </div>
                         <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                         <div className='post-box-buttons'>
-                            <div class='boxBtn pointer'>
+                            <div type='submit' onClick={ postValue.length > 1 ? ()=>addPost() : null } class='boxBtn pointer' form='add-post-form'>
                                 <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
                             <div class='boxBtn pointer'>
