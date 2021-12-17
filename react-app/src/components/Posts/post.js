@@ -110,6 +110,8 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                             <img src={allUsers[post['id']].profile_pic}></img>
                         </div>
                     ))} */}
+
+                    {/* maps the posts */}
                     <div className='post-box containers'>
                         <div className='post-name-date'>
                             <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
@@ -119,7 +121,7 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                             </div>
                         </div>
                         <div>
-                            My name Kanye West. I'm successful. I left Kim because it takes her 5 hours to get ready. TF?
+                            My name Kanye West. I'm successful. I left Kim because it takes her 5 hours to get ready. TF? #hellnah #kobesystem
                         </div>
                         <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                         <div className='like-comment'>
@@ -133,8 +135,17 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                         <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
 
                         {/* map the comments */}
+                        <div className='post-name-comment'>
+                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                            <div className='name-comment'>
+                                <span className='post-comment-name'>Kanye West</span>
+                                <span className='post-comment'>Git down gurl go ahead git down. Git down gurl go ahead git down. Git down gurl go ahead git down.</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span>Like &bull; Dec 25, 2021</span>
+                        </div>
 
-                        
 
 
                     </div>

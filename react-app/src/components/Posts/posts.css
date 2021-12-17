@@ -265,10 +265,39 @@
     padding-left: .5rem;
     padding-right: .5rem;
     border-radius: 12px;
-    color: rgb(107, 107, 107);
+    font-weight: bold;
+    color: rgb(151, 151, 151);
 }
 
 .like-post-button:hover,
 .comment-button:hover {
     background-color: rgb(238, 238, 238);
+}
+
+.post-name-comment {
+    display: flex;
+    /* margin-bottom: .8rem; */
+}
+
+.name-comment {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(238, 238, 238);
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+    border-radius: 12px;
+    /* justify-content: center; */
+}
+
+.post-comment-name {
+    font-size: .9rem;
+    font-weight:bold;
+    padding-bottom: .1rem;
+    /* margin-right: 1rem; */
+}
+
+.post-comment {
+    font-size: .9rem;
+    margin-right: .4rem;
 }
