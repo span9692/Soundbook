@@ -2,11 +2,15 @@ import { useState } from 'react'
 import './posts.css'
 
 function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
-    const [post, setPost] = useState('')
+    const [postValue, setPostValue] = useState('')
 
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0,9)
     }
+
+    // allUsers[post['id']].profile_pic
+    // console.log('allUsers', allUsers)
+    // console.log('allUsers[post[\'id\']]', allUsers[post['1']])
 
     return (
         <>
@@ -87,8 +91,8 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                                     className='post-field'
                                     type='text'
                                     placeholder="What's on your mind?"
-                                    value={post}
-                                    onChange={(e) => setPost(e.target.value)}
+                                    value={postValue}
+                                    onChange={(e) => setPostValue(e.target.value)}
                                 />
                             </form>
                         </div>
@@ -107,7 +111,7 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                     </div>
                     {/* {allPosts.map(post =>(
                         <div key={post.id} className='post-box containers'>
-                            <img src={allUsers[post['id']].profile_pic}></img>
+                            <img src={allUsers[post['owner_id']].profile_pic}></img>
                         </div>
                     ))} */}
 
@@ -121,7 +125,7 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                             </div>
                         </div>
                         <div>
-                            My name Kanye West. I'm successful. I left Kim because it takes her 5 hours to get ready. TF? #hellnah #kobesystem
+                            My name Kanye West. I left Kim because it takes her 5 hours to get ready. TF? #hellnah #kobesystem
                         </div>
                         <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                         <div className='like-comment'>
