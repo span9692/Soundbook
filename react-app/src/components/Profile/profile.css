@@ -71,15 +71,15 @@
 
 .nav-links {
     display: flex;
-    margin-left: 11rem;
+    /* margin-left: 0rem; */
 }
 
 .profile-nav-links {
     font-size: 1rem;
     font-weight: 600;
-    margin-left: 0px;
-    margin-right: 10px;
-    padding: 10px;
+    margin-left: 3rem !important;
+    /* margin-right: 3rem !important; */
+    padding-left: 10;
 }
 
 .edit-profileBtn {
@@ -95,7 +95,7 @@
 }
 
 .edit-profile-btn {
-    margin-right: 15.6rem;
+    margin-right: 0rem;
     left: 0;
     width: fit-content;
     display: flex;
