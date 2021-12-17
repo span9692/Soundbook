@@ -116,16 +116,17 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                     ))} */}
 
                     {/* maps the posts */}
-                    <div className='post-box containers'>
+                    {allPosts.map(post =>(
+                    <div key={post.id} className='post-box containers'>
                         <div className='post-name-date'>
-                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                            <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
                             <div className='name-date'>
-                                <span className='post-name'>Kanye West</span>
-                                <span className='post-date'>Dec 14, 2021</span>
+                                <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
+                                <span className='post-date'>{post.createdAt}</span>
                             </div>
                         </div>
                         <div>
-                            My name Kanye West. I left Kim because it takes her 5 hours to get ready. TF? #hellnah #kobesystem
+                            {post.post_content}
                         </div>
                         <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                         <div className='like-comment'>
@@ -154,7 +155,7 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
 
 
 
-                    </div>
+                    </div>))}
 
                 </div>
             </div>
