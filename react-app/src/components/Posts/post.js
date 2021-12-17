@@ -8,10 +8,6 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
         profile_photos = profile_photos.slice(0,9)
     }
 
-    // allUsers[post['id']].profile_pic
-    // console.log('allUsers', allUsers)
-    // console.log('allUsers[post[\'id\']]', allUsers[post['1']])
-
     return (
         <>
             <div className='post-container'>
