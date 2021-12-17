@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './posts.css'
 
-function Posts({profile_owner, profile_photos, allPosts, allUsers, allComments}) {
+function Posts({ profile_owner, profile_photos, allPosts, allUsers, allComments }) {
     const [postValue, setPostValue] = useState('')
 
     if (profile_photos.length > 9) {
-        profile_photos = profile_photos.slice(0,9)
+        profile_photos = profile_photos.slice(0, 9)
     }
 
     console.log('allComments', allComments)
@@ -67,10 +67,10 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers, allComments})
                         <div className='nine-images'>
                             {profile_photos.map((photo, index) => (
                                 <img key={index} className={index === 0 ? 'posted-photos image-index-0'
-                            : [index === 2 ? 'posted-photos image-index-2'
-                            : [index === 6 ? 'posted-photos image-index-6'
-                            : [index === 8 ? 'posted-photos image-index-8'
-                            : 'posted-photos']]]} src={photo.photo}></img>
+                                    : [index === 2 ? 'posted-photos image-index-2'
+                                        : [index === 6 ? 'posted-photos image-index-6'
+                                            : [index === 8 ? 'posted-photos image-index-8'
+                                                : 'posted-photos']]]} src={photo.photo}></img>
                             ))}
                         </div>
                     </div>
@@ -94,7 +94,7 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers, allComments})
                                 />
                             </form>
                         </div>
-                        <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+                        <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                         <div className='post-box-buttons'>
                             <div class='boxBtn pointer'>
                                 <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
@@ -114,47 +114,46 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers, allComments})
                     ))} */}
 
                     {/* maps the posts */}
-                    {allPosts.map(post =>(
-                    <div key={post.id} className='post-box containers'>
-                        <div className='post-name-date'>
-                            <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
-                            <div className='name-date'>
-                                <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
-                                <span className='post-date'>{post.createdAt}</span>
+                    {allPosts.map(post => (
+                        <div key={post.id} className='post-box containers'>
+                            <div className='post-name-date'>
+                                <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
+                                <div className='name-date'>
+                                    <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
+                                    <span className='post-date'>{post.createdAt}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            {post.post_content}
-                        </div>
-                        <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
-                        <div className='like-comment'>
-                            <div class='pointer'>
-                                <span className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
-                            </div>
-                            <div class='pointer'>
-                                <span className='comment-button'><i class="far fa-comment"></i> Comment</span>
-                            </div>
-                        </div>
-                        <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
-
-                        {/* map the comments */}
-                        <div className='post-name-comment'>
-                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
                             <div>
-                                <div className='name-comment'>
-                                    <span className='post-comment-name'>Kanye West</span>
-                                    <span className='post-comment'>Git down gurl go ahead git down. Git down gurl go ahead git down. Git down gurl go ahead git down.</span>
+                                {post.post_content}
+                            </div>
+                            <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
+                            <div className='like-comment'>
+                                <div class='pointer'>
+                                    <span className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>
-                                <div>
-                                    <span className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; Dec 25, 2021</span>
+                                <div class='pointer'>
+                                    <span className='comment-button'><i class="far fa-comment"></i> Comment</span>
                                 </div>
                             </div>
-                        </div>
+                            <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
 
-
-
-                    </div>))}
-
+                            {/* map the comments */}
+                            {allComments.map((comment) => (
+                                (post.id == comment.post_id ?
+                                <div key={comment.id} className='post-name-comment last-comment'>
+                                    <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
+                                    <div>
+                                        <div className='name-comment'>
+                                            <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                            <span className='post-comment'>{comment.comment_content}</span>
+                                        </div>
+                                        <div>
+                                            <span className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; Dec 25, 2021</span>
+                                        </div>
+                                    </div>
+                                </div> : null)
+                                ))}
+                        </div>))}
                 </div>
             </div>
         </>
