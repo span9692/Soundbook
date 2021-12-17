@@ -58,7 +58,7 @@ function Profile() {
 
                 </div >
                 <div className='mainColumn'>
-                    <Posts profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allUser={allUsers} allComments={allComments}/>
+                    <Posts profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments}/>
                 </div>
                 <div className='sideColumn'>
 

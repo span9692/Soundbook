@@ -232,6 +232,10 @@
 
 
 /* POSTS */
+.last-post:last-child {
+    margin-bottom: 1.3rem;
+}
+
 .post-name-date {
     display: flex;
     margin-bottom: .8rem;
@@ -282,6 +286,11 @@
 
 .last-comment:last-child {
     margin-bottom: 0rem!important;
+}
+
+.width-fix {
+    width: 100%;
+    padding-right: 1rem;
 }
 
 .name-comment {

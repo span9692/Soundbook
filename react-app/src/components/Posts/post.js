@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import './posts.css'
 
-function Posts({ profile_owner, profile_photos, allPosts, allUsers, allComments }) {
+function Posts({ profile_owner, profile_photos, allPosts, allComments }) {
     const [postValue, setPostValue] = useState('')
 
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0, 9)
     }
 
-    console.log('allComments', allComments)
+    const reversed = []
+    allPosts.forEach(el => reversed.unshift(el))
 
     return (
         <>
@@ -114,8 +115,8 @@ function Posts({ profile_owner, profile_photos, allPosts, allUsers, allComments 
                     ))} */}
 
                     {/* maps the posts */}
-                    {allPosts.map(post => (
-                        <div key={post.id} className='post-box containers'>
+                    {reversed.map(post => (
+                        <div key={post.id} className='post-box last-post containers'>
                             <div className='post-name-date'>
                                 <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
                                 <div className='name-date'>
@@ -142,7 +143,7 @@ function Posts({ profile_owner, profile_photos, allPosts, allUsers, allComments 
                                 (post.id == comment.post_id ?
                                 <div key={comment.id} className='post-name-comment last-comment'>
                                     <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
-                                    <div>
+                                    <div className='width-fix'>
                                         <div className='name-comment'>
                                             <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
                                             <span className='post-comment'>{comment.comment_content}</span>
