@@ -143,7 +143,7 @@ function Posts({profile_owner, profile_photos, allPosts, allUsers}) {
                                     <span className='post-comment'>Git down gurl go ahead git down. Git down gurl go ahead git down. Git down gurl go ahead git down.</span>
                                 </div>
                                 <div>
-                                    <span className='comment-detail'><span className='like-unlike pointer'>Like</span> &bull; Dec 25, 2021</span>
+                                    <span className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; Dec 25, 2021</span>
                                 </div>
                             </div>
                         </div>

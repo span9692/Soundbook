@@ -308,5 +308,9 @@
 }
 
 .like-unlike {
+    color: grey;
+}
+
+.like-unlike2 {
     font-weight: bold;
 }
