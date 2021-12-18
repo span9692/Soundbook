@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { changePost, createPost, deletePost } from '../../store/post'
 import './posts.css'
@@ -47,6 +47,10 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
         dispatch(changePost(postId, editValue))
         setEditId('')
     }
+
+    useEffect(()=> {
+        setCommentValue('')
+    }, [commentBoxId])
 
     return (
         <>
