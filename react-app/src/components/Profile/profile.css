@@ -107,7 +107,9 @@
 }
 
 .sideColumn {
+    position: relative;
     width: 20%;
+    z-index: -1;
 }
 
 .mainColumn {

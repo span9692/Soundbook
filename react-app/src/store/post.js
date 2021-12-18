@@ -1,5 +1,9 @@
-const GET_ALL_POSTS = 'users/GET_ALL_Posts'
-const CREATE_NEW_POST = 'users/CREATE_NEW_POST'
+import Posts from "../components/Posts/post"
+
+const GET_ALL_POSTS = 'posts/GET_ALL_Posts'
+const CREATE_NEW_POST = 'posts/CREATE_NEW_POST'
+const DELETE_POST = 'posts/DELETE_POST'
+const EDIT_POST = 'posts/EDIT_POST'
 
 const showPosts = data => {
   return {
@@ -11,6 +15,20 @@ const showPosts = data => {
 const newPost = data => {
   return {
     type: CREATE_NEW_POST,
+    data
+  }
+}
+
+const removeOnePost = data => {
+  return {
+    type: DELETE_POST,
+    data
+  }
+}
+
+const modifyPost = data => {
+  return {
+    type: EDIT_POST,
     data
   }
 }
@@ -31,6 +49,28 @@ export const createPost = (data) => async dispatch => {
   dispatch(newPost(post))
 }
 
+export const deletePost = (postId) => async dispatch => {
+  const response = await fetch(`/api/post/${postId}`, {
+    method: "DELETE"
+  })
+  if (response.ok) {
+    dispatch(removeOnePost(postId))
+  }
+}
+
+export const changePost = (postId, editValue) => async dispatch => {
+  const response = await fetch('/api/post/edit', {
+    method: "PUT",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({postId, editValue})
+  })
+
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(modifyPost(data))
+  }
+}
+
 export default function reducer(state = {}, action) {
   let newState;
     switch (action.type) {
@@ -41,6 +81,14 @@ export default function reducer(state = {}, action) {
         case CREATE_NEW_POST:
           newState = {...state}
           newState[action.data['id']] = action.data
+          return newState
+        case EDIT_POST:
+          newState = {...state}
+          newState[action.data.id] = action.data
+          return newState
+        case DELETE_POST:
+          newState = {...state}
+          delete newState[action.data]
           return newState
       default:
         return state;

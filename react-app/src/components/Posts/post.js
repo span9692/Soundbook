@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { createPost } from '../../store/post'
+import { changePost, createPost, deletePost } from '../../store/post'
 import './posts.css'
 
 function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComments }) {
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
+    const [editValue, setEditValue] = useState('')
+    const [edit, setEdit] = useState(false)
+    const [editId, setEditId] = useState("")
 
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0, 9)
@@ -26,6 +29,15 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
             profile_id: profile_owner.id
         }))
         setPostValue('')
+    }
+
+    const removePost = (postId) => {
+        dispatch(deletePost(postId))
+    }
+
+    const editPost = (postId) => {
+        dispatch(changePost(postId, editValue))
+        setEditId('')
     }
 
     return (
@@ -104,7 +116,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                 <div className='post-container-right'>
                     <div className='post-box containers'>
                         <div className='post-name-row'>
-                            <img className='post-image-wall' src={profile_owner?.profile_pic}></img>
+                            <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
                             <form className='post-form' id='add-post-form'>
                                 <input
                                     className='post-field'
@@ -139,13 +151,36 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                         <div key={post.id} className='post-box last-post containers'>
                             <div className='post-name-date'>
                                 <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
-                                <div className='name-date'>
-                                    <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
-                                    <span className='post-date'>{post.createdAt}</span>
+                                <div className='edit-delete-post-btn-container'>
+                                    <div className='name-date'>
+                                        <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
+                                        <span className='post-date'>{post.createdAt}</span>
+                                    </div>
+                                    <div className='edit-delete-button-container'>
+                                        <div onClick={ () => {editId ? setEditId("") : setEditId(post.id); setEditValue(post.post_content)} } className='trash-can-post'>
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </div>
+                                        { loggedUser.id === profile_owner.id || post.owner_id === loggedUser.id ?
+                                        <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
+                                            <i class="fas fa-trash-alt"></i>
+                                        </div>
+                                        : null
+                                        }
+                                    </div>
                                 </div>
                             </div>
                             <div>
-                                {post.post_content}
+                                {editId == post.id ?
+                                <form className='edit-Form-Field'>
+                                    <input
+                                        className='show-post-edit-field'
+                                        type='text'
+                                        value={editValue}
+                                        onChange={(e) => setEditValue(e.target.value)}
+                                    />
+                                    <span onClick={ () => editPost(post.id) } className='save-edit-button'>Save</span>
+                                </form> : post.post_content
+                                }
                             </div>
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                             <div className='like-comment'>

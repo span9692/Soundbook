@@ -192,6 +192,38 @@
     font-size: 1rem;
 }
 
+.edit-Form-Field {
+    display: flex;
+    align-items: center;
+}
+
+.show-post-edit-field {
+    width: 100%;
+    background-color: rgb(238, 238, 238);
+    border: hidden;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    border-radius: 500px;
+    padding-left: 1rem;
+    margin-right: .5rem;
+    font-size: 1rem;
+}
+
+.save-edit-button {
+    font-weight: bold;
+    padding-left: .6rem;
+    padding-right: .6rem;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    border-radius: 500px;
+    color: rgb(131, 131, 131)
+}
+
+.save-edit-button:hover {
+    background-color: rgb(238, 238, 238);
+    cursor: pointer;
+}
+
 .post-field:hover {
     background-color: rgb(224, 224, 224);
 }
@@ -221,7 +253,7 @@
 
 .postBtns {
     font-weight: bold;
-    color: rgb(151, 151, 151);
+    color: rgb(131, 131, 131);
 }
 
 .boxBtn {
@@ -245,6 +277,25 @@
 .post-name-date {
     display: flex;
     margin-bottom: .8rem;
+}
+
+.edit-delete-post-btn-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.edit-delete-button-container {
+    display: flex;
+    color: grey;
+}
+
+.trash-can-post{
+    margin-left: .5rem;
+}
+
+.trash-can-post:hover {
+    cursor: pointer;
 }
 
 .name-date {
@@ -277,7 +328,7 @@
     padding-right: .5rem;
     border-radius: 12px;
     font-weight: bold;
-    color: rgb(145, 144, 144);
+    color: rgb(131, 131, 131)
 }
 
 .like-post-button:hover,
