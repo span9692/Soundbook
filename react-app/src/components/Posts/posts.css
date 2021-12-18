@@ -111,8 +111,8 @@
     color: #1877f2;
     font-size: .9rem;
     font-weight: 600;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: .4rem;
+    padding-right: .4rem;
 }
 
 .edit-profileBtn3:hover {
@@ -207,6 +207,10 @@
     padding-left: 1rem;
     margin-right: .5rem;
     font-size: 1rem;
+}
+
+.show-post-edit-field:focus {
+    outline: none;
 }
 
 .save-edit-button {

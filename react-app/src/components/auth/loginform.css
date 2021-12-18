@@ -56,6 +56,10 @@
     font-weight: bold;
 }
 
+.newAccBtn:focus {
+    outline: none;
+}
+
 .newAccBtn:hover {
     background-color: #36a420;
     border-color: #36a420;

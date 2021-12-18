@@ -18,6 +18,10 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     // console.log('profile_photos', profile_photos) // array of objects of all photos by the owner
     // console.log('allPosts', allPosts) // array of objects of all comments on the profile page
     // console.log('allComments', allComments) //array of all comments
+    let commentCheck = allComments.map(el => el?.post_id)
+    commentCheck = new Set(commentCheck)
+    commentCheck = Array.from(commentCheck)
+
 
     const reversed = []
     allPosts.forEach(el => reversed.unshift(el))
@@ -157,10 +161,13 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                         <span className='post-date'>{post.createdAt}</span>
                                     </div>
                                     <div className='edit-delete-button-container'>
+                                        {loggedUser.id === post.owner_id ?
                                         <div onClick={ () => {editId ? setEditId("") : setEditId(post.id); setEditValue(post.post_content)} } className='trash-can-post'>
                                             <i class="fas fa-pencil-alt"></i>
                                         </div>
-                                        { loggedUser.id === profile_owner.id || post.owner_id === loggedUser.id ?
+                                        : null
+                                        }
+                                        {loggedUser.id === profile_owner.id || post.owner_id === loggedUser.id ?
                                         <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
                                             <i class="fas fa-trash-alt"></i>
                                         </div>
@@ -191,8 +198,10 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                     <span className='comment-button'><i class="far fa-comment"></i> Comment</span>
                                 </div>
                             </div>
+                            {commentCheck.includes(post?.id) ?
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
-
+                            : <hr style={{ marginTop: 1 + 'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+                            }
                             {/* map the comments */}
                             {allComments.map((comment) => (
                                 (post.id == comment.post_id ?
