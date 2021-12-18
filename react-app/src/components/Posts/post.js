@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { createPost, deletePost } from '../../store/post'
+import { changePost, createPost, deletePost } from '../../store/post'
 import './posts.css'
 
 function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComments }) {
@@ -36,11 +36,8 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     }
 
     const editPost = (postId) => {
-        console.log('postId', postId)
-    }
-
-    const showEditField = () => {
-        setEdit(!edit)
+        dispatch(changePost(postId, editValue))
+        setEditId('')
     }
 
     return (
@@ -178,11 +175,10 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                     <input
                                         className='show-post-edit-field'
                                         type='text'
-                                        // placeholder={post?.post_content}
                                         value={editValue}
                                         onChange={(e) => setEditValue(e.target.value)}
                                     />
-                                    <span className='save-edit-button'>Save</span>
+                                    <span onClick={ () => editPost(post.id) } className='save-edit-button'>Save</span>
                                 </form> : post.post_content
                                 }
                             </div>

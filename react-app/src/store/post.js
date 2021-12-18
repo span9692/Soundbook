@@ -58,12 +58,17 @@ export const deletePost = (postId) => async dispatch => {
   }
 }
 
-export const changePost = (data) => async dispatch => {
+export const changePost = (postId, editValue) => async dispatch => {
   const response = await fetch('/api/post/edit', {
     method: "PUT",
     headers: {"Content-Type":"application/json"},
-    body: JSON.stringify(data)
+    body: JSON.stringify({postId, editValue})
   })
+
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(modifyPost(data))
+  }
 }
 
 export default function reducer(state = {}, action) {
@@ -76,6 +81,10 @@ export default function reducer(state = {}, action) {
         case CREATE_NEW_POST:
           newState = {...state}
           newState[action.data['id']] = action.data
+          return newState
+        case EDIT_POST:
+          newState = {...state}
+          newState[action.data.id] = action.data
           return newState
         case DELETE_POST:
           newState = {...state}

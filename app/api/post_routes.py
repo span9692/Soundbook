@@ -54,5 +54,7 @@ def delete_posts(id):
 @post_routes.route('/edit', methods=['PUT'])
 def edit_post():
     data = request.get_json()
-    print('mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm', data, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
-    return {"asdf":"asdf"}
+    post = Post.query.get(data['postId'])
+    post.post_content = data['editValue']
+    db.session.commit()
+    return post.to_dict()
