@@ -7,10 +7,10 @@ function Splash() {
             <div className='splash-page-container'>
                 <div className='splash-left'>
                     <div className='splash-text'>
-                        facebook
+                        soundbook
                     </div>
                     <div className='splash-subtitle'>
-                        Connect with artists and the world around you on Facebook.
+                        Connect with artists and the world around you on Soundbook.
                     </div>
                 </div>
                 <div className='splash-right'>
