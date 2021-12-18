@@ -157,10 +157,13 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                         <span className='post-date'>{post.createdAt}</span>
                                     </div>
                                     <div className='edit-delete-button-container'>
+                                        {loggedUser.id === post.owner_id ?
                                         <div onClick={ () => {editId ? setEditId("") : setEditId(post.id); setEditValue(post.post_content)} } className='trash-can-post'>
                                             <i class="fas fa-pencil-alt"></i>
                                         </div>
-                                        { loggedUser.id === profile_owner.id || post.owner_id === loggedUser.id ?
+                                        : null
+                                        }
+                                        {loggedUser.id === profile_owner.id || post.owner_id === loggedUser.id ?
                                         <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
                                             <i class="fas fa-trash-alt"></i>
                                         </div>

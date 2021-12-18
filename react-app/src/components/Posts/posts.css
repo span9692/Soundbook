@@ -209,6 +209,10 @@
     font-size: 1rem;
 }
 
+.show-post-edit-field:focus {
+    outline: none;
+}
+
 .save-edit-button {
     font-weight: bold;
     padding-left: .6rem;
