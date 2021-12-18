@@ -7,7 +7,11 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
     const [editValue, setEditValue] = useState('')
-    const [edit, setEdit] = useState(false)
+    const [commentValue, setCommentValue] = useState('')
+
+    const [commentBoxId, setCommentBoxId] = useState('')
+
+    const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
 
     if (profile_photos.length > 9) {
@@ -158,7 +162,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
                                         <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
-                                        <span className='post-date'>{post.createdAt}</span>
+                                        <span className='post-date'>{post.updatedAt}</span>
                                     </div>
                                     <div className='edit-delete-button-container'>
                                         {loggedUser.id === post.owner_id ?
@@ -195,7 +199,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                     <span className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>
                                 <div class='pointer'>
-                                    <span className='comment-button'><i class="far fa-comment"></i> Comment</span>
+                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className='comment-button'><i class="far fa-comment"></i> Comment</span>
                                 </div>
                             </div>
                             {commentCheck.includes(post?.id) ?
@@ -213,11 +217,26 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                             <span className='post-comment'>{comment.comment_content}</span>
                                         </div>
                                         <div>
-                                            <span className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; Dec 25, 2021</span>
+                                            <span className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; {comment.updatedAt}</span>
                                         </div>
                                     </div>
                                 </div> : null)
                                 ))}
+                            {commentBoxId === post.id ?
+                            <div className='add-comment-container'>
+                                <img className='post-image-wall' src={loggedUser.profile_pic}></img>
+                                <form className='comment-form' id='add-comment-form'>
+                                    <input
+                                        className='comment-field'
+                                        type='text'
+                                        placeholder="Leave a comment..."
+                                        value={commentValue}
+                                        onChange={(e) => setCommentValue(e.target.value)}
+                                    />
+                                </form>
+                                <div className='post-comment-button'>Post</div>
+                            </div>
+                            : null}
                         </div>))}
                 </div>
             </div>

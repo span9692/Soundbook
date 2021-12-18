@@ -223,7 +223,22 @@
     color: rgb(131, 131, 131)
 }
 
+.post-comment-button {
+    font-weight: bold;
+    padding-left: .6rem;
+    padding-right: .6rem;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    border-radius: 500px;
+    color: rgb(131, 131, 131)
+}
+
 .save-edit-button:hover {
+    background-color: rgb(238, 238, 238);
+    cursor: pointer;
+}
+
+.post-comment-button:hover {
     background-color: rgb(238, 238, 238);
     cursor: pointer;
 }
@@ -233,6 +248,36 @@
 }
 
 .post-field:focus {
+    outline: none;
+}
+
+.add-comment-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.comment-form {
+    width: 100%;
+    border-color: rgb(238, 238, 238);
+    border: none;
+}
+
+.comment-field {
+    width: 91%;
+
+    background-color: rgb(238, 238, 238);
+    border: hidden;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    border-radius: 500px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* margin-right: 1rem; */
+    font-size: 1rem;
+}
+
+.comment-field:focus {
     outline: none;
 }
 
