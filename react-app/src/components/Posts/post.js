@@ -249,6 +249,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                             </form> :
 
                                             <span className='post-comment'> {comment.comment_content}
+                                                {/* the following div will need to be rendered conditionally */}
                                                 <div className='like-counter-container'>
                                                     <i class="fas fa-thumbs-up thumbs-up-icon1"></i><span className='post-like-counter1'>&nbsp;10</span>
                                                 </div>
