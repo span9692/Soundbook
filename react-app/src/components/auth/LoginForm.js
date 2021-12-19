@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import './loginform.css'
+import SignUpModal from './SignUpModal';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -44,20 +45,12 @@ const LoginForm = () => {
     }
   };
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
   if (user) {
     return <Redirect to='/feed' />;
   }
 
   return (
-    <form onSubmit={onLogin} className='login-form'>
+    <form onSubmit={() => onLogin()} className='login-form'>
       {validationErrors.length > 0 && (
       <div>
         <ul>
@@ -87,7 +80,7 @@ const LoginForm = () => {
           placeholder='Email'
           required="true"
           value={email}
-          onChange={updateEmail}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div className='loginpadding'>
@@ -98,7 +91,7 @@ const LoginForm = () => {
           placeholder='Password'
           value={password}
           required="true"
-          onChange={updatePassword}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <div className='loginpadding'>
@@ -108,9 +101,8 @@ const LoginForm = () => {
         <button type='button' onClick={() => demoLogin()} className='form-font splashBtn pointer fieldSizing'>Demo Login</button>
       </div>
       <hr style={{marginTop:  1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
-      <div>
-        <button type='button' className='form-font newAccBtn pointer fieldSizing'>Create new account</button>
-      </div>
+      <SignUpModal />
+
     </form>
   );
 };
