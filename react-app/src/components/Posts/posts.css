@@ -213,14 +213,14 @@
     width: 100%;
     /* background-color: rgb(238, 238, 238); */
     background-color: white;
-    border: 2px grey solid;
+    border: 1.5px grey solid;
     /* border: hidden; */
     padding-top: .6rem;
     padding-bottom: .6rem;
     border-radius: 12px;
-    padding-left: 1rem;
+    padding-left: .7rem;
     margin-right: .5rem;
-    font-size: 1rem;
+    font-size: .9rem;
 }
 
 .show-post-edit-field:focus {
@@ -243,13 +243,16 @@
 
 .save-comment-button {
     font-weight: bold;
+    font-size: .8rem;
     padding-left: .6rem;
     padding-right: .6rem;
     margin-right: .5rem;
-    padding-top: .7rem;
-    padding-bottom: .7rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
     border-radius: 12px;
-    color: rgb(131, 131, 131)
+    color: rgb(131, 131, 131);
+    background-color: white;
+    border: 1.5px grey solid;
 }
 
 .post-comment-button {
@@ -269,7 +272,6 @@
 
 .save-comment-button:hover {
     /* background-color: rgb(238, 238, 238); */
-    background-color: white;
     cursor: pointer;
 }
 
