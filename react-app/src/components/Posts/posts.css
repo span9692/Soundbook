@@ -458,6 +458,7 @@
 }
 
 .post-comment {
+    position: relative;
     font-size: .9rem;
     margin-right: .4rem;
 }
@@ -511,18 +512,48 @@
 
 .thumbs-up-icon {
     color: white;
-    /* border-color: rgb(91, 91, 219); */
-    /* background-color: #AAC9FF; */
-    /* background-color: #77A7FF; */
     background-color: #1877F2;
     border-radius: 50%;
     position: relative;
     font-size: .5rem;
     padding: .8%;
-
 }
 
 .post-like-counter {
+    color: #1877F2;
+    font-size: .7rem;
+}
+
+.thumbs-up-icon1 {
+    color: white;
+    background-color: #1877F2;
+    border-radius: 50%;
+    position: relative;
+    font-size: .5rem;
+    padding: .3rem;
+}
+
+.like-counter-container {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    background-color: white;
+    border: 1px solid rgb(238, 238, 238);;
+    border-radius: 500px;
+    margin-left: 91%;
+    margin-top: -1%;
+
+    /* margin-bottom: 1rem!important; */
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+    padding-right: .2rem;
+    padding-left: .2rem;
+    box-shadow: 0 2px 2px rgb(0 0 0 / 10%), 0 4px 4px rgb(0 0 0 / 10%);
+    /* font-size: 5rem; */
+}
+
+.post-like-counter1 {
     color: #1877F2;
     font-size: .7rem;
 }

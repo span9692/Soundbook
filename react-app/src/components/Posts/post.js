@@ -200,7 +200,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                             </div>
                             {true ? //temporary like/unlike switch
                             <div className='like-post-container'>
-                                <i class="fas fa-thumbs-up thumbs-up-icon"></i><span className='post-like-counter'>&nbsp;You liked this post.</span>
+                                <i class="fas fa-thumbs-up thumbs-up-icon"></i><span className='post-like-counter'>&nbsp;You and 6 other people liked this post</span>
                             </div>
                             : null
                             }
@@ -247,8 +247,13 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                                 />
                                                 <span onClick={ () => editPost(post.id) } className='save-comment-button'>Save</span>
                                             </form> :
-                                            <span className='post-comment'>{comment.comment_content}</span>
-                                            }
+
+                                            <span className='post-comment'> {comment.comment_content}
+                                                <div className='like-counter-container'>
+                                                    <i class="fas fa-thumbs-up thumbs-up-icon1"></i><span className='post-like-counter1'>&nbsp;10</span>
+                                                </div>
+                                            </span>
+                                        }
                                         </div>
                                         <div>
                                             <span className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; {comment.updatedAt}</span>
