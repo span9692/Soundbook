@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
+import './signup.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -50,9 +51,10 @@ const SignUpForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='signup-field-containers'>
         <input
           type='text'
+          className='signup-field field-size signup-font'
           name='firstName'
           placeholder='First Name'
           onChange={(e) => setFirstName(e.target.value)}
