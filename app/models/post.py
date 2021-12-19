@@ -22,6 +22,6 @@ class Post(db.Model):
             "owner_id": self.owner_id,
             "profile_id": self.profile_id,
             "poster_info": self.users.to_dict(),
-            "createdAt": self.createdAt,
-            "updatedAt": self.updatedAt
+            "createdAt": self.createdAt.strftime('%b %d, %Y %I:%M %p'),
+            "updatedAt": self.updatedAt.strftime('%b %d, %Y %I:%M %p')
         }

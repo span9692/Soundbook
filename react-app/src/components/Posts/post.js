@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { changePost, createPost, deletePost } from '../../store/post'
 import './posts.css'
@@ -7,7 +7,12 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
     const [editValue, setEditValue] = useState('')
-    const [edit, setEdit] = useState(false)
+    const [commentValue, setCommentValue] = useState('')
+    const [editCommentValue, setEditCommentValue] = useState('')
+
+
+    const [commentBoxId, setCommentBoxId] = useState('')
+    const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
 
     if (profile_photos.length > 9) {
@@ -43,6 +48,10 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
         dispatch(changePost(postId, editValue))
         setEditId('')
     }
+
+    useEffect(()=> {
+        setCommentValue('')
+    }, [commentBoxId])
 
     return (
         <>
@@ -158,7 +167,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
                                         <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
-                                        <span className='post-date'>{post.createdAt}</span>
+                                        <span className='post-date'>{post.updatedAt}</span>
                                     </div>
                                     <div className='edit-delete-button-container'>
                                         {loggedUser.id === post.owner_id ?
@@ -189,13 +198,19 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                 </form> : post.post_content
                                 }
                             </div>
+                            {true ? //temporary like/unlike switch
+                            <div className='like-post-container'>
+                                <i class="fas fa-thumbs-up thumbs-up-icon"></i><span className='post-like-counter'>&nbsp;You and 6 other people liked this post</span>
+                            </div>
+                            : null
+                            }
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                             <div className='like-comment'>
                                 <div class='pointer'>
                                     <span className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>
                                 <div class='pointer'>
-                                    <span className='comment-button'><i class="far fa-comment"></i> Comment</span>
+                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className='comment-button'><i class="far fa-comment"></i> Comment</span>
                                 </div>
                             </div>
                             {commentCheck.includes(post?.id) ?
@@ -209,15 +224,59 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                     <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
                                     <div className='width-fix'>
                                         <div className='name-comment'>
-                                            <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
-                                            <span className='post-comment'>{comment.comment_content}</span>
+                                            <div className='edit-delete-comment-container'>
+                                                <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                                <div className='comment-icon-position' onClick={() => {commentId ? setCommentId('') : setCommentId(comment.id); setEditCommentValue(comment.comment_content)}} >
+                                                    {loggedUser.id === comment.user_id ?
+                                                    <i class="fas fa-pencil-alt pencil-icon-comment pointer"></i>
+                                                    : null
+                                                    }
+                                                    {loggedUser.id === profile_owner.id || comment.user_id === loggedUser.id ?
+                                                    <i class="fas fa-trash-alt trash-icon-comment pointer"></i>
+                                                    : null
+                                                    }
+                                                </div>
+                                            </div>
+                                            {comment.id === commentId ?
+                                            <form className='edit-Form-Field'>
+                                                <input
+                                                    className='show-comment-edit-field'
+                                                    type='text'
+                                                    value={editCommentValue}
+                                                    onChange={(e) => setEditCommentValue(e.target.value)}
+                                                />
+                                                <span onClick={ () => editPost(post.id) } className='save-comment-button'>Save</span>
+                                            </form> :
+
+                                            <span className='post-comment'> {comment.comment_content}
+                                                {/* the following div will need to be rendered conditionally */}
+                                                <div className='like-counter-container'>
+                                                    <i class="fas fa-thumbs-up thumbs-up-icon1"></i><span className='post-like-counter1'>&nbsp;10</span>
+                                                </div>
+                                            </span>
+                                        }
                                         </div>
                                         <div>
-                                            <span className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; Dec 25, 2021</span>
+                                            <span className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; {comment.updatedAt}</span>
                                         </div>
                                     </div>
                                 </div> : null)
                                 ))}
+                            {commentBoxId === post.id ?
+                            <div className='add-comment-container'>
+                                <img className='post-image-wall' src={loggedUser.profile_pic}></img>
+                                <form className='comment-form' id='add-comment-form'>
+                                    <input
+                                        className='comment-field'
+                                        type='text'
+                                        placeholder="Leave a comment..."
+                                        value={commentValue}
+                                        onChange={(e) => setCommentValue(e.target.value)}
+                                    />
+                                </form>
+                                <div className='post-comment-button'>Post</div>
+                            </div>
+                            : null}
                         </div>))}
                 </div>
             </div>

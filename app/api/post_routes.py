@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.models.db import db
 from app.models import Post, User, Comment
+from sqlalchemy.sql import func
 
 post_routes = Blueprint('posts', __name__)
 
@@ -56,5 +57,6 @@ def edit_post():
     data = request.get_json()
     post = Post.query.get(data['postId'])
     post.post_content = data['editValue']
+    post.updatedAt = func.now()
     db.session.commit()
     return post.to_dict()
