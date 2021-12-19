@@ -43,52 +43,54 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
+      <span>Sign Up</span>
+      <div>It's quick and easy.</div>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label>First Name</label>
         <input
           type='text'
           name='firstName'
+          placeholder='First Name'
           onChange={(e) => setFirstName(e.target.value)}
           value={firstName}
         ></input>
       </div>
       <div>
-        <label>Last Name</label>
         <input
           type='text'
           name='lastName'
+          placeholder='Last Name'
           onChange={(e) => setLastName(e.target.value)}
           value={lastName}
         ></input>
       </div>
       <div>
-        <label>Email</label>
         <input
           type='text'
           name='email'
+          placeholder='Email'
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         ></input>
       </div>
       <div>
-        <label>Password</label>
         <input
           type='password'
           name='password'
+          placeholder='Password'
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         ></input>
       </div>
       <div>
-        <label>Confirm Password</label>
         <input
           type='password'
           name='repeat_password'
+          placeholder='Confirm Password'
           onChange={(e) => setRepeatPassword(e.target.value)}
           value={repeatPassword}
           required={true}
@@ -142,6 +144,15 @@ const SignUpForm = () => {
             <option key={year} value={year}>{year}</option>
           ))}
         </select>
+      </div>
+      <div>
+        <label>Gender</label>
+        <input type='radio' id='male' name='gender' value='Male'></input>
+        <label for='male'>Male</label>
+        <input type='radio' id='female' name='gender' value='Female'></input>
+        <label for='female'>Female</label>
+        <input type='radio' id='other' name='gender' value='Other'></input>
+        <label for='other'>Other</label>
       </div>
       <button type='submit'>Sign Up</button>
     </form>
