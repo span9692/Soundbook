@@ -506,6 +506,7 @@
     padding-top: 1rem;
     margin-bottom: -.7rem;
     margin-top: -.3rem;
+    font-weight: bold;
 }
 
 .thumbs-up-icon {
@@ -523,6 +524,5 @@
 
 .post-like-counter {
     color: #1877F2;
-    font-size: .8rem;
-    font-weight: larger;
+    font-size: .7rem;
 }
