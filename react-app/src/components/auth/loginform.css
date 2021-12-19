@@ -23,10 +23,10 @@
 
 .loginField {
     border: 1px solid #dddfe2;
-    width: 95.6%;
+    width: 100%;
     border-radius: 5px;
-    padding-left: 20px;
-    color: 1px solid #dddfe2;
+    padding: 0px;
+    padding-left: 1rem;
 }
 
 .loginField:focus {
@@ -40,7 +40,9 @@
 }
 
 .loginpadding {
-    padding-bottom: 1.5vh;
+    display: flex;
+    padding-bottom: 1rem;
+    width: 100%;
 }
 
 #demoBtn {
@@ -81,4 +83,11 @@
     background-color: rgb(238, 238, 238);
     border-radius: 500px;
     cursor: pointer;
+}
+
+.loginError {
+    color: red;
+    position: relative;
+    margin-bottom: .5rem;
+    margin-left: .9rem;
 }

@@ -9,7 +9,7 @@ const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [validationErrors, setValidationErrors] = useState([])
+  // const [validationErrors, setValidationErrors] = useState([])
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -63,11 +63,11 @@ const LoginForm = () => {
       )} */}
       <div>
         {errors.map((error) => (
-          <div key={error}>
+          <div className='loginError' key={error}>
             {error.includes('password')
               ? null
               : error.includes('email')
-              ? 'Invalid login. Please recheck email/password'
+              ? 'Invalid login. Please check email/password.'
               : error
             }
           </div>
