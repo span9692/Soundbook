@@ -1,0 +1,18 @@
+.signup-field-containers {
+    display: flex;
+}
+
+.signup-field {
+    border: 1px solid #dddfe2;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 1rem;
+}
+
+.field-size {
+    height: 5.5vh;
+}
+
+.signup-font {
+    font-size: 1.2rem;
+}
