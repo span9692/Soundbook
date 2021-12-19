@@ -198,6 +198,12 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                 </form> : post.post_content
                                 }
                             </div>
+                            {true ? //temporary like/unlike switch
+                            <div className='like-post-container'>
+                                <i class="fas fa-thumbs-up thumbs-up-icon"></i><span className='post-like-counter'>&nbsp;You liked this post.</span>
+                            </div>
+                            : null
+                            }
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                             <div className='like-comment'>
                                 <div class='pointer'>

@@ -21,6 +21,6 @@ class Comment(db.Model):
             "user_id": self.user_id,
             "post_id": self.post_id,
             "poster_info": self.users.to_dict(),
-            "createdAt": self.createdAt,
-            "updatedAt": self.updatedAt
+            "createdAt": self.createdAt.strftime('%b %d, %Y %I:%M %p'),
+            "updatedAt": self.updatedAt.strftime('%b %d, %Y %I:%M %p')
         }
