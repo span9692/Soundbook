@@ -171,7 +171,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                     </div>
                                     <div className='edit-delete-button-container'>
                                         {loggedUser.id === post.owner_id ?
-                                        <div onClick={ () => {editId ? setEditId("") : setEditId(post.id); setEditValue(post.post_content)} } className='trash-can-post'>
+                                        <div onClick={ () => {editId ? setEditId("") : setEditId(post?.id); setEditValue(post?.post_content)} } className='trash-can-post'>
                                             <i class="fas fa-pencil-alt"></i>
                                         </div>
                                         : null
