@@ -8,9 +8,10 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     const [postValue, setPostValue] = useState('')
     const [editValue, setEditValue] = useState('')
     const [commentValue, setCommentValue] = useState('')
+    const [editCommentValue, setEditCommentValue] = useState('')
+
 
     const [commentBoxId, setCommentBoxId] = useState('')
-
     const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
 
@@ -217,8 +218,31 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                     <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
                                     <div className='width-fix'>
                                         <div className='name-comment'>
-                                            <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                            <div className='edit-delete-comment-container'>
+                                                <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                                <div className='comment-icon-position' onClick={() => {commentId ? setCommentId('') : setCommentId(comment.id); setEditCommentValue(comment.comment_content)}} >
+                                                    {loggedUser.id === comment.user_id ?
+                                                    <i class="fas fa-pencil-alt pencil-icon-comment pointer"></i>
+                                                    : null
+                                                    }
+                                                    {loggedUser.id === profile_owner.id || comment.user_id === loggedUser.id ?
+                                                    <i class="fas fa-trash-alt trash-icon-comment pointer"></i>
+                                                    : null
+                                                    }
+                                                </div>
+                                            </div>
+                                            {comment.id === commentId ?
+                                            <form className='edit-Form-Field'>
+                                                <input
+                                                    className='show-comment-edit-field'
+                                                    type='text'
+                                                    value={editCommentValue}
+                                                    onChange={(e) => setEditCommentValue(e.target.value)}
+                                                />
+                                                <span onClick={ () => editPost(post.id) } className='save-comment-button'>Save</span>
+                                            </form> :
                                             <span className='post-comment'>{comment.comment_content}</span>
+                                            }
                                         </div>
                                         <div>
                                             <span className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; {comment.updatedAt}</span>
