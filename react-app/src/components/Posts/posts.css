@@ -233,10 +233,11 @@
 
 .save-edit-button {
     font-weight: bold;
+    font-size: .9rem;
     padding-left: .6rem;
     padding-right: .6rem;
-    padding-top: .7rem;
-    padding-bottom: .7rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
     border-radius: 500px;
     color: rgb(131, 131, 131)
 }
@@ -257,10 +258,11 @@
 
 .post-comment-button {
     font-weight: bold;
+    font-size: .9rem;
     padding-left: .6rem;
     padding-right: .6rem;
-    padding-top: .7rem;
-    padding-bottom: .7rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
     border-radius: 500px;
     color: rgb(131, 131, 131)
 }
@@ -480,7 +482,12 @@
     justify-content: space-between;
 }
 
-.pencil-icon-comment,
+.pencil-icon-comment {
+    margin-right: .3rem;
+    color: grey;
+    font-size: .7rem;
+}
+
 .trash-icon-comment {
     margin-right: .5rem;
     color: grey;
