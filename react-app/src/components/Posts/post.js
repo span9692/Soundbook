@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { newComment, removeComment } from '../../store/comment'
+import { changeComment, newComment, removeComment } from '../../store/comment'
 import { changePost, createPost, deletePost } from '../../store/post'
 import './posts.css'
 
@@ -50,9 +50,10 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
         setEditId('')
     }
 
-    const editComment = (commentId) => {
-        console.log(commentId)
-        // dispatch()
+    const editComment = (commentId, editCommentValue) => {
+        // console.log(commentId, editCommentValue)
+        setCommentId('')
+        dispatch(changeComment(commentId, editCommentValue))
     }
 
     const addComment = (postId) => {
@@ -267,7 +268,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                                     value={editCommentValue}
                                                     onChange={(e) => setEditCommentValue(e.target.value)}
                                                 />
-                                                <span onClick={ () => editComment(comment.id) } className='save-comment-button'>Save</span>
+                                                <span onClick={ () => editComment(comment.id, editCommentValue) } className='save-comment-button'>Save</span>
                                             </form> :
 
                                             <span className='post-comment'> {comment.comment_content}

@@ -28,3 +28,13 @@ def delete_comment(id):
     db.session.delete(comment)
     db.session.commit()
     return jsonify({'message': f'Comment {id} has been deleted'}), 200
+
+@comment_routes.route('/edit', methods=['PUT'])
+def edit_comment():
+    data = request.get_json()
+    comment = Comment.query.get(data['commentId'])
+    comment.comment_content = data['editCommentValue']
+    comment.updatedAt = func.now()
+    db.session.commit()
+    # print('mmmmmmmmmmmmmm', data,'mmmmmmmmmmmmmmmmmmm')
+    return comment.to_dict()

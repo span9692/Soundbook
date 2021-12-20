@@ -1,6 +1,7 @@
 const GET_ALL_Comments = 'users/GET_ALL_Comments'
 const ADD_NEW_COMMENT ='users/ADD_NEW_COMMENT'
 const DELETE_COMMENT ='users/DELETE_COMMENT'
+const EDIT_COMMENT = 'users/EDIT_COMMENT'
 
 const showComments = data => {
   return {
@@ -19,6 +20,13 @@ const addComment = data => {
 const deleteOneComment = data => {
   return {
     type: DELETE_COMMENT,
+    data
+  }
+}
+
+const modifyComment = data => {
+  return {
+    type: EDIT_COMMENT,
     data
   }
 }
@@ -51,6 +59,18 @@ export const removeComment = (commentId) => async dispatch => {
   }
 }
 
+export const changeComment = (commentId, editCommentValue) => async dispatch => {
+  const response = await fetch (`/api/comment/edit`, {
+    method: "PUT",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({commentId, editCommentValue})
+  })
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(modifyComment(data))
+  }
+}
+
 export default function reducer(state = {}, action) {
   let newState;
     switch (action.type) {
@@ -62,12 +82,16 @@ export default function reducer(state = {}, action) {
         newState = {...state}
         newState[action.data['id']] = action.data
         return newState
-        case DELETE_COMMENT:
-          newState = {...state}
-          console.log('newState', newState)
-          console.log('action.data', action.data)
-          delete newState[action.data]
-          return newState
+      case DELETE_COMMENT:
+        newState = {...state}
+        delete newState[action.data]
+        return newState
+      case EDIT_COMMENT:
+        newState = {...state}
+        console.log('newState', newState)
+        console.log('action.data', action.data)
+        newState[action.data['id']] = action.data
+        return newState   
       default:
         return state;
     }
