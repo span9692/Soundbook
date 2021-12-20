@@ -36,5 +36,5 @@ def edit_comment():
     comment.comment_content = data['editCommentValue']
     comment.updatedAt = func.now()
     db.session.commit()
-    # print('mmmmmmmmmmmmmm', data,'mmmmmmmmmmmmmmmmmmm')
     return comment.to_dict()
+    

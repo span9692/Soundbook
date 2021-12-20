@@ -11,7 +11,6 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     const [commentValue, setCommentValue] = useState('')
     const [editCommentValue, setEditCommentValue] = useState('')
 
-
     const [commentBoxId, setCommentBoxId] = useState('')
     const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
@@ -51,7 +50,6 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     }
 
     const editComment = (commentId, editCommentValue) => {
-        // console.log(commentId, editCommentValue)
         setCommentId('')
         dispatch(changeComment(commentId, editCommentValue))
     }
