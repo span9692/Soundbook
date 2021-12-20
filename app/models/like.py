@@ -18,5 +18,5 @@ class Like(db.Model):
             "user_id": self.user_id,
             "post_id": self.post_id,
             "comment_id": self.comment_id,
-            "like_info": self.users.to_dict()
+            "liker_info": self.users.to_dict()
         }
