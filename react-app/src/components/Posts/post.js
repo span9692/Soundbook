@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { newComment } from '../../store/comment'
 import { changePost, createPost, deletePost } from '../../store/post'
 import './posts.css'
 
@@ -47,6 +48,21 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     const editPost = (postId) => {
         dispatch(changePost(postId, editValue))
         setEditId('')
+    }
+
+    const editComment = (commentId) => {
+        console.log(commentId)
+        // dispatch()
+    }
+
+    const addComment = (postId) => {
+        dispatch(newComment({
+            comment_content: commentValue,
+            post_id: postId,
+            user_id: loggedUser.id
+        }))
+        setCommentValue('')
+        setCommentBoxId('')
     }
 
     useEffect(()=> {
@@ -245,7 +261,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                                     value={editCommentValue}
                                                     onChange={(e) => setEditCommentValue(e.target.value)}
                                                 />
-                                                <span onClick={ () => editPost(post.id) } className='save-comment-button'>Save</span>
+                                                <span onClick={ () => editComment(comment.id) } className='save-comment-button'>Save</span>
                                             </form> :
 
                                             <span className='post-comment'> {comment.comment_content}
@@ -274,7 +290,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                         onChange={(e) => setCommentValue(e.target.value)}
                                     />
                                 </form>
-                                <div className='post-comment-button'>Post</div>
+                                <div onClick={() => addComment(commentBoxId)} className='post-comment-button'>Post</div>
                             </div>
                             : null}
                         </div>))}
