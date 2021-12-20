@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { newComment } from '../../store/comment'
+import { newComment, removeComment } from '../../store/comment'
 import { changePost, createPost, deletePost } from '../../store/post'
 import './posts.css'
 
@@ -66,7 +66,7 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     }
 
     const deleteComment = (commentId) => {
-        console.log(commentId)
+        dispatch(removeComment(commentId))
     }
 
     useEffect(()=> {
