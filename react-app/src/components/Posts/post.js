@@ -65,6 +65,10 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
         setCommentBoxId('')
     }
 
+    const deleteComment = (commentId) => {
+        console.log(commentId)
+    }
+
     useEffect(()=> {
         setCommentValue('')
     }, [commentBoxId])
@@ -242,14 +246,16 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                                         <div className='name-comment'>
                                             <div className='edit-delete-comment-container'>
                                                 <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
-                                                <div className='comment-icon-position' onClick={() => {commentId ? setCommentId('') : setCommentId(comment.id); setEditCommentValue(comment.comment_content)}} >
+                                                <div className='comment-icon-position'>
                                                     {loggedUser.id === comment.user_id ?
-                                                    <i class="fas fa-pencil-alt pencil-icon-comment pointer"></i>
-                                                    : null
+                                                    <div className='comment-icon-position' onClick={() => {commentId ? setCommentId('') : setCommentId(comment.id); setEditCommentValue(comment.comment_content)}} >
+                                                        <i class="fas fa-pencil-alt pencil-icon-comment pointer"></i>
+                                                    </div>: null
                                                     }
                                                     {loggedUser.id === profile_owner.id || comment.user_id === loggedUser.id ?
-                                                    <i class="fas fa-trash-alt trash-icon-comment pointer"></i>
-                                                    : null
+                                                    <div className='comment-icon-position' onClick={() => deleteComment(comment.id)} >
+                                                        <i class="fas fa-trash-alt trash-icon-comment pointer"></i>
+                                                    </div>: null
                                                     }
                                                 </div>
                                             </div>
