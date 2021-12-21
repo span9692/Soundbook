@@ -2,6 +2,7 @@ from .db import db
 from sqlalchemy.sql import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .friend_list import friend_list
 
 
 class User(db.Model, UserMixin):
@@ -22,6 +23,10 @@ class User(db.Model, UserMixin):
     location = db.Column(db.String(50), nullable=True)
     createdAt = db.Column(db.DateTime(timezone=False), default=func.now())
 
+    
+    
+    
+    friend = db.relationship('User', secondary=friend_list, secondaryjoin=(friend_list.c.friendAdder_id == id), primaryjoin=(friend_list.c.friendReceiver_id == id), backref=db.backref('friend_list'))
     posts = db.relationship('Post', back_populates='users', cascade='all, delete-orphan')
     photos = db.relationship('Photo', back_populates='users', cascade='all, delete-orphan')
     comments = db.relationship('Comment', back_populates='users', cascade='all, delete-orphan')
@@ -51,14 +56,14 @@ class User(db.Model, UserMixin):
             'createdAt': self.createdAt
         }
 
-    def to_dictionary(self):
-        return {
-            'id': self.id,
-            'posts': [post.to_dict() for post in self.posts],
-            'first_name': self.first_name,
-            'last_name': self.last_name,
-            'email': self.email,
-            'profile_pic': self.profile_pic,
-            'cover_photo': self.cover_photo,
-            # 'createdAt': self.createdAt
-        }
+    # def to_dictionary(self):
+    #     return {
+    #         'id': self.id,
+    #         'posts': [post.to_dict() for post in self.posts],
+    #         'first_name': self.first_name,
+    #         'last_name': self.last_name,
+    #         'email': self.email,
+    #         'profile_pic': self.profile_pic,
+    #         'cover_photo': self.cover_photo,
+    #         'createdAt': self.createdAt
+    #     }
