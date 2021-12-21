@@ -1,11 +1,12 @@
 from app.models import db, User
+import datetime
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(first_name='Demo', last_name='User', email='demo@aa.io', password='password', cover_photo='https://res.cloudinary.com/photofinder/image/upload/v1639647559/ice%20cube%20nwa/LwoaE.0.0_uzqoe9.jpg', profile_pic='https://res.cloudinary.com/photofinder/image/upload/v1639647173/ice%20cube%20nwa/image_ok9xkp.jpg')
-    Sean = User(first_name='Sean', last_name='Pan', email='span@gmail.com', password='password')
-    Kanye = User(first_name='Kanye', last_name='West', email='kwest@gmail.com', password='password')
+    demo = User(first_name='Demo', last_name='User', email='demo@aa.io', password='password', cover_photo='https://res.cloudinary.com/photofinder/image/upload/v1639647559/ice%20cube%20nwa/LwoaE.0.0_uzqoe9.jpg', profile_pic='https://res.cloudinary.com/photofinder/image/upload/v1639647173/ice%20cube%20nwa/image_ok9xkp.jpg', birthday=datetime.date(1992, 9, 6), gender='Male')
+    Sean = User(first_name='Sean', last_name='Pan', email='span@gmail.com', password='password', birthday=datetime.date(1992, 9, 6), gender='Male')
+    Kanye = User(first_name='Kanye', last_name='West', email='kwest@gmail.com', password='password', birthday=datetime.date(1992, 9, 6), gender='Male')
     # marnie = User(
     #     username='marnie', email='marnie@aa.io', password='password')
     # bobbie = User(

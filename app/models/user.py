@@ -14,11 +14,18 @@ class User(db.Model, UserMixin):
     profile_pic = db.Column(db.String(255), nullable=False, default='https://media.discordapp.net/attachments/917541871457275925/918846475897798727/default-user.jpeg')
     cover_photo = db.Column(db.String(255), nullable=False, default='https://res.cloudinary.com/photofinder/image/upload/v1639506962/orionthemes-placeholder-image_twhbxf.jpg')
     hashed_password = db.Column(db.String(255), nullable=False)
+    birthday = db.Column(db.Date, nullable=False)
+    gender = db.Column(db.String(25), nullable=False)
+    bio = db.Column(db.String(255), nullable=True)
+    education = db.Column(db.String(50), nullable=True)
+    work = db.Column(db.String(50), nullable=True)
+    location = db.Column(db.String(50), nullable=True)
     createdAt = db.Column(db.DateTime(timezone=False), default=func.now())
 
     posts = db.relationship('Post', back_populates='users', cascade='all, delete-orphan')
     photos = db.relationship('Photo', back_populates='users', cascade='all, delete-orphan')
     comments = db.relationship('Comment', back_populates='users', cascade='all, delete-orphan')
+    likes = db.relationship('Like', back_populates='users', cascade='all, delete-orphan')
 
     @property
     def password(self):

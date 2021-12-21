@@ -1,18 +1,40 @@
-.signup-field-containers {
+.signup-form {
+    padding: 1rem;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+.signup-name-field,
+.signup-birthday-field {
     display: flex;
+    width: 100%;
+}
+
+.first-name-field,
+.last-name-field {
+    width: 50%;
 }
 
 .signup-field {
-    border: 1px solid #dddfe2;
+    /* border: 1px solid #dddfe2; */
     width: 100%;
     border-radius: 5px;
-    padding-left: 1rem;
+    /* padding-left: 1rem; */
+    padding: 0px!important;
+    border: 0px!important;
 }
 
 .field-size {
     height: 5.5vh;
+    background-color: rgb(238, 238, 238);
+    outline: none;
 }
 
 .signup-font {
     font-size: 1.2rem;
+}
+
+.gender-container {
+    display: flex;
+    justify-content: space-around;
 }
