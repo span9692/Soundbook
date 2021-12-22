@@ -5,13 +5,15 @@ import user from './user'
 import photo from './photo'
 import post from './post'
 import comment from './comment'
+import search from './search'
 
 const rootReducer = combineReducers({
   session,
   user,
   photo,
   post,
-  comment
+  comment,
+  search
 });
 
 
