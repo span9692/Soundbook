@@ -56,14 +56,10 @@ class User(db.Model, UserMixin):
             'createdAt': self.createdAt
         }
 
-    # def to_dictionary(self):
-    #     return {
-    #         'id': self.id,
-    #         'posts': [post.to_dict() for post in self.posts],
-    #         'first_name': self.first_name,
-    #         'last_name': self.last_name,
-    #         'email': self.email,
-    #         'profile_pic': self.profile_pic,
-    #         'cover_photo': self.cover_photo,
-    #         'createdAt': self.createdAt
-    #     }
+    def to_dictionary(self):
+        return {
+            'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'profile_pic': self.profile_pic,
+        }

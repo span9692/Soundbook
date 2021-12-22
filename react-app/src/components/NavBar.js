@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../store/user';
+import Search from '../components/Search/index'
 import './navbar.css'
 
 const NavBar = () => {
@@ -20,7 +21,7 @@ const NavBar = () => {
         <div className='nav-left'>
           <Link className='fontAwesomeness1' to='/feed'><i class="fab fa-facebook"></i></Link>
           <div>
-            Search bar
+            <Search />
           </div>
         </div>
         <div className='nav-mid'>
