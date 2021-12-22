@@ -14,7 +14,7 @@ function Search() {
         dispatch(searchUser(searchParams))
     }, [dispatch, searchParams])
 
-    
+
 
     return (
         <div className='search-container'>
@@ -28,16 +28,16 @@ function Search() {
                     onChange={(e) => setSearchParams(e.target.value)}
                 />
             </form>
-            {searchParams.length > 0 ? 
+            {searchParams.length > 0 ?
             <div className='search-result-container'>
-                <span>Results for '{searchParams}'</span>
+                <span className='search-header'><span className='result-text'>Results</span> for '{searchParams}'</span>
                 {searchResults.map(result => (
                 <div key={result.id} className='search-result-row'>
                     <img className='search-portrait' src={result.profile_pic}></img>
                     <div>{result.first_name} {result.last_name}</div>
                 </div>
                 ))}
-            </div> 
+            </div>
             : null}
         </div>
     )
