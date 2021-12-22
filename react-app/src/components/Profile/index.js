@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../../store/user'
@@ -11,6 +11,8 @@ import { getComments } from '../../store/comment'
 function Profile() {
     const dispatch = useDispatch()
     const { userId } = useParams()
+    // const [urlId, setUrlId] = useState(userId)
+    // setUrlId(userId)
     const loggedUser = useSelector(state => state.session.user)
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)

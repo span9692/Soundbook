@@ -75,3 +75,8 @@
 .result-text {
     font-weight: bold;
 }
+
+.fa-times {
+    padding-right: 1rem;
+    cursor: pointer;
+}

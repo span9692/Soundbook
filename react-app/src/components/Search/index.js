@@ -16,11 +16,14 @@ function Search() {
         dispatch(searchUser(searchParams))
     }, [dispatch, searchParams])
 
+    const clearSearch = () => {
+        console.log('asdfhjakldfh')
+        setSearchParams('')
+    }
+
     const foundUser = (userId) => {
-        console.log(userId)
         setSearchParams('')
         history.push(`/users/${userId}`)
-        // <Redirect to={`/users/${userId}`}></Redirect>
     }
 
     return (
@@ -34,6 +37,11 @@ function Search() {
                     value={searchParams}
                     onChange={(e) => setSearchParams(e.target.value)}
                 />
+                {searchParams.length > 0 ?
+                <div onClick={()=>clearSearch()}>
+                    <i class="fas fa-times"></i>
+                </div>
+                : null}
             </form>
             {searchParams.length > 0 ?
             <div className='search-result-container'>
