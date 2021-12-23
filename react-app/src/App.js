@@ -35,14 +35,10 @@ function App() {
         <ProtectedRoute path='/feed' exact={true}>
           <NavBar />
         </ProtectedRoute>
-        <Route path='/sign-up' exact={true}>
+        {/* <Route path='/sign-up' exact={true}>
           <NavBar />
           <SignUpForm />
-        </Route>
-        {/* <ProtectedRoute path='/users' exact={true} >
-          <NavBar />
-          <UsersList/>
-        </ProtectedRoute> */}
+        </Route> */}
         <ProtectedRoute path='/users/:userId' exact={true} >
           <NavBar />
           <Profile />

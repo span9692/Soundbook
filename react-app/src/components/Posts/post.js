@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { changeComment, newComment, removeComment } from '../../store/comment'
 import { changePost, createPost, deletePost } from '../../store/post'
+import { Link } from 'react-router-dom'
 import './posts.css'
 
-function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComments }) {
+function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
     const [editValue, setEditValue] = useState('')
@@ -18,6 +19,21 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0, 9)
     }
+
+    let profile_owner_friends = [];
+    allFriends.forEach(friend => {
+        if (friend.confirmed === true && friend.friendAdder_id === +profileId) {
+            profile_owner_friends.push(friend.friendReceiver_id)
+        }
+        if (friend.confirmed === true && friend.friendReceiver_id === +profileId) {
+            profile_owner_friends.push(friend.friendAdder_id)
+        }
+    })
+    console.log('profile_owner_friends', profile_owner_friends)
+    console.log('allUsersValues', allUsersValues)
+    console.log('allFriends', allFriends)
+    let currentProfileFriends = allUsersValues.filter(el => profile_owner_friends.includes(el.id))
+    console.log('currentProfileFriends', currentProfileFriends)
     // console.log('loggedUser', loggedUser?.id) // object of logged in owner
     // console.log('profile_owner', profile_owner?.id) // object of owner of profile_page
     // console.log('profile_photos', profile_photos) // array of objects of all photos by the owner
@@ -141,6 +157,16 @@ function Posts({ loggedUser, profile_owner, profile_photos, allPosts, allComment
                         <div className='photos-label1'>
                             <span className='profile-labels'>Friends</span>
                             <span className='edit-profileBtn3'>See All Friends</span>
+                        </div>
+                        <div className='nine-friends'>
+                            {currentProfileFriends.map((friend) => (
+                            <Link className='friend-link' to={`/users/${friend.id}`}>
+                                <div key={friend.id} className='indiv-portrait'>
+                                    <img className='friends-portrait' src={friend.profile_pic}></img>
+                                    <span className='portrait-name'>{friend.alias ? friend.alias : friend.first_name+' '+friend.last_name }</span>
+                                </div>
+                            </Link>
+                            ))}
                         </div>
                     </div>
                 </div>

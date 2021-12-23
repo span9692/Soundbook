@@ -11,6 +11,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
+    alias = db.Column(db.String(50), nullable=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     profile_pic = db.Column(db.String(255), nullable=False, default='https://media.discordapp.net/attachments/917541871457275925/918846475897798727/default-user.jpeg')
     cover_photo = db.Column(db.String(255), nullable=False, default='https://res.cloudinary.com/photofinder/image/upload/v1639506962/orionthemes-placeholder-image_twhbxf.jpg')
@@ -23,9 +24,9 @@ class User(db.Model, UserMixin):
     location = db.Column(db.String(50), nullable=True)
     createdAt = db.Column(db.DateTime(timezone=False), default=func.now())
 
-    
-    
-    
+
+
+
     friend = db.relationship('User', secondary=friend_list, secondaryjoin=(friend_list.c.friendAdder_id == id), primaryjoin=(friend_list.c.friendReceiver_id == id), backref=db.backref('friend_list'))
     posts = db.relationship('Post', back_populates='users', cascade='all, delete-orphan')
     photos = db.relationship('Photo', back_populates='users', cascade='all, delete-orphan')
@@ -50,6 +51,7 @@ class User(db.Model, UserMixin):
             # 'posts': [post.to_dict() for post in self.posts],
             'first_name': self.first_name,
             'last_name': self.last_name,
+            'alias': self.alias,
             'email': self.email,
             'profile_pic': self.profile_pic,
             'cover_photo': self.cover_photo,

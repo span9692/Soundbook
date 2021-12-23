@@ -22,6 +22,5 @@ def user(id):
 @user_routes.route('/search', methods=['POST'])
 def search():
     data = request.get_json()
-    print('data', data, 'mmmmmmmmmmmmmmmmmmmmmmmmm')
     users = User.query.filter(or_(User.first_name.ilike(f'%{data}%'), User.last_name.ilike(f'%{data}%')))
     return {'users': [user.to_dictionary() for user in users]}

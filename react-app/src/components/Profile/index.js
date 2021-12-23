@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../../store/user'
@@ -7,10 +7,13 @@ import Posts from '../Posts/post'
 import { getPhotos } from '../../store/photo'
 import { getPosts } from '../../store/post'
 import { getComments } from '../../store/comment'
+import { getFriends } from '../../store/friend_list'
 
 function Profile() {
     const dispatch = useDispatch()
     const { userId } = useParams()
+    // const [urlId, setUrlId] = useState(userId)
+    // setUrlId(userId)
     const loggedUser = useSelector(state => state.session.user)
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
@@ -18,14 +21,26 @@ function Profile() {
     const profile_owner = allUsersValues.filter(user => user.id === +userId)[0]
     const allPosts = useSelector(state => Object.values(state.post)).filter(el => el.profile_id === +userId)
     const allComments = useSelector(state => Object.values(state.comment))
+    const allFriends = useSelector(state => Object.values(state.friend_list))
     // console.log('allPosts', allPosts)
-    // console.log('allUsers', allUsers)
+    // let profile_owner_friends = [];
+    // allFriends.forEach(friend => {
+    //     if (friend.confirmed === true && friend.friendAdder_id === +userId) {
+    //         profile_owner_friends.push(friend.friendReceiver_id)
+    //     }
+    //     if (friend.confirmed === true && friend.friendReceiver_id === +userId) {
+    //         profile_owner_friends.push(friend.friendAdder_id)
+    //     }
+    // })
+    // console.log('profile_owner_friends', profile_owner_friends)
+    // console.log('allFriends', allFriends)
 
     useEffect(()=> {
         dispatch(getUsers())
         dispatch(getPhotos(+userId))
         dispatch(getPosts(+userId))
         dispatch(getComments(+userId))
+        dispatch(getFriends(+userId))
     }, [dispatch])
 
     return (
@@ -59,7 +74,7 @@ function Profile() {
 
                 </div >
                 <div className='mainColumn'>
-                    <Posts loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments}/>
+                    <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
                 </div>
                 <div className='sideColumn'>
 
