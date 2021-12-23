@@ -155,6 +155,38 @@
     border-bottom-right-radius: 12px;
 }
 
+/*friends*/
+.friends-container {
+
+}
+
+.nine-friends {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.indiv-portrait {
+    display: flex;
+    flex-direction: column;
+}
+
+.friends-portrait {
+    width: 9rem;
+    height: 9rem;
+    margin: 2px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
 .post-box {
     display: flex;
     flex-direction: column;

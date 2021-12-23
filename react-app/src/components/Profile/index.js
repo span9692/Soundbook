@@ -23,17 +23,17 @@ function Profile() {
     const allComments = useSelector(state => Object.values(state.comment))
     const allFriends = useSelector(state => Object.values(state.friend_list))
     // console.log('allPosts', allPosts)
-    let profile_owner_friends = [];
-    allFriends.forEach(friend => {
-        if (friend.confirmed === true && friend.friendAdder_id === +userId) {
-            profile_owner_friends.push(friend.friendReceiver_id)
-        }
-        if (friend.confirmed === true && friend.friendReceiver_id === +userId) {
-            profile_owner_friends.push(friend.friendAdder_id)
-        }
-    })
-    console.log('profile_owner_friends', profile_owner_friends)
-    console.log('allFriends', allFriends)
+    // let profile_owner_friends = [];
+    // allFriends.forEach(friend => {
+    //     if (friend.confirmed === true && friend.friendAdder_id === +userId) {
+    //         profile_owner_friends.push(friend.friendReceiver_id)
+    //     }
+    //     if (friend.confirmed === true && friend.friendReceiver_id === +userId) {
+    //         profile_owner_friends.push(friend.friendAdder_id)
+    //     }
+    // })
+    // console.log('profile_owner_friends', profile_owner_friends)
+    // console.log('allFriends', allFriends)
 
     useEffect(()=> {
         dispatch(getUsers())
@@ -74,7 +74,7 @@ function Profile() {
 
                 </div >
                 <div className='mainColumn'>
-                    <Posts loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments}/>
+                    <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
                 </div>
                 <div className='sideColumn'>
 
