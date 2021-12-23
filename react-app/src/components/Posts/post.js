@@ -161,7 +161,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                             {currentProfileFriends.map((friend) => (
                                 <div key={friend.id} className='indiv-portrait'>
                                     <img className='friends-portrait' src={friend.profile_pic}></img>
-                                    <span>{friend.first_name}</span>
+                                    <span className='portrait-name'>{friend.alias ? friend.alias : friend.first_name+' '+friend.last_name }</span>
                                 </div>
                             ))}
                         </div>

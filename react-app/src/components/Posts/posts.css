@@ -157,29 +157,39 @@
 
 /*friends*/
 .friends-container {
-
+    display: flex;
+    flex-direction: column;
 }
 
 .nine-friends {
     display: flex;
     flex-wrap: wrap;
+    /* justify-content: space-between; */
+    width: 100%;
 }
 
 .indiv-portrait {
     display: flex;
     flex-direction: column;
+    margin-top: 1rem;
+    margin-left: .2rem;
 }
 
 .friends-portrait {
     width: 9rem;
     height: 9rem;
-    margin: 2px;
+    margin-left: 1px;
+    margin-right: .4rem;
     box-sizing: border-box;
     border-radius: 12px;
     object-fit: cover;
 }
 
-
+.portrait-name {
+    font-size: .8rem;
+    margin-left: .3rem;
+    font-weight: bold;
+}
 
 
 
