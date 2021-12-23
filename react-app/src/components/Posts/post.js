@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { changeComment, newComment, removeComment } from '../../store/comment'
 import { changePost, createPost, deletePost } from '../../store/post'
+import { Link } from 'react-router-dom'
 import './posts.css'
 
 function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
@@ -159,10 +160,12 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                         </div>
                         <div className='nine-friends'>
                             {currentProfileFriends.map((friend) => (
+                            <Link className='friend-link' to={`/users/${friend.id}`}>
                                 <div key={friend.id} className='indiv-portrait'>
                                     <img className='friends-portrait' src={friend.profile_pic}></img>
                                     <span className='portrait-name'>{friend.alias ? friend.alias : friend.first_name+' '+friend.last_name }</span>
                                 </div>
+                            </Link>
                             ))}
                         </div>
                     </div>

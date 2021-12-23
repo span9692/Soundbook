@@ -164,22 +164,21 @@
 .nine-friends {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
     width: 100%;
 }
 
 .indiv-portrait {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     margin-left: .2rem;
 }
 
 .friends-portrait {
     width: 9rem;
     height: 9rem;
-    margin-left: 1px;
-    margin-right: .4rem;
+    /* margin-left: 1px;
+    margin-right: .4rem; */
     box-sizing: border-box;
     border-radius: 12px;
     object-fit: cover;
@@ -189,11 +188,22 @@
     font-size: .8rem;
     margin-left: .3rem;
     font-weight: bold;
+    text-decoration: none;
+    color: black!important;
+}
+
+.friend-link {
+    text-decoration: none;
+    margin-left: .2rem;
+    margin-right: .2rem;
+    margin-top: 1rem;
 }
 
 
-
-
+/* .friends-container,
+.photos-container {
+    min-width: 466px;
+} */
 
 
 
