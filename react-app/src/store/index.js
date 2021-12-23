@@ -6,6 +6,7 @@ import photo from './photo'
 import post from './post'
 import comment from './comment'
 import search from './search'
+import friend_list from './friend_list'
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   photo,
   post,
   comment,
-  search
+  search,
+  friend_list
 });
 
 
