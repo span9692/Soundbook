@@ -30,6 +30,18 @@
     background-color: white;
 }
 
+.feed-containers {
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    margin-top: 1rem;
+    /* margin-left: .5rem;
+    margin-right: .5rem; */
+    background-color: white;
+    position: relative;
+    z-index: 2;
+}
+
 .intro-container > span,
 .intro-container > div {
     margin-bottom: 1rem;
@@ -46,7 +58,7 @@
 .icon {
     color: grey;
     display: flex;
-    margin-left: 1.5rem;
+    margin-left: .8rem;
 }
 
 .icon-row {
@@ -55,8 +67,20 @@
     justify-content: center;
 }
 
+
+.info {
+    display: flex;
+    align-items: center;
+}
+
 .row-Data {
-    margin-left: 1rem;
+    margin-left: .6rem;
+    font-size: .9rem;
+}
+
+.profile-owner-info {
+    font-weight: bold;
+    color: black;
 }
 
 .fas {
@@ -159,6 +183,7 @@
 .friends-container {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1.3rem;
 }
 
 .nine-friends {

@@ -34,7 +34,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
     // console.log('allFriends', allFriends)
     // console.log('currentProfileFriends', currentProfileFriends)
     // console.log('loggedUser', loggedUser?.id) // object of logged in owner
-    // console.log('profile_owner', profile_owner?.id) // object of owner of profile_page
+    // console.log('profile_owner', profile_owner) // object of owner of profile_page
     // console.log('profile_photos', profile_photos) // array of objects of all photos by the owner
     // console.log('allPosts', allPosts) // array of objects of all comments on the profile page
     // console.log('allComments', allComments) //array of all comments
@@ -97,40 +97,49 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                             <div className='icon-row'>
                                 <i className="fas fa-graduation-cap"></i>
                             </div>
-                            <div>
-                                <span className='row-Data'>Education</span>
+                            <div className='info'>
+                                {profile_owner?.education ?
+                                <span className='row-Data'>Studied at <span className='profile-owner-info'>{profile_owner?.education}</span></span>
+                                : <span className='row-Data'>Education</span>
+                                }
                             </div>
                         </div>
                         <div className='category-row icon'>
                             <div className='icon-row'>
                                 <i className="fas fa-briefcase"></i>
                             </div>
-                            <div>
-                                <span className='row-Data'>Company</span>
+                            <div className='info'>
+                                {profile_owner?.work ?
+                                <span className='row-Data'>Works at <span className='profile-owner-info'>{profile_owner?.work}</span></span>
+                                : <span className='row-Data'>Work</span>
+                                }
                             </div>
                         </div>
                         <div className='category-row icon'>
                             <div className='icon-row'>
                                 <i className="fas fa-map-marker-alt"></i>
                             </div>
-                            <div>
-                                <span className='row-Data'>Location</span>
+                            <div className='info'>
+                                {profile_owner?.location ?
+                                <span className='row-Data'>Lives in <span className='profile-owner-info'>{profile_owner?.location}</span></span>
+                                : <span className='row-Data'>Location</span>
+                                }
                             </div>
                         </div>
                         <div className='category-row icon'>
                             <div className='icon-row'>
                                 <i className="fas fa-birthday-cake"></i>
                             </div>
-                            <div>
-                                <span className='row-Data'>Birthday</span>
+                            <div className='info'>
+                                <span className='row-Data'>Born on <span className='profile-owner-info'>{profile_owner?.birthday}</span></span>
                             </div>
                         </div>
                         <div className='category-row icon'>
                             <div className='icon-row'>
                                 <i className="fas fa-tag"></i>
                             </div>
-                            <div>
-                                <span className='row-Data'>Joined Year</span>
+                            <div className='info'>
+                                <span className='row-Data'>Joined in <span className='profile-owner-info'>{profile_owner?.createdAt}</span></span>
                             </div>
                         </div>
                         <button className='profile-nav-links1 edit-profileBtn1'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>

@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import { authenticate } from './store/session';
 import Splash from './components/SplashPage/splash';
 import Profile from './components/Profile';
+import Feed from './components/Feed';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -34,6 +35,7 @@ function App() {
         </Route>
         <ProtectedRoute path='/feed' exact={true}>
           <NavBar />
+          <Feed />
         </ProtectedRoute>
         {/* <Route path='/sign-up' exact={true}>
           <NavBar />
