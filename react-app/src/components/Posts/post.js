@@ -34,7 +34,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
     // console.log('allFriends', allFriends)
     // console.log('currentProfileFriends', currentProfileFriends)
     // console.log('loggedUser', loggedUser?.id) // object of logged in owner
-    // console.log('profile_owner', profile_owner?.id) // object of owner of profile_page
+    console.log('profile_owner', profile_owner) // object of owner of profile_page
     // console.log('profile_photos', profile_photos) // array of objects of all photos by the owner
     // console.log('allPosts', allPosts) // array of objects of all comments on the profile page
     // console.log('allComments', allComments) //array of all comments
@@ -122,7 +122,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                 <i className="fas fa-birthday-cake"></i>
                             </div>
                             <div>
-                                <span className='row-Data'>Birthday</span>
+                                <span className='row-Data'>Born on {profile_owner.birthday}</span>
                             </div>
                         </div>
                         <div className='category-row icon'>
@@ -130,7 +130,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                 <i className="fas fa-tag"></i>
                             </div>
                             <div>
-                                <span className='row-Data'>Joined Year</span>
+                                <span className='row-Data'>Joined in {profile_owner.createdAt}</span>
                             </div>
                         </div>
                         <button className='profile-nav-links1 edit-profileBtn1'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>

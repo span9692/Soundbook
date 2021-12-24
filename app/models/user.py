@@ -52,10 +52,16 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'alias': self.alias,
+            'birthday': self.birthday.strftime('%b %d, %Y'),
+            'education': self.education,
+            'bio': self.bio,
+            'gender': self.gender,
+            'work': self.work,
+            'location': self.location,
             'email': self.email,
             'profile_pic': self.profile_pic,
             'cover_photo': self.cover_photo,
-            'createdAt': self.createdAt
+            'createdAt': self.createdAt.strftime('%Y')
         }
 
     def to_dictionary(self):
