@@ -33,7 +33,7 @@ function Profile() {
     //     }
     // })
     // console.log('profile_owner_friends', profile_owner_friends)
-    console.log('allFriends', allFriends)
+    // console.log('allFriends', allFriends)
     let option = null;
 
     if (loggedUser.id === +userId) {
@@ -43,33 +43,32 @@ function Profile() {
             </div>
         )
     } else {
-        // allFriends.forEach(friend =>
         for (let i = 0; i < allFriends.length; i++) {
             if ((allFriends[i].friendAdder_id === loggedUser.id && allFriends[i].friendReceiver_id === +userId && allFriends[i].confirmed === true) || (allFriends[i].friendAdder_id === +userId && allFriends[i].friendReceiver_id === loggedUser.id && allFriends[i].confirmed === true)) {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Friends</button>
+                        <button className='profile-nav-links friends-profileBtn'><i class="fas fa-user-check"></i>&nbsp; Friends</button>
                     </div>
                 )
                 break;
             } else if (allFriends[i].friendAdder_id === loggedUser.id && allFriends[i].friendReceiver_id === +userId && allFriends[i].confirmed === false) {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Cancel Request</button>
+                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-ban"></i>&nbsp; Cancel Request</button>
                     </div>
                 )
                 break;
             } else if (allFriends[i].friendAdder_id === +userId && allFriends[i].friendReceiver_id === loggedUser.id && allFriends[i].confirmed === false) {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Respond</button>
+                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-reply"></i>&nbsp; Respond</button>
                     </div>
                 )
                 break;
             } else {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Add Friend</button>
+                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-user-plus"></i>&nbsp; Add Friend</button>
                     </div>
                 )
             }

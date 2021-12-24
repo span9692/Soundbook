@@ -29,7 +29,6 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
             profile_owner_friends.push(friend.friendAdder_id)
         }
     })
-    let currentProfileFriends = allUsersValues.filter(el => profile_owner_friends.includes(el.id))
     // console.log('profile_owner_friends', profile_owner_friends)
     // console.log('allUsersValues', allUsersValues)
     // console.log('allFriends', allFriends)
@@ -39,10 +38,10 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
     // console.log('profile_photos', profile_photos) // array of objects of all photos by the owner
     // console.log('allPosts', allPosts) // array of objects of all comments on the profile page
     // console.log('allComments', allComments) //array of all comments
+    let currentProfileFriends = allUsersValues.filter(el => profile_owner_friends.includes(el.id))
     let commentCheck = allComments.map(el => el?.post_id)
     commentCheck = new Set(commentCheck)
     commentCheck = Array.from(commentCheck)
-
 
     const reversed = []
     allPosts.forEach(el => reversed.unshift(el))

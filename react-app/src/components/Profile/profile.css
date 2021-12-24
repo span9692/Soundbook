@@ -90,6 +90,14 @@
     color: rgb(87, 87, 87);
 }
 
+.friends-profileBtn {
+    border-radius: 8px;
+    border: none;
+    align-items: center;
+    color: white;
+    background-color: #1877F2;
+}
+
 .edit-profileBtn:hover {
     background-color: rgb(226, 226, 226);
 }
