@@ -1,7 +1,10 @@
 .signup-form {
     padding: 1rem;
-    /* display: flex; */
-    /* flex-direction: column; */
+}
+
+.signup-text {
+    font-weight: bold;
+    font-size: 2rem;
 }
 
 .signup-name-field,
@@ -10,31 +13,77 @@
     width: 100%;
 }
 
+.birthday-field {
+    font-size: 1rem;
+}
+
+.last-name-field {
+    padding-left: .7rem;
+}
+
+.email-field {
+    padding-bottom: .7rem;
+}
+
+.password-field {
+    padding-bottom: .7rem;
+}
+
+.month-field,
+.day-field,
+.year-field {
+    width: 100%;
+    padding-bottom: .7rem;
+}
+
+.month-field,
+.day-field {
+    margin-right: .7rem;
+}
+
 .first-name-field,
 .last-name-field {
-    width: 50%;
+    width: 100%;
+    padding-bottom: .7rem;
 }
 
 .signup-field {
-    /* border: 1px solid #dddfe2; */
     width: 100%;
-    border-radius: 5px;
-    /* padding-left: 1rem; */
     padding: 0px!important;
-    border: 0px!important;
+    border: 1px solid #c5c5c5!important;
+}
+
+.birthday-field,
+.gender-field {
+    height: 3.8vh;
+    background-color: white;
+    border-radius: 5px;
+    outline: none;
 }
 
 .field-size {
-    height: 5.5vh;
+    height: 3.8vh;
     background-color: rgb(238, 238, 238);
+    border-radius: 5px;
     outline: none;
 }
 
 .signup-font {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .gender-container {
     display: flex;
-    justify-content: space-around;
+    width: 100%;
+}
+
+.gender-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gender-male,
+.gender-female {
+    margin-right: .7rem;
 }

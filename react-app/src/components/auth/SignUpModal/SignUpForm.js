@@ -49,8 +49,9 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp} className='signup-form'>
-      <span>Sign Up</span>
+      <span className='signup-text'>Sign Up</span>
       <div>It's quick and easy.</div>
+      <hr style={{marginTop: .5+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
       <div>
         {signupErrors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -61,11 +62,11 @@ const SignUpForm = () => {
           <input
             type='text'
             className='signup-field field-size signup-font'
-            name='FirstName'
+            name='firstName'
             placeholder='First Name'
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
-            // required={true}
+            required={true}
           ></input>
         </div>
         <div className='last-name-field'>
@@ -76,11 +77,11 @@ const SignUpForm = () => {
             placeholder='Last Name'
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
-            // required={true}
+            required={true}
           ></input>
         </div>
       </div>
-      <div>
+      <div className='email-field'>
         <input
           type='text'
           className='signup-field field-size signup-font'
@@ -91,7 +92,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <div>
+      <div className='password-field'>
         <input
           type='password'
           className='signup-field field-size signup-font'
@@ -102,7 +103,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <div>
+      <div className='password-field'>
         <input
           type='password'
           className='signup-field field-size signup-font'
@@ -115,10 +116,10 @@ const SignUpForm = () => {
       </div>
       <label>Birthday</label>
       <div className='signup-birthday-field'>
-        <div>
+        <div className='month-field'>
           <select
             name='month'
-            className='signup-field field-size'
+            className='signup-field birthday-field'
             onChange={(e) => setMonth(e.target.value)}
             value = {month}
             required={true}
@@ -138,10 +139,10 @@ const SignUpForm = () => {
             <option value='Dec'>Dec</option>
           </select>
         </div>
-        <div>
+        <div className='day-field'>
           <select
             name='day'
-            className='signup-field field-size'
+            className='signup-field birthday-field'
             onChange={(e) => setDay(e.target.value)}
             value = {day}
             required={true}
@@ -152,10 +153,10 @@ const SignUpForm = () => {
             ))}
           </select>
         </div>
-        <div>
+        <div className='year-field'>
           <select
             name='year'
-            className='signup-field field-size'
+            className='signup-field birthday-field'
             onChange={(e) => setYear(e.target.value)}
             value = {year}
             required={true}
@@ -169,15 +170,15 @@ const SignUpForm = () => {
       </div>
       <label>Gender</label>
       <div className='gender-container'>
-        <div className='signup-field field-size'>
+        <div className='signup-field gender-field gender-male'>
           <label for='male'>Male</label>
           <input onChange={(e) => setGender(e.target.value)} type='radio' id='male' name='gender' value='Male' required={true}></input>
         </div>
-        <div className='signup-field field-size'>
+        <div className='signup-field gender-field gender-female'>
           <label for='female'>Female</label>
           <input onChange={(e) => setGender(e.target.value)} type='radio' id='female' name='gender' value='Female'></input>
         </div>
-        <div className='signup-field field-size'>
+        <div className='signup-field gender-field gender-other'>
           <label for='other'>Other</label>
           <input onChange={(e) => setGender(e.target.value)} type='radio' id='other' name='gender' value='Other'></input>
         </div>
