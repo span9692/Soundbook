@@ -14,6 +14,11 @@
     flex-direction: column;
 }
 
+.post-box {
+    display: flex;
+    flex-direction: column;
+}
+
 .story-container {
     width: 100%;
 }
