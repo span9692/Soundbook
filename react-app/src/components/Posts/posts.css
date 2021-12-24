@@ -55,8 +55,20 @@
     justify-content: center;
 }
 
+
+.info {
+    display: flex;
+    align-items: center;
+}
+
 .row-Data {
-    margin-left: 1rem;
+    margin-left: .6rem;
+    font-size: .9rem;
+}
+
+.profile-owner-info {
+    font-weight: bold;
+    color: black;
 }
 
 .fas {
