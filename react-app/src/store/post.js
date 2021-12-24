@@ -33,6 +33,12 @@ const modifyPost = data => {
   }
 }
 
+export const getAllPosts = () => async dispatch => {
+  const response = await fetch(`/api/post/`)
+  const data = await response.json()
+  dispatch(showPosts(data))
+}
+
 export const getPosts = (id) => async dispatch => {
   const response = await fetch(`/api/post/${id}`)
   const data = await response.json()

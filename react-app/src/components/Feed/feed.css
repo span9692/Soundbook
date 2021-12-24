@@ -14,7 +14,7 @@
     flex-direction: column;
 }
 
-.post-box {
+.feed-post-box {
     display: flex;
     flex-direction: column;
 }

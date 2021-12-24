@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { changeComment, getComments, newComment, removeComment } from '../../store/comment'
 import { getFriends } from '../../store/friend_list'
 import { getPhotos } from '../../store/photo'
-import { changePost, createPost, deletePost, getPosts } from '../../store/post'
+import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
 import './feed.css'
 
@@ -70,7 +70,7 @@ function Feed() {
         setCommentValue('')
         dispatch(getUsers())
         dispatch(getPhotos(loggedUser.id))
-        dispatch(getPosts(loggedUser.id))
+        dispatch(getAllPosts())
         dispatch(getComments(loggedUser.id))
         dispatch(getFriends(loggedUser.id))
     }, [dispatch, commentBoxId])
@@ -85,9 +85,9 @@ function Feed() {
                     <div className='story-container'>
                         THIS IS THE USER'S FEED
                     </div>
-                    <div className='post-box'>
+                    <div className='feed-post-box'>
                         Reference
-                        <div className='post-box containers'>
+                        <div className='post-box feed-containers'>
                         <div className='post-name-row'>
                             <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
                             <form className='post-form' id='add-post-form'>
@@ -116,7 +116,7 @@ function Feed() {
 
                     {/* maps the posts*/}
                     {reversed.map(post => (
-                        <div key={post.id} className='post-box last-post containers'>
+                        <div key={post.id} className='post-box last-post feed-containers'>
                             <div className='post-name-date'>
                                 <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
                                 <div className='edit-delete-post-btn-container'>
@@ -131,7 +131,7 @@ function Feed() {
                                         </div>
                                         : null
                                         }
-                                        { post.owner_id === loggedUser.id ?
+                                        {loggedUser.id === post.profile_id || post.owner_id === loggedUser.id ?
                                         <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
                                             <i class="fas fa-trash-alt"></i>
                                         </div>
@@ -187,7 +187,7 @@ function Feed() {
                                                         <i class="fas fa-pencil-alt pencil-icon-comment pointer"></i>
                                                     </div>: null
                                                     }
-                                                    { comment.user_id === loggedUser.id ?
+                                                    {loggedUser.id === post.profile_id || comment.user_id === loggedUser.id ?
                                                     <div className='comment-icon-position' onClick={() => deleteComment(comment.id)} >
                                                         <i class="fas fa-trash-alt trash-icon-comment pointer"></i>
                                                     </div>: null
