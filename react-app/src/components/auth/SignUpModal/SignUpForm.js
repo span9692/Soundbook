@@ -51,7 +51,7 @@ const SignUpForm = () => {
     <form onSubmit={onSignUp} className='signup-form'>
       <span className='signup-text'>Sign Up</span>
       <div>It's quick and easy.</div>
-      <hr style={{marginTop: .5+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
+      <hr style={{marginTop: 1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
       <div>
         {signupErrors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -172,18 +172,26 @@ const SignUpForm = () => {
       <div className='gender-container'>
         <div className='signup-field gender-field gender-male'>
           <label for='male'>Male</label>
-          <input onChange={(e) => setGender(e.target.value)} type='radio' id='male' name='gender' value='Male' required={true}></input>
+          <div className='radio-buttons'>
+            <input onChange={(e) => setGender(e.target.value)} type='radio' id='male' name='gender' value='Male' required={true}></input>
+          </div>
         </div>
         <div className='signup-field gender-field gender-female'>
           <label for='female'>Female</label>
-          <input onChange={(e) => setGender(e.target.value)} type='radio' id='female' name='gender' value='Female'></input>
+          <div className='radio-buttons'>
+            <input onChange={(e) => setGender(e.target.value)} type='radio' id='female' name='gender' value='Female'></input>
+          </div>
         </div>
         <div className='signup-field gender-field gender-other'>
           <label for='other'>Other</label>
-          <input onChange={(e) => setGender(e.target.value)} type='radio' id='other' name='gender' value='Other'></input>
+          <div className='radio-buttons'>
+            <input onChange={(e) => setGender(e.target.value)} type='radio' id='other' name='gender' value='Other'></input>
+          </div>
         </div>
       </div>
-      <button type='submit'>Sign Up</button>
+      <div className='test'>
+        <button type='submit' className='signupBtn pointer'>Sign Up</button>
+      </div>
     </form>
   );
 };

@@ -61,6 +61,10 @@
     outline: none;
 }
 
+.birthday-field {
+    text-indent: .4rem;
+}
+
 .field-size {
     height: 3.8vh;
     background-color: rgb(238, 238, 238);
@@ -70,20 +74,49 @@
 
 .signup-font {
     font-size: 1rem;
+    text-indent: .5rem;
 }
 
 .gender-container {
     display: flex;
     width: 100%;
+    padding-bottom: .7rem;
 }
 
 .gender-field {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-indent: .5rem;
+    position: relative;
 }
 
 .gender-male,
 .gender-female {
     margin-right: .7rem;
+}
+
+.radio-buttons {
+    position: absolute;
+    right: 6%;
+}
+
+.signupBtn {
+    height: 3.8vh;
+    width: 50%;
+    background-color: #36a420;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.signupBtn:hover {
+    background-color: #2d8a1a;
+}
+
+.test {
+    display: flex;
+    justify-content: center;
 }
