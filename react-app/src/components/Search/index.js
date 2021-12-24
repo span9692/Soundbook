@@ -10,7 +10,7 @@ function Search() {
     const dispatch = useDispatch()
 
     const searchResults = useSelector(state => Object.values(state.search))
-    console.log('searchResults', searchResults)
+    // console.log('searchResults', searchResults)
 
     useEffect(() => {
         dispatch(searchUser(searchParams))
