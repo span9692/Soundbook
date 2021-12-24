@@ -62,7 +62,7 @@
 }
 
 .birthday-field {
-    text-indent: .4rem;
+    text-indent: .3rem;
 }
 
 .field-size {
@@ -116,7 +116,52 @@
     background-color: #2d8a1a;
 }
 
-.test {
+.signup {
     display: flex;
     justify-content: center;
+}
+
+.label {
+    font-size: .9rem;
+    /* font-size: 1rem; */
+    padding-bottom: 5rem;
+}
+
+.birthday-gender {
+    padding-bottom: .1rem;
+}
+
+.signup-errors {
+    color: red;
+    font-size: .8rem;
+}
+
+.terms {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    font-size: .65rem;
+    padding-bottom: .7rem;
+    color: rgb(49, 49, 49)
+}
+
+.terms-text {
+    color: blue;
+}
+
+.terms-text:hover {
+    text-decoration: 1px solid underline blue;
+    cursor: pointer;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    transition: background-color 10000s ease-in-out 0s;
 }
