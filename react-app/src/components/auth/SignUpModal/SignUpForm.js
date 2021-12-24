@@ -5,7 +5,7 @@ import { signUp } from '../../../store/session';
 import './signup.css'
 
 const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [signupErrors, setSignupErrors] = useState([]);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -20,11 +20,15 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
     if (password === repeatPassword) {
       const data = await dispatch(signUp({firstName, lastName, email, password, birthday:`${year}-${month}-${day}`, gender}));
       if (data) {
-        setErrors(data)
+        setSignupErrors(data)
       }
+    } else {
+      const passError = [...signupErrors, 'Passwords must match.']
+      setSignupErrors(passError)
     }
   };
 
@@ -44,11 +48,11 @@ const SignUpForm = () => {
   }
 
   return (
-    <form className='signup-form' onSubmit={onSignUp}>
+    <form onSubmit={onSignUp} className='signup-form'>
       <span>Sign Up</span>
       <div>It's quick and easy.</div>
       <div>
-        {errors.map((error, ind) => (
+        {signupErrors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
@@ -57,11 +61,11 @@ const SignUpForm = () => {
           <input
             type='text'
             className='signup-field field-size signup-font'
-            name='firstName'
+            name='FirstName'
             placeholder='First Name'
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
-            required={true}
+            // required={true}
           ></input>
         </div>
         <div className='last-name-field'>
@@ -72,7 +76,7 @@ const SignUpForm = () => {
             placeholder='Last Name'
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
-            required={true}
+            // required={true}
           ></input>
         </div>
       </div>
@@ -167,7 +171,7 @@ const SignUpForm = () => {
       <div className='gender-container'>
         <div className='signup-field field-size'>
           <label for='male'>Male</label>
-          <input onChange={(e) => setGender(e.target.value)} type='radio' id='male' name='gender' value='Male'></input>
+          <input onChange={(e) => setGender(e.target.value)} type='radio' id='male' name='gender' value='Male' required={true}></input>
         </div>
         <div className='signup-field field-size'>
           <label for='female'>Female</label>
