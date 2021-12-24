@@ -1,0 +1,19 @@
+.feed-container {
+    display: flex;
+    width: 100%;
+    margin-top: 5rem;
+}
+
+.feed-side-column {
+    width: 33%
+}
+
+.feed-main-column {
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+}
+
+.story-container {
+    width: 100%;
+}
