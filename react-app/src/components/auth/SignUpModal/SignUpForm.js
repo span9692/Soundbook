@@ -5,7 +5,7 @@ import { signUp } from '../../../store/session';
 import './signup.css'
 
 const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [signupErrors, setSignupErrors] = useState([]);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -20,11 +20,16 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    setSignupErrors([])
     if (password === repeatPassword) {
       const data = await dispatch(signUp({firstName, lastName, email, password, birthday:`${year}-${month}-${day}`, gender}));
       if (data) {
-        setErrors(data)
+        setSignupErrors(data)
       }
+    } else {
+      const passError = [...signupErrors, 'Password : Passwords must match.']
+      setSignupErrors(passError)
     }
   };
 
@@ -44,12 +49,13 @@ const SignUpForm = () => {
   }
 
   return (
-    <form className='signup-form' onSubmit={onSignUp}>
-      <span>Sign Up</span>
+    <form onSubmit={onSignUp} className='signup-form'>
+      <span className='signup-text'>Sign Up</span>
       <div>It's quick and easy.</div>
+      <hr style={{marginTop: 1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+        {signupErrors.map((error, ind) => (
+          <div className='signup-errors' key={ind}>{error.split(':')[0].charAt(0).toUpperCase()+error.split(' :')[0].slice(1)+':'+error.split(' :')[1]}</div>
         ))}
       </div>
       <div className='signup-name-field'>
@@ -76,7 +82,7 @@ const SignUpForm = () => {
           ></input>
         </div>
       </div>
-      <div>
+      <div className='email-field'>
         <input
           type='text'
           className='signup-field field-size signup-font'
@@ -87,7 +93,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <div>
+      <div className='password-field'>
         <input
           type='password'
           className='signup-field field-size signup-font'
@@ -98,7 +104,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <div>
+      <div className='password-field'>
         <input
           type='password'
           className='signup-field field-size signup-font'
@@ -109,12 +115,14 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <label>Birthday</label>
+      <div className='birthday-gender'>
+        <label className='label'>Birthday</label>
+      </div>
       <div className='signup-birthday-field'>
-        <div>
+        <div className='month-field'>
           <select
             name='month'
-            className='signup-field field-size'
+            className='signup-field birthday-field'
             onChange={(e) => setMonth(e.target.value)}
             value = {month}
             required={true}
@@ -134,10 +142,10 @@ const SignUpForm = () => {
             <option value='Dec'>Dec</option>
           </select>
         </div>
-        <div>
+        <div className='day-field'>
           <select
             name='day'
-            className='signup-field field-size'
+            className='signup-field birthday-field'
             onChange={(e) => setDay(e.target.value)}
             value = {day}
             required={true}
@@ -148,10 +156,10 @@ const SignUpForm = () => {
             ))}
           </select>
         </div>
-        <div>
+        <div className='year-field'>
           <select
             name='year'
-            className='signup-field field-size'
+            className='signup-field birthday-field'
             onChange={(e) => setYear(e.target.value)}
             value = {year}
             required={true}
@@ -163,22 +171,35 @@ const SignUpForm = () => {
           </select>
         </div>
       </div>
-      <label>Gender</label>
+      <div className='birthday-gender'>
+        <label className='label'>Gender</label>
+      </div>
       <div className='gender-container'>
-        <div className='signup-field field-size'>
+        <div className='signup-field gender-field gender-male'>
           <label for='male'>Male</label>
-          <input onChange={(e) => setGender(e.target.value)} type='radio' id='male' name='gender' value='Male'></input>
+          <div className='radio-buttons'>
+            <input onChange={(e) => setGender(e.target.value)} type='radio' id='male' name='gender' value='Male' required={true}></input>
+          </div>
         </div>
-        <div className='signup-field field-size'>
+        <div className='signup-field gender-field gender-female'>
           <label for='female'>Female</label>
-          <input onChange={(e) => setGender(e.target.value)} type='radio' id='female' name='gender' value='Female'></input>
+          <div className='radio-buttons'>
+            <input onChange={(e) => setGender(e.target.value)} type='radio' id='female' name='gender' value='Female'></input>
+          </div>
         </div>
-        <div className='signup-field field-size'>
+        <div className='signup-field gender-field gender-other'>
           <label for='other'>Other</label>
-          <input onChange={(e) => setGender(e.target.value)} type='radio' id='other' name='gender' value='Other'></input>
+          <div className='radio-buttons'>
+            <input onChange={(e) => setGender(e.target.value)} type='radio' id='other' name='gender' value='Other'></input>
+          </div>
         </div>
       </div>
-      <button type='submit'>Sign Up</button>
+      <div className='terms'>
+        By clicking Sign Up, you agree to our&nbsp;<span className='terms-text'>Terms</span>,&nbsp;<span className='terms-text'>Data Policy</span>&nbsp;and&nbsp;<span><span className='terms-text'>Cookies Policy</span>.</span> You may receive SMS Notifications from us and can opt out any time.
+      </div>
+      <div className='signup'>
+        <button type='submit' className='signupBtn pointer'>Sign Up</button>
+      </div>
     </form>
   );
 };
