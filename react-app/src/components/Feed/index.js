@@ -184,7 +184,7 @@ function Feed() {
                         Reference
                         <div className='post-box feed-containers'>
                         <div className='post-name-row'>
-                            <Link className='link-to-friend' to={`/users/${loggedUser.id}`}>
+                            <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
                                 <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
                             </Link>
                             <form className='post-form' id='add-post-form'>
@@ -220,7 +220,7 @@ function Feed() {
                                 </Link>
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
-                                        <Link className='link-to-friend' to={`/users/${post.poster_info.id}`}>
+                                        <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
                                             <div className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</div>
                                         </Link>
                                         <span className='post-date'>{post.updatedAt}</span>
@@ -283,7 +283,7 @@ function Feed() {
                                     <div className='width-fix'>
                                         <div className='name-comment'>
                                             <div className='edit-delete-comment-container'>
-                                                <Link className='link-to-friend' to={`/users/${comment.poster_info.id}`}>
+                                                <Link className='link-to-friend-post' to={`/users/${comment.poster_info.id}`}>
                                                     <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
                                                 </Link>
                                                 <div className='comment-icon-position'>

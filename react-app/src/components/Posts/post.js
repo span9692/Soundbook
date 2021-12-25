@@ -182,7 +182,9 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                 <div className='post-container-right'>
                     <div className='post-box containers'>
                         <div className='post-name-row'>
-                            <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                            <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
+                                <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                            </Link>
                             <form className='post-form' id='add-post-form'>
                                 <input
                                     className='post-field'
@@ -216,10 +218,14 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                     {reversed.map(post => (
                         <div key={post.id} className='post-box last-post containers'>
                             <div className='post-name-date'>
-                                <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
+                                <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
+                                    <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
+                                </Link>
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
-                                        <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
+                                        <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
+                                            <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
+                                        </Link>
                                         <span className='post-date'>{post.updatedAt}</span>
                                     </div>
                                     <div className='edit-delete-button-container'>
@@ -274,11 +280,15 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                             {allComments.map((comment) => (
                                 (post.id == comment.post_id ?
                                 <div key={comment.id} className='post-name-comment last-comment'>
-                                    <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
+                                    <Link className='link-to-friend' to={`/users/${comment.poster_info.id}`}>
+                                        <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
+                                    </Link>
                                     <div className='width-fix'>
                                         <div className='name-comment'>
                                             <div className='edit-delete-comment-container'>
-                                                <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                                <Link className='link-to-friend-post' to={`/users/${comment.poster_info.id}`}>
+                                                    <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                                </Link>
                                                 <div className='comment-icon-position'>
                                                     {loggedUser.id === comment.user_id ?
                                                     <div className='comment-icon-position' onClick={() => {commentId ? setCommentId('') : setCommentId(comment.id); setEditCommentValue(comment.comment_content)}} >
