@@ -176,24 +176,53 @@ function Feed() {
                 </div>
                 <div className='feed-main-column'>
                     <div className='story-container'>
-                        <div className='indiv-story-container'>
-                            <img className='story-images' src={loggedUser?.profile_pic}></img>
-                        </div>
-                        <div className='indiv-story-container'>
-                            <img className='story-images' src={loggedUser?.profile_pic}></img>
-                        </div>
-                        <div className='indiv-story-container'>
-                            <img className='story-images' src={loggedUser?.profile_pic}></img>
-                        </div>
-                        <div className='indiv-story-container'>
-                            <img className='story-images' src={loggedUser?.profile_pic}></img>
-                        </div>
-                        <div className='indiv-story-container'>
-                            <img className='story-images' src={loggedUser?.profile_pic}></img>
-                        </div>
+                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                    </div>
+                                </div>
+                        </Link>
+                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                    </div>
+                                </div>
+                        </Link>
+                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                    </div>
+                                </div>
+                        </Link>
+                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                    </div>
+                                </div>
+                        </Link>
+                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                    </div>
+                                </div>
+                        </Link>
                     </div>
                     <div className='feed-post-box'>
-                        Reference
                         <div className='post-box feed-containers'>
                         <div className='post-name-row'>
                             <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>

@@ -73,6 +73,9 @@
     display: flex;
 }
 
+.link-to-friend-story {
+    width: 100%;
+}
 
 .indiv-story-container {
     width: 20%;
@@ -89,17 +92,34 @@
     border-radius: 8px;
     object-fit: cover;
     width: 100%;
-    height: 12rem;
+    height: 14rem;
 }
-/* 
-.post-image-wall {
+
+.story-profile-pic {
+    width: 5rem;
+}
+
+.story-image-wall {
     border-radius: 50%;
     object-fit: cover;
     width: 2.5rem;
     height: 2.5rem;
-    margin-right: .5rem; 
-} */
+    background-color: #1877F2;
+    border: .3rem solid #1877F2;
+    margin-right: .5rem;
+    position: absolute;
+    top: 5.5%;
+    left: 5.5%;
+}
 
+.story-profile-name {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    font-size: .9rem;
+    bottom: 8%;
+    left: 5.5%;
+}
 
 
 /*right side of feed*/
