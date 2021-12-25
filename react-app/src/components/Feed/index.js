@@ -24,8 +24,8 @@ function Feed() {
     const allFriends = useSelector(state => Object.values(state.friend_list))
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
-
-
+    console.log('allUsers', allUsers)
+    
     // this displays all the friends/contacts of the logged in user
     const profile_owner_friends = [];
     allFriends.forEach(friend => {
@@ -38,6 +38,7 @@ function Feed() {
     })
     const contact_list = allUsersValues.filter(el => profile_owner_friends.includes(el.id))
     // current user's friend in array contact_list
+    console.log('contact_list', contact_list)
 
     // this checks id of users that sent friend requests
     const requester_id = []; 
