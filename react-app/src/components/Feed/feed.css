@@ -156,3 +156,12 @@
 .indiv-contact:hover {
     background-color: rgb(216, 216, 216);
 }
+
+
+.link-to-friend {
+    text-decoration: none;
+}
+
+.link-to-friend:visited {
+    color: black;
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { changeComment, getComments, newComment, removeComment } from '../../store/comment'
 import { getFriends } from '../../store/friend_list'
 import { getPhotos } from '../../store/photo'
@@ -107,10 +108,12 @@ function Feed() {
             <div className='feed-container'>
                 <div className='left-side-feed'>
                     <div className='feed-side-column'>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
-                            <div className='feed-left-option-label'>{loggedUser?.first_name} {loggedUser?.last_name}</div>
-                        </div>
+                        <Link className='link-to-friend' to={`/users/${loggedUser.id}`}>
+                            <div className='left-side-options pointer'>
+                                <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                                <div className='feed-left-option-label'>{loggedUser?.first_name} {loggedUser?.last_name}</div>
+                            </div>
+                        </Link>
                         <div className='left-side-options pointer'>
                             <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'}></img>
                             <div className='feed-left-option-label'>Friends</div>
@@ -181,7 +184,9 @@ function Feed() {
                         Reference
                         <div className='post-box feed-containers'>
                         <div className='post-name-row'>
-                            <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                            <Link className='link-to-friend' to={`/users/${loggedUser.id}`}>
+                                <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                            </Link>
                             <form className='post-form' id='add-post-form'>
                                 <input
                                     className='post-field'
@@ -210,10 +215,14 @@ function Feed() {
                     {reversed.map(post => (
                         <div key={post.id} className='post-box last-post feed-containers'>
                             <div className='post-name-date'>
-                                <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
+                                <Link className='link-to-friend' to={`/users/${post.poster_info.id}`}>
+                                    <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
+                                </Link>
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
-                                        <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
+                                        <Link className='link-to-friend' to={`/users/${post.poster_info.id}`}>
+                                            <div className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</div>
+                                        </Link>
                                         <span className='post-date'>{post.updatedAt}</span>
                                     </div>
                                     <div className='edit-delete-button-container'>
@@ -268,11 +277,15 @@ function Feed() {
                             {allComments.map((comment) => (
                                 (post.id == comment.post_id ?
                                 <div key={comment.id} className='post-name-comment last-comment'>
-                                    <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
+                                    <Link className='link-to-friend' to={`/users/${comment.poster_info.id}`}>
+                                        <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
+                                    </Link>
                                     <div className='width-fix'>
                                         <div className='name-comment'>
                                             <div className='edit-delete-comment-container'>
-                                                <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                                <Link className='link-to-friend' to={`/users/${comment.poster_info.id}`}>
+                                                    <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                                </Link>
                                                 <div className='comment-icon-position'>
                                                     {loggedUser.id === comment.user_id ?
                                                     <div className='comment-icon-position' onClick={() => {commentId ? setCommentId('') : setCommentId(comment.id); setEditCommentValue(comment.comment_content)}} >
@@ -337,10 +350,14 @@ function Feed() {
                         {friend_request_list.map(request => (
                         <>
                             <div key={request.id} className='individual-friend-request'>
-                                <img className='post-image-wall' src={request?.profile_pic}></img>
+                                <Link className='link-to-friend' to={`/users/${request.id}`}>
+                                    <img className='post-image-wall' src={request?.profile_pic}></img>
+                                </Link>
                                 <div className='friend-request-minus-portrait'>
                                     <div>
-                                        <span className='requester-name'>{request?.first_name} {request?.last_name}</span> <span className='sent-you-a-friend-request'>sent you a friend request.</span>
+                                        <Link className='link-to-friend' to={`/users/${request.id}`}>
+                                            <span className='requester-name'>{request?.first_name} {request?.last_name}</span> <span className='sent-you-a-friend-request'>sent you a friend request.</span>
+                                        </Link>
                                     </div>
                                     <div className='friend-request-buttons'>
                                         <div className='confirm-friend-request-btn'>Confirm</div>
@@ -356,10 +373,12 @@ function Feed() {
                         </div>
                         <div className='contact-container'>
                             {contact_list.map(friend => (
-                            <div key={friend.id} className='indiv-contact'>
-                                <img className='post-image-wall' src={friend?.profile_pic}></img>
-                                <span className='requester-name'>{friend?.first_name} {friend?.last_name}</span>
-                            </div>
+                            <Link className='link-to-friend' to={`/users/${friend.id}`}>
+                                <div key={friend.id} className='indiv-contact'>
+                                    <img className='post-image-wall' src={friend?.profile_pic}></img>
+                                    <span className='requester-name'>{friend?.first_name} {friend?.last_name}</span>
+                                </div>
+                            </Link>
                             ))}
                         </div>
                     </div>
