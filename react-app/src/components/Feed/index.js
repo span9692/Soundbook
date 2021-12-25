@@ -24,7 +24,6 @@ function Feed() {
     const allFriends = useSelector(state => Object.values(state.friend_list))
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
-    console.log('allUsers', allUsers)
     
     // this displays all the friends/contacts of the logged in user
     const profile_owner_friends = [];
@@ -38,7 +37,19 @@ function Feed() {
     })
     const contact_list = allUsersValues.filter(el => profile_owner_friends.includes(el.id))
     // current user's friend in array contact_list
-    console.log('contact_list', contact_list)
+
+    // limit story to 5 friends
+    let story_friends;
+
+    if (contact_list.length > 5) {
+        story_friends = contact_list.slice(0,5)
+    } else {
+        story_friends = [...contact_list]
+    }
+
+    console.log('story_friends', story_friends)
+
+    // stories have been limited
 
     // this checks id of users that sent friend requests
     const requester_id = []; 
@@ -177,7 +188,18 @@ function Feed() {
                 </div>
                 <div className='feed-main-column'>
                     <div className='story-container'>
-                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                        {story_friends.map(friend => (
+                            <Link className='indiv-story-container' to={`/users/${friend.id}`}>
+                                <img className='story-images' src={friend.photos.length === 0 ? friend?.profile_pic : friend?.photos[0].photo}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={friend?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {friend?.first_name} {friend?.last_name}
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                        {/* <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
                                 <img className='story-images' src={loggedUser?.profile_pic}></img>
                                 <div className='story-profile-pic'>
                                     <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
@@ -212,16 +234,7 @@ function Feed() {
                                         {loggedUser?.first_name} {loggedUser?.last_name}
                                     </div>
                                 </div>
-                        </Link>
-                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
-                                <img className='story-images' src={loggedUser?.profile_pic}></img>
-                                <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
-                                    <div className='story-profile-name'>
-                                        {loggedUser?.first_name} {loggedUser?.last_name}
-                                    </div>
-                                </div>
-                        </Link>
+                        </Link> */}
                     </div>
                     <div className='feed-post-box'>
                         <div className='post-box feed-containers'>
