@@ -43,7 +43,7 @@ function Search() {
                 : null}
             </form>
             {searchParams.length > 0 ?
-            <div className='search-result-container'>
+            <div className={searchResults.length === 0 ? 'no-results' : 'search-result-container'}>
                 <span className='search-header'><span className='result-text'>Results</span> for '{searchParams}'</span>
                 {searchResults.map(result => (
                 <div key={result.id} className='search-result-row pointer' onClick={() => foundUser(result.id)}>

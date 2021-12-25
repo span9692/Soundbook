@@ -41,6 +41,18 @@
     border-radius: 12px;
 }
 
+.no-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    margin-top: 3rem;
+    background-color: white;
+    border-radius: 12px;
+    padding-bottom: .8rem;
+}
+
 .search-result-row {
     display: flex;
     align-items: center;
