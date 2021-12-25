@@ -11,11 +11,24 @@
     position: relative;
 }
 
+.right-side-feed {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .feed-side-column {
     display: flex;
     flex-direction: column;
     max-height: 100vh;
     position: fixed;
+}
+
+.feed-side-column2 {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    position: fixed;
+    margin-right: 1rem;
 }
 
 .feed-main-column {
@@ -65,6 +78,7 @@
 .friend-request-text {
     font-weight: bold;
     font-size: .9rem;
+    margin-bottom: -.5rem;
 }
 
 .individual-friend-request {
@@ -73,9 +87,10 @@
     background-color: white;
     border-radius: 8px;
     padding: .7rem;
-    padding-right: 8rem;
-    margin-top: .5rem;
+    padding-right: 4rem;
+    margin-top: 1rem;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    color:#c2c1c1
 }
 
 .friend-request-minus-portrait {
@@ -117,4 +132,27 @@
     padding: .6rem .9rem;
     border-radius: 5px;
     margin-top: .2rem;
+}
+
+/*contacts*/
+.contact-text {
+    font-weight: bold;
+    font-size: .9rem;
+    margin-bottom: .3rem;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.indiv-contact { 
+    display: flex;
+    align-items: center;
+    padding: .7rem;
+    border-radius: 8px;
+}
+
+.indiv-contact:hover {
+    background-color: rgb(216, 216, 216);
 }

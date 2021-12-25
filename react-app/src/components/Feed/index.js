@@ -23,19 +23,31 @@ function Feed() {
     const allFriends = useSelector(state => Object.values(state.friend_list))
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
-// console.log('allFriends type', typeof(allFriends))
-// console.log('allFriends', allFriends)
 
-    const requester_id = [];
-    // if (allFriends.length > 0) {
+
+    // this displays all the friends/contacts of the logged in user
+    const profile_owner_friends = [];
+    allFriends.forEach(friend => {
+        if (friend.confirmed === true && friend.friendAdder_id === loggedUser?.id) {
+            profile_owner_friends.push(friend.friendReceiver_id)
+        }
+        if (friend.confirmed === true && friend.friendReceiver_id === loggedUser?.id) {
+            profile_owner_friends.push(friend.friendAdder_id)
+        }
+    })
+    const contact_list = allUsersValues.filter(el => profile_owner_friends.includes(el.id))
+    // current user's friend in array contact_list
+
+    // this checks id of users that sent friend requests
+    const requester_id = []; 
     allFriends.forEach(friend => {
         if (friend.confirmed === false && friend.friendReceiver_id === loggedUser.id) {
             requester_id.push(friend.friendAdder_id)
         }
     })
-
     const friend_request_list = allUsersValues.filter(el => requester_id.includes(el.id))
-console.log('friend_request_list', friend_request_list)
+    // friend requests list determined
+
     const allPosts = useSelector(state => Object.values(state.post))
     const reversed = []
     allPosts.forEach(el => reversed.unshift(el))
@@ -315,20 +327,16 @@ console.log('friend_request_list', friend_request_list)
                             </div>
                             : null}
                         </div>))}
-
-
-
-
                     </div>
                 </div>
                 <div className='right-side-feed'>
-                    <div className='feed-side-column'>
+                    <div className='feed-side-column2'>
                         <div className='friend-request-text'>
                             Friend Requests
                         </div>
                         {friend_request_list.map(request => (
                         <>
-                            <div className='individual-friend-request'>
+                            <div key={request.id} className='individual-friend-request'>
                                 <img className='post-image-wall' src={request?.profile_pic}></img>
                                 <div className='friend-request-minus-portrait'>
                                     <div>
@@ -342,6 +350,18 @@ console.log('friend_request_list', friend_request_list)
                             </div>
                         </>
                         ))}
+                        <hr style={{ marginTop: 2 + 'rem', marginBottom: 2 + 'rem' }} size='1' width='100%' color='#c2c1c1'></hr>
+                        <div className='contact-text'>
+                            Contacts
+                        </div>
+                        <div className='contact-container'>
+                            {contact_list.map(friend => (
+                            <div key={friend.id} className='indiv-contact'>
+                                <img className='post-image-wall' src={friend?.profile_pic}></img>
+                                <span className='requester-name'>{friend?.first_name} {friend?.last_name}</span>
+                            </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
