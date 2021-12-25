@@ -171,14 +171,26 @@ function Feed() {
                         <div className='left-side-options pointer'>
                             <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'}></img>
                             <div className='feed-left-option-label'>COVID-19 Information Center</div>
-                        </div>
-                        
-                        
+                        </div>                                                
                     </div>
                 </div>
                 <div className='feed-main-column'>
                     <div className='story-container'>
-                        THIS IS THE USER'S FEED
+                        <div className='indiv-story-container'>
+                            <img className='story-images' src={loggedUser?.profile_pic}></img>
+                        </div>
+                        <div className='indiv-story-container'>
+                            <img className='story-images' src={loggedUser?.profile_pic}></img>
+                        </div>
+                        <div className='indiv-story-container'>
+                            <img className='story-images' src={loggedUser?.profile_pic}></img>
+                        </div>
+                        <div className='indiv-story-container'>
+                            <img className='story-images' src={loggedUser?.profile_pic}></img>
+                        </div>
+                        <div className='indiv-story-container'>
+                            <img className='story-images' src={loggedUser?.profile_pic}></img>
+                        </div>
                     </div>
                     <div className='feed-post-box'>
                         Reference

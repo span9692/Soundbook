@@ -69,8 +69,36 @@
 
 .story-container {
     width: 100%;
+    /* height: 300%; */
+    display: flex;
 }
 
+
+.indiv-story-container {
+    width: 20%;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0rem .2rem;
+}
+
+.story-container:first-child {
+    margin-left: 0rem!important;
+}
+
+.story-images {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: 12rem;
+}
+/* 
+.post-image-wall {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: .5rem; 
+} */
 
 
 

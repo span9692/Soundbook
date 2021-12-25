@@ -48,7 +48,7 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            # 'posts': [post.to_dict() for post in self.posts],
+            "photos": [photo.to_dict() for photo in self.photos],
             'first_name': self.first_name,
             'last_name': self.last_name,
             'alias': self.alias,

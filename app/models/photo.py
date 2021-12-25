@@ -14,6 +14,7 @@ class Photo(db.Model):
             "id": self.id,
             "photo": self.photo,
             "owner_id": self.owner_id,
+            # "photographer": self.users.to_dict(),
             "createdAt": self.createdAt
         }
 
