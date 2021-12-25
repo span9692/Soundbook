@@ -127,21 +127,23 @@ function Feed() {
                             </div>
                         </Link>
                         <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'}></img>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>Friends</div>
                         </div>
                         <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png'}></img>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>Watch</div>
                         </div>
                         <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/w-vdKCGzCy1.png'}></img>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/w-vdKCGzCy1.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>Photos</div>
                         </div>
                         <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'}></img>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>COVID-19 Information Center</div>
                         </div>
+
+
 
 
                         <div className='left-side-options pointer'>
