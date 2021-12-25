@@ -171,17 +171,58 @@ function Feed() {
                         <div className='left-side-options pointer'>
                             <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'}></img>
                             <div className='feed-left-option-label'>COVID-19 Information Center</div>
-                        </div>
-                        
-                        
+                        </div>                                                
                     </div>
                 </div>
                 <div className='feed-main-column'>
                     <div className='story-container'>
-                        THIS IS THE USER'S FEED
+                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                    </div>
+                                </div>
+                        </Link>
+                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                    </div>
+                                </div>
+                        </Link>
+                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                    </div>
+                                </div>
+                        </Link>
+                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                    </div>
+                                </div>
+                        </Link>
+                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
+                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                                <div className='story-profile-pic'>
+                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <div className='story-profile-name'>
+                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                    </div>
+                                </div>
+                        </Link>
                     </div>
                     <div className='feed-post-box'>
-                        Reference
                         <div className='post-box feed-containers'>
                         <div className='post-name-row'>
                             <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
