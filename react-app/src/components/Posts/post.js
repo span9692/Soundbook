@@ -224,7 +224,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
                                         <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
-                                            <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
+                                            <span className='post-name'>{post.poster_info?.alias ? post.poster_info?.alias : post.poster_info?.first_name+' '+post.poster_info?.last_name }</span>
                                         </Link>
                                         <span className='post-date'>{post.updatedAt}</span>
                                     </div>
@@ -287,7 +287,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                         <div className='name-comment'>
                                             <div className='edit-delete-comment-container'>
                                                 <Link className='link-to-friend-post' to={`/users/${comment.poster_info.id}`}>
-                                                    <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                                    <span className='post-comment-name'>{comment.poster_info?.alias ? comment.poster_info?.alias : comment.poster_info?.first_name+' '+comment.poster_info?.last_name }</span>
                                                 </Link>
                                                 <div className='comment-icon-position'>
                                                     {loggedUser.id === comment.user_id ?

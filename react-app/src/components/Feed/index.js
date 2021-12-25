@@ -123,7 +123,7 @@ function Feed() {
                         <Link className='link-to-friend' to={`/users/${loggedUser.id}`}>
                             <div className='left-side-options pointer'>
                                 <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
-                                <div className='feed-left-option-label'>{loggedUser?.first_name} {loggedUser?.last_name}</div>
+                                <div className='feed-left-option-label'>{loggedUser?.alias ? loggedUser?.alias : loggedUser?.first_name+' '+loggedUser?.last_name }</div>
                             </div>
                         </Link>
                         <div className='left-side-options pointer'>
@@ -194,47 +194,11 @@ function Feed() {
                                 <div className='story-profile-pic'>
                                     <img className='story-image-wall' src={friend?.profile_pic}></img>
                                     <div className='story-profile-name'>
-                                        {friend?.first_name} {friend?.last_name}
+                                        {friend?.alias ? friend?.alias : friend?.first_name+' '+friend?.last_name }
                                     </div>
                                 </div>
                             </Link>
                         ))}
-                        {/* <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
-                                <img className='story-images' src={loggedUser?.profile_pic}></img>
-                                <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
-                                    <div className='story-profile-name'>
-                                        {loggedUser?.first_name} {loggedUser?.last_name}
-                                    </div>
-                                </div>
-                        </Link>
-                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
-                                <img className='story-images' src={loggedUser?.profile_pic}></img>
-                                <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
-                                    <div className='story-profile-name'>
-                                        {loggedUser?.first_name} {loggedUser?.last_name}
-                                    </div>
-                                </div>
-                        </Link>
-                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
-                                <img className='story-images' src={loggedUser?.profile_pic}></img>
-                                <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
-                                    <div className='story-profile-name'>
-                                        {loggedUser?.first_name} {loggedUser?.last_name}
-                                    </div>
-                                </div>
-                        </Link>
-                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
-                                <img className='story-images' src={loggedUser?.profile_pic}></img>
-                                <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
-                                    <div className='story-profile-name'>
-                                        {loggedUser?.first_name} {loggedUser?.last_name}
-                                    </div>
-                                </div>
-                        </Link> */}
                     </div>
                     <div className='feed-post-box'>
                         <div className='post-box feed-containers'>
@@ -276,7 +240,7 @@ function Feed() {
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
                                         <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
-                                            <div className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</div>
+                                            <div className='post-name'>{post.poster_info?.alias ? post.poster_info?.alias : post.poster_info?.first_name+' '+post.poster_info?.last_name }</div>
                                         </Link>
                                         <span className='post-date'>{post.updatedAt}</span>
                                     </div>
@@ -339,7 +303,7 @@ function Feed() {
                                         <div className='name-comment'>
                                             <div className='edit-delete-comment-container'>
                                                 <Link className='link-to-friend-post' to={`/users/${comment.poster_info.id}`}>
-                                                    <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                                    <span className='post-comment-name'>{comment.poster_info?.alias ? comment.poster_info?.alias : comment.poster_info?.first_name+' '+comment.poster_info?.last_name }</span>
                                                 </Link>
                                                 <div className='comment-icon-position'>
                                                     {loggedUser.id === comment.user_id ?
@@ -411,7 +375,7 @@ function Feed() {
                                 <div className='friend-request-minus-portrait'>
                                     <div>
                                         <Link className='link-to-friend' to={`/users/${request.id}`}>
-                                            <span className='requester-name'>{request?.first_name} {request?.last_name}</span> <span className='sent-you-a-friend-request'>sent you a friend request.</span>
+                                            <span className='requester-name'>{request?.alias ? request?.alias : request?.first_name+' '+request?.last_name }</span> <span className='sent-you-a-friend-request'>sent you a friend request.</span>
                                         </Link>
                                     </div>
                                     <div className='friend-request-buttons'>
@@ -431,7 +395,7 @@ function Feed() {
                             <Link className='link-to-friend' to={`/users/${friend.id}`}>
                                 <div key={friend.id} className='indiv-contact'>
                                     <img className='post-image-wall' src={friend?.profile_pic}></img>
-                                    <span className='requester-name'>{friend?.first_name} {friend?.last_name}</span>
+                                    <span className='requester-name'>{friend?.alias ? friend?.alias : friend?.first_name+' '+friend?.last_name }</span>
                                 </div>
                             </Link>
                             ))}
