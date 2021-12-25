@@ -82,7 +82,15 @@
     box-sizing: border-box;
     position: relative;
     margin: 0rem .2rem;
+    transition: all .2s ease-in-out;
 }
+
+.indiv-story-container:hover {
+    transform: scale(1.05)
+}
+
+/* .grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); } */
 
 .story-container:first-child {
     margin-left: 0rem!important;
@@ -92,7 +100,7 @@
     border-radius: 8px;
     object-fit: cover;
     width: 100%;
-    height: 14rem;
+    height: 16rem; /*change height of stories*/
 }
 
 .story-profile-pic {
@@ -108,7 +116,7 @@
     border: .3rem solid #1877F2;
     margin-right: .5rem;
     position: absolute;
-    top: 5.5%;
+    top: 3.5%;
     left: 5.5%;
 }
 
