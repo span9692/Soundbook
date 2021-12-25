@@ -100,6 +100,48 @@ function Feed() {
                             <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'}></img>
                             <div className='feed-left-option-label'>COVID-19 Information Center</div>
                         </div>
+
+
+                        <div className='left-side-options pointer'>
+                            <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                            <div className='feed-left-option-label'>{loggedUser?.first_name} {loggedUser?.last_name}</div>
+                        </div>
+                        <div className='left-side-options pointer'>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'}></img>
+                            <div className='feed-left-option-label'>Friends</div>
+                        </div>
+                        <div className='left-side-options pointer'>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png'}></img>
+                            <div className='feed-left-option-label'>Watch</div>
+                        </div>
+                        <div className='left-side-options pointer'>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/w-vdKCGzCy1.png'}></img>
+                            <div className='feed-left-option-label'>Photos</div>
+                        </div>
+                        <div className='left-side-options pointer'>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'}></img>
+                            <div className='feed-left-option-label'>COVID-19 Information Center</div>
+                        </div>
+                        <div className='left-side-options pointer'>
+                            <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                            <div className='feed-left-option-label'>{loggedUser?.first_name} {loggedUser?.last_name}</div>
+                        </div>
+                        <div className='left-side-options pointer'>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'}></img>
+                            <div className='feed-left-option-label'>Friends</div>
+                        </div>
+                        <div className='left-side-options pointer'>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png'}></img>
+                            <div className='feed-left-option-label'>Watch</div>
+                        </div>
+                        <div className='left-side-options pointer'>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/w-vdKCGzCy1.png'}></img>
+                            <div className='feed-left-option-label'>Photos</div>
+                        </div>
+                        <div className='left-side-options pointer'>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'}></img>
+                            <div className='feed-left-option-label'>COVID-19 Information Center</div>
+                        </div>
                         
                         
                     </div>
@@ -264,8 +306,10 @@ function Feed() {
 
                     </div>
                 </div>
-                <div className='feed-side-column'>
-
+                <div className='right-side-feed'>
+                    <div className='feed-side-column'>
+                        Friend Requests
+                    </div>
                 </div>
             </div>
         </>
