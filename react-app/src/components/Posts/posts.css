@@ -224,7 +224,6 @@
     margin-top: 1rem;
 }
 
-
 /* .friends-container,
 .photos-container {
     min-width: 466px;
@@ -235,6 +234,7 @@
 .post-box {
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     width: 100%;
 }
 
