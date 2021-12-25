@@ -10,17 +10,32 @@ import './feed.css'
 function Feed() {
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
-
     const [editValue, setEditValue] = useState('')
     const [commentValue, setCommentValue] = useState('')
     const [editCommentValue, setEditCommentValue] = useState('')
-
     const [commentBoxId, setCommentBoxId] = useState('')
     const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
 
+
     const loggedUser = useSelector(state => state.session.user)
     const allComments = useSelector(state => Object.values(state.comment))
+    const allFriends = useSelector(state => Object.values(state.friend_list))
+    const allUsers = useSelector(state => state.user)
+    const allUsersValues = Object.values(allUsers)
+// console.log('allFriends type', typeof(allFriends))
+// console.log('allFriends', allFriends)
+
+    const requester_id = [];
+    // if (allFriends.length > 0) {
+    allFriends.forEach(friend => {
+        if (friend.confirmed === false && friend.friendReceiver_id === loggedUser.id) {
+            requester_id.push(friend.friendAdder_id)
+        }
+    })
+
+    const friend_request_list = allUsersValues.filter(el => requester_id.includes(el.id))
+console.log('friend_request_list', friend_request_list)
     const allPosts = useSelector(state => Object.values(state.post))
     const reversed = []
     allPosts.forEach(el => reversed.unshift(el))
@@ -308,7 +323,25 @@ function Feed() {
                 </div>
                 <div className='right-side-feed'>
                     <div className='feed-side-column'>
-                        Friend Requests
+                        <div className='friend-request-text'>
+                            Friend Requests
+                        </div>
+                        {friend_request_list.map(request => (
+                        <>
+                            <div className='individual-friend-request'>
+                                <img className='post-image-wall' src={request?.profile_pic}></img>
+                                <div className='friend-request-minus-portrait'>
+                                    <div>
+                                        <span className='requester-name'>{request?.first_name} {request?.last_name}</span> <span className='sent-you-a-friend-request'>sent you a friend request.</span>
+                                    </div>
+                                    <div className='friend-request-buttons'>
+                                        <div className='confirm-friend-request-btn'>Confirm</div>
+                                        <div className='delete-friend-request-btn'>Delete</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                        ))}
                     </div>
                 </div>
             </div>

@@ -4,8 +4,8 @@ from sqlalchemy import insert
 def seed_friend_list():
     db.session.execute(friend_list.insert().values(friendAdder_id=1, friendReceiver_id=2, confirmed=True))
     db.session.execute(friend_list.insert().values(friendAdder_id=1, friendReceiver_id=3, confirmed=True))
-    db.session.execute(friend_list.insert().values(friendAdder_id=4, friendReceiver_id=1, confirmed=True))
-    db.session.execute(friend_list.insert().values(friendAdder_id=5, friendReceiver_id=1, confirmed=True))
+    db.session.execute(friend_list.insert().values(friendAdder_id=4, friendReceiver_id=1, confirmed=False))
+    db.session.execute(friend_list.insert().values(friendAdder_id=5, friendReceiver_id=1, confirmed=False))
     db.session.execute(friend_list.insert().values(friendAdder_id=1, friendReceiver_id=6, confirmed=True))
     db.session.execute(friend_list.insert().values(friendAdder_id=1, friendReceiver_id=7, confirmed=True))
     db.session.execute(friend_list.insert().values(friendAdder_id=1, friendReceiver_id=8, confirmed=True))

@@ -14,7 +14,7 @@
 .feed-side-column {
     display: flex;
     flex-direction: column;
-    /* max-height: 100vh; */
+    max-height: 100vh;
     position: fixed;
 }
 
@@ -56,4 +56,65 @@
 
 .story-container {
     width: 100%;
+}
+
+
+
+
+/*right side of feed*/
+.friend-request-text {
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+.individual-friend-request {
+    display: flex;
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 8px;
+    padding: .7rem;
+    padding-right: 8rem;
+    margin-top: .5rem;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.friend-request-minus-portrait {
+    display: flex;
+    flex-direction: column;
+}
+
+.friend-request-buttons {
+    display: flex;
+}
+
+.requester-name {
+    font-weight: bold;
+    color: black;
+    font-size: .9rem;
+}
+
+.sent-you-a-friend-request {
+    color: rgb(131, 131, 131);
+    font-size: .9rem;
+}
+
+.confirm-friend-request-btn {
+    background-color: #1877F2;
+    color: white;
+    font-size: .9rem;
+    font-weight: bold;
+    padding: .6rem .9rem;
+    border-radius: 5px;
+    margin-top: .2rem;
+    margin-right: .5rem;
+}
+
+.delete-friend-request-btn {
+    background-color: rgb(221, 221, 221);
+    color: black;
+    font-size: .9rem;
+    font-weight: bold;
+    padding: .6rem .9rem;
+    border-radius: 5px;
+    margin-top: .2rem;
 }
