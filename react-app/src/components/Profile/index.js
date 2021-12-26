@@ -81,7 +81,7 @@ function Profile() {
         dispatch(getPosts(+userId))
         dispatch(getComments(+userId))
         dispatch(getFriends(+userId))
-    }, [dispatch])
+    }, [dispatch, userId])
 
     return (
         <>
