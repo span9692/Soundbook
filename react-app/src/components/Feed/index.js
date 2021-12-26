@@ -285,7 +285,7 @@ function Feed() {
                                 </form> : post.post_content
                                 }
                             </div>
-                            {allLikes.filter(like => like.post_id === post.id).length > 0 ? //temporary like/unlike switch
+                            {allLikes.filter(like => like.post_id === post.id).length > 0 ? //# of likes on post
                             <div className='like-post-container'>
                                 <i class="fas fa-thumbs-up thumbs-up-icon"></i>&nbsp;
                                 <span className='post-like-counter'>
@@ -356,10 +356,12 @@ function Feed() {
                                             </form> :
 
                                             <span className='post-comment'> {comment.comment_content}
-                                                {/* the following div will need to be rendered conditionally */}
+                                            {allLikes.filter(like => like.comment_id === comment.id).length > 0 ? //# of likes on comments
                                                 <div className='like-counter-container'>
-                                                    <i class="fas fa-thumbs-up thumbs-up-icon1"></i><span className='post-like-counter1'>&nbsp;10</span>
+                                                    <i class="fas fa-thumbs-up thumbs-up-icon1"></i><span className='post-like-counter1'>&nbsp;{allLikes.filter(like => like.comment_id === comment.id).length}</span>
                                                 </div>
+                                            :'asdf'
+                                            }
                                             </span>
                                         }
                                         </div>
