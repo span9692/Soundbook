@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { changeComment, newComment, removeComment } from '../../store/comment'
 import { changePost, createPost, deletePost } from '../../store/post'
 import { Link } from 'react-router-dom'
 import './posts.css'
+import { getAllLikes, postLike, postUnlike } from '../../store/like'
 
 function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
@@ -15,6 +16,9 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
     const [commentBoxId, setCommentBoxId] = useState('')
     const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
+
+    const allLikes = useSelector(state => Object.values(state.like))
+
 
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0, 9)
@@ -64,6 +68,14 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
         setEditId('')
     }
 
+    const likePost = (postId) => {
+        dispatch(postLike(postId, loggedUser.id))
+    }
+
+    const unlikePost = (postId) => {
+        dispatch(postUnlike(postId, loggedUser.id))
+    }
+
     const editComment = (commentId, editCommentValue) => {
         setCommentId('')
         dispatch(changeComment(commentId, editCommentValue))
@@ -85,6 +97,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
 
     useEffect(()=> {
         setCommentValue('')
+        dispatch(getAllLikes())
     }, [commentBoxId])
 
     return (
@@ -224,7 +237,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
                                         <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
-                                            <span className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</span>
+                                            <span className='post-name'>{post.poster_info?.alias ? post.poster_info?.alias : post.poster_info?.first_name+' '+post.poster_info?.last_name }</span>
                                         </Link>
                                         <span className='post-date'>{post.updatedAt}</span>
                                     </div>
@@ -257,17 +270,31 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                 </form> : post.post_content
                                 }
                             </div>
-                            {true ? //temporary like/unlike switch
+                            {allLikes.filter(like => like.post_id === post.id).length > 0 ? //temporary like/unlike switch
                             <div className='like-post-container'>
-                                <i class="fas fa-thumbs-up thumbs-up-icon"></i><span className='post-like-counter'>&nbsp;You and 6 other people liked this post</span>
+                                <i class="fas fa-thumbs-up thumbs-up-icon"></i>&nbsp;
+                                <span className='post-like-counter'>
+                                    {allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 0 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 1 ? '1 person liked this post'
+                                    : [allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 0 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length > 1 ? allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' people liked this post'
+                                        :[allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 0 ? 'You liked this post'
+                                            :[allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 1 ? 'You and 1 other person liked this post'
+                                                : 'You and '+allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' other people liked this post'                                                
+                                    ]]]}
+                                </span>
                             </div>
                             : null
                             }
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                             <div className='like-comment'>
+                            {allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 ?
                                 <div class='pointer'>
-                                    <span className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
+                                    <span onClick={()=>unlikePost(post.id)} className='unlike-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>
+                                : 
+                                <div class='pointer'>
+                                    <span onClick={()=>likePost(post.id)} className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
+                                </div>
+                            }
                                 <div class='pointer'>
                                     <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className='comment-button'><i class="far fa-comment"></i> Comment</span>
                                 </div>
@@ -287,7 +314,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                         <div className='name-comment'>
                                             <div className='edit-delete-comment-container'>
                                                 <Link className='link-to-friend-post' to={`/users/${comment.poster_info.id}`}>
-                                                    <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                                    <span className='post-comment-name'>{comment.poster_info?.alias ? comment.poster_info?.alias : comment.poster_info?.first_name+' '+comment.poster_info?.last_name }</span>
                                                 </Link>
                                                 <div className='comment-icon-position'>
                                                     {loggedUser.id === comment.user_id ?

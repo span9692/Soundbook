@@ -17,7 +17,6 @@ function Search() {
     }, [dispatch, searchParams])
 
     const clearSearch = () => {
-        console.log('asdfhjakldfh')
         setSearchParams('')
     }
 
@@ -44,12 +43,17 @@ function Search() {
                 : null}
             </form>
             {searchParams.length > 0 ?
-            <div className='search-result-container'>
+            <div className={searchResults.length === 0 ? 'no-results' : 'search-result-container'}>
                 <span className='search-header'><span className='result-text'>Results</span> for '{searchParams}'</span>
                 {searchResults.map(result => (
                 <div key={result.id} className='search-result-row pointer' onClick={() => foundUser(result.id)}>
                     <img className='search-portrait' src={result.profile_pic}></img>
-                    <div>{result.first_name} {result.last_name}</div>
+                    <div className='search-result-names'>
+                        <div className='result-names'>
+                            {result.first_name} {result.last_name}
+                        </div>
+                        {result.alias ? (<div className='result-alias'> {result.alias} </div>) : null}                        
+                    </div>
                 </div>
                 ))}
             </div>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { changeComment, getComments, newComment, removeComment } from '../../store/comment'
 import { getFriends } from '../../store/friend_list'
+import { getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
@@ -24,8 +25,10 @@ function Feed() {
     const allFriends = useSelector(state => Object.values(state.friend_list))
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
-    console.log('allUsers', allUsers)
+    const allLikes = useSelector(state => Object.values(state.like))
+    // console.log('allLikes', allLikes)
     
+
     // this displays all the friends/contacts of the logged in user
     const profile_owner_friends = [];
     allFriends.forEach(friend => {
@@ -38,7 +41,16 @@ function Feed() {
     })
     const contact_list = allUsersValues.filter(el => profile_owner_friends.includes(el.id))
     // current user's friend in array contact_list
-    console.log('contact_list', contact_list)
+
+    // limit story to 5 friends
+    let story_friends;
+
+    if (contact_list.length > 5) {
+        story_friends = contact_list.slice(0,5)
+    } else {
+        story_friends = [...contact_list]
+    }
+    // stories have been limited
 
     // this checks id of users that sent friend requests
     const requester_id = []; 
@@ -76,6 +88,14 @@ function Feed() {
         setEditId('')
     }
 
+    const likePost = (postId) => {
+        dispatch(postLike(postId, loggedUser.id))
+    }
+
+    const unlikePost = (postId) => {
+        dispatch(postUnlike(postId, loggedUser.id))
+    }
+
     const editComment = (commentId, editCommentValue) => {
         setCommentId('')
         dispatch(changeComment(commentId, editCommentValue))
@@ -102,6 +122,7 @@ function Feed() {
         dispatch(getAllPosts())
         dispatch(getComments(loggedUser.id))
         dispatch(getFriends(loggedUser.id))
+        dispatch(getAllLikes())
     }, [dispatch, commentBoxId])
 
     return (
@@ -112,25 +133,27 @@ function Feed() {
                         <Link className='link-to-friend' to={`/users/${loggedUser.id}`}>
                             <div className='left-side-options pointer'>
                                 <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
-                                <div className='feed-left-option-label'>{loggedUser?.first_name} {loggedUser?.last_name}</div>
+                                <div className='feed-left-option-label'>{loggedUser?.alias ? loggedUser?.alias : loggedUser?.first_name+' '+loggedUser?.last_name }</div>
                             </div>
                         </Link>
                         <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'}></img>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>Friends</div>
                         </div>
                         <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png'}></img>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>Watch</div>
                         </div>
                         <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/w-vdKCGzCy1.png'}></img>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/w-vdKCGzCy1.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>Photos</div>
                         </div>
                         <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'}></img>
+                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>COVID-19 Information Center</div>
                         </div>
+
+
 
 
                         <div className='left-side-options pointer'>
@@ -177,51 +200,17 @@ function Feed() {
                 </div>
                 <div className='feed-main-column'>
                     <div className='story-container'>
-                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
-                                <img className='story-images' src={loggedUser?.profile_pic}></img>
+                        {story_friends.map(friend => (
+                            <Link className='indiv-story-container' to={`/users/${friend.id}`}>
+                                <img className='story-images' src={friend.photos.length === 0 ? friend?.profile_pic : friend?.photos[0].photo}></img>
                                 <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
+                                    <img className='story-image-wall' src={friend?.profile_pic}></img>
                                     <div className='story-profile-name'>
-                                        {loggedUser?.first_name} {loggedUser?.last_name}
+                                        {friend?.alias ? friend?.alias : friend?.first_name+' '+friend?.last_name }
                                     </div>
                                 </div>
-                        </Link>
-                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
-                                <img className='story-images' src={loggedUser?.profile_pic}></img>
-                                <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
-                                    <div className='story-profile-name'>
-                                        {loggedUser?.first_name} {loggedUser?.last_name}
-                                    </div>
-                                </div>
-                        </Link>
-                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
-                                <img className='story-images' src={loggedUser?.profile_pic}></img>
-                                <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
-                                    <div className='story-profile-name'>
-                                        {loggedUser?.first_name} {loggedUser?.last_name}
-                                    </div>
-                                </div>
-                        </Link>
-                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
-                                <img className='story-images' src={loggedUser?.profile_pic}></img>
-                                <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
-                                    <div className='story-profile-name'>
-                                        {loggedUser?.first_name} {loggedUser?.last_name}
-                                    </div>
-                                </div>
-                        </Link>
-                        <Link className='indiv-story-container' to={`/users/${loggedUser.id}`}>
-                                <img className='story-images' src={loggedUser?.profile_pic}></img>
-                                <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={loggedUser?.profile_pic}></img>
-                                    <div className='story-profile-name'>
-                                        {loggedUser?.first_name} {loggedUser?.last_name}
-                                    </div>
-                                </div>
-                        </Link>
+                            </Link>
+                        ))}
                     </div>
                     <div className='feed-post-box'>
                         <div className='post-box feed-containers'>
@@ -263,7 +252,7 @@ function Feed() {
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
                                         <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
-                                            <div className='post-name'>{post.poster_info.first_name} {post.poster_info.last_name}</div>
+                                            <div className='post-name'>{post.poster_info?.alias ? post.poster_info?.alias : post.poster_info?.first_name+' '+post.poster_info?.last_name }</div>
                                         </Link>
                                         <span className='post-date'>{post.updatedAt}</span>
                                     </div>
@@ -296,17 +285,31 @@ function Feed() {
                                 </form> : post.post_content
                                 }
                             </div>
-                            {true ? //temporary like/unlike switch
+                            {allLikes.filter(like => like.post_id === post.id).length > 0 ? //temporary like/unlike switch
                             <div className='like-post-container'>
-                                <i class="fas fa-thumbs-up thumbs-up-icon"></i><span className='post-like-counter'>&nbsp;You and 6 other people liked this post</span>
+                                <i class="fas fa-thumbs-up thumbs-up-icon"></i>&nbsp;
+                                <span className='post-like-counter'>
+                                    {allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 0 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 1 ? '1 person liked this post'
+                                    : [allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 0 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length > 1 ? allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' people liked this post'
+                                        :[allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 0 ? 'You liked this post'
+                                            :[allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 1 ? 'You and 1 other person liked this post'
+                                                : 'You and '+allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' other people liked this post'                                                
+                                    ]]]}
+                                </span>
                             </div>
                             : null
                             }
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                             <div className='like-comment'>
+                            {allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 ?
                                 <div class='pointer'>
-                                    <span className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
+                                    <span onClick={()=>unlikePost(post.id)} className='unlike-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>
+                                : 
+                                <div class='pointer'>
+                                    <span onClick={()=>likePost(post.id)} className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
+                                </div>
+                            }
                                 <div class='pointer'>
                                     <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className='comment-button'><i class="far fa-comment"></i> Comment</span>
                                 </div>
@@ -326,7 +329,7 @@ function Feed() {
                                         <div className='name-comment'>
                                             <div className='edit-delete-comment-container'>
                                                 <Link className='link-to-friend-post' to={`/users/${comment.poster_info.id}`}>
-                                                    <span className='post-comment-name'>{comment.poster_info.first_name} {comment.poster_info.last_name}</span>
+                                                    <span className='post-comment-name'>{comment.poster_info?.alias ? comment.poster_info?.alias : comment.poster_info?.first_name+' '+comment.poster_info?.last_name }</span>
                                                 </Link>
                                                 <div className='comment-icon-position'>
                                                     {loggedUser.id === comment.user_id ?
@@ -398,7 +401,7 @@ function Feed() {
                                 <div className='friend-request-minus-portrait'>
                                     <div>
                                         <Link className='link-to-friend' to={`/users/${request.id}`}>
-                                            <span className='requester-name'>{request?.first_name} {request?.last_name}</span> <span className='sent-you-a-friend-request'>sent you a friend request.</span>
+                                            <span className='requester-name'>{request?.alias ? request?.alias : request?.first_name+' '+request?.last_name }</span> <span className='sent-you-a-friend-request'>sent you a friend request.</span>
                                         </Link>
                                     </div>
                                     <div className='friend-request-buttons'>
@@ -418,7 +421,7 @@ function Feed() {
                             <Link className='link-to-friend' to={`/users/${friend.id}`}>
                                 <div key={friend.id} className='indiv-contact'>
                                     <img className='post-image-wall' src={friend?.profile_pic}></img>
-                                    <span className='requester-name'>{friend?.first_name} {friend?.last_name}</span>
+                                    <span className='requester-name'>{friend?.alias ? friend?.alias : friend?.first_name+' '+friend?.last_name }</span>
                                 </div>
                             </Link>
                             ))}
