@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../../store/user'
@@ -8,12 +8,11 @@ import { getPhotos } from '../../store/photo'
 import { getPosts } from '../../store/post'
 import { getComments } from '../../store/comment'
 import { getFriends } from '../../store/friend_list'
+import Friends from '../Friends'
 
 function Profile() {
     const dispatch = useDispatch()
     const { userId } = useParams()
-    // const [urlId, setUrlId] = useState(userId)
-    // setUrlId(userId)
     const loggedUser = useSelector(state => state.session.user)
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
@@ -116,6 +115,7 @@ function Profile() {
                 </div >
                 <div className='mainColumn'>
                     <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
+                    <Friends/>
                 </div>
                 <div className='sideColumn'>
 
