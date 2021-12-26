@@ -496,7 +496,18 @@
     color: rgb(131, 131, 131)
 }
 
+.unlike-post-button {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    border-radius: 12px;
+    font-weight: bold;
+    color: #1877F2
+}
+
 .like-post-button:hover,
+.unlike-post-button:hover,
 .comment-button:hover {
     background-color: rgb(238, 238, 238);
 }

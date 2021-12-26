@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { changeComment, getComments, newComment, removeComment } from '../../store/comment'
 import { getFriends } from '../../store/friend_list'
-import { getAllLikes } from '../../store/like'
+import { getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
@@ -26,7 +26,7 @@ function Feed() {
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
     const allLikes = useSelector(state => Object.values(state.like))
-    console.log('allLikes', allLikes)
+    // console.log('allLikes', allLikes)
     
 
     // this displays all the friends/contacts of the logged in user
@@ -86,6 +86,14 @@ function Feed() {
     const editPost = (postId) => {
         dispatch(changePost(postId, editValue))
         setEditId('')
+    }
+
+    const likePost = (postId) => {
+        dispatch(postLike(postId, loggedUser.id))
+    }
+
+    const unlikePost = (postId) => {
+        dispatch(postUnlike(postId, loggedUser.id))
     }
 
     const editComment = (commentId, editCommentValue) => {
@@ -293,9 +301,15 @@ function Feed() {
                             }
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                             <div className='like-comment'>
+                                {allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 ?
                                 <div class='pointer'>
-                                    <span className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
+                                    <span onClick={()=>unlikePost(post.id)} className='unlike-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>
+                                : 
+                                <div class='pointer'>
+                                    <span onClick={()=>likePost(post.id)} className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
+                                </div>
+                            }
                                 <div class='pointer'>
                                     <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className='comment-button'><i class="far fa-comment"></i> Comment</span>
                                 </div>
