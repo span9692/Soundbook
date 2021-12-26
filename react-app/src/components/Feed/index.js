@@ -301,7 +301,7 @@ function Feed() {
                             }
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                             <div className='like-comment'>
-                                {allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 ?
+                            {allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 ?
                                 <div class='pointer'>
                                     <span onClick={()=>unlikePost(post.id)} className='unlike-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>
