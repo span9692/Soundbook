@@ -23,7 +23,25 @@ def likePost():
 @like_routes.route('/post/<int:postId>/<int:userId>', methods=['DELETE'])
 def unlikePost(postId, userId):
     unlike = Like.query.filter(Like.user_id == userId).filter(Like.post_id == postId).all()[0]
-    print('mmmmmmmmmmmmmmmmmmmmm', unlike, 'mmmmmmmmmmmmmmmmmmmmmmmmmmmm')
+    db.session.delete(unlike)
+    db.session.commit()
+    return jsonify({'message': 'Like has been deleted'}), 200
+
+@like_routes.route('/comment', methods=['POST'])
+def likeComment():
+    data = request.get_json()
+    newLike = Like(
+        user_id=data['userId'],
+        comment_id=data['commentId']
+    )
+
+    db.session.add(newLike)
+    db.session.commit()
+    return newLike.to_dict()
+
+@like_routes.route('/comment/<int:commentId>/<int:userId>', methods=['DELETE'])
+def unlikeComment(commentId, userId):
+    unlike = Like.query.filter(Like.user_id == userId).filter(Like.comment_id == commentId).all()[0]
     db.session.delete(unlike)
     db.session.commit()
     return jsonify({'message': 'Like has been deleted'}), 200
