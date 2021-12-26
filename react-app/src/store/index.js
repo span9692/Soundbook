@@ -7,6 +7,7 @@ import post from './post'
 import comment from './comment'
 import search from './search'
 import friend_list from './friend_list'
+import like from './like'
 
 const rootReducer = combineReducers({
   session,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   post,
   comment,
   search,
-  friend_list
+  friend_list,
+  like
 });
 
 

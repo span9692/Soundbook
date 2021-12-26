@@ -1,5 +1,3 @@
-import Posts from "../components/Posts/post"
-
 const GET_ALL_POSTS = 'posts/GET_ALL_Posts'
 const CREATE_NEW_POST = 'posts/CREATE_NEW_POST'
 const DELETE_POST = 'posts/DELETE_POST'

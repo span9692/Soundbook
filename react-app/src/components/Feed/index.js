@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { changeComment, getComments, newComment, removeComment } from '../../store/comment'
 import { getFriends } from '../../store/friend_list'
+import { getAllLikes } from '../../store/like'
 import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
@@ -24,7 +25,10 @@ function Feed() {
     const allFriends = useSelector(state => Object.values(state.friend_list))
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
+    const allLikes = useSelector(state => Object.values(state.like))
+    console.log('allLikes', allLikes)
     
+
     // this displays all the friends/contacts of the logged in user
     const profile_owner_friends = [];
     allFriends.forEach(friend => {
@@ -46,9 +50,6 @@ function Feed() {
     } else {
         story_friends = [...contact_list]
     }
-
-    console.log('story_friends', story_friends)
-
     // stories have been limited
 
     // this checks id of users that sent friend requests
@@ -113,6 +114,7 @@ function Feed() {
         dispatch(getAllPosts())
         dispatch(getComments(loggedUser.id))
         dispatch(getFriends(loggedUser.id))
+        dispatch(getAllLikes())
     }, [dispatch, commentBoxId])
 
     return (
@@ -275,9 +277,11 @@ function Feed() {
                                 </form> : post.post_content
                                 }
                             </div>
-                            {true ? //temporary like/unlike switch
+                            {allLikes.filter(like => like.post_id === post.id).length > 0 ? //temporary like/unlike switch
                             <div className='like-post-container'>
-                                <i class="fas fa-thumbs-up thumbs-up-icon"></i><span className='post-like-counter'>&nbsp;You and 6 other people liked this post</span>
+                                <i class="fas fa-thumbs-up thumbs-up-icon"></i><span className='post-like-counter'>&nbsp;You and 
+                                6 other people liked this post
+                                </span>
                             </div>
                             : null
                             }
