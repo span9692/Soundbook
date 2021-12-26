@@ -279,8 +279,14 @@ function Feed() {
                             </div>
                             {allLikes.filter(like => like.post_id === post.id).length > 0 ? //temporary like/unlike switch
                             <div className='like-post-container'>
-                                <i class="fas fa-thumbs-up thumbs-up-icon"></i><span className='post-like-counter'>&nbsp;You and 
-                                6 other people liked this post
+                                <i class="fas fa-thumbs-up thumbs-up-icon"></i>&nbsp;
+                                <span className='post-like-counter'>
+                                    {allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 0 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 1 ? '1 person liked this post'
+                                    : [allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 0 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length > 1 ? allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' people liked this post'
+                                        :[allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 0 ? 'You liked this post'
+                                            :[allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 1 ? 'You and 1 other person liked this post'
+                                                : 'You and '+allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' other people liked this post'                                                
+                                    ]]]}
                                 </span>
                             </div>
                             : null
