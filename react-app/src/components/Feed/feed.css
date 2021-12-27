@@ -11,6 +11,11 @@
     position: relative;
 }
 
+.left-side-feed {
+    box-sizing: border-box;
+    padding-left: 1rem;
+}
+
 .right-side-feed {
     display: flex;
     justify-content: flex-end;
@@ -19,16 +24,20 @@
 .feed-side-column {
     display: flex;
     flex-direction: column;
-    max-height: 100vh;
+    max-height: 90vh;
     position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .feed-side-column2 {
     display: flex;
     flex-direction: column;
-    max-height: 100vh;
+    max-height: 90vh;
     position: fixed;
-    margin-right: 1rem;
+    margin-right: .5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .feed-main-column {
@@ -39,10 +48,10 @@
 }
 
 .left-side-options {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     width: 100%;
-    margin-left: 1rem;
     margin-right: 5rem; /*extend border shading*/
     margin-bottom: .5rem;
     padding-left: .5rem;
@@ -141,6 +150,7 @@
     border-radius: 8px;
     padding: .7rem;
     padding-right: 4rem;
+    margin-right: .5rem;
     margin-top: 1rem;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     color:#c2c1c1
@@ -199,11 +209,12 @@
     flex-direction: column;
 }
 
-.indiv-contact { 
+.indiv-contact {
     display: flex;
     align-items: center;
     padding: .7rem;
     border-radius: 8px;
+    margin-right: .5rem;
 }
 
 .indiv-contact:hover {
