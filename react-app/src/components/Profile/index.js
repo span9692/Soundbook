@@ -8,12 +8,13 @@ import { getPhotos } from '../../store/photo'
 import { getPosts } from '../../store/post'
 import { getComments } from '../../store/comment'
 import { getFriends } from '../../store/friend_list'
+import Friends from '../Friends'
+import Photos from '../Photos'
 
 function Profile() {
     const dispatch = useDispatch()
+    const [display, setDisplay] = useState('friends')
     const { userId } = useParams()
-    // const [urlId, setUrlId] = useState(userId)
-    // setUrlId(userId)
     const loggedUser = useSelector(state => state.session.user)
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
@@ -22,18 +23,7 @@ function Profile() {
     const allPosts = useSelector(state => Object.values(state.post)).filter(el => el.profile_id === +userId)
     const allComments = useSelector(state => Object.values(state.comment))
     const allFriends = useSelector(state => Object.values(state.friend_list))
-    // console.log('allPosts', allPosts)
-    // let profile_owner_friends = [];
-    // allFriends.forEach(friend => {
-    //     if (friend.confirmed === true && friend.friendAdder_id === +userId) {
-    //         profile_owner_friends.push(friend.friendReceiver_id)
-    //     }
-    //     if (friend.confirmed === true && friend.friendReceiver_id === +userId) {
-    //         profile_owner_friends.push(friend.friendAdder_id)
-    //     }
-    // })
-    // console.log('profile_owner_friends', profile_owner_friends)
-    // console.log('allFriends', allFriends)
+    
     let option = null;
 
     if (loggedUser.id === +userId) {
@@ -75,13 +65,29 @@ function Profile() {
         }
     }
 
+    let content;
+
+    if (display === 'posts') {
+        content = (
+            <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
+        )
+    } else if (display === 'friends') {
+        content = (
+            <Friends profileId={userId} allFriends={allFriends} allUsersValues={allUsersValues}/>
+        )
+    } else if (display === 'photos') {
+        content = (
+            <Photos profile_photos={profile_photos}/>
+        )
+    }
+
     useEffect(()=> {
         dispatch(getUsers())
         dispatch(getPhotos(+userId))
         dispatch(getPosts(+userId))
         dispatch(getComments(+userId))
         dispatch(getFriends(+userId))
-    }, [dispatch])
+    }, [dispatch, userId])
 
     return (
         <>
@@ -98,10 +104,10 @@ function Profile() {
                     <hr style={{marginLeft:  19.4+'vw'}} size='1' width='63%' color='#dddfe2'></hr>
                     <div className='profile-nav'>
                         <div className='nav-links'>
-                            <div className='profile-nav-links profile-text'>Posts</div>
+                            <div onClick={()=>setDisplay('posts')} className='profile-nav-links profile-text'>Posts</div>
                             <div className='profile-nav-links profile-text'>About</div>
-                            <div className='profile-nav-links profile-text'>Friends</div>
-                            <div className='profile-nav-links profile-text'>Photos</div>
+                            <div onClick={()=>setDisplay('friends')} className='profile-nav-links profile-text'>Friends</div>
+                            <div onClick={()=>setDisplay('photos')} className='profile-nav-links profile-text'>Photos</div>
                         </div>
                         {/* <div className='edit-profile-btn'>
                             <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
@@ -115,7 +121,10 @@ function Profile() {
 
                 </div >
                 <div className='mainColumn'>
-                    <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
+                    {/* <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
+                    {/* <Friends profileId={userId} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
+                    {/* <Photos profile_photos={profile_photos}/> */}
+                    {content}
                 </div>
                 <div className='sideColumn'>
 

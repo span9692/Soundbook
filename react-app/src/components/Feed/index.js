@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { changeComment, getComments, newComment, removeComment } from '../../store/comment'
 import { getFriends } from '../../store/friend_list'
-import { getAllLikes, postLike, postUnlike } from '../../store/like'
+import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
@@ -113,6 +113,14 @@ function Feed() {
 
     const deleteComment = (commentId) => {
         dispatch(removeComment(commentId))
+    }
+
+    const likeComment = (commentId) => {
+        dispatch(commentLike(commentId, loggedUser.id))
+    }
+
+    const unlikeComment = (commentId) => {
+        dispatch(commentUnlike(commentId, loggedUser.id))
     }
 
     useEffect(()=> {
@@ -285,7 +293,7 @@ function Feed() {
                                 </form> : post.post_content
                                 }
                             </div>
-                            {allLikes.filter(like => like.post_id === post.id).length > 0 ? //temporary like/unlike switch
+                            {allLikes.filter(like => like.post_id === post.id).length > 0 ? //# of likes on post
                             <div className='like-post-container'>
                                 <i class="fas fa-thumbs-up thumbs-up-icon"></i>&nbsp;
                                 <span className='post-like-counter'>
@@ -356,16 +364,24 @@ function Feed() {
                                             </form> :
 
                                             <span className='post-comment'> {comment.comment_content}
-                                                {/* the following div will need to be rendered conditionally */}
+                                            {allLikes.filter(like => like.comment_id === comment.id).length > 0 ? //# of likes on comments
                                                 <div className='like-counter-container'>
-                                                    <i class="fas fa-thumbs-up thumbs-up-icon1"></i><span className='post-like-counter1'>&nbsp;10</span>
+                                                    <i class="fas fa-thumbs-up thumbs-up-icon1"></i><span className='post-like-counter1'>&nbsp;{allLikes.filter(like => like.comment_id === comment.id).length}</span>
                                                 </div>
+                                            : null
+                                            }
                                             </span>
                                         }
                                         </div>
+                                        {allLikes.filter(like => like.user_id === loggedUser.id && like.comment_id === comment.id).length === 1 ?
                                         <div>
-                                            <span className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; {comment.updatedAt}</span>
+                                            <span onClick={()=>unlikeComment(comment.id)} className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Unlike</span> &bull; {comment.updatedAt}</span>
                                         </div>
+                                        :
+                                        <div>
+                                            <span onClick={()=>likeComment(comment.id)} className='comment-detail like-unlike'><span className='like-unlike2 pointer'>Like</span> &bull; {comment.updatedAt}</span>
+                                        </div>
+                                        }
                                     </div>
                                 </div> : null)
                                 ))}
