@@ -20,8 +20,9 @@
 
 .cover-photo {
     object-fit: cover;
-    width: 50vw;
-    max-height: 50vh;
+    position: relative;
+    width: 50%;
+    max-height: 35rem;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 12px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
