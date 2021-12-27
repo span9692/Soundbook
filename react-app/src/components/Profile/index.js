@@ -14,7 +14,7 @@ import About from '../About'
 
 function Profile() {
     const dispatch = useDispatch()
-    const [display, setDisplay] = useState('friends')
+    const [display, setDisplay] = useState('posts')
     const { userId } = useParams()
     const loggedUser = useSelector(state => state.session.user)
     const allUsers = useSelector(state => state.user)
@@ -24,7 +24,7 @@ function Profile() {
     const allPosts = useSelector(state => Object.values(state.post)).filter(el => el.profile_id === +userId)
     const allComments = useSelector(state => Object.values(state.comment))
     const allFriends = useSelector(state => Object.values(state.friend_list))
-    
+
     let option = null;
 
     if (loggedUser.id === +userId) {
@@ -82,7 +82,7 @@ function Profile() {
         )
     } else if (display === 'about') {
         content = (
-            <About />
+            <About profile_owner={profile_owner}/>
         )
     }
 
@@ -129,7 +129,7 @@ function Profile() {
                     {/* <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
                     {/* <Friends profileId={userId} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
                     {/* <Photos profile_photos={profile_photos}/> */}
-                    <About />
+                    {/* <About profile_owner={profile_owner}/> */}
                     {content}
                 </div>
                 <div className='sideColumn'>
