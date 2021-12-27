@@ -1,11 +1,64 @@
-.friend-container {
+.friends-container {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    /* align-items: flex-start; */
     background-color: white;
     border-radius: 8px;
+    font-weight: bold;
     padding: .7rem;
-    padding-right: 4rem;
     margin-top: 1rem;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-    /* color:#c2c1c1 */
+}
+
+.friend-box {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.friend-box1 {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.indiv-friend-box {
+    display: flex;
+    width: 31.5%;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid rgb(245, 245, 245);
+    border-radius: 8px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: .5rem .5rem;
+}
+
+.square-portraits {
+    width: 5rem!important;
+    height: 5rem!important;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgb(223, 223, 223);
+}
+
+.square-portraits:hover {
+    -webkit-filter: brightness(96%);
+}
+
+.all-friends-link {
+    text-decoration: none;
+    color: black;
+}
+
+.friend-name {
+    margin-left: .7rem;
+}
+
+.friend-name:hover {
+    text-decoration: underline;
 }

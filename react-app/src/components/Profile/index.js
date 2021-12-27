@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../../store/user'
@@ -12,6 +12,7 @@ import Friends from '../Friends'
 
 function Profile() {
     const dispatch = useDispatch()
+    const [display, setDisplay] = useState('friends')
     const { userId } = useParams()
     const loggedUser = useSelector(state => state.session.user)
     const allUsers = useSelector(state => state.user)
@@ -21,18 +22,7 @@ function Profile() {
     const allPosts = useSelector(state => Object.values(state.post)).filter(el => el.profile_id === +userId)
     const allComments = useSelector(state => Object.values(state.comment))
     const allFriends = useSelector(state => Object.values(state.friend_list))
-    // console.log('allPosts', allPosts)
-    // let profile_owner_friends = [];
-    // allFriends.forEach(friend => {
-    //     if (friend.confirmed === true && friend.friendAdder_id === +userId) {
-    //         profile_owner_friends.push(friend.friendReceiver_id)
-    //     }
-    //     if (friend.confirmed === true && friend.friendReceiver_id === +userId) {
-    //         profile_owner_friends.push(friend.friendAdder_id)
-    //     }
-    // })
-    // console.log('profile_owner_friends', profile_owner_friends)
-    // console.log('allFriends', allFriends)
+    
     let option = null;
 
     if (loggedUser.id === +userId) {
@@ -72,6 +62,18 @@ function Profile() {
                 )
             }
         }
+    }
+
+    let content;
+
+    if (display === 'posts') {
+        content = (
+            <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
+        )
+    } else if (display === 'friends') {
+        content = (
+            <Friends profileId={userId} allFriends={allFriends} allUsersValues={allUsersValues}/>
+        )
     }
 
     useEffect(()=> {
@@ -114,8 +116,9 @@ function Profile() {
 
                 </div >
                 <div className='mainColumn'>
-                    <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
-                    <Friends/>
+                    {/* <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
+                    {content}
+                    {/* <Friends profileId={userId} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
                 </div>
                 <div className='sideColumn'>
 
