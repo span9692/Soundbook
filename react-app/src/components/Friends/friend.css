@@ -1,7 +1,6 @@
 .friends-container {
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; */
     background-color: white;
     border-radius: 8px;
     font-weight: bold;

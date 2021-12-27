@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../store/user';

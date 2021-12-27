@@ -5,6 +5,7 @@ import { changePost, createPost, deletePost } from '../../store/post'
 import { Link } from 'react-router-dom'
 import './posts.css'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
+import EditIntroModal from '../EditIntroModal'
 
 function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
@@ -163,7 +164,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                 <span className='row-Data'>Joined in <span className='profile-owner-info'>{profile_owner?.createdAt}</span></span>
                             </div>
                         </div>
-                        <button className='profile-nav-links1 edit-profileBtn1'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
+                        <EditIntroModal loggedUser={loggedUser}/>
                     </div>
 
                     <div className='photos-container containers'>
@@ -286,7 +287,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                     : [allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 0 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length > 1 ? allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' people liked this post'
                                         :[allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 0 ? 'You liked this post'
                                             :[allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 1 ? 'You and 1 other person liked this post'
-                                                : 'You and '+allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' other people liked this post'                                                
+                                                : 'You and '+allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' other people liked this post'
                                     ]]]}
                                 </span>
                             </div>
@@ -298,7 +299,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                 <div class='pointer'>
                                     <span onClick={()=>unlikePost(post.id)} className='unlike-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>
-                                : 
+                                :
                                 <div class='pointer'>
                                     <span onClick={()=>likePost(post.id)} className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>

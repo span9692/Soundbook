@@ -27,7 +27,7 @@ function Feed() {
     const allUsersValues = Object.values(allUsers)
     const allLikes = useSelector(state => Object.values(state.like))
     // console.log('allLikes', allLikes)
-    
+
 
     // this displays all the friends/contacts of the logged in user
     const profile_owner_friends = [];
@@ -53,7 +53,7 @@ function Feed() {
     // stories have been limited
 
     // this checks id of users that sent friend requests
-    const requester_id = []; 
+    const requester_id = [];
     allFriends.forEach(friend => {
         if (friend.confirmed === false && friend.friendReceiver_id === loggedUser.id) {
             requester_id.push(friend.friendAdder_id)
@@ -164,7 +164,7 @@ function Feed() {
 
 
 
-                        <div className='left-side-options pointer'>
+                        {/* <div className='left-side-options pointer'>
                             <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
                             <div className='feed-left-option-label'>{loggedUser?.first_name} {loggedUser?.last_name}</div>
                         </div>
@@ -203,7 +203,7 @@ function Feed() {
                         <div className='left-side-options pointer'>
                             <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'}></img>
                             <div className='feed-left-option-label'>COVID-19 Information Center</div>
-                        </div>                                                
+                        </div> */}
                     </div>
                 </div>
                 <div className='feed-main-column'>
@@ -301,7 +301,7 @@ function Feed() {
                                     : [allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 0 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length > 1 ? allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' people liked this post'
                                         :[allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 0 ? 'You liked this post'
                                             :[allLikes.filter(like => like.user_id === loggedUser.id && like.post_id === post.id).length === 1 && allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length === 1 ? 'You and 1 other person liked this post'
-                                                : 'You and '+allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' other people liked this post'                                                
+                                                : 'You and '+allLikes.filter(like => like.user_id !== loggedUser.id && like.post_id === post.id).length+' other people liked this post'
                                     ]]]}
                                 </span>
                             </div>
@@ -313,7 +313,7 @@ function Feed() {
                                 <div class='pointer'>
                                     <span onClick={()=>unlikePost(post.id)} className='unlike-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>
-                                : 
+                                :
                                 <div class='pointer'>
                                     <span onClick={()=>likePost(post.id)} className='like-post-button'><i class="far fa-thumbs-up"></i> Like</span>
                                 </div>
@@ -428,7 +428,7 @@ function Feed() {
                             </div>
                         </>
                         ))}
-                        <hr style={{ marginTop: 2 + 'rem', marginBottom: 2 + 'rem' }} size='1' width='100%' color='#c2c1c1'></hr>
+                        <hr style={{ marginTop: 2 + 'rem', marginBottom: 2 + 'rem', marginRight: .9 + 'rem' }} size='1' width='95%' color='#c2c1c1'></hr>
                         <div className='contact-text'>
                             Contacts
                         </div>
@@ -442,6 +442,49 @@ function Feed() {
                             </Link>
                             ))}
                         </div>
+                        {/* <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div>
+                        <div>
+                            asdf
+                        </div> */}
+
                     </div>
                 </div>
             </div>
