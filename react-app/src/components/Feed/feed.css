@@ -234,6 +234,7 @@
     text-decoration: none;
     display: flex;
     align-items: center;
+    color: black;
 }
 
 .link-to-friend-post:visited {
