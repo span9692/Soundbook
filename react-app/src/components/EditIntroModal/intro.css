@@ -1,0 +1,54 @@
+.edit-intro-form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.save-or-cancel {
+    display: flex;
+    width: 100%!important;
+    justify-content: center;
+}
+
+.edit-info-btns1 {
+    width: 50%!important;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: .5rem;
+}
+
+.edit-info-btns2 {
+    width: 50%!important;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: .5rem;
+}
+.editBtns1 {
+    height: 3.8vh;
+    width: 65%;
+    background-color: #1877F2;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.editBtns1:hover {
+    background-color: #1b6dda;
+}
+
+.editBtns2 {
+    height: 3.8vh;
+    width: 65%;
+    background-color: rgb(238, 238, 238);
+    border: none;
+    border-radius: 5px;
+    color: rgb(133, 133, 133);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.editBtns2:hover {
+    background-color: rgb(226, 226, 226);
+}

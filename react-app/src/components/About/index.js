@@ -70,7 +70,6 @@ function About({profile_owner}) {
                         <span className='row-Data'>Email: <span className='profile-owner-info'>{profile_owner?.email}</span></span>
                     </div>
                 </div>
-                {/* <i class="fas fa-venus-mars"></i> */}
                 <button className='profile-nav-links1 edit-profileBtn1 spacing-button'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
             </div>
         </>
