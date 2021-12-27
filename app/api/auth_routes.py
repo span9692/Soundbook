@@ -75,6 +75,14 @@ def update_display(userId):
     db.session.commit()
     return user.to_dict()
 
+@auth_routes.route('/cover/<int:userId>', methods=['PUT'])
+def update_cover(userId):
+    user = User.query.get(userId)
+    data = request.get_json()
+    user.cover_photo = data['coverPhoto']
+    db.session.commit()
+    return user.to_dict()
+
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
     """

@@ -12,6 +12,7 @@ import Friends from '../Friends'
 import Photos from '../Photos'
 import About from '../About'
 import EditDisplayModal from '../EditDisplayModal'
+import EditCoverPhotoModal from '../EditCoverPhotoModal'
 
 function Profile() {
     const dispatch = useDispatch()
@@ -106,7 +107,7 @@ function Profile() {
                         <img className='profile-photo' src={profile_owner?.profile_pic}></img>
                             <div>
                                 <div className='edit-profile-btn1'>
-                                    <button className='profile-nav-links edit-profileBtn'><i class="fas fa-camera"></i>&nbsp; Edit Cover Photo</button>
+                                    <EditCoverPhotoModal loggedUser={loggedUser}/>
                                 </div>
                             </div>
                         </div>

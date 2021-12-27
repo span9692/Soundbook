@@ -115,6 +115,23 @@ export const updateName = ({userId, firstName, lastName, alias}) => async dispat
   }
 }
 
+export const updateCover = ({userId, coverPhoto}) => async dispatch => {
+  const response = await fetch(`/api/auth/cover/${userId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      coverPhoto
+    }),
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateUser(data))
+  }
+}
+
 export const signUp = ({firstName, lastName, email, password, birthday, gender}) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
