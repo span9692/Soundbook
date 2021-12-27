@@ -106,17 +106,15 @@ function Profile() {
                         </div>
                     </div>
                     {/* hr styling style={{marginTop:  1+'rem', marginBottom: 1+'rem'}}  */}
-                    <hr style={{marginLeft:  19.4+'vw'}} size='1' width='63%' color='#dddfe2'></hr>
+                    {/* <hr style={{marginLeft:  19.4+'vw'}} size='1' width='63%' color='#dddfe2'></hr> */}
+                    <hr style={{marginLeft: 18.3+'%'}} size='1' width='63%' color='#dddfe2'></hr>
                     <div className='profile-nav'>
                         <div className='nav-links'>
-                            <div onClick={()=>setDisplay('posts')} className='profile-nav-links profile-text'>Posts</div>
-                            <div onClick={()=>setDisplay('about')} className='profile-nav-links profile-text'>About</div>
-                            <div onClick={()=>setDisplay('friends')} className='profile-nav-links profile-text'>Friends</div>
-                            <div onClick={()=>setDisplay('photos')} className='profile-nav-links profile-text'>Photos</div>
+                            <div onClick={()=>setDisplay('posts')} className={display === 'posts' ? 'profile-nav-links profile-text-in-focus' : 'profile-nav-links profile-text'}>Posts</div>
+                            <div onClick={()=>setDisplay('about')} className={display === 'about' ? 'profile-nav-links profile-text-in-focus' : 'profile-nav-links profile-text'}>About</div>
+                            <div onClick={()=>setDisplay('friends')} className={display === 'friends' ? 'profile-nav-links profile-text-in-focus' : 'profile-nav-links profile-text'}>Friends</div>
+                            <div onClick={()=>setDisplay('photos')} className={display === 'photos' ? 'profile-nav-links profile-text-in-focus' : 'profile-nav-links profile-text'}>Photos</div>
                         </div>
-                        {/* <div className='edit-profile-btn'>
-                            <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
-                        </div> */}
                         {option}
                     </div>
                 </div>
@@ -126,10 +124,6 @@ function Profile() {
 
                 </div >
                 <div className='mainColumn'>
-                    {/* <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
-                    {/* <Friends profileId={userId} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
-                    {/* <Photos profile_photos={profile_photos}/> */}
-                    {/* <About profile_owner={profile_owner}/> */}
                     {content}
                 </div>
                 <div className='sideColumn'>

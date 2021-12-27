@@ -54,44 +54,43 @@
 
 .profile-nav {
     display: flex;
-    justify-content: space-around;
-    width: 80vw;
-    padding-bottom: 1vh;
-    padding-left: 10vw;
+    justify-content: space-between;
+    width: 60%;
+    padding-bottom: .5rem;
+    margin-left: 20%;
     background-color: white;
     color: rgb(151, 151, 151);
 }
 
-/* .profile-nav {
-    display: flex;
-    justify-content: space-around;
-    width: 80vw;
-    padding-bottom: 1vh;
-    padding-left: 10vw;
-    background-color: white;
-    color: #1877F2;
-    border-bottom: 3px solid #1877F2;
-} */
-
-.profile-text:hover {
-    /* color: #2282ff; */
-    cursor: pointer;
-    background-color: rgb(238, 238, 238);
-    border-radius: 8px;
-    /* text-decoration: underline 3px #2282ff; */
-}
-
 .nav-links {
     display: flex;
-    /* margin-left: 0rem; */
 }
 
 .profile-nav-links {
     font-size: 1rem;
-    font-weight: 600;
-    margin-left: 3rem !important;
-    /* margin-right: 3rem !important; */
-    padding-left: 10;
+    font-weight: bold;
+}
+
+.profile-text {
+    margin-right: 3rem!important;
+    padding-top: .7rem!important;
+    padding-bottom: .7rem!important;
+    /* border-bottom: 5px solid #1877F2!important; */
+}
+
+.profile-text-in-focus {
+    margin-right: 3rem!important;
+    padding-top: .7rem!important;
+    padding-bottom: .7rem!important;
+    color: #1877F2;
+    border-bottom: 5px solid #1877F2!important;
+}
+
+.profile-text:hover {
+    cursor: pointer;
+    background-color: rgb(238, 238, 238);
+    border-radius: 8px;
+    color: #1877F2!important
 }
 
 .edit-profileBtn {
