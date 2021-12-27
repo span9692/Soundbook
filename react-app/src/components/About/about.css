@@ -1,0 +1,15 @@
+.about-box {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    padding: .7rem;
+    margin-top: 1rem;
+    margin-bottom: 1.3rem;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.about-text {
+    margin-bottom: .5rem;
+}
