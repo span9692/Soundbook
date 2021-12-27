@@ -96,6 +96,25 @@ export const updateInfo = ({userId, education, work, location, birthday, gender}
   }
 }
 
+export const updateName = ({userId, firstName, lastName, alias}) => async dispatch => {
+  const response = await fetch(`/api/auth/display/${userId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      alias
+    }),
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateUser(data))
+  }
+}
+
 export const signUp = ({firstName, lastName, email, password, birthday, gender}) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
@@ -133,7 +152,6 @@ export default function reducer(state = initialState, action) {
     case REMOVE_USER:
       return { user: null }
     case UPDATE_USER:
-      console.log('action.data', action.data)
       return { user: action.data }
     default:
       return state;

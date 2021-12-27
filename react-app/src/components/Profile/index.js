@@ -11,6 +11,7 @@ import { getFriends } from '../../store/friend_list'
 import Friends from '../Friends'
 import Photos from '../Photos'
 import About from '../About'
+import EditDisplayModal from '../EditDisplayModal'
 
 function Profile() {
     const dispatch = useDispatch()
@@ -30,7 +31,8 @@ function Profile() {
     if (loggedUser.id === +userId) {
         option = (
             <div className='edit-profile-btn'>
-                <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
+                {/* <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button> */}
+                <EditDisplayModal loggedUser={loggedUser}/>
             </div>
         )
     } else {

@@ -21,6 +21,25 @@ export const getUsers = () => async dispatch => {
   dispatch(showUsers(data))
 }
 
+export const updateNameAlias = ({userId, firstName, lastName, alias}) => async dispatch => {
+  const response = await fetch(`/api/auth/display/${userId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      alias
+    }),
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateUser(data))
+  }
+}
+
 export const updatePerson = ({userId, education, work, location, birthday, gender}) => async dispatch => {
   const response = await fetch(`/api/auth/update/${userId}`, {
     method: 'PUT',

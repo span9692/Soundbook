@@ -65,6 +65,16 @@ def update_info(userId):
     db.session.commit()
     return user.to_dict()
 
+@auth_routes.route('/display/<int:userId>', methods=['PUT'])
+def update_display(userId):
+    user = User.query.get(userId)
+    data = request.get_json()
+    user.first_name = data['firstName']
+    user.last_name = data['lastName']
+    user.alias = data['alias']
+    db.session.commit()
+    return user.to_dict()
+
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
     """
