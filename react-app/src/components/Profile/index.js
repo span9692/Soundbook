@@ -10,6 +10,7 @@ import { getComments } from '../../store/comment'
 import { getFriends } from '../../store/friend_list'
 import Friends from '../Friends'
 import Photos from '../Photos'
+import About from '../About'
 
 function Profile() {
     const dispatch = useDispatch()
@@ -79,6 +80,10 @@ function Profile() {
         content = (
             <Photos profile_photos={profile_photos}/>
         )
+    } else if (display === 'about') {
+        content = (
+            <About />
+        )
     }
 
     useEffect(()=> {
@@ -105,7 +110,7 @@ function Profile() {
                     <div className='profile-nav'>
                         <div className='nav-links'>
                             <div onClick={()=>setDisplay('posts')} className='profile-nav-links profile-text'>Posts</div>
-                            <div className='profile-nav-links profile-text'>About</div>
+                            <div onClick={()=>setDisplay('about')} className='profile-nav-links profile-text'>About</div>
                             <div onClick={()=>setDisplay('friends')} className='profile-nav-links profile-text'>Friends</div>
                             <div onClick={()=>setDisplay('photos')} className='profile-nav-links profile-text'>Photos</div>
                         </div>
@@ -124,6 +129,7 @@ function Profile() {
                     {/* <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
                     {/* <Friends profileId={userId} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
                     {/* <Photos profile_photos={profile_photos}/> */}
+                    <About />
                     {content}
                 </div>
                 <div className='sideColumn'>

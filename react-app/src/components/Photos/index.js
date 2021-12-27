@@ -7,9 +7,7 @@ function Photos({profile_photos}) {
                 <span className='photo-text'>Photos</span>
                 <div className='all-photo-box'>
                     {profile_photos.map(photo => (
-                        // <div>
-                            <img className='all-photos' src={photo.photo}></img>
-                        // </div>
+                        <img className='all-photos' src={photo.photo}></img>
                     ))}
                 </div>
             </div>
