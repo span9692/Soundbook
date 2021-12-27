@@ -18,7 +18,7 @@ function Friends({profileId, allFriends, allUsersValues}) {
     return (
         <>
             <div className='friends-container'>
-                Friends
+                <span className='friend-text'>Friends</span>
                 <div className={currentProfileFriends.length % 3 === 0 ? 'friend-box' : 'friend-box1'}>
                     {currentProfileFriends.length > 0 ?
                     (currentProfileFriends.map(friend => (

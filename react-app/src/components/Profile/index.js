@@ -9,6 +9,7 @@ import { getPosts } from '../../store/post'
 import { getComments } from '../../store/comment'
 import { getFriends } from '../../store/friend_list'
 import Friends from '../Friends'
+import Photos from '../Photos'
 
 function Profile() {
     const dispatch = useDispatch()
@@ -74,6 +75,10 @@ function Profile() {
         content = (
             <Friends profileId={userId} allFriends={allFriends} allUsersValues={allUsersValues}/>
         )
+    } else if (display === 'photos') {
+        content = (
+            <Photos profile_photos={profile_photos}/>
+        )
     }
 
     useEffect(()=> {
@@ -99,10 +104,10 @@ function Profile() {
                     <hr style={{marginLeft:  19.4+'vw'}} size='1' width='63%' color='#dddfe2'></hr>
                     <div className='profile-nav'>
                         <div className='nav-links'>
-                            <div className='profile-nav-links profile-text'>Posts</div>
+                            <div onClick={()=>setDisplay('posts')} className='profile-nav-links profile-text'>Posts</div>
                             <div className='profile-nav-links profile-text'>About</div>
-                            <div className='profile-nav-links profile-text'>Friends</div>
-                            <div className='profile-nav-links profile-text'>Photos</div>
+                            <div onClick={()=>setDisplay('friends')} className='profile-nav-links profile-text'>Friends</div>
+                            <div onClick={()=>setDisplay('photos')} className='profile-nav-links profile-text'>Photos</div>
                         </div>
                         {/* <div className='edit-profile-btn'>
                             <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
@@ -117,8 +122,9 @@ function Profile() {
                 </div >
                 <div className='mainColumn'>
                     {/* <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
-                    {content}
                     {/* <Friends profileId={userId} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
+                    {/* <Photos profile_photos={profile_photos}/> */}
+                    {content}
                 </div>
                 <div className='sideColumn'>
 
