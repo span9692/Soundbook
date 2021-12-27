@@ -23,13 +23,13 @@ function CoverPhoto({loggedUser, setShowModal}) {
                 <hr style={{marginTop: 1+'rem', marginBottom: .5+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                 <div className='email-field'>
                     <label className='edit-field-name alias-field'>Cover Photo URL</label>
-                    <input
-                    className='signup-field field-size signup-font alias-field'
+                    <textarea
+                    className='signup-field field-size signup-font1 alias-field'
                     name='coverPhoto'
                     placeholder='URL'
                     onChange={(e) => setCoverPhoto(e.target.value)}
                     value={coverPhoto}
-                    ></input>
+                    ></textarea>
                 </div>
                 <div className='save-or-cancel'>
                     <div className='edit-info-btns1'>

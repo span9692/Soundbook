@@ -1,0 +1,11 @@
+.signup-font1 {
+    font-size: .9rem;
+    padding-right: .7rem!important;
+    padding-left: .7rem!important;
+    padding-top: .3rem!important;
+    padding-bottom: .3rem!important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+    resize: none;
+    height: 7rem;
+}
