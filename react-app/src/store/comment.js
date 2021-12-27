@@ -38,7 +38,6 @@ export const getComments = (id) => async dispatch => {
 }
 
 export const newComment = (data) => async dispatch => {
-  console.log(data)
   const response = await fetch('/api/comment/new', {
     method: "POST",
     headers: {"Content-Type":"application/json"},
@@ -88,10 +87,8 @@ export default function reducer(state = {}, action) {
         return newState
       case EDIT_COMMENT:
         newState = {...state}
-        console.log('newState', newState)
-        console.log('action.data', action.data)
         newState[action.data['id']] = action.data
-        return newState   
+        return newState
       default:
         return state;
     }

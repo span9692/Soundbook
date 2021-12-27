@@ -1,17 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { updateInfo } from '../../store/session'
+import { useDispatch } from 'react-redux'
 import './intro.css'
+import { updatePerson } from '../../store/user'
 
-function IntroForm({loggedUser}) {
+function IntroForm({loggedUser, setShowModal}) {
+    const dispatch = useDispatch()
+
     let cleanBday = loggedUser.birthday.replace(',', "").split(' ')
     let array = cleanBday[1].split('')
     if(array[0] == 0) {
         cleanBday[1] = array[1]
     }
 
+    const userId = loggedUser.id;
+
     const [education, setEducation] = useState(loggedUser.education)
     const [work, setWork] = useState(loggedUser.work)
     const [location, setLocation] = useState(loggedUser.location)
-    const [email, setEmail] = useState(loggedUser.email);
     const [month, setMonth] = useState(cleanBday[0]);
     const [day, setDay] = useState(cleanBday[1]);
     const [year, setYear] = useState(cleanBday[2]);
@@ -28,13 +34,16 @@ function IntroForm({loggedUser}) {
         yearsArr.push(i)
     }
 
-    useEffect(()=> {
-        console.log(gender)
-    }, [gender])
+    const confirmEdit = async(e) => {
+        e.preventDefault();
+        dispatch(updateInfo({userId, education, work, location, birthday:`${year}-${month}-${day}`, gender}));
+        dispatch(updatePerson({userId, education, work, location, birthday:`${year}-${month}-${day}`, gender}));
+        setShowModal(false)
+    }
 
     return (
         <>
-            <form className='edit-intro-form'>
+            <form onSubmit={confirmEdit} className='edit-intro-form'>
                 <span className='edit-intro-title'>Edit Intro</span>
                 <hr style={{marginTop: 1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                 <div className='email-field'>
@@ -46,7 +55,6 @@ function IntroForm({loggedUser}) {
                     placeholder='Education'
                     onChange={(e) => setEducation(e.target.value)}
                     value={education}
-                    required={true}
                     ></input>
                 </div>
                 <div className='email-field'>
@@ -58,7 +66,6 @@ function IntroForm({loggedUser}) {
                     placeholder='Work'
                     onChange={(e) => setWork(e.target.value)}
                     value={work}
-                    required={true}
                     ></input>
                 </div>
                 <div className='email-field'>
@@ -70,7 +77,6 @@ function IntroForm({loggedUser}) {
                     placeholder='Location'
                     onChange={(e) => setLocation(e.target.value)}
                     value={location}
-                    required={true}
                     ></input>
                 </div>
                 <label className='edit-field-name'>Birthday</label>
@@ -154,7 +160,7 @@ function IntroForm({loggedUser}) {
                         <button type='submit' className='editBtns1 pointer'>Save</button>
                     </div>
                     <div className='edit-info-btns2'>
-                        <button type='button' className='editBtns2 pointer'>Cancel</button>
+                        <button type='button' onClick={()=>setShowModal(false)} className='editBtns2 pointer'>Cancel</button>
                     </div>
                 </div>
             </form>

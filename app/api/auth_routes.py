@@ -53,6 +53,17 @@ def logout():
     logout_user()
     return {'message': 'User logged out'}
 
+@auth_routes.route('/update/<int:userId>', methods=['PUT'])
+def update_info(userId):
+    user = User.query.get(userId)
+    data = request.get_json()
+    user.education = data['education']
+    user.work = data['work']
+    user.location = data['location']
+    user.birthday = data['birthday']
+    user.gender = data['gender']
+    db.session.commit()
+    return user.to_dict()
 
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
