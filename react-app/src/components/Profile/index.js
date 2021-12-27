@@ -82,7 +82,7 @@ function Profile() {
         )
     } else if (display === 'about') {
         content = (
-            <About profile_owner={profile_owner}/>
+            <About loggedUser={loggedUser} profile_owner={profile_owner}/>
         )
     }
 

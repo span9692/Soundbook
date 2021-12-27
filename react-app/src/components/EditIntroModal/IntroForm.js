@@ -44,7 +44,7 @@ function IntroForm({loggedUser, setShowModal}) {
     return (
         <>
             <form onSubmit={confirmEdit} className='edit-intro-form'>
-                <span className='edit-intro-title'>Edit Intro</span>
+                <span className='edit-intro-title'>Edit Profile</span>
                 <hr style={{marginTop: 1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                 <div className='email-field'>
                     <label className='edit-field-name'>Education</label>
