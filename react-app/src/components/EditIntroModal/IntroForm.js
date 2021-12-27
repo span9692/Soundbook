@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './intro.css'
 
 function IntroForm({loggedUser}) {
@@ -7,10 +7,11 @@ function IntroForm({loggedUser}) {
     if(array[0] == 0) {
         cleanBday[1] = array[1]
     }
-    
+
     const [education, setEducation] = useState(loggedUser.education)
     const [work, setWork] = useState(loggedUser.work)
-    const [location, setLocation] = useState(loggedUser.education)
+    const [location, setLocation] = useState(loggedUser.location)
+    const [email, setEmail] = useState(loggedUser.email);
     const [month, setMonth] = useState(cleanBday[0]);
     const [day, setDay] = useState(cleanBday[1]);
     const [year, setYear] = useState(cleanBday[2]);
@@ -27,13 +28,17 @@ function IntroForm({loggedUser}) {
         yearsArr.push(i)
     }
 
+    useEffect(()=> {
+        console.log(gender)
+    }, [gender])
+
     return (
         <>
             <form className='edit-intro-form'>
-                <span>Edit Intro</span>
+                <span className='edit-intro-title'>Edit Intro</span>
                 <hr style={{marginTop: 1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                 <div className='email-field'>
-                    <label>Education</label>
+                    <label className='edit-field-name'>Education</label>
                     <input
                     type='text'
                     className='signup-field field-size signup-font'
@@ -45,7 +50,7 @@ function IntroForm({loggedUser}) {
                     ></input>
                 </div>
                 <div className='email-field'>
-                    <label>Work</label>
+                    <label className='edit-field-name'>Work</label>
                     <input
                     type='text'
                     className='signup-field field-size signup-font'
@@ -57,7 +62,7 @@ function IntroForm({loggedUser}) {
                     ></input>
                 </div>
                 <div className='email-field'>
-                    <label>Location</label>
+                    <label className='edit-field-name'>Location</label>
                     <input
                     type='text'
                     className='signup-field field-size signup-font'
@@ -68,7 +73,7 @@ function IntroForm({loggedUser}) {
                     required={true}
                     ></input>
                 </div>
-                <label>Birthday</label>
+                <label className='edit-field-name'>Birthday</label>
                 <div className='signup-birthday-field'>
                     <div className='month-field'>
                         <select
@@ -122,33 +127,25 @@ function IntroForm({loggedUser}) {
                         </select>
                     </div>
                 </div>
-                <label>Gender</label>
+                <label className='edit-field-name'>Gender</label>
                 <div className='gender-container'>
                     <div className='signup-field gender-field gender-male'>
                         <label for='male'>Male</label>
                     <div className='radio-buttons'>
-                        {loggedUser.gender === 'Male' ?
-                        <input onChange={(e) => setGender(e.target.value)} type='radio' id='male' name='gender' value='Male' checked required={true}></input>
-                        : <input onChange={(e) => setGender(e.target.value)} type='radio' id='male' name='gender' value='Male' required={true}></input>
-                        }
+                        <input onChange={(e) => setGender(e.target.value)} type='radio' id='male' name='gender' value='Male' checked={gender==='Male'}></input>
                     </div>
                     </div>
                     <div className='signup-field gender-field gender-female'>
                         <label for='female'>Female</label>
                     <div className='radio-buttons'>
-                        {loggedUser.gender === 'Female' ?
-                        <input onChange={(e) => setGender(e.target.value)} type='radio' id='female' name='gender' checked value='Female'></input>
-                        : <input onChange={(e) => setGender(e.target.value)} type='radio' id='female' name='gender' value='Female'></input>
-                        }
+
+                        <input onChange={(e) => setGender(e.target.value)} type='radio' id='female' name='gender' value='Female' checked={gender==='Female'}></input>
                     </div>
                     </div>
                     <div className='signup-field gender-field gender-other'>
                         <label for='other'>Other</label>
                     <div className='radio-buttons'>
-                        {loggedUser.gender === 'Other' ?
-                        <input onChange={(e) => setGender(e.target.value)} type='radio' id='other' name='gender' value={'Other'}></input>
-                        : <input onChange={(e) => setGender(e.target.value)} type='radio' id='other' name='gender' value={'Other'}></input>
-                        }
+                        <input onChange={(e) => setGender(e.target.value)} type='radio' id='other' name='gender' value='Other' checked={gender==='Other'}></input>
                     </div>
                     </div>
                 </div>

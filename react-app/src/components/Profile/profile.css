@@ -84,10 +84,16 @@
     border-bottom: 3px solid #1877F2!important;
 }
 
+.profile-text-in-focus:hover {
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(238, 238, 238)!important;
+}
+
 .profile-text:hover {
     cursor: pointer;
     background-color: rgb(238, 238, 238);
-    border-radius: 8px;
+    border-radius: 5px;
     color: #1877F2!important
 }
 
