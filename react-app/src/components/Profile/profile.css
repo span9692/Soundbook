@@ -74,8 +74,6 @@
 .profile-text {
     margin-right: 3rem!important;
     padding-top: .7rem!important;
-    padding-bottom: .7rem!important;
-    /* border-bottom: 5px solid #1877F2!important; */
 }
 
 .profile-text-in-focus {
@@ -83,7 +81,7 @@
     padding-top: .7rem!important;
     padding-bottom: .7rem!important;
     color: #1877F2;
-    border-bottom: 5px solid #1877F2!important;
+    border-bottom: 3px solid #1877F2!important;
 }
 
 .profile-text:hover {
