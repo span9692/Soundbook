@@ -54,6 +54,23 @@ function About({profile_owner}) {
                         <span className='row-Data'>Joined in <span className='profile-owner-info'>{profile_owner?.createdAt}</span></span>
                     </div>
                 </div>
+                <div className='category-row icon about-spacing'>
+                    <div className='icon-row'>
+                        <i class="fas fa-venus-mars"></i>
+                    </div>
+                    <div className='info'>
+                        <span className='row-Data'>Gender: <span className='profile-owner-info'>{profile_owner?.gender}</span></span>
+                    </div>
+                </div>
+                <div className='category-row icon about-spacing'>
+                    <div className='icon-row'>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div className='info'>
+                        <span className='row-Data'>Email: <span className='profile-owner-info'>{profile_owner?.email}</span></span>
+                    </div>
+                </div>
+                {/* <i class="fas fa-venus-mars"></i> */}
                 <button className='profile-nav-links1 edit-profileBtn1 spacing-button'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
             </div>
         </>
