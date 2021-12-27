@@ -103,6 +103,12 @@ function Profile() {
                     <div className='profile-images'>
                         <img className='cover-photo' src={profile_owner?.cover_photo}></img>
                         <img className='profile-photo' src={profile_owner?.profile_pic}></img>
+                        <div className='edit-profile-picture'>
+                            <button className='profile-nav-links edit-profilePicBtn'><i class="fas fa-camera"></i></button>
+                        </div>
+                        <div className='edit-profile-btn1'>
+                            <button className='profile-nav-links edit-profileBtn'><i class="fas fa-camera"></i>&nbsp; Edit Cover Photo</button>
+                        </div>
                         <div className='profile-content'>
                             {profile_owner?.first_name} {profile_owner?.last_name}
                         </div>

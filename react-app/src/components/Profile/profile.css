@@ -105,6 +105,21 @@
     color: rgb(87, 87, 87);
 }
 
+.edit-profilePicBtn {
+    border-radius: 50%!important;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    color: rgb(87, 87, 87);
+    background-color: rgb(221, 221, 221);
+    /* width: 2vw;
+    height: 2vw; */
+}
+
+.edit-profilePicBtn:hover {
+    background-color: rgb(196, 196, 196);
+}
+
 .friends-profileBtn {
     border-radius: 8px;
     border: none;
@@ -122,6 +137,22 @@
     left: 0;
     width: fit-content;
     display: flex;
+}
+
+.edit-profile-btn1 {
+    width: fit-content;
+    display: flex;
+    position: absolute;
+    bottom: 21.7%;
+    right: 25%;
+}
+
+.edit-profile-picture {
+    width: fit-content;
+    display: flex;
+    position: absolute;
+    bottom: 1%;
+    left: 33%;
 }
 
 .profile-bottom-half {
