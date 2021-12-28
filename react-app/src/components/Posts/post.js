@@ -48,6 +48,13 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
     commentCheck = new Set(commentCheck)
     commentCheck = Array.from(commentCheck)
 
+    console.log('currentProfileFriends before filter', currentProfileFriends)
+
+    if (currentProfileFriends.length > 9) {
+        currentProfileFriends = currentProfileFriends.slice(0, 9)
+    }
+
+    console.log('currentProfileFriends after filter', currentProfileFriends)
     const reversed = []
     allPosts.forEach(el => reversed.unshift(el))
 
