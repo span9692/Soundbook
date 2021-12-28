@@ -1,12 +1,26 @@
 .friend-modal-container {
     padding: 1rem;
     max-height: 60vh;
+    background-color: white;
     overflow-y: auto;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 12px;
+    min-width: 450px;
+    width: 29vw;
 }
 
 .friend-modal-container::-webkit-scrollbar {
     display: none;
+    /* width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 500px; */
 }
+
+/* .friend-modal-container::-webkit-scrollbar-thumb {
+    background: rgb(202, 202, 202);
+    border-radius: 500px;
+} */
 
 .f-text {
     font-weight: bold;
@@ -39,8 +53,8 @@
     background-color: white;
     margin-left: 1rem;
     margin-right: 1rem;
-    margin-top: .4rem;
-    margin-bottom: .4rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }
 
