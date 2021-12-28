@@ -13,6 +13,7 @@ import Photos from '../Photos'
 import About from '../About'
 import EditDisplayModal from '../EditDisplayModal'
 import EditCoverPhotoModal from '../EditCoverPhotoModal'
+import EditProfilePhotoModal from '../EditProfilePhoto'
 
 function Profile() {
     const dispatch = useDispatch()
@@ -32,7 +33,6 @@ function Profile() {
     if (loggedUser.id === +userId) {
         option = (
             <div className='edit-profile-btn'>
-                {/* <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button> */}
                 <EditDisplayModal loggedUser={loggedUser}/>
             </div>
         )
@@ -112,7 +112,7 @@ function Profile() {
                             </div>
                         </div>
                         <div className='edit-profile-picture'>
-                            <button className='profile-nav-links edit-profilePicBtn'><i class="fas fa-camera"></i></button>
+                            <EditProfilePhotoModal loggedUser={loggedUser}/>
                         </div>
                         <div className='profile-content'>
                             {profile_owner?.first_name} {profile_owner?.last_name}

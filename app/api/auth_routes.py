@@ -83,6 +83,15 @@ def update_cover(userId):
     db.session.commit()
     return user.to_dict()
 
+@auth_routes.route('/profilephoto/<int:userId>', methods=['PUT'])
+def update_profilephoto(userId):
+    user = User.query.get(userId)
+    data = request.get_json()
+    print('qqqqqqqqqqqqqqqqqqqqqqq', data,'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
+    user.profile_pic = data['ProfilePhoto']
+    db.session.commit()
+    return user.to_dict()
+
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
     """

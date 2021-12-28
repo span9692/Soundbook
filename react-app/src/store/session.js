@@ -132,6 +132,24 @@ export const updateCover = ({userId, coverPhoto}) => async dispatch => {
   }
 }
 
+export const updateProfilePic = ({userId, ProfilePhoto}) => async dispatch => {
+  console.log('ProfilePhoto', {ProfilePhoto})
+  const response = await fetch(`/api/auth/profilephoto/${userId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      ProfilePhoto
+    }),
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateUser(data))
+  }
+}
+
 export const signUp = ({firstName, lastName, email, password, birthday, gender}) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
