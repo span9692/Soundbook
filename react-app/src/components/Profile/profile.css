@@ -46,11 +46,29 @@
 
 .profile-content {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     left: 37%;
-    bottom: 5%;
-    font-size: 4em;
+    bottom: 1.5%;
+    font-size: 3vw;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
+}
+
+.profile2-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 37%;
+    bottom: 4.5%;
+    font-size: 3vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.profile-alias {
+    color: grey;
+    font-size: 2vw!important;
 }
 
 .profile-nav {
