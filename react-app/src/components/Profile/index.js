@@ -73,7 +73,7 @@ function Profile() {
 
     if (display === 'posts') {
         content = (
-            <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
+            <Posts setDisplay={setDisplay} profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
         )
     } else if (display === 'friends') {
         content = (

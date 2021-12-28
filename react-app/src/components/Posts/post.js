@@ -7,7 +7,7 @@ import './posts.css'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import EditIntroModal from '../EditIntroModal'
 
-function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
+function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
     const [editValue, setEditValue] = useState('')
@@ -170,7 +170,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                     <div className='photos-container containers'>
                         <div className='photos-label'>
                             <span className='profile-labels'>Photos</span>
-                            <span className='edit-profileBtn3'>See All Photos</span>
+                            <span className='edit-profileBtn3' onClick={() => setDisplay('photos')}>See All Photos</span>
                         </div>
                         <div className='nine-images'>
                             {profile_photos.map((photo, index) => (
@@ -186,7 +186,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                     <div className='friends-container containers'>
                         <div className='photos-label1'>
                             <span className='profile-labels'>Friends</span>
-                            <span className='edit-profileBtn3'>See All Friends</span>
+                            <span className='edit-profileBtn3' onClick={() => setDisplay('friends')}>See All Friends</span>
                         </div>
                         <div className='nine-friends'>
                             {currentProfileFriends.map((friend) => (
