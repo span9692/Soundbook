@@ -20,8 +20,9 @@
 
 .cover-photo {
     object-fit: cover;
-    width: 50vw;
-    max-height: 50vh;
+    position: relative;
+    width: 50%;
+    max-height: 35rem;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 12px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
@@ -105,6 +106,21 @@
     color: rgb(87, 87, 87);
 }
 
+.edit-profilePicBtn {
+    border-radius: 50%!important;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    color: rgb(87, 87, 87);
+    background-color: rgb(221, 221, 221);
+    /* width: 2vw;
+    height: 2vw; */
+}
+
+.edit-profilePicBtn:hover {
+    background-color: rgb(196, 196, 196);
+}
+
 .friends-profileBtn {
     border-radius: 8px;
     border: none;
@@ -122,6 +138,22 @@
     left: 0;
     width: fit-content;
     display: flex;
+}
+
+.edit-profile-btn1 {
+    width: fit-content;
+    display: flex;
+    position: absolute;
+    bottom: 21.7%;
+    right: 25%;
+}
+
+.edit-profile-picture {
+    width: fit-content;
+    display: flex;
+    position: absolute;
+    bottom: 1%;
+    left: 33%;
 }
 
 .profile-bottom-half {

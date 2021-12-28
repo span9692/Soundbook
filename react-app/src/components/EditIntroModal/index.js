@@ -9,7 +9,7 @@ function EditIntroModal({loggedUser}) {
             <button className='profile-nav-links1 edit-profileBtn1' onClick={() => setShowModal(true)}><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                <IntroForm loggedUser={loggedUser}/>
+                <IntroForm loggedUser={loggedUser} setShowModal={setShowModal}/>
             </Modal>
             )}
         </>

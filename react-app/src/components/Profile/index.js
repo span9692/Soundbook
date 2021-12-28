@@ -11,6 +11,9 @@ import { getFriends } from '../../store/friend_list'
 import Friends from '../Friends'
 import Photos from '../Photos'
 import About from '../About'
+import EditDisplayModal from '../EditDisplayModal'
+import EditCoverPhotoModal from '../EditCoverPhotoModal'
+import EditProfilePhotoModal from '../EditProfilePhoto'
 
 function Profile() {
     const dispatch = useDispatch()
@@ -30,7 +33,7 @@ function Profile() {
     if (loggedUser.id === +userId) {
         option = (
             <div className='edit-profile-btn'>
-                <button className='profile-nav-links edit-profileBtn'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button>
+                <EditDisplayModal loggedUser={loggedUser}/>
             </div>
         )
     } else {
@@ -82,7 +85,7 @@ function Profile() {
         )
     } else if (display === 'about') {
         content = (
-            <About profile_owner={profile_owner}/>
+            <About loggedUser={loggedUser} profile_owner={profile_owner}/>
         )
     }
 
@@ -100,7 +103,17 @@ function Profile() {
                 <div className='profile-background-color'>
                     <div className='profile-images'>
                         <img className='cover-photo' src={profile_owner?.cover_photo}></img>
+                        <div>
                         <img className='profile-photo' src={profile_owner?.profile_pic}></img>
+                            <div>
+                                <div className='edit-profile-btn1'>
+                                    <EditCoverPhotoModal loggedUser={loggedUser}/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='edit-profile-picture'>
+                            <EditProfilePhotoModal loggedUser={loggedUser}/>
+                        </div>
                         <div className='profile-content'>
                             {profile_owner?.first_name} {profile_owner?.last_name}
                         </div>

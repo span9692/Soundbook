@@ -30,7 +30,7 @@ const LoginForm = () => {
   // }
 
   const demoLogin = () => {
-    dispatch(login('demo@aa.io', 'password'))
+    dispatch(login('ojackson@gmail.com', 'password'))
   }
 
   const onLogin = async (e) => {

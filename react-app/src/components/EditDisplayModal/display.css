@@ -1,0 +1,21 @@
+.first-last-name-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    width: 48%;
+}
+
+.signup-name-field2 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.first-name-field2,
+.last-name-field2 {
+    padding-bottom: .7rem;
+}
+
+.alias-field {
+    margin-top: .1rem!important;
+}
