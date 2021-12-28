@@ -313,7 +313,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                                 </div>
                             }
                                 <div class='pointer'>
-                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className='comment-button'><i class="far fa-comment"></i> Comment</span>
+                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className={commentBoxId === post.id ? 'comment1-button' : 'comment-button'}><i class="far fa-comment"></i> Comment</span>
                                 </div>
                             </div>
                             {commentCheck.includes(post?.id) ?
