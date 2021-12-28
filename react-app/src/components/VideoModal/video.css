@@ -1,0 +1,42 @@
+.video-modal-container {
+    padding: 2rem;
+    max-height: 60vh;
+    background-color: white;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 12px;
+    min-width: 525px;
+    width: 27.5vw;
+}
+
+.video-inner-container {
+    background-color: rgb(231, 231, 231);
+    padding: 2rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+.paragraph {
+    font-weight: 1rem;
+}
+
+.video-bio-text {
+    margin-bottom: -.4rem;
+}
+
+.v-text {
+    font-weight: bold;
+    margin-bottom: .2rem;
+}
+
+.v-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(233, 233, 233);
+    border-radius: 8px;
+    margin-top: .5rem;
+}
+
+iframe {
+    border-radius: 8px;
+}

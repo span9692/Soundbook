@@ -8,6 +8,8 @@ import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
 import FriendModal from '../FriendsModal'
+import PhotosModal from '../PhotosModal'
+import VideoModal from '../VideoModal'
 import './feed.css'
 
 function Feed() {
@@ -27,6 +29,7 @@ function Feed() {
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
     const allLikes = useSelector(state => Object.values(state.like))
+    const profile_photos = useSelector(state => Object.values(state.photo))
 
     // this displays all the friends/contacts of the logged in user
     const profile_owner_friends = [];
@@ -143,20 +146,9 @@ function Feed() {
                                 <div className='feed-left-option-label'>{loggedUser?.alias ? loggedUser?.alias : loggedUser?.first_name+' '+loggedUser?.last_name }</div>
                             </div>
                         </Link>
-                        {/* <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'} alt='Image'></img>
-                            <div className='feed-left-option-label'>Friends</div>
-                        </div> */}
-                        {/* <FriendModal loggedUser={loggedUser} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
                         <FriendModal contact_list={contact_list} />
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png'} alt='Image'></img>
-                            <div className='feed-left-option-label'>Watch</div>
-                        </div>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/w-vdKCGzCy1.png'} alt='Image'></img>
-                            <div className='feed-left-option-label'>Photos</div>
-                        </div>
+                        <VideoModal />
+                        <PhotosModal profile_photos={profile_photos}/>
                         <div className='left-side-options pointer'>
                             <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>COVID-19 Information Center</div>
