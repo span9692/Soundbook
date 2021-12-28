@@ -124,7 +124,7 @@ Soundbook is a fullstack app that allows artists to connect with one another all
 
 ![feed](https://res.cloudinary.com/photofinder/image/upload/v1640727220/Capture_a9jsms.jpg)
 
-![profile](https://res.cloudinary.com/photofinder/image/upload/v1640727298/Capture_anqka6.jpg)
+![profile](https://res.cloudinary.com/photofinder/image/upload/v1640734120/Capture_rs9gqq.jpg)
 
 # Frontend Overview
 Javascript
