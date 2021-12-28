@@ -195,7 +195,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                             {currentProfileFriends.map((friend) => (
                             <Link className='friend-link' to={`/users/${friend.id}`}>
                                 <div key={friend.id} className='indiv-portrait'>
-                                    <img className='friends-portrait' src={friend.profile_pic}></img>
+                                    <img className='friends-portrait dim' src={friend.profile_pic}></img>
                                     <span className='portrait-name'>{friend.alias ? friend.alias : friend.first_name+' '+friend.last_name }</span>
                                 </div>
                             </Link>
@@ -208,7 +208,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                     <div className='post-box containers'>
                         <div className='post-name-row'>
                             <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
-                                <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                                <img className='post-image-wall dim' src={loggedUser?.profile_pic}></img>
                             </Link>
                             <form className='post-form' id='add-post-form'>
                                 <input
@@ -244,7 +244,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                         <div key={post.id} className='post-box last-post containers'>
                             <div className='post-name-date'>
                                 <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
-                                    <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
+                                    <img className='post-image-wall dim' src={post.poster_info.profile_pic}></img>
                                 </Link>
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
@@ -320,7 +320,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                                 (post.id == comment.post_id ?
                                 <div key={comment.id} className='post-name-comment last-comment'>
                                     <Link className='link-to-friend' to={`/users/${comment.poster_info.id}`}>
-                                        <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
+                                        <img className='post-image-wall dim' src={comment.poster_info.profile_pic}></img>
                                     </Link>
                                     <div className='width-fix'>
                                         <div className='name-comment'>

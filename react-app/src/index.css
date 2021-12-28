@@ -9,6 +9,6 @@ body {
     cursor: pointer;
 }
 
-.dim {
+.dim:hover {
     -webkit-filter: brightness(96%);
 }

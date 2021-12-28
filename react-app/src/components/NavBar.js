@@ -34,7 +34,7 @@ const NavBar = () => {
         <div className='nav-right'>
           <Link className='firstName-profile-nav' to={`/users/${userId}`} exact={true}>
             <div className='navbar-profile-container'>
-              <img className='navbar-profile-pic' src={user.profile_pic}></img>
+              <img className='navbar-profile-pic dim' src={user.profile_pic}></img>
               <span className='name-color'>{user?.alias ? user?.alias : user?.first_name}</span>
             </div>
           </Link>

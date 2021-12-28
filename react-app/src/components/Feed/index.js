@@ -141,7 +141,7 @@ function Feed() {
                     <div className='feed-side-column'>
                         <Link className='link-to-friend' to={`/users/${loggedUser.id}`}>
                             <div className='left-side-options pointer'>
-                                <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                                <img className='post-image-wall dim' src={loggedUser?.profile_pic}></img>
                                 <div className='feed-left-option-label'>{loggedUser?.alias ? loggedUser?.alias : loggedUser?.first_name+' '+loggedUser?.last_name }</div>
                             </div>
                         </Link>
@@ -215,7 +215,7 @@ function Feed() {
                             <Link className='indiv-story-container' to={`/users/${friend.id}`}>
                                 <img className='story-images' src={friend.photos.length === 0 ? friend?.profile_pic : friend?.photos[0].photo}></img>
                                 <div className='story-profile-pic'>
-                                    <img className='story-image-wall' src={friend?.profile_pic}></img>
+                                    <img className='story-image-wall dim' src={friend?.profile_pic}></img>
                                     <div className='story-profile-name'>
                                         {friend?.alias ? friend?.alias : friend?.first_name+' '+friend?.last_name }
                                     </div>
@@ -227,7 +227,7 @@ function Feed() {
                         <div className='post-box feed-containers'>
                         <div className='post-name-row'>
                             <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
-                                <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                                <img className='post-image-wall dim' src={loggedUser?.profile_pic}></img>
                             </Link>
                             <form className='post-form' id='add-post-form'>
                                 <input
@@ -258,7 +258,7 @@ function Feed() {
                         <div key={post.id} className='post-box last-post feed-containers'>
                             <div className='post-name-date'>
                                 <Link className='link-to-friend' to={`/users/${post.poster_info.id}`}>
-                                    <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
+                                    <img className='post-image-wall dim' src={post.poster_info.profile_pic}></img>
                                 </Link>
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
@@ -334,7 +334,7 @@ function Feed() {
                                 (post.id == comment.post_id ?
                                 <div key={comment.id} className='post-name-comment last-comment'>
                                     <Link className='link-to-friend' to={`/users/${comment.poster_info.id}`}>
-                                        <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
+                                        <img className='post-image-wall dim' src={comment.poster_info.profile_pic}></img>
                                     </Link>
                                     <div className='width-fix'>
                                         <div className='name-comment'>
@@ -415,7 +415,7 @@ function Feed() {
                         <>
                             <div key={request.id} className='individual-friend-request'>
                                 <Link className='link-to-friend' to={`/users/${request.id}`}>
-                                    <img className='post-image-wall' src={request?.profile_pic}></img>
+                                    <img className='post-image-wall dim' src={request?.profile_pic}></img>
                                 </Link>
                                 <div className='friend-request-minus-portrait'>
                                     <div>
@@ -439,7 +439,7 @@ function Feed() {
                             {contact_list.map(friend => (
                             <Link className='link-to-friend' to={`/users/${friend.id}`}>
                                 <div key={friend.id} className='indiv-contact'>
-                                    <img className='post-image-wall' src={friend?.profile_pic}></img>
+                                    <img className='post-image-wall dim' src={friend?.profile_pic}></img>
                                     <span className='requester-name'>{friend?.alias ? friend?.alias : friend?.first_name+' '+friend?.last_name }</span>
                                 </div>
                             </Link>
