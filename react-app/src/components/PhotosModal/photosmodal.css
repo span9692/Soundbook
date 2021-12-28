@@ -1,0 +1,41 @@
+.photos-modal-container {
+    padding: 1rem;
+    max-height: 60vh;
+    background-color: white;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 12px;
+    min-width: 450px;
+    width: 30vw;
+}
+
+.photos-modal-container::-webkit-scrollbar {
+    display: none;
+}
+
+.p-container {
+    display: flex;
+    flex-wrap:wrap;
+    /* justify-content: space-around; */
+    background-color: rgb(233, 233, 233);
+    border-radius: 8px;
+    margin-top: .5rem;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+    padding-left: 1.4rem;
+    padding-right: 1rem;
+    /* padding: 1rem; */
+}
+
+.indiv-photo-modal {
+    width: 50%;
+    /* display: flex; */
+}
+
+.all-photos-modal {
+    width: 9.5rem;
+    height: 9.5rem;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: .3rem .5rem;
+}
