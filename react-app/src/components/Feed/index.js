@@ -231,7 +231,7 @@ function Feed() {
                         </div>
                         <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                         <div className='post-box-buttons'>
-                            <div type='submit' onClick={ postValue.length > 1 ? ()=>addPost() : null } class='boxBtn pointer' form='add-post-form'>
+                            <div type='submit' onClick={ postValue.length > 0 ? ()=>addPost() : null } class='boxBtn pointer' form='add-post-form'>
                                 <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
                             <div class='boxBtn pointer'>
@@ -282,7 +282,7 @@ function Feed() {
                                         value={editValue}
                                         onChange={(e) => setEditValue(e.target.value)}
                                     />
-                                    <span onClick={ () => editPost(post.id) } className='save-edit-button'>Save</span>
+                                    <span onClick={ editValue.length > 0 ? () => editPost(post.id) : null } className='save-edit-button'>Save</span>
                                 </form> : post.post_content
                                 }
                             </div>
@@ -353,7 +353,7 @@ function Feed() {
                                                     value={editCommentValue}
                                                     onChange={(e) => setEditCommentValue(e.target.value)}
                                                 />
-                                                <span onClick={ () => editComment(comment.id, editCommentValue) } className='save-comment-button'>Save</span>
+                                                <span onClick={ editCommentValue.length > 0 ? () => editComment(comment.id, editCommentValue) : null } className='save-comment-button'>Save</span>
                                             </form> :
 
                                             <span className='post-comment'> {comment.comment_content}
@@ -390,7 +390,7 @@ function Feed() {
                                         onChange={(e) => setCommentValue(e.target.value)}
                                     />
                                 </form>
-                                <div onClick={() => addComment(commentBoxId)} className='post-comment-button'>Post</div>
+                                <div onClick={commentValue.length > 0 ? () => addComment(commentBoxId) : null} className='post-comment-button'>Post</div>
                             </div>
                             : null}
                         </div>))}
