@@ -21,6 +21,10 @@
     flex-direction: column;
 }
 
+.personal-info-padding {
+    margin-bottom: .2rem!important;
+}
+
 .containers {
     padding: 1rem;
     border-radius: 8px;

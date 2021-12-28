@@ -156,7 +156,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                                 <span className='row-Data'>Born on <span className='profile-owner-info'>{profile_owner?.birthday}</span></span>
                             </div>
                         </div>
-                        <div className='category-row icon'>
+                        <div className={+profileId === loggedUser.id ? 'category-row icon' : 'category-row icon personal-info-padding'}>
                             <div className='icon-row'>
                                 <i className="fas fa-tag"></i>
                             </div>
@@ -164,7 +164,10 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                                 <span className='row-Data'>Joined in <span className='profile-owner-info'>{profile_owner?.createdAt}</span></span>
                             </div>
                         </div>
+                        {+profileId === loggedUser.id ?
                         <EditIntroModal loggedUser={loggedUser}/>
+                        : null
+                        }
                     </div>
 
                     <div className='photos-container containers'>

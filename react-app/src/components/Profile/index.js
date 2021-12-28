@@ -105,15 +105,21 @@ function Profile() {
                         <img className='cover-photo' src={profile_owner?.cover_photo} alt='Error'></img>
                         <div>
                         <img className='profile-photo' src={profile_owner?.profile_pic} alt='Error'></img>
+                            {loggedUser.id === +userId ?
                             <div>
                                 <div className='edit-profile-btn1'>
                                     <EditCoverPhotoModal loggedUser={loggedUser}/>
                                 </div>
                             </div>
+                            : null
+                            }
                         </div>
+                        {loggedUser.id === +userId ?
                         <div className='edit-profile-picture'>
                             <EditProfilePhotoModal loggedUser={loggedUser}/>
                         </div>
+                        : null
+                        }
                         <div className='profile-content'>
                             {profile_owner?.first_name} {profile_owner?.last_name}
                         </div>
