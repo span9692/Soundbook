@@ -1,7 +1,6 @@
 # Soundbook
 
-https://sound-book.herokuapp.com/
-
+By Sean Pan - https://sound-book.herokuapp.com/
 
 This is the README for the final solo project from App Academy.
 The project was inspired by Facebook and built using Javascript,
@@ -66,3 +65,21 @@ React.js and Redux for the front end and Python with Flask for the backend.
 
 # Running Live
 >The live link for this project is located here: https://sound-book.herokuapp.com/
+
+# Soundbook at a Glance
+
+Soundbook is a fullstack app that allows artists to connect with one another all over the world. Artists can customize their profile pages by creating posts, adding photos, and updating their personal info. By connecting with other artists, artists can see, comment, and like each other's posts. 
+
+![feed](https://res.cloudinary.com/photofinder/image/upload/v1640727220/Capture_a9jsms.jpg)
+
+![profile](https://res.cloudinary.com/photofinder/image/upload/v1640727298/Capture_anqka6.jpg)
+
+# Frontend Overview
+Javascript
+React
+Redux
+
+# Backend Overview
+Python
+PostgreSQL
+Flask
