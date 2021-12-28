@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../store/user';
 import Search from '../components/Search/index'
 import './navbar.css'
+import VideoModalNav from './VideoModal/vidmodalnav';
 
 const NavBar = () => {
   const dispatch = useDispatch()
@@ -26,7 +27,7 @@ const NavBar = () => {
         </div>
         <div className='nav-mid'>
           <Link className='fontAwesomeness' to={`/users/${userId}`}><i class="fas fa-home"></i></Link>
-          <a className='fontAwesomeness' href="https://www.google.com/"><i class="fas fa-video"></i></a>
+          <VideoModalNav />
           <a className='fontAwesomeness' href="https://github.com/span9692"><i class="fab fa-github"></i></a>
           <a className='fontAwesomeness' href="https://www.linkedin.com/in/sean-pan-395a4593/"><i class="fab fa-linkedin"></i></a>
           <a className='fontAwesomeness' href="https://www.google.com/"><i class="fas fa-address-card"></i></a>

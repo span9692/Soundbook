@@ -5,8 +5,8 @@
     overflow-y: auto;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     border-radius: 12px;
-    min-width: 450px;
-    width: 30vw;
+    min-width: 400px;
+    width: 27.5vw;
 }
 
 .photos-modal-container::-webkit-scrollbar {
@@ -16,20 +16,13 @@
 .p-container {
     display: flex;
     flex-wrap:wrap;
-    /* justify-content: space-around; */
     background-color: rgb(233, 233, 233);
     border-radius: 8px;
     margin-top: .5rem;
-    padding-top: 1.4rem;
-    padding-bottom: 1.4rem;
-    padding-left: 1.4rem;
-    padding-right: 1rem;
-    /* padding: 1rem; */
-}
-
-.indiv-photo-modal {
-    width: 50%;
-    /* display: flex; */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: .7rem;
+    padding-right: .5rem;
 }
 
 .all-photos-modal {
