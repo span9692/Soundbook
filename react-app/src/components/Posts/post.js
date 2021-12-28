@@ -7,7 +7,7 @@ import './posts.css'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import EditIntroModal from '../EditIntroModal'
 
-function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
+function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
     const [editValue, setEditValue] = useState('')
@@ -47,6 +47,11 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
     let commentCheck = allComments.map(el => el?.post_id)
     commentCheck = new Set(commentCheck)
     commentCheck = Array.from(commentCheck)
+
+
+    if (currentProfileFriends.length > 9) {
+        currentProfileFriends = currentProfileFriends.slice(0, 9)
+    }
 
     const reversed = []
     allPosts.forEach(el => reversed.unshift(el))
@@ -156,7 +161,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                 <span className='row-Data'>Born on <span className='profile-owner-info'>{profile_owner?.birthday}</span></span>
                             </div>
                         </div>
-                        <div className='category-row icon'>
+                        <div className={+profileId === loggedUser.id ? 'category-row icon' : 'category-row icon personal-info-padding'}>
                             <div className='icon-row'>
                                 <i className="fas fa-tag"></i>
                             </div>
@@ -164,13 +169,16 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                 <span className='row-Data'>Joined in <span className='profile-owner-info'>{profile_owner?.createdAt}</span></span>
                             </div>
                         </div>
+                        {+profileId === loggedUser.id ?
                         <EditIntroModal loggedUser={loggedUser}/>
+                        : null
+                        }
                     </div>
 
                     <div className='photos-container containers'>
                         <div className='photos-label'>
                             <span className='profile-labels'>Photos</span>
-                            <span className='edit-profileBtn3'>See All Photos</span>
+                            <span className='edit-profileBtn3' onClick={() => setDisplay('photos')}>See All Photos</span>
                         </div>
                         <div className='nine-images'>
                             {profile_photos.map((photo, index) => (
@@ -186,13 +194,13 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                     <div className='friends-container containers'>
                         <div className='photos-label1'>
                             <span className='profile-labels'>Friends</span>
-                            <span className='edit-profileBtn3'>See All Friends</span>
+                            <span className='edit-profileBtn3' onClick={() => setDisplay('friends')}>See All Friends</span>
                         </div>
                         <div className='nine-friends'>
                             {currentProfileFriends.map((friend) => (
                             <Link className='friend-link' to={`/users/${friend.id}`}>
                                 <div key={friend.id} className='indiv-portrait'>
-                                    <img className='friends-portrait' src={friend.profile_pic}></img>
+                                    <img className='friends-portrait dim' src={friend.profile_pic}></img>
                                     <span className='portrait-name'>{friend.alias ? friend.alias : friend.first_name+' '+friend.last_name }</span>
                                 </div>
                             </Link>
@@ -205,7 +213,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                     <div className='post-box containers'>
                         <div className='post-name-row'>
                             <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
-                                <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
+                                <img className='post-image-wall dim' src={loggedUser?.profile_pic}></img>
                             </Link>
                             <form className='post-form' id='add-post-form'>
                                 <input
@@ -241,7 +249,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                         <div key={post.id} className='post-box last-post containers'>
                             <div className='post-name-date'>
                                 <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
-                                    <img className='post-image-wall' src={post.poster_info.profile_pic}></img>
+                                    <img className='post-image-wall dim' src={post.poster_info.profile_pic}></img>
                                 </Link>
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
@@ -317,7 +325,7 @@ function Posts({ profileId, loggedUser, profile_owner, profile_photos, allPosts,
                                 (post.id == comment.post_id ?
                                 <div key={comment.id} className='post-name-comment last-comment'>
                                     <Link className='link-to-friend' to={`/users/${comment.poster_info.id}`}>
-                                        <img className='post-image-wall' src={comment.poster_info.profile_pic}></img>
+                                        <img className='post-image-wall dim' src={comment.poster_info.profile_pic}></img>
                                     </Link>
                                     <div className='width-fix'>
                                         <div className='name-comment'>

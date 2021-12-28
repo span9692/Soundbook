@@ -73,7 +73,7 @@ function Profile() {
 
     if (display === 'posts') {
         content = (
-            <Posts profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
+            <Posts setDisplay={setDisplay} profileId={userId} loggedUser={loggedUser} profile_owner={profile_owner} profile_photos={profile_photos} allPosts={allPosts} allComments={allComments} allFriends={allFriends} allUsersValues={allUsersValues}/>
         )
     } else if (display === 'friends') {
         content = (
@@ -102,18 +102,24 @@ function Profile() {
             <div className='profile-container'>
                 <div className='profile-background-color'>
                     <div className='profile-images'>
-                        <img className='cover-photo' src={profile_owner?.cover_photo}></img>
+                        <img className='cover-photo' src={profile_owner?.cover_photo} alt='Error'></img>
                         <div>
-                        <img className='profile-photo' src={profile_owner?.profile_pic}></img>
+                        <img className='profile-photo' src={profile_owner?.profile_pic} alt='Error'></img>
+                            {loggedUser.id === +userId ?
                             <div>
                                 <div className='edit-profile-btn1'>
                                     <EditCoverPhotoModal loggedUser={loggedUser}/>
                                 </div>
                             </div>
+                            : null
+                            }
                         </div>
+                        {loggedUser.id === +userId ?
                         <div className='edit-profile-picture'>
                             <EditProfilePhotoModal loggedUser={loggedUser}/>
                         </div>
+                        : null
+                        }
                         <div className='profile-content'>
                             {profile_owner?.first_name} {profile_owner?.last_name}
                         </div>

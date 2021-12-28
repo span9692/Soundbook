@@ -71,8 +71,10 @@ function About({loggedUser, profile_owner}) {
                         <span className='row-Data'>Joined in <span className='profile-owner-info'>{profile_owner?.createdAt}</span></span>
                     </div>
                 </div>
+                {loggedUser.id === profile_owner.id ?
                 <EditIntroModal loggedUser={loggedUser}/>
-                {/* <button className='profile-nav-links1 edit-profileBtn1 spacing-button'><i class="fas fa-pencil-alt"></i>&nbsp; Edit Profile</button> */}
+                : null
+                }
             </div>
         </>
     )

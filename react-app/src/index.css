@@ -8,3 +8,7 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+.dim:hover {
+    -webkit-filter: brightness(96%);
+}

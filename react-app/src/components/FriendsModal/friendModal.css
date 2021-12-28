@@ -1,0 +1,64 @@
+.friend-modal-container {
+    padding: 1rem;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.friend-modal-container::-webkit-scrollbar {
+    display: none;
+}
+
+.f-text {
+    font-weight: bold;
+    margin-bottom: .2rem;
+}
+
+.f-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(233, 233, 233);
+    border-radius: 8px;
+    margin-top: .5rem;
+}
+
+.link-to-friend1 {
+    text-decoration: none;
+    color: black
+}
+
+.link-to-friend1:hover {
+    text-decoration: underline;
+    color: black
+}
+
+.indiv-contact1 {
+    display: flex;
+    align-items: center;
+    padding: .7rem;
+    border-radius: 8px;
+    background-color: white;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: .4rem;
+    margin-bottom: .4rem;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.link-to-friend1:first-child {
+    margin-top: .4rem!important;
+}
+
+.link-to-friend1:last-child {
+    margin-bottom: .4rem!important;
+}
+
+/* .indiv-contact1:hover {
+    background-color: rgb(236, 236, 236);
+} */
+
+.requester-name1 {
+    font-weight: bold;
+    color: black;
+    font-size: .9rem;
+    margin-left: 1rem;
+}

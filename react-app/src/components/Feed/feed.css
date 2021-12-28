@@ -40,6 +40,20 @@
     overflow-x: hidden;
 }
 
+
+.feed-side-column::-webkit-scrollbar,
+.feed-side-column2::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #f0f2f5;
+}
+
+.feed-side-column::-webkit-scrollbar-thumb,
+.feed-side-column2::-webkit-scrollbar-thumb {
+    background: rgb(202, 202, 202);
+    border-radius: 500px;
+}
+
 .feed-main-column {
     width: 34%;
     display: flex;
@@ -68,6 +82,7 @@
     font-weight: bold;
     font-size: .9rem;
     margin-left: .5rem;
+    color: black!important;
 }
 
 
@@ -224,6 +239,7 @@
 
 .link-to-friend {
     text-decoration: none;
+    color: black!important;
 }
 
 .link-to-friend:visited {

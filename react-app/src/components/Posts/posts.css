@@ -21,6 +21,10 @@
     flex-direction: column;
 }
 
+.personal-info-padding {
+    margin-bottom: .2rem!important;
+}
+
 .containers {
     padding: 1rem;
     border-radius: 8px;
@@ -161,6 +165,7 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    margin-top: -.5rem;
 }
 
 .image-index-0 {
@@ -190,13 +195,14 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    margin-top: -.4rem;
 }
 
 .indiv-portrait {
     display: flex;
     flex-direction: column;
     /* margin-top: 1rem; */
-    margin-left: .2rem;
+    margin-left: .4rem;
 }
 
 .friends-portrait {
