@@ -1,3 +1,8 @@
+.soundbook-logo {
+    width: 2.5rem;
+    padding-top: .4rem;
+}
+
 .nav-container {
     display: flex;
     width: 100%;

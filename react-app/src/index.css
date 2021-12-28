@@ -12,3 +12,8 @@ body {
 .dim:hover {
     -webkit-filter: brightness(96%);
 }
+
+a {
+    color: black;
+    text-decoration: none;
+}
