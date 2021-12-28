@@ -4,6 +4,10 @@
     overflow-y: auto;
 }
 
+.friend-modal-container::-webkit-scrollbar {
+    display: none;
+}
+
 .f-text {
     font-weight: bold;
     margin-bottom: .2rem;
