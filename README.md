@@ -1,6 +1,6 @@
 # Soundbook
 
-By Sean Pan - https://sound-book.herokuapp.com/
+*By Sean Pan* - https://sound-book.herokuapp.com/
 
 This is the README for the final solo project from App Academy.
 The project was inspired by Facebook and built using Javascript,
@@ -57,14 +57,66 @@ React.js and Redux for the front end and Python with Flask for the backend.
    There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
 ***
 
+# Deploy to Heroku
+1. Before you deploy, don't forget to run the following command in order to ensure that your production environment has all of your up-to-date dependencies. You only have to run this command when you have installed new Python packages since your last deployment, but if you aren't sure, it won't hurt to run it again.
 
+```
+pipenv lock -r > requirements.txt
+```
+2. Create a new project on Heroku
+
+3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
+
+4. Install the Heroku CLI
+
+5. Run
+```
+heroku login
+```
+6. Login to the heroku container registry
+```
+heroku container:login
+```
+7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile. This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
+
+8. Push your docker container to heroku from the root directory of your project. (If you are using an M1 mac, follow the steps below instead, then continue on to step 9.) This will build the Dockerfile and push the image to your heroku container registry.
+```
+heroku container:push web -a {NAME_OF_HEROKU_APP}
+```
+9. Release your docker container to heroku
+```
+heroku container:release web -a {NAME_OF_HEROKU_APP}
+```
+10. Set up your database
+```
+heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
+heroku run -a {NAME_OF_HEROKU_APP} flask seed all
+```
+11. Under Settings find "Config Vars" and add any additional/secret .env variables.
+
+12. Profit
+
+### For M1 Mac users
+(Replaces **Step 8**)
+
+1. Build image with linux platform for heroku servers. Replace {NAME_OF_HEROKU_APP} with your own tag:
+```
+docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
+```
+2. Tag your app with the url for your apps registry. Make sure to use the name of your Heroku app in the url and tag name:
+```
+docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
+```
+3. Use docker to push the image to the Heroku container registry:
+```
+docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
+```
 
 # Running Locally
 >To start the server, run `flask run` from the root directory, then run `npm start` from the `react-app` directory. This will allow you to make requests to http://localhost:3000 using any client (browser and Postman).
 >To stop the server from listening to requests, press CTRL + c for Windows/Linux or CMD + c for MacOS in the terminal that you started the server (wherever you >ran npm start).
 
-# Running Live
->The live link for this project is located here: https://sound-book.herokuapp.com/
+
 
 # Soundbook at a Glance
 
