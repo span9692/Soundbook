@@ -6,9 +6,6 @@ function FriendModal({contact_list}) {
     const [showModal, setShowModal] = useState(false)
     return (
         <>
-            {/* <button className='profile-nav-links edit-profilePicBtn' onClick={() => setShowModal(true)}><i class="fas fa-camera"></i></button> */}
-            {/* <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'} alt='Image' onClick={() => setShowModal(true)}></img>
-            <div className='feed-left-option-label' onClick={() => setShowModal(true)}>Friends</div> */}
             <div className='left-side-options pointer' onClick={() => setShowModal(true)}>
                 <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'} alt='Image'></img>
                 <div className='feed-left-option-label'>Friends</div>

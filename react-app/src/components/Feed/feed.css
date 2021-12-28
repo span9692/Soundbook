@@ -82,6 +82,7 @@
     font-weight: bold;
     font-size: .9rem;
     margin-left: .5rem;
+    color: black!important;
 }
 
 
@@ -238,6 +239,7 @@
 
 .link-to-friend {
     text-decoration: none;
+    color: black!important;
 }
 
 .link-to-friend:visited {
