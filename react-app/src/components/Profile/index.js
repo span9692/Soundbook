@@ -120,8 +120,16 @@ function Profile() {
                         </div>
                         : null
                         }
-                        <div className='profile-content'>
-                            {profile_owner?.first_name} {profile_owner?.last_name}
+                        <div className={profile_owner?.alias ? 'profile-content' : 'profile2-content' } >
+                            <div>
+                                {profile_owner?.first_name} {profile_owner?.last_name}
+                            </div>
+                            {profile_owner?.alias ?
+                            <div className='profile-alias'>
+                                aka {profile_owner?.alias}
+                            </div>
+                            : null
+                            }
                         </div>
                     </div>
                     {/* hr styling style={{marginTop:  1+'rem', marginBottom: 1+'rem'}}  */}
