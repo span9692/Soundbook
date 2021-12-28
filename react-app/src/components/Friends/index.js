@@ -24,7 +24,7 @@ function Friends({profileId, allFriends, allUsersValues}) {
                     (currentProfileFriends.map(friend => (
                         <div className='indiv-friend-box'>
                             <Link to={`/users/${friend.id}`}>
-                                <img className='square-portraits' src={friend.profile_pic}></img>
+                                <img className='square-portraits dim' src={friend.profile_pic}></img>
                             </Link>
                             <Link className='all-friends-link' to={`/users/${friend.id}`}>
                                 <div className='friend-name'>{friend.alias ? friend.alias : friend.first_name+' '+friend.last_name }</div>

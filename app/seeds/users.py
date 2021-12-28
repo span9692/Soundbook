@@ -4,6 +4,7 @@ import datetime
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+    Sean = User(first_name='Sean', last_name='Pan', work='Soundbook', location='Santa Clara, CA', education='University of Califonia, Davis', email='seanhpan@gmail.com', cover_photo='https://res.cloudinary.com/photofinder/image/upload/v1640671558/sean%20profile/ydp144b-scene_z55mm6.jpg', profile_pic='https://res.cloudinary.com/photofinder/image/upload/v1640671558/sean%20profile/269896008_333738648345712_8581279171827465648_n_kjrjtf.jpg', password='password', birthday=datetime.date(1992, 9, 6), gender='Male')
     demo = User(first_name='O\'Shea', last_name='Jackson Sr.', bio='NWA, from the bottom now we here', work='Interscope', location='Compton, CA', education='William Howard High School',  email='ojackson@gmail.com', alias='Ice Cube', password='password', cover_photo='https://res.cloudinary.com/photofinder/image/upload/v1639647559/ice%20cube%20nwa/LwoaE.0.0_uzqoe9.jpg', profile_pic='https://res.cloudinary.com/photofinder/image/upload/v1639647173/ice%20cube%20nwa/image_ok9xkp.jpg', birthday=datetime.date(1969, 6, 15), gender='Male')
     Dre = User(first_name='Andre', last_name='Young', email='ayoung@gmail.com', alias='Dr. Dre', password='password', cover_photo='https://res.cloudinary.com/photofinder/image/upload/v1640124937/dr%20dre%20nwa/beats_e2abep.jpg', profile_pic='https://res.cloudinary.com/photofinder/image/upload/v1640124937/dr%20dre%20nwa/profilepic_dvybnf.jpg', birthday=datetime.date(1965, 2, 18), gender='Male')
     Kanye = User(first_name='Kanye', last_name='West', email='kwest@gmail.com', password='password', cover_photo='https://res.cloudinary.com/photofinder/image/upload/v1640149113/kanye%20profile/-1x-1_zdkdaf.jpg', profile_pic='https://res.cloudinary.com/photofinder/image/upload/v1640149112/kanye%20profile/2000_qpsl4j.jpg', birthday=datetime.date(1977, 6, 8), gender='Male')
@@ -17,6 +18,7 @@ def seed_users():
     # Taylor = User(first_name='Taylor', last_name='Swift', email='tswift@gmail.com', password='password', birthday=datetime.date(1989, 12, 13), gender='Female')
 
 
+    db.session.add(Sean)
     db.session.add(demo)
     db.session.add(Dre)
     db.session.add(Kanye)
