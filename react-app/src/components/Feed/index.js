@@ -149,10 +149,10 @@ function Feed() {
                         <FriendModal contact_list={contact_list} />
                         <VideoModal />
                         <PhotosModal profile_photos={profile_photos}/>
-                        <div className='left-side-options pointer'>
+                        <a href='https://www.cdc.gov/coronavirus/2019-ncov/index.html' target="_blank" className='left-side-options pointer'>
                             <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>COVID-19 Information Center</div>
-                        </div>
+                        </a>
 
 
 

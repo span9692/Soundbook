@@ -28,9 +28,9 @@ const NavBar = () => {
         <div className='nav-mid'>
           <Link className='fontAwesomeness' to={`/users/${userId}`}><i class="fas fa-home"></i></Link>
           <VideoModalNav />
-          <a className='fontAwesomeness' href="https://github.com/span9692"><i class="fab fa-github"></i></a>
-          <a className='fontAwesomeness' href="https://www.linkedin.com/in/sean-pan-395a4593/"><i class="fab fa-linkedin"></i></a>
-          <a className='fontAwesomeness' href="https://www.google.com/"><i class="fas fa-address-card"></i></a>
+          <a className='fontAwesomeness' href="https://github.com/span9692" target="_blank"><i class="fab fa-github"></i></a>
+          <a className='fontAwesomeness' href="https://www.linkedin.com/in/sean-pan-395a4593/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a className='fontAwesomeness' href="https://www.google.com/" target="_blank"><i class="fas fa-address-card"></i></a>
         </div>
         <div className='nav-right'>
           <Link className='firstName-profile-nav' to={`/users/${userId}`} exact={true}>
