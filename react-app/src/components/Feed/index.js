@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { changeComment, getComments, newComment, removeComment } from '../../store/comment'
-import { getFriends } from '../../store/friend_list'
+import { firstFriend, getFriends } from '../../store/friend_list'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
@@ -27,8 +27,6 @@ function Feed() {
     const allUsers = useSelector(state => state.user)
     const allUsersValues = Object.values(allUsers)
     const allLikes = useSelector(state => Object.values(state.like))
-    // console.log('allLikes', allLikes)
-
 
     // this displays all the friends/contacts of the logged in user
     const profile_owner_friends = [];
