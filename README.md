@@ -1,13 +1,15 @@
 # Soundbook
 
+https://sound-book.herokuapp.com/
 
-This is the README for the Capstone project from App Academy.
+
+This is the README for the final solo project from App Academy.
 The project was inspired by Facebook and built using Javascript,
 React.js and Redux for the front end and Python with Flask for the backend.
 
 # Project Installation
 
-1. Clone the project repository from https://github.com/span9692/Beatbook
+1. Clone the project repository from https://github.com/span9692/Soundbook
 
 2. Rename the folder to whatever you want.
 
@@ -46,8 +48,9 @@ React.js and Redux for the front end and Python with Flask for the backend.
    If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
    You can do this by running:
 
-   bash
+   ```
    pipenv lock -r > requirements.txt
+   ```
    
 
 *ALSO IMPORTANT!*
@@ -62,4 +65,4 @@ React.js and Redux for the front end and Python with Flask for the backend.
 >To stop the server from listening to requests, press CTRL + c for Windows/Linux or CMD + c for MacOS in the terminal that you started the server (wherever you >ran npm start).
 
 # Running Live
->The live link for this project is located here: 
+>The live link for this project is located here: https://sound-book.herokuapp.com/
