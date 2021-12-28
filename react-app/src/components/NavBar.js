@@ -20,7 +20,7 @@ const NavBar = () => {
     <>
       <div className='nav-container'>
         <div className='nav-left'>
-          <Link className='fontAwesomeness1' to='/feed'><i class="fab fa-facebook"></i></Link>
+          <Link className='fontAwesomeness1' to='/feed'><img className='soundbook-logo' src='https://res.cloudinary.com/photofinder/image/upload/v1640731628/Untitled_dsneot.png'></img></Link>
           <div>
             <Search />
           </div>
