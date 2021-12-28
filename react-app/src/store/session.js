@@ -132,15 +132,14 @@ export const updateCover = ({userId, coverPhoto}) => async dispatch => {
   }
 }
 
-export const updateProfilePic = ({userId, ProfilePhoto}) => async dispatch => {
-  console.log('ProfilePhoto', {ProfilePhoto})
+export const updateProfilePic = (userId, profPic) => async dispatch => {
   const response = await fetch(`/api/auth/profilephoto/${userId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      ProfilePhoto
+      profPic
     }),
   })
 

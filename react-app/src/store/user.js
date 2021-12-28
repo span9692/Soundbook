@@ -78,6 +78,23 @@ export const updateCoverPic = ({userId, coverPhoto}) => async dispatch => {
   }
 }
 
+export const updatePicProfile = (userId, profPic) => async dispatch => {
+  const response = await fetch(`/api/auth/profilephoto/${userId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      profPic
+    }),
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateUser(data))
+  }
+}
+
 export default function reducer(state = {}, action) {
   let newState;
     switch (action.type) {

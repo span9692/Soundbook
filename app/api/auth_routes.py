@@ -87,8 +87,7 @@ def update_cover(userId):
 def update_profilephoto(userId):
     user = User.query.get(userId)
     data = request.get_json()
-    print('qqqqqqqqqqqqqqqqqqqqqqq', data,'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
-    user.profile_pic = data['ProfilePhoto']
+    user.profile_pic = data['profPic']
     db.session.commit()
     return user.to_dict()
 

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateProfilePic } from '../../store/session'
+import { updatePicProfile } from '../../store/user'
 import './editprofilephoto.css'
 
 function ProfilePhoto({loggedUser, setShowModal}) {
@@ -9,9 +10,9 @@ function ProfilePhoto({loggedUser, setShowModal}) {
     const userId = loggedUser.id
 
     const updateProfilePhoto = async(e) => {
-        console.log('profilePhoto before thunk', profilePhoto)
         e.preventDefault()
-        dispatch(updateProfilePic({userId, profilePhoto}))
+        dispatch(updateProfilePic(userId, profilePhoto))
+        dispatch(updatePicProfile(userId, profilePhoto))
         setShowModal(false)
     }
 
