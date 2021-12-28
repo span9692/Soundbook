@@ -1,4 +1,4 @@
-# Beatbook
+# Soundbook
 
 
 This is the README for the Capstone project from App Academy.
@@ -13,9 +13,9 @@ React.js and Redux for the front end and Python with Flask for the backend.
 
 3. Install dependencies
 
-      bash
+      ```
       pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      
+      ```
 
 4. Create a **.env** file based on the example with proper settings for your
    development environment
@@ -23,21 +23,21 @@ React.js and Redux for the front end and Python with Flask for the backend.
 
 6. Get into your pipenv, migrate your database, seed your database, and run your flask app
 
-   bash
+   ```
    pipenv shell
-   
+   ```
 
-   bash
+   ```
    flask db upgrade
-   
+   ```
 
-   bash
+   ```
    flask seed all
-   
+   ```
 
-   bash
+   ```
    flask run
-   
+   ```
 
 7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory OR `cd` into the `react-app` folder and run `npm install` to install node package manager dependencies.
 
