@@ -102,9 +102,9 @@ function Profile() {
             <div className='profile-container'>
                 <div className='profile-background-color'>
                     <div className='profile-images'>
-                        <img className='cover-photo' src={profile_owner?.cover_photo}></img>
+                        <img className='cover-photo' src={profile_owner?.cover_photo} alt='Error'></img>
                         <div>
-                        <img className='profile-photo' src={profile_owner?.profile_pic}></img>
+                        <img className='profile-photo' src={profile_owner?.profile_pic} alt='Error'></img>
                             <div>
                                 <div className='edit-profile-btn1'>
                                     <EditCoverPhotoModal loggedUser={loggedUser}/>

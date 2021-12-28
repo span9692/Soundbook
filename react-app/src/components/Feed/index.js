@@ -7,6 +7,7 @@ import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '.
 import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
+import FriendModal from '../FriendsModal'
 import './feed.css'
 
 function Feed() {
@@ -144,10 +145,12 @@ function Feed() {
                                 <div className='feed-left-option-label'>{loggedUser?.alias ? loggedUser?.alias : loggedUser?.first_name+' '+loggedUser?.last_name }</div>
                             </div>
                         </Link>
-                        <div className='left-side-options pointer'>
+                        {/* <div className='left-side-options pointer'>
                             <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>Friends</div>
-                        </div>
+                        </div> */}
+                        {/* <FriendModal loggedUser={loggedUser} allFriends={allFriends} allUsersValues={allUsersValues}/> */}
+                        <FriendModal contact_list={contact_list} />
                         <div className='left-side-options pointer'>
                             <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>Watch</div>

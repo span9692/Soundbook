@@ -8,3 +8,7 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+.dim {
+    -webkit-filter: brightness(96%);
+}
