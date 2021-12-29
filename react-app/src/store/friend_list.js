@@ -120,12 +120,9 @@ export default function reducer(state = {}, action) {
         return newState
       case ACCEPT_REQUEST:
         newState = {...state}
-        console.log('newState', newState)
-        console.log('action.data', action.data)
         for (let key in newState) {
           console.log(key)
           if ((newState[key]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[key]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[key]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[key]['friendAdder_id'] === action.data['friends']['friendReceiver_id'])) {
-            console.log('we found it')
             newState[key]['confirmed'] = true;
           }
         }
