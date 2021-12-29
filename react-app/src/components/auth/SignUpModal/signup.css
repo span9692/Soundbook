@@ -154,10 +154,10 @@
     color: blue;
 }
 
-.terms-text:hover {
+/* .terms-text:hover {
     text-decoration: 1px solid underline blue;
     cursor: pointer;
-}
+} */
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

@@ -51,26 +51,6 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.hide {
-    color: white;
-    display: flex;
-    position: relative
-}
-.asdf {
-    position: relative;
-}
-
-.at-text {
-    /* position: absolute; */
-    /* margin-bottom: 1rem; */
-}
-
-.footer-text1 {
-    color: grey;
-    font-size: 2rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
 .footer-container {
     width: 70%
 }
