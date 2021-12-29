@@ -7,7 +7,7 @@ import Posts from '../Posts/post'
 import { getPhotos } from '../../store/photo'
 import { getPosts } from '../../store/post'
 import { getComments } from '../../store/comment'
-import { getFriends } from '../../store/friend_list'
+import { addFriend, getFriends } from '../../store/friend_list'
 import Friends from '../Friends'
 import Photos from '../Photos'
 import About from '../About'
@@ -27,8 +27,13 @@ function Profile() {
     const allPosts = useSelector(state => Object.values(state.post)).filter(el => el.profile_id === +userId)
     const allComments = useSelector(state => Object.values(state.comment))
     const allFriends = useSelector(state => Object.values(state.friend_list))
-
+console.log(profile_owner)
+console.log(loggedUser)
     let option = null;
+
+    const newFriendRequest = () => {
+        dispatch(addFriend(loggedUser.id, profile_owner.id))
+    }
 
     if (loggedUser.id === +userId) {
         option = (
@@ -62,7 +67,7 @@ function Profile() {
             } else {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-user-plus"></i>&nbsp; Add Friend</button>
+                        <button className='profile-nav-links edit-profileBtn' onClick={()=>newFriendRequest()}><i class="fas fa-user-plus"></i>&nbsp; Add Friend</button>
                     </div>
                 )
             }
