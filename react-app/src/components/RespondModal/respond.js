@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { cancelRequest, confirmRequest } from '../../store/friend_list'
+import './respond.css'
 
 function Respond({loggedUser, profile_owner}) {
     const dispatch = useDispatch()
@@ -15,7 +16,7 @@ function Respond({loggedUser, profile_owner}) {
 
     return (
         <>
-            <div key={profile_owner.id} className='individual-friend-request'>
+            <div className='individual-friend-request-modal'>
                 <Link className='link-to-friend' to={`/users/${profile_owner.id}`}>
                     <img className='post-image-wall dim' src={profile_owner?.profile_pic}></img>
                 </Link>
