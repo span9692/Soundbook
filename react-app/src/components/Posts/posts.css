@@ -168,6 +168,14 @@
     margin-top: -.5rem;
 }
 
+.photos-count {
+    font-weight: normal;
+}
+
+.no-photos-text {
+    margin-top: -1rem;
+}
+
 .image-index-0 {
     border-top-left-radius: 12px;
 }

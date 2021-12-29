@@ -31,3 +31,7 @@
     border-radius: 8px;
     margin: .3rem .3rem;
 }
+
+.no-pictures-padding {
+    margin-top: -.5rem;
+}
