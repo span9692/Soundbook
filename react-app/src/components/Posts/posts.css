@@ -264,6 +264,25 @@
     margin-right: .5rem; /*left side of post box*/
 }
 
+.drop-down-arrow {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 1rem;
+    height: 1rem;
+    padding-left: .7rem;
+    margin-right: 1.3rem; /*left side of post box*/
+}
+
+.drop-up-arrow {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 1rem;
+    height: 1rem;
+    padding-left: .7rem;
+    margin-right: 1.3rem; /*left side of post box*/
+    transform: scaleY(-1);
+}
+
 .post-form {
     width: 100%;
     border-color: rgb(238, 238, 238);
