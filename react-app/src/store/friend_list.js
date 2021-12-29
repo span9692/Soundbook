@@ -1,6 +1,7 @@
 const GET_FRIENDS = 'users/GET_FRIENDS'
 const ADD_FRIENDS = 'users/ADD_FRIENDS'
 const ADD_NEW_FRIENDS = 'users/ADD_NEW_FRIENDS'
+const CANCEL_REQUEST = 'user/CANCEL_REQUEST'
 
 const showFriends = data => {
   return {
@@ -19,6 +20,13 @@ const first = data => {
 const addNewFriend = data => {
   return {
     type: ADD_NEW_FRIENDS,
+    data
+  }
+}
+
+const removeRequest = data => {
+  return {
+    type: CANCEL_REQUEST,
     data
   }
 }
@@ -53,6 +61,18 @@ export const addFriend = (adderId, recieverId) => async dispatch => {
   }
 }
 
+export const cancelRequest = (adderId, recieverId) => async dispatch => {
+  const response = await fetch(`/api/friend/cancel`, {
+    method: "DELETE",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({adderId, recieverId})
+  })
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(removeRequest(data))
+  }
+}
+
 export default function reducer(state = {}, action) {
   let newState;
   let count;
@@ -69,6 +89,14 @@ export default function reducer(state = {}, action) {
         newState = {...state}
         count = Object.values(newState).length
         newState[count] = action.data.friends
+        return newState
+      case CANCEL_REQUEST:
+        newState = {...state}
+        for (let key in newState) {
+          if (newState[key]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[key]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) {
+            delete newState[key]
+          }
+        }
         return newState
       default:
         return state;

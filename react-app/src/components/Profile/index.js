@@ -7,7 +7,7 @@ import Posts from '../Posts/post'
 import { getPhotos } from '../../store/photo'
 import { getPosts } from '../../store/post'
 import { getComments } from '../../store/comment'
-import { addFriend, getFriends } from '../../store/friend_list'
+import { addFriend, cancelRequest, getFriends } from '../../store/friend_list'
 import Friends from '../Friends'
 import Photos from '../Photos'
 import About from '../About'
@@ -27,9 +27,12 @@ function Profile() {
     const allPosts = useSelector(state => Object.values(state.post)).filter(el => el.profile_id === +userId)
     const allComments = useSelector(state => Object.values(state.comment))
     const allFriends = useSelector(state => Object.values(state.friend_list))
-console.log(profile_owner)
-console.log(loggedUser)
+
     let option = null;
+
+    const cancelFriendRequest = () => {
+        dispatch(cancelRequest(loggedUser.id, profile_owner.id))
+    }
 
     const newFriendRequest = () => {
         dispatch(addFriend(loggedUser.id, profile_owner.id))
@@ -53,7 +56,7 @@ console.log(loggedUser)
             } else if (allFriends[i].friendAdder_id === loggedUser.id && allFriends[i].friendReceiver_id === +userId && allFriends[i].confirmed === false) {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-ban"></i>&nbsp; Cancel Request</button>
+                        <button className='profile-nav-links edit-profileBtn' onClick={()=>cancelFriendRequest()}><i class="fas fa-ban"></i>&nbsp; Cancel Request</button>
                     </div>
                 )
                 break;
