@@ -62,9 +62,6 @@ function Feed() {
         if (friend.confirmed === false && friend.friendReceiver_id === loggedUser.id) {
             requester_id.push(friend.friendAdder_id)
         }
-        if (friend.confirmed === false && friend.friendAdder_id === loggedUser.id) {
-            requester_id.push(friend.friendReceiver_id)
-        }
     })
     const friend_request_list = allUsersValues.filter(el => requester_id.includes(el.id))
     // friend requests list determined
@@ -135,7 +132,7 @@ function Feed() {
     }
 
     const deleteRequest = (adderId) => {
-        dispatch(cancelRequest(loggedUser.id, adderId))
+        dispatch(cancelRequest(adderId, loggedUser.id))
     }
 
     useEffect(()=> {
