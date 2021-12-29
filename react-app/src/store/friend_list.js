@@ -113,25 +113,22 @@ export default function reducer(state = {}, action) {
         return newState
       case CANCEL_REQUEST:
         newState = [...state]
-        console.log('state', state)
-        console.log('newState', newState)
-        console.log('action.data', action.data)
         for (let i = 0; i < newState.length; i++) {
           if ((newState[i]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[i]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendAdder_id'])) {
             newState.splice(i,1)
           }
         }
-        console.log('newState after', newState)
         return newState
         case ACCEPT_REQUEST:
-        newState = {...state}
-        for (let key in newState) {
-          console.log(key)
-          if ((newState[key]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[key]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[key]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[key]['friendAdder_id'] === action.data['friends']['friendReceiver_id'])) {
-            newState[key]['confirmed'] = true;
+          newState = [...state]
+          console.log('newState', newState)
+          console.log('action.data', action.data)
+          for (let i = 0; i < newState.length; i++) {
+            if ((newState[i]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[i]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendAdder_id'])) {
+              newState[i]['confirmed'] = true;
+              return newState
+            }
           }
-        }
-        return newState
       default:
         return state;
     }

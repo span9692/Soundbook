@@ -33,7 +33,7 @@ def removeFriendRequest():
 @friend_list_routes.route('/accept', methods=['PUT'])
 def acceptFriendRequest():
     data = request.get_json()
-    db.session.execute(friend_list.update().where(friend_list.c.friendAdder_id==data['adderId']).where(friend_list.c.friendReceiver_id==data['recieverId']).values(confirmed=True))
+    db.session.execute(friend_list.update().where(friend_list.c.friendAdder_id==data['recieverId']).where(friend_list.c.friendReceiver_id==data['adderId']).values(confirmed=True))
     db.session.commit()
     return {'friends':{'confirmed':True, 'friendAdder_id':data['adderId'], 'friendReceiver_id':data['recieverId']}}
 
