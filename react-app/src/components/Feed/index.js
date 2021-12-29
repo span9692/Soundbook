@@ -214,7 +214,7 @@ function Feed() {
                                     <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/4Y9Xi2D3hJv.png'} alt='Image'></img>
                                     <div className='feed-left-option-label'>Messenger</div>
                                 </div>
-                                <div className='left-side-options unclickable' onClick={()=>setShowMore(false)}>
+                                <div className='left-side-options unclickable'>
                                     <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yt/r/PObY9OA5lvJ.png'} alt='Image'></img>
                                     <div className='feed-left-option-label'>Play Games</div>
                                 </div>
@@ -226,7 +226,7 @@ function Feed() {
                                     <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/e2VRgQCGEk1.png'} alt='Image'></img>
                                     <div className='feed-left-option-label'>Voting Information Center</div>
                                 </div>
-                                <div className='left-side-options unclickable' onClick={()=>setShowMore(false)}>
+                                <div className='left-side-options unclickable'>
                                     <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/bo0Zt72NIra.png'} alt='Image'></img>
                                     <div className='feed-left-option-label'>Weather</div>
                                 </div>
@@ -236,7 +236,6 @@ function Feed() {
                                 </div>
                             </>
                            }
-
                     </div>
                 </div>
                 <div className='feed-main-column'>
