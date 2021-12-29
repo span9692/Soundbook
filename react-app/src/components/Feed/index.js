@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { changeComment, getComments, newComment, removeComment } from '../../store/comment'
-import { cancelRequest, confirmRequest, firstFriend, getFriends } from '../../store/friend_list'
+import { cancelRequest, confirmRequest, getFriends } from '../../store/friend_list'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
@@ -23,6 +23,7 @@ function Feed() {
     const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
     const [showEmoji, setShowEmoji] = useState(false)
+    const [showMore, setShowMore] = useState(false)
 
 
     const loggedUser = useSelector(state => state.session.user)
@@ -163,50 +164,78 @@ function Feed() {
                             <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'} alt='Image'></img>
                             <div className='feed-left-option-label'>COVID-19 Information Center</div>
                         </a>
-
-
-
-
-                        {/* <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
-                            <div className='feed-left-option-label'>{loggedUser?.first_name} {loggedUser?.last_name}</div>
-                        </div>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'}></img>
-                            <div className='feed-left-option-label'>Friends</div>
-                        </div>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png'}></img>
-                            <div className='feed-left-option-label'>Watch</div>
-                        </div>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/w-vdKCGzCy1.png'}></img>
-                            <div className='feed-left-option-label'>Photos</div>
-                        </div>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'}></img>
-                            <div className='feed-left-option-label'>COVID-19 Information Center</div>
-                        </div>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={loggedUser?.profile_pic}></img>
-                            <div className='feed-left-option-label'>{loggedUser?.first_name} {loggedUser?.last_name}</div>
-                        </div>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/S0U5ECzYUSu.png'}></img>
-                            <div className='feed-left-option-label'>Friends</div>
-                        </div>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png'}></img>
-                            <div className='feed-left-option-label'>Watch</div>
-                        </div>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/w-vdKCGzCy1.png'}></img>
-                            <div className='feed-left-option-label'>Photos</div>
-                        </div>
-                        <div className='left-side-options pointer'>
-                            <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/5rR6LRpNc5u.png'}></img>
-                            <div className='feed-left-option-label'>COVID-19 Information Center</div>
-                        </div> */}
+                        {!showMore ?
+                            <div className='arrow-options pointer' onClick={()=>setShowMore(true)}>
+                                <img className='drop-down-arrow' src={'https://res.cloudinary.com/photofinder/image/upload/v1640796801/551749-200_szqyvu.png'} alt='Image'></img>
+                               <div className='feed-left-option-label'>Show More</div>
+                            </div> :
+                            <>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/PrjLkDYpYbH.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Groups</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yU/r/D2y-jJ2C_hO.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Marketplace</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y8/r/he-BkogidIc.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Memories</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/DHBHg9MEeSC.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Ads Manager</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y_/r/bRC_jZ58syg.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Blood Donations</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yN/r/9s7nhm949yb.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Community Help</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yu/r/eXC82ZeepQ7.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Events</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/mAnT0r8GSOm.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Favorites</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/n2vd2VduYc1.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Fundraisers</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yY/r/XxEsb0x8INQ.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Jobs</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/4Y9Xi2D3hJv.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Messenger</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yt/r/PObY9OA5lvJ.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Play Games</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/lVijPkTeN-r.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Saved</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/e2VRgQCGEk1.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Voting Information Center</div>
+                                </div>
+                                <div className='left-side-options unclickable'>
+                                    <img className='post-image-wall' src={'https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/bo0Zt72NIra.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Weather</div>
+                                </div>
+                                <div className='arrow-options pointer' onClick={()=>setShowMore(false)}>
+                                    <img className='drop-up-arrow' src={'https://res.cloudinary.com/photofinder/image/upload/v1640796801/551749-200_szqyvu.png'} alt='Image'></img>
+                                    <div className='feed-left-option-label'>Show Less</div>
+                                </div>
+                            </>
+                           }
                     </div>
                 </div>
                 <div className='feed-main-column'>
@@ -244,18 +273,18 @@ function Feed() {
                             <div type='submit' onClick={ postValue.length > 0 ? ()=>addPost() : null } class='boxBtn pointer' form='add-post-form'>
                                 <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
-                            <div class='boxBtn pointer'>
+                            <div class='boxBtn unclickable'>
                                 <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
                             </div>
-                            <div class='boxBtn pointer' onClick={()=>setShowEmoji(!showEmoji)}>
+                            <div class='boxBtn unclickable' onClick={()=>setShowEmoji(!showEmoji)}>
                                 <i class="far fa-laugh"></i> <span className='postBtns'>Feeling</span>
                             </div>
                         </div>
                     </div>
-                                {showEmoji === true ?
+                                {/* {showEmoji === true ?
                                     <Emojis />
                                     : null
-                                }
+                                } */}
 
                     {/* maps the posts*/}
                     {reversed.map(post => (

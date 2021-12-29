@@ -14,6 +14,7 @@ import About from '../About'
 import EditDisplayModal from '../EditDisplayModal'
 import EditCoverPhotoModal from '../EditCoverPhotoModal'
 import EditProfilePhotoModal from '../EditProfilePhoto'
+import RespondModal from '../RespondModal'
 
 function Profile() {
     const dispatch = useDispatch()
@@ -63,7 +64,7 @@ function Profile() {
             } else if (allFriends[i].friendAdder_id === +userId && allFriends[i].friendReceiver_id === loggedUser.id && allFriends[i].confirmed === false) {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-reply"></i>&nbsp; Respond</button>
+                        <RespondModal loggedUser={loggedUser} profile_owner={profile_owner}/>
                     </div>
                 )
                 break;

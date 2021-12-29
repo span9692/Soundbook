@@ -30,7 +30,7 @@ const NavBar = () => {
           <VideoModalNav />
           <a className='fontAwesomeness' href="https://github.com/span9692" target="_blank"><i class="fab fa-github"></i></a>
           <a className='fontAwesomeness' href="https://www.linkedin.com/in/sean-pan-395a4593/" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a className='fontAwesomeness' href="https://www.google.com/" target="_blank"><i class="fas fa-address-card"></i></a>
+          <div className='fontAwesomeness unclickable'><i class="fas fa-address-card"></i></div>
         </div>
         <div className='nav-right'>
           <Link className='firstName-profile-nav' to={`/users/${userId}`} exact={true}>
