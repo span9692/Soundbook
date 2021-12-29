@@ -1,0 +1,5 @@
+.invalid-photo-url {
+    color: red;
+    font-size: .8rem;
+    /* margin-top: .1rem; */
+}

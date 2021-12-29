@@ -7,13 +7,19 @@ import './editprofilephoto.css'
 function ProfilePhoto({loggedUser, setShowModal}) {
     const dispatch = useDispatch()
     const [profilePhoto, setProfilePhoto] = useState(loggedUser.profile_pic)
+    const [error, setError] = useState('')
     const userId = loggedUser.id
 
     const updateProfilePhoto = async(e) => {
         e.preventDefault()
-        dispatch(updateProfilePic(userId, profilePhoto))
-        dispatch(updatePicProfile(userId, profilePhoto))
-        setShowModal(false)
+
+        if(!/\.(jpe?g|png|gif|bmp)$/i.test(profilePhoto)){
+            setError('Must be a valid image URL')
+        } else {
+            dispatch(updateProfilePic(userId, profilePhoto))
+            dispatch(updatePicProfile(userId, profilePhoto))
+            setShowModal(false)
+        }
     }
 
     return (
@@ -23,6 +29,12 @@ function ProfilePhoto({loggedUser, setShowModal}) {
                 <hr style={{marginTop: 1+'rem', marginBottom: .5+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                 <div className='email-field'>
                     <label className='edit-field-name alias-field'>Profile Photo URL</label>
+                    {error.length > 0 ?
+                    <div className='invalid-photo-url'>
+                        {error}
+                    </div>
+                    : null
+                    }
                     <textarea
                     className='signup-field field-size signup-font1 alias-field'
                     name='profilePhoto'
