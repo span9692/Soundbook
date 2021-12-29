@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { changeComment, getComments, newComment, removeComment } from '../../store/comment'
-import { firstFriend, getFriends } from '../../store/friend_list'
+import { cancelRequest, confirmRequest, firstFriend, getFriends } from '../../store/friend_list'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
@@ -61,6 +61,9 @@ function Feed() {
     allFriends.forEach(friend => {
         if (friend.confirmed === false && friend.friendReceiver_id === loggedUser.id) {
             requester_id.push(friend.friendAdder_id)
+        }
+        if (friend.confirmed === false && friend.friendAdder_id === loggedUser.id) {
+            requester_id.push(friend.friendReceiver_id)
         }
     })
     const friend_request_list = allUsersValues.filter(el => requester_id.includes(el.id))
@@ -125,6 +128,14 @@ function Feed() {
 
     const unlikeComment = (commentId) => {
         dispatch(commentUnlike(commentId, loggedUser.id))
+    }
+
+    const acceptRequest = (adderId) => {
+        dispatch(confirmRequest(adderId, loggedUser.id))
+    }
+
+    const deleteRequest = (adderId) => {
+        dispatch(cancelRequest(loggedUser.id, adderId))
     }
 
     useEffect(()=> {
@@ -204,7 +215,7 @@ function Feed() {
                 <div className='feed-main-column'>
                     <div className='story-container'>
                         {story_friends.map(friend => (
-                            <Link className='indiv-story-container' to={`/users/${friend.id}`}>
+                            <Link key={friend.id} className='indiv-story-container' to={`/users/${friend.id}`}>
                                 <img className='story-images' src={friend.photos.length === 0 ? friend?.profile_pic : friend?.photos[0].photo}></img>
                                 <div className='story-profile-pic'>
                                     <img className='story-image-wall dim' src={friend?.profile_pic}></img>
@@ -421,8 +432,8 @@ function Feed() {
                                         </Link>
                                     </div>
                                     <div className='friend-request-buttons'>
-                                        <div className='confirm-friend-request-btn'>Confirm</div>
-                                        <div className='delete-friend-request-btn'>Delete</div>
+                                        <div className='confirm-friend-request-btn pointer' onClick={() => acceptRequest(request.id)}>Confirm</div>
+                                        <div className='delete-friend-request-btn pointer' onClick={() => deleteRequest(request.id)}>Delete</div>
                                     </div>
                                 </div>
                             </div>

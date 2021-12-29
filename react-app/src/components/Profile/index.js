@@ -7,7 +7,7 @@ import Posts from '../Posts/post'
 import { getPhotos } from '../../store/photo'
 import { getPosts } from '../../store/post'
 import { getComments } from '../../store/comment'
-import { getFriends } from '../../store/friend_list'
+import { addFriend, cancelRequest, getFriends } from '../../store/friend_list'
 import Friends from '../Friends'
 import Photos from '../Photos'
 import About from '../About'
@@ -30,6 +30,14 @@ function Profile() {
 
     let option = null;
 
+    const cancelFriendRequest = () => {
+        dispatch(cancelRequest(loggedUser.id, profile_owner.id))
+    }
+
+    const newFriendRequest = () => {
+        dispatch(addFriend(loggedUser.id, profile_owner.id))
+    }
+
     if (loggedUser.id === +userId) {
         option = (
             <div className='edit-profile-btn'>
@@ -48,7 +56,7 @@ function Profile() {
             } else if (allFriends[i].friendAdder_id === loggedUser.id && allFriends[i].friendReceiver_id === +userId && allFriends[i].confirmed === false) {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-ban"></i>&nbsp; Cancel Request</button>
+                        <button className='profile-nav-links edit-profileBtn' onClick={()=>cancelFriendRequest()}><i class="fas fa-ban"></i>&nbsp; Cancel Request</button>
                     </div>
                 )
                 break;
@@ -62,7 +70,7 @@ function Profile() {
             } else {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn'><i class="fas fa-user-plus"></i>&nbsp; Add Friend</button>
+                        <button className='profile-nav-links edit-profileBtn' onClick={()=>newFriendRequest()}><i class="fas fa-user-plus"></i>&nbsp; Add Friend</button>
                     </div>
                 )
             }

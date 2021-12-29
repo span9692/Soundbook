@@ -9,6 +9,10 @@
     width: 27.5vw;
 }
 
+.video-modal-container::-webkit-scrollbar {
+    display: none;
+}
+
 .video-inner-container {
     background-color: rgb(231, 231, 231);
     padding: 2rem 1rem;

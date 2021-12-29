@@ -8,7 +8,7 @@ function Photos({profile_photos}) {
                 {profile_photos.length > 0 ?
                 <div className='all-photo-box'>
                     {profile_photos.map(photo => (
-                        <img className='all-photos' src={photo.photo}></img>
+                        <img key={photo.id} className='all-photos' src={photo.photo}></img>
                     ))}
                 </div>
                 : <div className='no-pictures-padding'></div>
