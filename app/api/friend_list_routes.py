@@ -16,4 +16,25 @@ def firstFriend():
     db.session.commit()
     return {'friends':{'confirmed':True, 'friendAdder_id':data['adderId'], 'friendReceiver_id':data['recieverId']}}
 
+@friend_list_routes.route('/add', methods=['POST'])
+def newFriend():
+    data = request.get_json()
+    db.session.execute(friend_list.insert().values(confirmed=False, friendAdder_id=data['adderId'], friendReceiver_id=data['recieverId']))
+    db.session.commit()
+    return {'friends':{'confirmed':False, 'friendAdder_id':data['adderId'], 'friendReceiver_id':data['recieverId']}}
+
+@friend_list_routes.route('/cancel', methods=['DELETE'])
+def removeFriendRequest():
+    data = request.get_json()
+    db.session.execute(friend_list.delete().where(friend_list.c.friendAdder_id==data['adderId']).where(friend_list.c.friendReceiver_id==data['recieverId']))
+    db.session.commit()
+    return {'friends':{'confirmed':False, 'friendAdder_id':data['adderId'], 'friendReceiver_id':data['recieverId']}}
+
+@friend_list_routes.route('/accept', methods=['PUT'])
+def acceptFriendRequest():
+    data = request.get_json()
+    db.session.execute(friend_list.update().where(friend_list.c.friendAdder_id==data['adderId']).where(friend_list.c.friendReceiver_id==data['recieverId']).values(confirmed=True))
+    db.session.commit()
+    return {'friends':{'confirmed':True, 'friendAdder_id':data['adderId'], 'friendReceiver_id':data['recieverId']}}
+
 # users = User.query.filter(or_(User.first_name.ilike(f'%{data}%'), User.last_name.ilike(f'%{data}%')))
