@@ -215,7 +215,7 @@ function Feed() {
                 <div className='feed-main-column'>
                     <div className='story-container'>
                         {story_friends.map(friend => (
-                            <Link className='indiv-story-container' to={`/users/${friend.id}`}>
+                            <Link key={friend.id} className='indiv-story-container' to={`/users/${friend.id}`}>
                                 <img className='story-images' src={friend.photos.length === 0 ? friend?.profile_pic : friend?.photos[0].photo}></img>
                                 <div className='story-profile-pic'>
                                     <img className='story-image-wall dim' src={friend?.profile_pic}></img>
