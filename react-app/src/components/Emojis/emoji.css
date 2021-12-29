@@ -1,0 +1,21 @@
+.emoji-container {
+    position: absolute;
+    z-index: 3;
+    top: 17.5%;
+    right: 0;
+}
+
+.emoji-categories {
+    display: none!important;
+}
+
+.emoji-scroll-wrapper::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+}
+
+.emoji-scroll-wrapper::-webkit-scrollbar-thumb {
+    background: rgb(202, 202, 202);
+    border-radius: 500px;
+}
