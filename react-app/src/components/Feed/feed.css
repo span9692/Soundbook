@@ -173,6 +173,17 @@
     left: 5.5%;
 }
 
+.post-recipient {
+    display: flex;
+}
+
+.fa-caret-right {
+    margin: 0px 1rem;
+}
+
+/* .recipient-margin {
+    margin-left: 2rem;
+} */
 
 /*right side of feed*/
 .friend-request-text {
