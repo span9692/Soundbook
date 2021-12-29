@@ -98,11 +98,12 @@ export default function reducer(state = {}, action) {
   let count;
     switch (action.type) {
       case GET_FRIENDS:
+        console.log('action.data in get route', action.data)
         newState = action.data.friends
         return newState
       case ADD_FRIENDS:
         newState = {...state}
-         count = Object.values(newState).length
+        count = Object.values(newState).length
         newState[count] = action.data.friends
         return newState
       case ADD_NEW_FRIENDS:
@@ -111,22 +112,23 @@ export default function reducer(state = {}, action) {
         newState[count] = action.data.friends
         return newState
       case CANCEL_REQUEST:
-        newState = {...state}
-        for (let key in newState) {
-          if ((newState[key]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[key]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[key]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[key]['friendAdder_id'] === action.data['friends']['friendReceiver_id'])) {
-            delete newState[key]
+        newState = [...state]
+        for (let i = 0; i < newState.length; i++) {
+          if ((newState[i]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[i]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendAdder_id'])) {
+            newState.splice(i,1)
           }
         }
         return newState
-      case ACCEPT_REQUEST:
-        newState = {...state}
-        for (let key in newState) {
-          console.log(key)
-          if ((newState[key]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[key]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[key]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[key]['friendAdder_id'] === action.data['friends']['friendReceiver_id'])) {
-            newState[key]['confirmed'] = true;
+        case ACCEPT_REQUEST:
+          newState = [...state]
+          console.log('newState', newState)
+          console.log('action.data', action.data)
+          for (let i = 0; i < newState.length; i++) {
+            if ((newState[i]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[i]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendAdder_id'])) {
+              newState[i]['confirmed'] = true;
+              return newState
+            }
           }
-        }
-        return newState
       default:
         return state;
     }
