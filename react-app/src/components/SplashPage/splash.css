@@ -35,4 +35,51 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    padding-bottom: 7rem;
+    padding-top: 2rem;
+    background-color: white;
+    display: flex;
+}
+
+.languages {
+    margin-right: 1.5rem;
+}
+
+.footer-text {
+    color: grey;
+    font-size: .9rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.hide {
+    color: white;
+    display: flex;
+    position: relative
+}
+.asdf {
+    position: relative;
+}
+
+.at-text {
+    /* position: absolute; */
+    /* margin-bottom: 1rem; */
+}
+
+.footer-text1 {
+    color: grey;
+    font-size: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer-container {
+    width: 70%
+}
+
+.empty-footer {
+    width: 15%
+}
+
+.footer-last-line {
+    display: flex;
+    justify-content: space-between;
 }

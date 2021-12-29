@@ -7,13 +7,18 @@ import './coverphoto.css'
 function CoverPhoto({loggedUser, setShowModal}) {
     const dispatch = useDispatch()
     const [coverPhoto, setCoverPhoto] = useState(loggedUser.cover_photo)
+    const [error, setError] = useState('')
     const userId = loggedUser.id
 
     const updateCoverPhoto = async(e) => {
         e.preventDefault()
-        dispatch(updateCover({userId, coverPhoto}))
-        dispatch(updateCoverPic({userId, coverPhoto}))
-        setShowModal(false)
+        if(!/\.(jpe?g|png|gif|bmp)$/i.test(coverPhoto)){
+            setError('Must be a valid image URL')
+        } else {
+            dispatch(updateCover({userId, coverPhoto}))
+            dispatch(updateCoverPic({userId, coverPhoto}))
+            setShowModal(false)
+        }
     }
 
     return (
@@ -23,6 +28,12 @@ function CoverPhoto({loggedUser, setShowModal}) {
                 <hr style={{marginTop: 1+'rem', marginBottom: .5+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                 <div className='email-field'>
                     <label className='edit-field-name alias-field'>Cover Photo URL</label>
+                    {error.length > 0 ?
+                    <div className='invalid-photo-url'>
+                        {error}
+                    </div>
+                    : null
+                    }
                     <textarea
                     className='signup-field field-size signup-font1 alias-field'
                     name='coverPhoto'
