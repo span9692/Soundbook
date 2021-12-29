@@ -113,7 +113,7 @@ export default function reducer(state = {}, action) {
       case CANCEL_REQUEST:
         newState = {...state}
         for (let key in newState) {
-          if (newState[key]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[key]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) {
+          if ((newState[key]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[key]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[key]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[key]['friendAdder_id'] === action.data['friends']['friendReceiver_id'])) {
             delete newState[key]
           }
         }
