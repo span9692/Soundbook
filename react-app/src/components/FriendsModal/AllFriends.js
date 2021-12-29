@@ -5,7 +5,7 @@ function AllFriends({contact_list}) {
     return (
         <>
             <div className='friend-modal-container'>
-                <div className='f-text'>Friends ({contact_list.length})</div>
+                <div className='f-text'>Friends <span className='photos-counter'>({contact_list.length})</span></div>
                 <div className='f-container'>
                     {contact_list.map(friend => (
                     <Link className='link-to-friend1' to={`/users/${friend.id}`}>

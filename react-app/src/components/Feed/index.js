@@ -312,7 +312,7 @@ function Feed() {
                                 </div>
                             }
                                 <div class='pointer'>
-                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className='comment-button'><i class="far fa-comment"></i> Comment</span>
+                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className={commentBoxId === post.id ? 'comment1-button' : 'comment-button'}><i class="far fa-comment"></i> Comment</span>
                                 </div>
                             </div>
                             {commentCheck.includes(post?.id) ?
@@ -401,7 +401,8 @@ function Feed() {
                         <div className='friend-request-text'>
                             Friend Requests
                         </div>
-                        {friend_request_list.map(request => (
+                        {friend_request_list.length > 0 ?
+                        (friend_request_list.map(request => (
                         <>
                             <div key={request.id} className='individual-friend-request'>
                                 <Link className='link-to-friend' to={`/users/${request.id}`}>
@@ -420,7 +421,12 @@ function Feed() {
                                 </div>
                             </div>
                         </>
-                        ))}
+                        )))
+                        :
+                        <div className='no-friend-request'>
+                            <span className='no-friend-text'>No Friend Requests</span>
+                        </div>
+                        }
                         <hr style={{ marginTop: 2 + 'rem', marginBottom: 2 + 'rem', marginRight: .9 + 'rem' }} size='1' width='95%' color='#c2c1c1'></hr>
                         <div className='contact-text'>
                             Contacts

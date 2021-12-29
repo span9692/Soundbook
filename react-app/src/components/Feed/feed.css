@@ -164,11 +164,30 @@
     background-color: white;
     border-radius: 8px;
     padding: .7rem;
-    padding-right: 4rem;
+    padding-right: 3rem;
     margin-right: .5rem;
     margin-top: 1rem;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     color:#c2c1c1
+}
+
+.no-friend-request {
+    display: flex;
+    align-items: flex-start;
+    /* background-color: white; */
+    border-radius: 8px;
+    padding: .7rem;
+    padding-right: 8.2rem;
+    margin-right: .5rem;
+    margin-top: 1rem;
+    /* box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%); */
+    color:black;
+    margin-bottom: -1rem;
+}
+
+.no-friend-text {
+    margin-left: 8.2rem;
+    font-size: .9rem;
 }
 
 .friend-request-minus-portrait {

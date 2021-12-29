@@ -168,6 +168,14 @@
     margin-top: -.5rem;
 }
 
+.photos-count {
+    font-weight: normal;
+}
+
+.no-photos-text {
+    margin-top: -1rem;
+}
+
 .image-index-0 {
     border-top-left-radius: 12px;
 }
@@ -502,6 +510,16 @@
     color: rgb(131, 131, 131)
 }
 
+.comment1-button {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    border-radius: 12px;
+    font-weight: bold;
+    color: #1877F2
+}
+
 .unlike-post-button {
     padding-top: .5rem;
     padding-bottom: .5rem;
@@ -514,7 +532,8 @@
 
 .like-post-button:hover,
 .unlike-post-button:hover,
-.comment-button:hover {
+.comment-button:hover,
+.comment1-button:hover {
     background-color: rgb(238, 238, 238);
 }
 

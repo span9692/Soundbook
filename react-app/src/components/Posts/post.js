@@ -177,9 +177,10 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
 
                     <div className='photos-container containers'>
                         <div className='photos-label'>
-                            <span className='profile-labels'>Photos</span>
+                            <span className='profile-labels'>Photos <span className='photos-count'>({profile_photos.length})</span></span>
                             <span className='edit-profileBtn3' onClick={() => setDisplay('photos')}>See All Photos</span>
                         </div>
+                        {profile_photos.length > 0 ?
                         <div className='nine-images'>
                             {profile_photos.map((photo, index) => (
                                 <img key={index} className={index === 0 ? 'posted-photos image-index-0'
@@ -189,11 +190,16 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                                                 : 'posted-photos']]]} src={photo.photo}></img>
                             ))}
                         </div>
+                            :
+                            <div className='no-photos-text'>
+
+                            </div>
+                        }
                     </div>
 
                     <div className='friends-container containers'>
                         <div className='photos-label1'>
-                            <span className='profile-labels'>Friends</span>
+                            <span className='profile-labels'>Friends <span className='photos-count'>({currentProfileFriends.length})</span></span>
                             <span className='edit-profileBtn3' onClick={() => setDisplay('friends')}>See All Friends</span>
                         </div>
                         <div className='nine-friends'>
@@ -313,7 +319,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                                 </div>
                             }
                                 <div class='pointer'>
-                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className='comment-button'><i class="far fa-comment"></i> Comment</span>
+                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className={commentBoxId === post.id ? 'comment1-button' : 'comment-button'}><i class="far fa-comment"></i> Comment</span>
                                 </div>
                             </div>
                             {commentCheck.includes(post?.id) ?
