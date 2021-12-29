@@ -296,7 +296,16 @@ function Feed() {
                                 <div className='edit-delete-post-btn-container'>
                                     <div className='name-date'>
                                         <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
-                                            <div className='post-name'>{post.poster_info?.alias ? post.poster_info?.alias : post.poster_info?.first_name+' '+post.poster_info?.last_name }</div>
+                                            <div className='post-name post-recipient'>
+                                                {post.poster_info?.alias ? post.poster_info?.alias : post.poster_info?.first_name+' '+post.poster_info?.last_name } {post.owner_id === post.profile_id ? null :
+                                                    <span className='post-recipient'>
+                                                        <i class="fas fa-caret-right"></i>
+                                                        <Link className='link-to-friend-post recipient-margin' to={`/users/${post.profile_id}`}>
+                                                            {allUsers[post.profile_id].alias ? allUsers[post.profile_id].alias : allUsers[post.profile_id].first_name+' '+allUsers[post.profile_id].last_name}
+                                                        </Link>
+                                                    </span>
+                                                }
+                                            </div>
                                         </Link>
                                         <span className='post-date'>{post.updatedAt}</span>
                                     </div>
