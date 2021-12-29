@@ -7,6 +7,7 @@ import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '.
 import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
+import Emojis from '../Emojis'
 import FriendModal from '../FriendsModal'
 import PhotosModal from '../PhotosModal'
 import VideoModal from '../VideoModal'
@@ -21,6 +22,7 @@ function Feed() {
     const [commentBoxId, setCommentBoxId] = useState('')
     const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
+    const [showEmoji, setShowEmoji] = useState(false)
 
 
     const loggedUser = useSelector(state => state.session.user)
@@ -237,11 +239,15 @@ function Feed() {
                             <div class='boxBtn pointer'>
                                 <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
                             </div>
-                            <div class='boxBtn pointer'>
+                            <div class='boxBtn pointer' onClick={()=>setShowEmoji(!showEmoji)}>
                                 <i class="far fa-laugh"></i> <span className='postBtns'>Feeling</span>
                             </div>
                         </div>
                     </div>
+                                {showEmoji === true ?
+                                    <Emojis />
+                                    : null
+                                }
 
                     {/* maps the posts*/}
                     {reversed.map(post => (

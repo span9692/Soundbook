@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import './posts.css'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import EditIntroModal from '../EditIntroModal'
+import Emojis from '../Emojis'
 
 function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
@@ -17,6 +18,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
     const [commentBoxId, setCommentBoxId] = useState('')
     const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
+    const [showEmoji, setShowEmoji] = useState(false)
 
     const allLikes = useSelector(state => Object.values(state.like))
 
@@ -239,11 +241,15 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                             <div class='boxBtn pointer'>
                                 <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
                             </div>
-                            <div class='boxBtn pointer'>
+                            <div class='boxBtn pointer' onClick={()=>setShowEmoji(true)}>
                                 <i class="far fa-laugh"></i> <span className='postBtns'>Feeling</span>
                             </div>
                         </div>
                     </div>
+                                {/* {showEmoji === true ?
+                                    <Emojis />
+                                    : null
+                                } */}
                     {/* {allPosts.map(post =>(
                         <div key={post.id} className='post-box containers'>
                             <img src={allUsers[post['owner_id']].profile_pic}></img>
