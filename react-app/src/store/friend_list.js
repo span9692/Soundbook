@@ -2,6 +2,7 @@ const GET_FRIENDS = 'users/GET_FRIENDS'
 const ADD_FRIENDS = 'users/ADD_FRIENDS'
 const ADD_NEW_FRIENDS = 'users/ADD_NEW_FRIENDS'
 const CANCEL_REQUEST = 'user/CANCEL_REQUEST'
+const ACCEPT_REQUEST = 'user/ACCEPT_REQUEST'
 
 const showFriends = data => {
   return {
@@ -27,6 +28,13 @@ const addNewFriend = data => {
 const removeRequest = data => {
   return {
     type: CANCEL_REQUEST,
+    data
+  }
+}
+
+const yesRequest = data => {
+  return {
+    type: ACCEPT_REQUEST,
     data
   }
 }
@@ -73,6 +81,18 @@ export const cancelRequest = (adderId, recieverId) => async dispatch => {
   }
 }
 
+export const confirmRequest = (recieverId, adderId) => async dispatch => {
+  const response = await fetch('/api/friend/accept', {
+    method: "PUT",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({recieverId, adderId})
+  })
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(yesRequest(data))
+  }
+}
+
 export default function reducer(state = {}, action) {
   let newState;
   let count;
@@ -95,6 +115,14 @@ export default function reducer(state = {}, action) {
         for (let key in newState) {
           if (newState[key]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[key]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) {
             delete newState[key]
+          }
+        }
+        return newState
+      case ACCEPT_REQUEST:
+        newState = {...state}
+        for (let key in newState) {
+          if (newState[key]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[key]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) {
+            newState[key]['confirmed'] = true;
           }
         }
         return newState
