@@ -1,14 +1,37 @@
 # Soundbook
 
-*By Sean Pan* - https://sound-book.herokuapp.com/
+*By Sean Pan* - [Visit Soundbook](https://sound-book.herokuapp.com/)
 
 This is the README for the final solo project from App Academy.
 The project was inspired by Facebook and built using Javascript,
 React.js and Redux for the front end and Python with Flask for the backend.
 
+# Soundbook at a Glance
+
+Soundbook is a fullstack app that allows artists to connect with one another all over the world. Artists can customize their profile pages by creating posts, adding photos, and updating their personal info. By connecting with other artists, artists can see, comment, and like each other's posts. 
+
+![feed](https://res.cloudinary.com/photofinder/image/upload/v1640727220/Capture_a9jsms.jpg)
+
+![profile](https://res.cloudinary.com/photofinder/image/upload/v1640734120/Capture_rs9gqq.jpg)
+
+# Frontend Overview
+- Javascript
+- React
+- Redux
+- HTML
+- CSS
+- Node.js
+
+# Backend Overview
+- Python
+- Flask
+- PostgreSQL
+- SQLAlchemy
+- Docker
+
 # Project Installation
 
-1. Clone the project repository from https://github.com/span9692/Soundbook
+1. Clone the project repository [here](https://github.com/span9692/Soundbook)
 
 2. Rename the folder to whatever you want.
 
@@ -115,23 +138,3 @@ docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
 # Running Locally
 >To start the server, run `flask run` from the root directory, then run `npm start` from the `react-app` directory. This will allow you to make requests to http://localhost:3000 using any client (browser and Postman).
 >To stop the server from listening to requests, press CTRL + c for Windows/Linux or CMD + c for MacOS in the terminal that you started the server (wherever you >ran npm start).
-
-
-
-# Soundbook at a Glance
-
-Soundbook is a fullstack app that allows artists to connect with one another all over the world. Artists can customize their profile pages by creating posts, adding photos, and updating their personal info. By connecting with other artists, artists can see, comment, and like each other's posts. 
-
-![feed](https://res.cloudinary.com/photofinder/image/upload/v1640727220/Capture_a9jsms.jpg)
-
-![profile](https://res.cloudinary.com/photofinder/image/upload/v1640734120/Capture_rs9gqq.jpg)
-
-# Frontend Overview
-Javascript
-React
-Redux
-
-# Backend Overview
-Python
-PostgreSQL
-Flask
