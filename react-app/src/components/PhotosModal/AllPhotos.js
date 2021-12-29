@@ -8,7 +8,7 @@ function AllPhotos({profile_photos}) {
                 {profile_photos.length > 0 ?
                 <div className='p-container'>
                     {profile_photos.map(photo => (
-                            <img className='all-photos-modal' src={photo.photo}></img>
+                        <img key={photo.id} className='all-photos-modal' src={photo.photo}></img>
                     ))}
                 </div>
                 : <div className='no-photos-in-modal'></div>

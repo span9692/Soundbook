@@ -22,7 +22,7 @@ function Friends({profileId, allFriends, allUsersValues}) {
                 <div className={currentProfileFriends.length % 3 === 0 ? 'friend-box' : 'friend-box1'}>
                     {currentProfileFriends.length > 0 ?
                     (currentProfileFriends.map(friend => (
-                        <div className='indiv-friend-box'>
+                        <div key={friend.id} className='indiv-friend-box'>
                             <Link to={`/users/${friend.id}`}>
                                 <img className='square-portraits dim' src={friend.profile_pic}></img>
                             </Link>
