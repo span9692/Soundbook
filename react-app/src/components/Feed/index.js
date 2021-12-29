@@ -68,8 +68,10 @@ function Feed() {
     // friend requests list determined
 
     const allPosts = useSelector(state => Object.values(state.post))
-    const reversed = []
-    allPosts.forEach(el => reversed.unshift(el))
+    const temp = []
+    allPosts.forEach(el => temp.unshift(el))
+
+    let reversed = temp.filter(el => profile_owner_friends.includes(el.owner_id) || el.owner_id === loggedUser.id)
 
     let commentCheck = allComments.map(el => el?.post_id)
     commentCheck = new Set(commentCheck)
