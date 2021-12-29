@@ -98,7 +98,7 @@ export default function reducer(state = {}, action) {
   let count;
     switch (action.type) {
       case GET_FRIENDS:
-        console.log('action.data in get route', action.data)
+        // console.log('action.data in get route', action.data)
         newState = action.data.friends
         return newState
       case ADD_FRIENDS:
@@ -121,8 +121,8 @@ export default function reducer(state = {}, action) {
         return newState
         case ACCEPT_REQUEST:
           newState = [...state]
-          console.log('newState', newState)
-          console.log('action.data', action.data)
+          // console.log('newState', newState)
+          // console.log('action.data', action.data)
           for (let i = 0; i < newState.length; i++) {
             if ((newState[i]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[i]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendAdder_id'])) {
               newState[i]['confirmed'] = true;
