@@ -23,6 +23,13 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
     const [showEmojiComment, setShowEmojiComment] = useState(false)
     const [showEmojiEditComment, setShowEmojiEditComment] = useState(false)
 
+    const closeEmojis = () => {
+        setShowEmoji(false)
+        setShowEmojiEditPost(false)
+        setShowEmojiComment(false)
+        setShowEmojiEditComment(false)
+    }
+
     const allLikes = useSelector(state => Object.values(state.like))
 
 
@@ -123,7 +130,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
         <>
             <div className='post-container'>
                 <div className='user-info'>
-                    <div className='intro-container containers'>
+                    <div onClick={()=> closeEmojis()} className='intro-container containers'>
                         <span className='profile-labels'>Intro</span>
                         <div className='category-row icon'>
                             <div className='icon-row'>
@@ -180,7 +187,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                         }
                     </div>
 
-                    <div className='photos-container containers'>
+                    <div onClick={()=> closeEmojis()} className='photos-container containers'>
                         <div className='photos-label'>
                             <span className='profile-labels'>Photos <span className='photos-count'>({profile_photos.length})</span></span>
                             <span className='edit-profileBtn3' onClick={() => setDisplay('photos')}>See All Photos</span>
@@ -202,7 +209,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                         }
                     </div>
 
-                    <div className='friends-container containers'>
+                    <div onClick={()=> closeEmojis()} className='friends-container containers'>
                         <div className='photos-label1'>
                             <span className='profile-labels'>Friends <span className='photos-count'>({currentProfileFriends.length})</span></span>
                             <span className='edit-profileBtn3' onClick={() => setDisplay('friends')}>See All Friends</span>
