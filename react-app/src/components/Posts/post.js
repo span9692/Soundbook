@@ -235,21 +235,21 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                         </div>
                         <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                         <div className='post-box-buttons'>
-                            <div type='submit' onClick={ postValue.length > 0 ? ()=>addPost() : null } class='boxBtn pointer' form='add-post-form'>
+                            <div type='submit' onClick={ postValue.length > 0 ? ()=>{addPost(); setShowEmoji(false)} : ()=>setShowEmoji(false) } class='boxBtn pointer' form='add-post-form'>
                                 <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
                             <div class='boxBtn unclickable'>
                                 <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
                             </div>
-                            <div class='boxBtn unclickable' onClick={()=>setShowEmoji(true)}>
-                                <i class="far fa-laugh"></i> <span className='postBtns'>Feeling</span>
+                            <div onClick={()=>setShowEmoji(!showEmoji)} className='boxBtn pointer'>
+                                <i class="far fa-laugh"></i> <span className={showEmoji ? 'postBtns blue' : 'postBtns'}>Feeling</span>
                             </div>
+                                {showEmoji === true ?
+                                    <Emojis location={'profile-post'} setPostValue={setPostValue}/>
+                                    : null
+                                }
                         </div>
                     </div>
-                                {/* {showEmoji === true ?
-                                    <Emojis />
-                                    : null
-                                } */}
                     {/* {allPosts.map(post =>(
                         <div key={post.id} className='post-box containers'>
                             <img src={allUsers[post['owner_id']].profile_pic}></img>

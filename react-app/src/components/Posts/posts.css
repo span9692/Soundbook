@@ -41,7 +41,7 @@
     margin-top: 1rem;
     background-color: white;
     position: relative;
-    z-index: 2;
+    z-index: 0;
 }
 
 .intro-container > span,
@@ -433,6 +433,7 @@
     justify-content: space-around;
     align-items: center;
     max-height: 1.5rem;
+    position: relative;
 }
 
 .fa-pen {
@@ -458,6 +459,7 @@
     padding-top: .7rem;
     padding-bottom: .7rem;
     border-radius: 12px;
+    position: relative;
 }
 
 .boxBtn:hover {

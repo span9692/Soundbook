@@ -112,6 +112,7 @@
 .feed-post-box {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .story-container {
@@ -309,4 +310,8 @@
 
 .link-to-friend-post:visited {
     color: black;
+}
+
+.blue {
+    color: #1877F2!important;
 }

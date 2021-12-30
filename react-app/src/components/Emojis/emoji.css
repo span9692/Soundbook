@@ -1,8 +1,15 @@
-.emoji-container {
+.emoji-container1 {
     position: absolute;
     z-index: 3;
-    top: 17.5%;
-    right: 0;
+    top: 9rem;
+    right: 0rem;
+}
+
+.emoji-container2 {
+    position: absolute;
+    z-index: 3;
+    top: 2.5rem;
+    right: -1rem;
 }
 
 .emoji-categories {

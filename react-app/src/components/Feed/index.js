@@ -256,40 +256,40 @@ function Feed() {
                     </div>
                     <div className='feed-post-box'>
                         <div className='post-box feed-containers'>
-                        <div className='post-name-row'>
-                            <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
-                                <img className='post-image-wall dim' src={loggedUser?.profile_pic}></img>
-                            </Link>
-                            <form className='post-form' id='add-post-form'>
-                                <input
-                                    className='post-field'
-                                    type='text'
-                                    placeholder="What's on your mind?"
-                                    value={postValue}
-                                    onChange={(e) => setPostValue(e.target.value)}
-                                />
-                            </form>
+                            <div className='post-name-row'>
+                                <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
+                                    <img className='post-image-wall dim' src={loggedUser?.profile_pic}></img>
+                                </Link>
+                                <form className='post-form' id='add-post-form'>
+                                    <input
+                                        className='post-field'
+                                        type='text'
+                                        placeholder="What's on your mind?"
+                                        value={postValue}
+                                        onChange={(e) => setPostValue(e.target.value)}
+                                    />
+                                </form>
+                            </div>
+                            <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
+                            <div className='post-box-buttons'>
+                                <div type='submit' onClick={ postValue.length > 0 ? ()=>{addPost(); setShowEmoji(false)} : ()=>setShowEmoji(false) } class='boxBtn pointer' form='add-post-form'>
+                                    <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
+                                </div>
+                                <div class='boxBtn unclickable'>
+                                    <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
+                                </div>
+                                <div onClick={()=>setShowEmoji(!showEmoji)} className='boxBtn pointer'>
+                                    <i class="far fa-laugh"></i> <span className={showEmoji ? 'postBtns blue' : 'postBtns'}>Feeling</span>
+                                </div>
+                            </div>
                         </div>
-                        <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
-                        <div className='post-box-buttons'>
-                            <div type='submit' onClick={ postValue.length > 0 ? ()=>addPost() : null } class='boxBtn pointer' form='add-post-form'>
-                                <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
-                            </div>
-                            <div class='boxBtn unclickable'>
-                                <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
-                            </div>
-                            <div class='boxBtn unclickable' onClick={()=>setShowEmoji(!showEmoji)}>
-                                <i class="far fa-laugh"></i> <span className='postBtns'>Feeling</span>
-                            </div>
-                        </div>
-                    </div>
-                                {/* {showEmoji === true ?
-                                    <Emojis />
-                                    : null
-                                } */}
+                        {showEmoji === true ?
+                        <Emojis location={'feed-post'} setPostValue={setPostValue}/>
+                        : null
+                        }
 
-                    {/* maps the posts*/}
-                    {reversed.map(post => (
+                        {/* maps the posts*/}
+                        {reversed.map(post => (
                         <div key={post.id} className='post-box last-post feed-containers'>
                             <div className='post-name-date'>
                                 <Link className='link-to-friend' to={`/users/${post.poster_info.id}`}>
@@ -303,7 +303,7 @@ function Feed() {
                                                     <span className='post-recipient'>
                                                         <i class="fas fa-caret-right"></i>
                                                         <Link className='link-to-friend-post recipient-margin' to={`/users/${post.profile_id}`}>
-                                                            {allUsers[post.profile_id].alias ? allUsers[post.profile_id].alias : allUsers[post.profile_id].first_name+' '+allUsers[post.profile_id].last_name}
+                                                            {allUsers[post.profile_id]?.alias ? allUsers[post.profile_id]?.alias : allUsers[post.profile_id]?.first_name+' '+allUsers[post.profile_id]?.last_name}
                                                         </Link>
                                                     </span>
                                                 }
@@ -495,91 +495,6 @@ function Feed() {
                             </Link>
                             ))}
                         </div>
-                        {/* <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            asdf
-                        </div>
-                        <div>
-                            mmmmmmm
-                        </div> */}
-
                     </div>
                 </div>
             </div>
