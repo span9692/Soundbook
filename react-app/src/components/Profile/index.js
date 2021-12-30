@@ -118,14 +118,18 @@ function Profile() {
                         <img className='cover-photo pointer' onClick={() => setShowModal(true)} src={profile_owner?.cover_photo} alt='Error'></img>
                         {showModal && (
                             <Modal onClose={() => setShowModal(false)}>
+                                <div className='modal-photo-borders'>
                                     <img onClick={()=>setShowModal(false)} className='indiv-photo-modal' src={profile_owner?.cover_photo}></img>
+                                </div>
                             </Modal>
                         )}
                         <div>
                         <img className='profile-photo pointer' onClick={() => setProfilePicModal(true)} src={profile_owner?.profile_pic} alt='Error'></img>
                         {profilePicModal && (
                             <Modal onClose={() => setProfilePicModal(false)}>
+                                <div className='modal-photo-borders'>
                                     <img onClick={()=>setProfilePicModal(false)} className='indiv-photo-modal' src={profile_owner?.profile_pic}></img>
+                                </div>
                             </Modal>
                         )}
                             {loggedUser.id === +userId ?
