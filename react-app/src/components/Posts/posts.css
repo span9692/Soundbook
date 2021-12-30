@@ -41,7 +41,6 @@
     margin-top: 1rem;
     background-color: white;
     position: relative;
-    /* z-index: 0; */
 }
 
 .intro-container > span,
@@ -325,11 +324,27 @@
     /* background-color: rgb(238, 238, 238); */
     background-color: white;
     border: 1.5px grey solid;
-    /* border: hidden; */
+    box-sizing: border-box;
     padding-top: .6rem;
     padding-bottom: .6rem;
     border-radius: 12px;
     padding-left: .7rem;
+    padding-right: 2.3rem;
+    margin-right: .5rem;
+    font-size: .9rem;
+}
+
+.show-comment-edit-1field {
+    width: 100%;
+    /* background-color: rgb(238, 238, 238); */
+    background-color: white;
+    border: 1.5px grey solid;
+    box-sizing: border-box;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    border-radius: 12px;
+    padding-left: .7rem;
+    padding-right: 2.8rem;
     margin-right: .5rem;
     font-size: .9rem;
 }
@@ -338,6 +353,7 @@
     outline: none;
 }
 
+.show-comment-edit-1field:focus,
 .show-comment-edit-field:focus {
     outline: none;
 }

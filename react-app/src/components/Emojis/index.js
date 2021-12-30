@@ -14,6 +14,8 @@ function Emojis({location, setPostValue}) {
         option = 'emoji-container2'
     } else if (location === 'profile-edit-post') {
         option = 'emoji-container3'
+    } else if (location === 'profile-edit-comment') {
+        option = 'emoji-container4'
     }
 
     return (

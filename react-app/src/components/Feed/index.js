@@ -25,6 +25,7 @@ function Feed() {
     const [showMore, setShowMore] = useState(false)
     const [showEmoji, setShowEmoji] = useState(false)
     const [showEmojiEditPost, setShowEmojiEditPost] = useState(false)
+    const [showEmojiEditComment, setShowEmojiEditComment] = useState(false)
 
 
     const loggedUser = useSelector(state => state.session.user)
@@ -328,7 +329,7 @@ function Feed() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='position-absolute'>
+                            <div className='position-relative'>
                                 {editId == post.id ?
                                 <>
                                 <form className='edit-Form-Field'>
@@ -408,16 +409,25 @@ function Feed() {
                                                     }
                                                 </div>
                                             </div>
+                                            <div className='position-relative'>
                                             {comment.id === commentId ?
-                                            <form className='edit-Form-Field'>
-                                                <input
-                                                    className='show-comment-edit-field'
-                                                    type='text'
-                                                    value={editCommentValue}
-                                                    onChange={(e) => setEditCommentValue(e.target.value)}
-                                                />
-                                                <span onClick={ editCommentValue.length > 0 ? () => editComment(comment.id, editCommentValue) : null } className='save-comment-button'>Save</span>
-                                            </form> :
+                                            <>
+                                                <form className='edit-Form-Field'>
+                                                    <input
+                                                        className='show-comment-edit-1field'
+                                                        type='text'
+                                                        value={editCommentValue}
+                                                        onChange={(e) => setEditCommentValue(e.target.value)}
+                                                    />
+                                                    <span onClick={()=>setShowEmojiEditComment(!showEmojiEditComment)} className='addEmoji-to-edit-comment'><i class="far fa-smile"></i></span>
+                                                    <span onClick={ editCommentValue.length > 0 ? () => editComment(comment.id, editCommentValue) : null } className='save-comment-button'>Save</span>
+                                                </form>
+                                                {showEmojiEditComment === true ?
+                                                    <Emojis location={'profile-edit-comment'} setPostValue={setEditCommentValue}/>
+                                                    : null
+                                                }
+                                            </>
+                                            :
 
                                             <span className='post-comment'> {comment.comment_content}
                                             {allLikes.filter(like => like.comment_id === comment.id).length > 0 ? //# of likes on comments
@@ -427,7 +437,8 @@ function Feed() {
                                             : null
                                             }
                                             </span>
-                                        }
+                                            }
+                                            </div>
                                         </div>
                                         {allLikes.filter(like => like.user_id === loggedUser.id && like.comment_id === comment.id).length === 1 ?
                                         <div>
