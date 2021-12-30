@@ -22,8 +22,9 @@ function Feed() {
     const [commentBoxId, setCommentBoxId] = useState('')
     const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
-    const [showEmoji, setShowEmoji] = useState(false)
     const [showMore, setShowMore] = useState(false)
+    const [showEmoji, setShowEmoji] = useState(false)
+    const [showEmojiEditPost, setShowEmojiEditPost] = useState(false)
 
 
     const loggedUser = useSelector(state => state.session.user)
@@ -313,7 +314,7 @@ function Feed() {
                                     </div>
                                     <div className='edit-delete-button-container'>
                                         {loggedUser.id === post.owner_id ?
-                                        <div onClick={ () => {editId ? setEditId("") : setEditId(post?.id); setEditValue(post?.post_content)} } className='trash-can-post'>
+                                        <div onClick={ () => {editId ? setEditId("") : setEditId(post?.id); setEditValue(post?.post_content); setShowEmojiEditPost(false)} } className='trash-can-post'>
                                             <i class="fas fa-pencil-alt"></i>
                                         </div>
                                         : null
@@ -327,8 +328,9 @@ function Feed() {
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div className='position-absolute'>
                                 {editId == post.id ?
+                                <>
                                 <form className='edit-Form-Field'>
                                     <input
                                         className='show-post-edit-field'
@@ -336,8 +338,15 @@ function Feed() {
                                         value={editValue}
                                         onChange={(e) => setEditValue(e.target.value)}
                                     />
+                                    <span onClick={()=>setShowEmojiEditPost(!showEmojiEditPost)} className='addEmoji-to-edit-post'><i class="far fa-smile"></i></span>
                                     <span onClick={ editValue.length > 0 ? () => editPost(post.id) : null } className='save-edit-button'>Save</span>
-                                </form> : post.post_content
+                                </form>
+                                {showEmojiEditPost === true ?
+                                    <Emojis location={'profile-edit-post'} setPostValue={setEditValue}/>
+                                    : null
+                                }
+                                </>
+                                : post.post_content
                                 }
                             </div>
                             {allLikes.filter(like => like.post_id === post.id).length > 0 ? //# of likes on post

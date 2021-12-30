@@ -12,8 +12,10 @@ function Emojis({location, setPostValue}) {
         option = 'emoji-container1'
     } else if (location === 'profile-post') {
         option = 'emoji-container2'
+    } else if (location === 'profile-edit-post') {
+        option = 'emoji-container3'
     }
-    
+
     return (
         <>
             <div className={option}>
