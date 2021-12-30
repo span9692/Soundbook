@@ -96,15 +96,13 @@ export const confirmRequest = (recieverId, adderId) => async dispatch => {
 
 export default function reducer(state = {}, action) {
   let newState;
-  let count;
     switch (action.type) {
       case GET_FRIENDS:
         newState = action.data.friends
         return newState
       case ADD_FRIENDS:
-        newState = {...state}
-        count = Object.values(newState).length
-        newState[count] = action.data.friends
+        newState = [...state]
+        newState.push(action.data.friends)
         return newState
       case ADD_NEW_FRIENDS:
         newState = [...state]
