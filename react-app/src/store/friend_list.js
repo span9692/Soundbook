@@ -77,6 +77,7 @@ export const cancelRequest = (adderId, recieverId) => async dispatch => {
   })
   if (response.ok) {
     const data = await response.json();
+    console.log('back in the thunk data', data)
     dispatch(removeRequest(data))
   }
 }
@@ -95,34 +96,28 @@ export const confirmRequest = (recieverId, adderId) => async dispatch => {
 
 export default function reducer(state = {}, action) {
   let newState;
-  let count;
     switch (action.type) {
       case GET_FRIENDS:
-        // console.log('action.data in get route', action.data)
         newState = action.data.friends
         return newState
       case ADD_FRIENDS:
-        newState = {...state}
-        count = Object.values(newState).length
-        newState[count] = action.data.friends
+        newState = [...state]
+        newState.push(action.data.friends)
         return newState
       case ADD_NEW_FRIENDS:
-        newState = {...state}
-        count = Object.values(newState).length
-        newState[count] = action.data.friends
+        newState = [...state]
+        newState.push(action.data.friends)
         return newState
       case CANCEL_REQUEST:
         newState = [...state]
         for (let i = 0; i < newState.length; i++) {
           if ((newState[i]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[i]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendAdder_id'])) {
             newState.splice(i,1)
+            return newState
           }
         }
-        return newState
         case ACCEPT_REQUEST:
           newState = [...state]
-          // console.log('newState', newState)
-          // console.log('action.data', action.data)
           for (let i = 0; i < newState.length; i++) {
             if ((newState[i]['friendAdder_id'] === action.data['friends']['friendAdder_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendReceiver_id']) || (newState[i]['friendAdder_id'] === action.data['friends']['friendReceiver_id'] && newState[i]['friendReceiver_id'] === action.data['friends']['friendAdder_id'])) {
               newState[i]['confirmed'] = true;
