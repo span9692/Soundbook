@@ -8,6 +8,9 @@ import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '.
 import EditIntroModal from '../EditIntroModal'
 import Emojis from '../Emojis'
 
+import { Modal } from '../../context/Modal'
+import IndivFriendModal from '../IndivPhotoModal'
+
 function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
@@ -22,6 +25,9 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
     const [showEmojiEditPost, setShowEmojiEditPost] = useState(false)
     const [showEmojiComment, setShowEmojiComment] = useState(false)
     const [showEmojiEditComment, setShowEmojiEditComment] = useState(false)
+
+    const [showModal, setShowModal] = useState(false)
+    const [indivPhoto, setIndivPhoto] = useState(false)
 
     const closeEmojis = () => {
         setShowEmoji(false)
@@ -195,17 +201,27 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                         {profile_photos.length > 0 ?
                         <div className='nine-images'>
                             {profile_photos.map((photo, index) => (
-                                <img key={index} className={index === 0 ? 'posted-photos image-index-0'
-                                    : [index === 2 ? 'posted-photos image-index-2'
-                                        : [index === 6 ? 'posted-photos image-index-6'
-                                            : [index === 8 ? 'posted-photos image-index-8'
-                                                : 'posted-photos']]]} src={photo.photo}></img>
+                                <>
+                                    <img key={index} onClick={() => {setShowModal(true); setIndivPhoto(index)}} className={index === 0 ? 'posted-photos image-index-0'
+                                        : [index === 2 ? 'posted-photos image-index-2'
+                                            : [index === 6 ? 'posted-photos image-index-6'
+                                                : [index === 8 ? 'posted-photos image-index-8'
+                                                    : 'posted-photos']]]} src={photo.photo}></img>
+                                    {showModal && indivPhoto === index && (
+                                    <Modal onClose={() => setShowModal(false)}>
+                                            <div className='asdf'>
+                                            <img onClick={()=>setShowModal(false)} className='indiv-photo-modal' src={photo.photo}></img>
+                                            </div>
+                                    </Modal>
+                                    )}
+                                </>
                             ))}
                         </div>
                             :
                             <div className='no-photos-text'>
 
                             </div>
+                            //  const [indivPhoto, setIndivPhoto] = useState(false)
                         }
                     </div>
 

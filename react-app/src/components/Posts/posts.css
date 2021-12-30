@@ -709,3 +709,9 @@
     color: #1877F2;
     font-size: .7rem;
 }
+
+
+.indiv-photo-modal {
+    height: 40rem;
+    padding: 30rem!important;
+}
