@@ -709,3 +709,15 @@
     color: #1877F2;
     font-size: .7rem;
 }
+
+
+.indiv-photo-modal {
+    height: 40rem;
+    padding: 1rem!important;
+    /* background-color: rgb(221, 221, 221); */
+    /* background: linear-gradient(0.3turn, #3f87a6, #ebf8e1, #f69d3c); */
+    background: linear-gradient(0.3turn, #696969, #d1d1d1, #aaaaaa);
+    /* background: linear-gradient(#e66465, #9198e5); */
+    /* background: linear-gradient(0.4turn, #1877F2, #c5c4c4, #1877F2); */
+    border-radius: 12px;
+}
