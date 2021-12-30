@@ -202,16 +202,14 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                         <div className='nine-images'>
                             {profile_photos.map((photo, index) => (
                                 <>
-                                    <img key={index} onClick={() => {setShowModal(true); setIndivPhoto(index)}} className={index === 0 ? 'posted-photos image-index-0'
-                                        : [index === 2 ? 'posted-photos image-index-2'
-                                            : [index === 6 ? 'posted-photos image-index-6'
-                                                : [index === 8 ? 'posted-photos image-index-8'
-                                                    : 'posted-photos']]]} src={photo.photo}></img>
+                                    <img key={index} onClick={() => {setShowModal(true); setIndivPhoto(index)}} className={index === 0 ? 'posted-photos image-index-0 pointer'
+                                        : [index === 2 ? 'posted-photos image-index-2 pointer'
+                                            : [index === 6 ? 'posted-photos image-index-6 pointer'
+                                                : [index === 8 ? 'posted-photos image-index-8 pointer'
+                                                    : 'posted-photos pointer']]]} src={photo.photo}></img>
                                     {showModal && indivPhoto === index && (
                                     <Modal onClose={() => setShowModal(false)}>
-                                            <div className='asdf'>
                                             <img onClick={()=>setShowModal(false)} className='indiv-photo-modal' src={photo.photo}></img>
-                                            </div>
                                     </Modal>
                                     )}
                                 </>
@@ -221,7 +219,6 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                             <div className='no-photos-text'>
 
                             </div>
-                            //  const [indivPhoto, setIndivPhoto] = useState(false)
                         }
                     </div>
 
