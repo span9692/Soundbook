@@ -713,11 +713,18 @@
 
 .indiv-photo-modal {
     height: 40rem;
-    padding: 1rem!important;
+    padding: .5rem!important;
     /* background-color: rgb(221, 221, 221); */
     /* background: linear-gradient(0.3turn, #3f87a6, #ebf8e1, #f69d3c); */
-    background: linear-gradient(0.3turn, #696969, #d1d1d1, #aaaaaa);
+    background: linear-gradient(0.3turn, #858585, #d1d1d1, #aaaaaa);
     /* background: linear-gradient(#e66465, #9198e5); */
     /* background: linear-gradient(0.4turn, #1877F2, #c5c4c4, #1877F2); */
     border-radius: 12px;
+}
+
+.modal-photo-borders {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }

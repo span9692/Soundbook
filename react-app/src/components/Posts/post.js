@@ -209,7 +209,9 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                                                     : 'posted-photos pointer']]]} src={photo.photo}></img>
                                     {showModal && indivPhoto === index && (
                                     <Modal onClose={() => setShowModal(false)}>
+                                        <div className='modal-photo-borders'>
                                             <img onClick={()=>setShowModal(false)} className='indiv-photo-modal' src={photo.photo}></img>
+                                        </div>
                                     </Modal>
                                     )}
                                 </>

@@ -17,7 +17,9 @@ function AllPhotos({profile_photos}) {
                             <img key={photo.id} onClick={() => {setShowModal(true); setIndivPhoto(index)}} className='all-photos-modal pointer' src={photo.photo}></img>
                             {showModal && indivPhoto === index && (
                                 <Modal onClose={() => setShowModal(false)}>
+                                    <div className='modal-photo-borders'>
                                         <img onClick={()=>setShowModal(false)} className='indiv-photo-modal' src={photo.photo}></img>
+                                    </div>
                                 </Modal>
                             )}
                         </>
