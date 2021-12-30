@@ -26,6 +26,13 @@
     right: -1rem;
 }
 
+.emoji-container5 {
+    position: absolute;
+    z-index: 3;
+    top: 2.8rem;
+    right: -1rem;
+}
+
 .emoji-categories {
     display: none!important;
 }
@@ -52,6 +59,13 @@
     color: grey;
     position: absolute;
     right: 16%;
+    cursor: pointer;
+}
+
+.addEmoji-to-comment {
+    color: grey;
+    position: absolute;
+    right: 13.5%;
     cursor: pointer;
 }
 

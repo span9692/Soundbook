@@ -25,6 +25,7 @@ function Feed() {
     const [showMore, setShowMore] = useState(false)
     const [showEmoji, setShowEmoji] = useState(false)
     const [showEmojiEditPost, setShowEmojiEditPost] = useState(false)
+    const [showEmojiComment, setShowEmojiComment] = useState(false)
     const [showEmojiEditComment, setShowEmojiEditComment] = useState(false)
 
 
@@ -398,7 +399,7 @@ function Feed() {
                                                 </Link>
                                                 <div className='comment-icon-position'>
                                                     {loggedUser.id === comment.user_id ?
-                                                    <div className='comment-icon-position' onClick={() => {commentId ? setCommentId('') : setCommentId(comment.id); setEditCommentValue(comment.comment_content)}} >
+                                                    <div className='comment-icon-position' onClick={() => {commentId ? setCommentId('') : setCommentId(comment.id); setEditCommentValue(comment.comment_content); setShowEmojiEditComment(false)}} >
                                                         <i class="fas fa-pencil-alt pencil-icon-comment pointer"></i>
                                                     </div>: null
                                                     }
@@ -409,23 +410,24 @@ function Feed() {
                                                     }
                                                 </div>
                                             </div>
-                                            <div className='position-relative'>
                                             {comment.id === commentId ?
                                             <>
-                                                <form className='edit-Form-Field'>
-                                                    <input
-                                                        className='show-comment-edit-1field'
-                                                        type='text'
-                                                        value={editCommentValue}
-                                                        onChange={(e) => setEditCommentValue(e.target.value)}
-                                                    />
-                                                    <span onClick={()=>setShowEmojiEditComment(!showEmojiEditComment)} className='addEmoji-to-edit-comment'><i class="far fa-smile"></i></span>
-                                                    <span onClick={ editCommentValue.length > 0 ? () => editComment(comment.id, editCommentValue) : null } className='save-comment-button'>Save</span>
-                                                </form>
-                                                {showEmojiEditComment === true ?
-                                                    <Emojis location={'profile-edit-comment'} setPostValue={setEditCommentValue}/>
-                                                    : null
-                                                }
+                                                <div className='position-relative'>
+                                                    <form className='edit-Form-Field'>
+                                                        <input
+                                                            className='show-comment-edit-1field'
+                                                            type='text'
+                                                            value={editCommentValue}
+                                                            onChange={(e) => setEditCommentValue(e.target.value)}
+                                                        />
+                                                        <span onClick={()=>setShowEmojiEditComment(!showEmojiEditComment)} className='addEmoji-to-edit-comment'><i class="far fa-smile"></i></span>
+                                                        <span onClick={ editCommentValue.length > 0 ? () => editComment(comment.id, editCommentValue) : null } className='save-comment-button'>Save</span>
+                                                    </form>
+                                                    {showEmojiEditComment === true ?
+                                                        <Emojis location={'profile-edit-comment'} setPostValue={setEditCommentValue}/>
+                                                        : null
+                                                    }
+                                                </div>
                                             </>
                                             :
 
@@ -438,7 +440,6 @@ function Feed() {
                                             }
                                             </span>
                                             }
-                                            </div>
                                         </div>
                                         {allLikes.filter(like => like.user_id === loggedUser.id && like.comment_id === comment.id).length === 1 ?
                                         <div>
@@ -453,18 +454,25 @@ function Feed() {
                                 </div> : null)
                                 ))}
                             {commentBoxId === post.id ?
-                            <div className='add-comment-container'>
-                                <img className='post-image-wall' src={loggedUser.profile_pic}></img>
-                                <form className='comment-form' id='add-comment-form'>
-                                    <input
-                                        className='comment-field'
-                                        type='text'
-                                        placeholder="Leave a comment..."
-                                        value={commentValue}
-                                        onChange={(e) => setCommentValue(e.target.value)}
-                                    />
-                                </form>
-                                <div onClick={commentValue.length > 0 ? () => addComment(commentBoxId) : null} className='post-comment-button'>Post</div>
+                            <div className='position-relative'>
+                                <div className='add-comment-container'>
+                                    <img className='post-image-wall' src={loggedUser.profile_pic}></img>
+                                    <form className='comment-form' id='add-comment-form'>
+                                        <input
+                                            className='comment-field'
+                                            type='text'
+                                            placeholder="Leave a comment..."
+                                            value={commentValue}
+                                            onChange={(e) => setCommentValue(e.target.value)}
+                                        />
+                                    </form>
+                                    <span onClick={()=>setShowEmojiComment(!showEmojiComment)} className='addEmoji-to-comment'><i class="far fa-smile"></i></span>
+                                    <div onClick={commentValue.length > 0 ? () => addComment(commentBoxId) : null} className='post-comment-button'>Post</div>
+                                    {showEmojiComment === true ?
+                                        <Emojis location={'profile-comment'} setPostValue={setCommentValue}/>
+                                        : null
+                                    }
+                                </div>
                             </div>
                             : null}
                         </div>))}
