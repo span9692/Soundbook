@@ -28,6 +28,12 @@ function Feed() {
     const [showEmojiComment, setShowEmojiComment] = useState(false)
     const [showEmojiEditComment, setShowEmojiEditComment] = useState(false)
 
+    const closeEmojis = () => {
+        setShowEmoji(false)
+        setShowEmojiEditPost(false)
+        setShowEmojiComment(false)
+        setShowEmojiEditComment(false)
+    }
 
     const loggedUser = useSelector(state => state.session.user)
     const allComments = useSelector(state => Object.values(state.comment))
@@ -155,7 +161,7 @@ function Feed() {
         <>
             <div className='feed-container'>
                 <div className='left-side-feed'>
-                    <div className='feed-side-column'>
+                    <div onClick={() => closeEmojis()} className='feed-side-column'>
                         <Link className='link-to-friend' to={`/users/${loggedUser.id}`}>
                             <div className='left-side-options pointer'>
                                 <img className='post-image-wall dim' src={loggedUser?.profile_pic}></img>
@@ -377,7 +383,7 @@ function Feed() {
                                 </div>
                             }
                                 <div class='pointer'>
-                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id)}} className={commentBoxId === post.id ? 'comment1-button' : 'comment-button'}><i class="far fa-comment"></i> Comment</span>
+                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id); setShowEmojiComment(false)}} className={commentBoxId === post.id ? 'comment1-button' : 'comment-button'}><i class="far fa-comment"></i> Comment</span>
                                 </div>
                             </div>
                             {commentCheck.includes(post?.id) ?
@@ -478,7 +484,7 @@ function Feed() {
                         </div>))}
                     </div>
                 </div>
-                <div className='right-side-feed'>
+                <div onClick={()=> closeEmojis()} className='right-side-feed'>
                     <div className='feed-side-column2'>
                         <div className='friend-request-text'>
                             Friend Requests
