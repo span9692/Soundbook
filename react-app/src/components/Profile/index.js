@@ -15,10 +15,13 @@ import EditDisplayModal from '../EditDisplayModal'
 import EditCoverPhotoModal from '../EditCoverPhotoModal'
 import EditProfilePhotoModal from '../EditProfilePhoto'
 import RespondModal from '../RespondModal'
+import { Modal } from '../../context/Modal'
 
 function Profile() {
     const dispatch = useDispatch()
     const [display, setDisplay] = useState('posts')
+    const [showModal, setShowModal] = useState(false)
+    const [profilePicModal, setProfilePicModal] = useState(false)
     const { userId } = useParams()
     const loggedUser = useSelector(state => state.session.user)
     const allUsers = useSelector(state => state.user)
@@ -28,6 +31,7 @@ function Profile() {
     const allPosts = useSelector(state => Object.values(state.post)).filter(el => el.profile_id === +userId)
     const allComments = useSelector(state => Object.values(state.comment))
     const allFriends = useSelector(state => Object.values(state.friend_list))
+
 
     let option = null;
 
@@ -111,9 +115,19 @@ function Profile() {
             <div className='profile-container'>
                 <div className='profile-background-color'>
                     <div className='profile-images'>
-                        <img className='cover-photo' src={profile_owner?.cover_photo} alt='Error'></img>
+                        <img className='cover-photo pointer' onClick={() => setShowModal(true)} src={profile_owner?.cover_photo} alt='Error'></img>
+                        {showModal && (
+                            <Modal onClose={() => setShowModal(false)}>
+                                    <img onClick={()=>setShowModal(false)} className='indiv-photo-modal' src={profile_owner?.cover_photo}></img>
+                            </Modal>
+                        )}
                         <div>
-                        <img className='profile-photo' src={profile_owner?.profile_pic} alt='Error'></img>
+                        <img className='profile-photo pointer' onClick={() => setProfilePicModal(true)} src={profile_owner?.profile_pic} alt='Error'></img>
+                        {profilePicModal && (
+                            <Modal onClose={() => setProfilePicModal(false)}>
+                                    <img onClick={()=>setProfilePicModal(false)} className='indiv-photo-modal' src={profile_owner?.profile_pic}></img>
+                            </Modal>
+                        )}
                             {loggedUser.id === +userId ?
                             <div>
                                 <div className='edit-profile-btn1'>
