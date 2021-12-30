@@ -3,7 +3,6 @@ import { Modal } from '../../context/Modal'
 import './photos.css'
 
 function Photos({profile_photos}) {
-    // const [seePhoto, setSeePhoto] = useState('')
     const [showModal, setShowModal] = useState(false)
     const [indivPhoto, setIndivPhoto] = useState(false)
 
