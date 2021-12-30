@@ -19,6 +19,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
     const [commentId, setCommentId] = useState('')
     const [editId, setEditId] = useState("")
     const [showEmoji, setShowEmoji] = useState(false)
+    const [showEmojiEditPost, setShowEmojiEditPost] = useState(false)
 
     const allLikes = useSelector(state => Object.values(state.like))
 
@@ -272,7 +273,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                                     </div>
                                     <div className='edit-delete-button-container'>
                                         {loggedUser.id === post.owner_id ?
-                                        <div onClick={ () => {editId ? setEditId("") : setEditId(post?.id); setEditValue(post?.post_content)} } className='trash-can-post'>
+                                        <div onClick={ () => {editId ? setEditId("") : setEditId(post?.id); setEditValue(post?.post_content); setShowEmojiEditPost(false)} } className='trash-can-post'>
                                             <i class="fas fa-pencil-alt"></i>
                                         </div>
                                         : null
@@ -294,8 +295,13 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                                         type='text'
                                         value={editValue}
                                         onChange={(e) => setEditValue(e.target.value)}
-                                    />
-                                    <span onClick={ editValue.length > 0 ? () => editPost(post.id) : null } className='save-edit-button'>Save</span>
+                                    ></input>
+                                    <span onClick={()=>setShowEmojiEditPost(!showEmojiEditPost)} className='addEmoji-to-edit-post'><i class="far fa-smile"></i></span>
+                                    <span onClick={ editValue.length > 0 ? () => {editPost(post.id); setShowEmojiEditPost(false) }: null } className='save-edit-button'>Save</span>
+                                    {showEmojiEditPost === true ?
+                                        <Emojis location={'profile-edit-post'} setPostValue={setEditValue}/>
+                                        : null
+                                    }
                                 </form> : post.post_content
                                 }
                             </div>

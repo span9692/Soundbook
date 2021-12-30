@@ -12,6 +12,13 @@
     right: -1rem;
 }
 
+.emoji-container3 {
+    position: absolute;
+    z-index: 3;
+    top: 2.8rem;
+    right: -1rem;
+}
+
 .emoji-categories {
     display: none!important;
 }
@@ -25,4 +32,15 @@
 .emoji-scroll-wrapper::-webkit-scrollbar-thumb {
     background: rgb(202, 202, 202);
     border-radius: 500px;
+}
+
+.addEmoji-to-edit-post {
+    color: grey;
+    position: absolute;
+    right: 13%;
+    cursor: pointer;
+}
+
+.position-absolute {
+    position: relative;
 }

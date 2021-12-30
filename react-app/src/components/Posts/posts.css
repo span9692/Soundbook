@@ -303,6 +303,7 @@
 .edit-Form-Field {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .show-post-edit-field {
@@ -315,6 +316,8 @@
     padding-left: 1rem;
     margin-right: .5rem;
     font-size: 1rem;
+    padding-right: 2.5rem;
+    box-sizing: border-box;
 }
 
 .show-comment-edit-field {
