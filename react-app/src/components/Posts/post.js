@@ -264,7 +264,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                             <div type='submit' onClick={ postValue.length > 0 ? ()=>{addPost(); setShowEmoji(false)} : ()=>setShowEmoji(false) } class='boxBtn pointer' form='add-post-form'>
                                 <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
-                            <div class='boxBtn unclickable'>
+                            <div class='photoboxBtn unclickable'>
                                 <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
                             </div>
                             <div onClick={()=>setShowEmoji(!showEmoji)} className='boxBtn pointer'>
