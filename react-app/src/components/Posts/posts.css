@@ -114,10 +114,11 @@
     padding-bottom: 1rem;
 }
 
-.photos-label1 {
+.photos-1label {
     display:flex;
     justify-content: space-between;
-    /* padding-bottom: 1rem; */
+    padding-bottom: 1.2rem;
+    margin-top: .3rem;
 }
 
 .profile-nav-links {
@@ -136,8 +137,10 @@
     color: #1877f2;
     font-size: .9rem;
     font-weight: 600;
-    padding-left: .4rem;
-    padding-right: .4rem;
+    padding: .4rem;
+    margin-top: -.4rem;
+    /* margin-bottom: -.4rem; */
+
 }
 
 .edit-profileBtn3:hover {
@@ -145,8 +148,8 @@
 }
 
 .posted-photos {
-    width: 9rem;
-    height: 9rem;
+    width: 7.3vw;
+    height: 7.3vw;
     margin: 2px;
     box-sizing: border-box;
     object-fit: cover;
@@ -194,34 +197,35 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 1.3rem!important;
+    box-sizing: border-box!important;
 }
 
 .nine-friends {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin-top: -.4rem;
+    margin-top: -1.5rem;
+    margin-bottom: .3rem;
+    margin-left: .5vw;
 }
 
 .indiv-portrait {
     display: flex;
     flex-direction: column;
-    /* margin-top: 1rem; */
-    margin-left: .4rem;
+    /* margin-left: .7rem; */
+    padding-left: .5rem;
 }
 
 .friends-portrait {
-    width: 9rem;
-    height: 9rem;
-    /* margin-left: 1px;
-    margin-right: .4rem; */
+    width: 7vw;
+    height: 7vw;
     box-sizing: border-box;
     border-radius: 12px;
     object-fit: cover;
 }
 
 .portrait-name {
-    font-size: .8rem;
+    font-size: .65vw;
     margin-left: .3rem;
     font-weight: bold;
     text-decoration: none;
@@ -233,6 +237,7 @@
     margin-left: .2rem;
     margin-right: .2rem;
     margin-top: 1rem;
+    /* box-sizing: border-box; */
 }
 
 /* .friends-container,
@@ -481,6 +486,18 @@
     position: relative;
 }
 
+.photoboxBtn {
+    /* padding-left: 1rem; */
+    padding-left: .6rem;
+    padding-right: .6rem;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    margin-left: .9rem;
+    border-radius: 12px;
+    position: relative;
+}
+
+.photoboxBtn:hover,
 .boxBtn:hover {
     background-color: rgb(238, 238, 238);
 }

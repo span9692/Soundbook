@@ -13,21 +13,6 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-  // const validate = () => {
-  //   const validateErrors = [];
-  //   if (
-  //     !email ||
-  //     !email
-  //     .toLocaleLowerCase()
-  //     .match(
-  //       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  //     )
-  //   ) validateErrors.push("Please enter a valid e-mail")
-
-  //   if (!password) validateErrors.push('Please enter a valid password')
-
-  //   return validateErrors
-  // }
 
   const demoLogin = () => {
     dispatch(login('ojackson@gmail.com', 'password'))

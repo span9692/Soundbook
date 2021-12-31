@@ -226,7 +226,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                     </div>
 
                     <div onClick={()=> closeEmojis()} className='friends-container containers'>
-                        <div className='photos-label1'>
+                        <div className='photos-1label'>
                             <span className='profile-labels'>Friends <span className='photos-count'>({friend_count})</span></span>
                             <span className='edit-profileBtn3' onClick={() => setDisplay('friends')}>See All Friends</span>
                         </div>
@@ -264,7 +264,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                             <div type='submit' onClick={ postValue.length > 0 ? ()=>{addPost(); setShowEmoji(false)} : ()=>setShowEmoji(false) } class='boxBtn pointer' form='add-post-form'>
                                 <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
-                            <div class='boxBtn unclickable'>
+                            <div class='photoboxBtn unclickable'>
                                 <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
                             </div>
                             <div onClick={()=>setShowEmoji(!showEmoji)} className='boxBtn pointer'>
