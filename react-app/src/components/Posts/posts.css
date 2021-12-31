@@ -114,10 +114,11 @@
     padding-bottom: 1rem;
 }
 
-.photos-label1 {
+.photos-1label {
     display:flex;
     justify-content: space-between;
-    /* padding-bottom: 1rem; */
+    padding-bottom: 1.2rem;
+    margin-top: .3rem;
 }
 
 .profile-nav-links {
@@ -147,8 +148,8 @@
 }
 
 .posted-photos {
-    width: 9rem;
-    height: 9rem;
+    width: 7.3vw;
+    height: 7.3vw;
     margin: 2px;
     box-sizing: border-box;
     object-fit: cover;
@@ -235,6 +236,7 @@
     margin-left: .2rem;
     margin-right: .2rem;
     margin-top: 1rem;
+    /* box-sizing: border-box; */
 }
 
 /* .friends-container,

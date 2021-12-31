@@ -226,7 +226,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
                     </div>
 
                     <div onClick={()=> closeEmojis()} className='friends-container containers'>
-                        <div className='photos-label'>
+                        <div className='photos-1label'>
                             <span className='profile-labels'>Friends <span className='photos-count'>({friend_count})</span></span>
                             <span className='edit-profileBtn3' onClick={() => setDisplay('friends')}>See All Friends</span>
                         </div>
