@@ -119,7 +119,7 @@ function Profile() {
                         {showModal && (
                             <Modal onClose={() => setShowModal(false)}>
                                 <div className='modal-photo-borders'>
-                                    <img onClick={()=>setShowModal(false)} className='indiv-photo-modal' src={profile_owner?.cover_photo}></img>
+                                    <img onClick={()=>setShowModal(false)} className='indiv-photo-modal' src={profile_owner?.cover_photo} alt='Error'></img>
                                 </div>
                             </Modal>
                         )}
