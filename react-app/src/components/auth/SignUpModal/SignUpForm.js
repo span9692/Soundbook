@@ -54,7 +54,14 @@ const SignUpForm = () => {
       <hr style={{marginTop: 1+'rem', marginBottom: 1+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
       <div>
         {signupErrors.map((error, ind) => (
+          <>
+          {error.split(':')[0].includes('first') ? <div className='signup-errors' key={ind}>{'First Name:'+error.split(' :')[1]}</div> :
+          [error.split(':')[0].includes('last') ? <div className='signup-errors' key={ind}>{'Last Name:'+error.split(' :')[1]}</div> :
+          [error.split(':')[0].includes('password') ? <div className='signup-errors' key={ind}>{'Password:'+error.split(' :')[1]}</div> :
           <div className='signup-errors' key={ind}>{error.split(':')[0].charAt(0).toUpperCase()+error.split(' :')[0].slice(1)+':'+error.split(' :')[1]}</div>
+          ]]}
+
+          </>
         ))}
       </div>
       <div className='signup-name-field'>
