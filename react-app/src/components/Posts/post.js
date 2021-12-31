@@ -37,6 +37,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
 
     const allLikes = useSelector(state => Object.values(state.like))
 
+    let photo_count = profile_photos.length
 
     if (profile_photos.length > 9) {
         profile_photos = profile_photos.slice(0, 9)
@@ -65,6 +66,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
     commentCheck = new Set(commentCheck)
     commentCheck = Array.from(commentCheck)
 
+    let friend_count = currentProfileFriends.length
 
     if (currentProfileFriends.length > 9) {
         currentProfileFriends = currentProfileFriends.slice(0, 9)
@@ -194,7 +196,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
 
                     <div onClick={()=> closeEmojis()} className='photos-container containers'>
                         <div className='photos-label'>
-                            <span className='profile-labels'>Photos <span className='photos-count'>({profile_photos.length})</span></span>
+                            <span className='profile-labels'>Photos <span className='photos-count'>({photo_count})</span></span>
                             <span className='edit-profileBtn3' onClick={() => setDisplay('photos')}>See All Photos</span>
                         </div>
                         {profile_photos.length > 0 ?
@@ -225,7 +227,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
 
                     <div onClick={()=> closeEmojis()} className='friends-container containers'>
                         <div className='photos-label1'>
-                            <span className='profile-labels'>Friends <span className='photos-count'>({currentProfileFriends.length})</span></span>
+                            <span className='profile-labels'>Friends <span className='photos-count'>({friend_count})</span></span>
                             <span className='edit-profileBtn3' onClick={() => setDisplay('friends')}>See All Friends</span>
                         </div>
                         <div className='nine-friends'>
