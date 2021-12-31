@@ -7,7 +7,7 @@ def seed_posts():
     post4 = Post(post_content='Yo wut up Cube?', owner_id=3, profile_id=2)
     post5 = Post(post_content='yo', owner_id=3, profile_id=3)
     post6 = Post(post_content='It\'s up and running!!', owner_id=1, profile_id=1)
-    post7 = Post(post_content='Hi, I\'m Sean, welcome to Soundbook!', owner_id=1, profile_id=1)
+    post7 = Post(post_content='Welcome to Soundbook!', owner_id=1, profile_id=1)
 
     db.session.add(post6)
     db.session.add(post7)
