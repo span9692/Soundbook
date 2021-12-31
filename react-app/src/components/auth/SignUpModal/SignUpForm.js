@@ -28,8 +28,7 @@ const SignUpForm = () => {
         setSignupErrors(data)
       }
     } else {
-      const passError = [...signupErrors, 'Password : Passwords must match.']
-      setSignupErrors(passError)
+      setSignupErrors(['Password : Passwords must match.'])
     }
   };
 
