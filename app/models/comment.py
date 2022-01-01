@@ -1,4 +1,5 @@
 from .db import db
+from datetime import timedelta
 from sqlalchemy.sql import func
 
 class Comment(db.Model):
@@ -22,6 +23,6 @@ class Comment(db.Model):
             "user_id": self.user_id,
             "post_id": self.post_id,
             "poster_info": self.users.to_dict(),
-            "createdAt": self.createdAt.strftime('%b %d, %Y %I:%M %p'),
-            "updatedAt": self.updatedAt.strftime('%b %d, %Y %I:%M %p')
+            "createdAt": (self.createdAt - timedelta(hours=8)).strftime('%b %d, %Y %I:%M %p'),
+            "updatedAt": (self.updatedAt - timedelta(hours=8)).strftime('%b %d, %Y %I:%M %p')
         }

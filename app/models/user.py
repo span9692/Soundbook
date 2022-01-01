@@ -2,6 +2,7 @@ from .db import db
 from sqlalchemy.sql import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import timedelta
 from .friend_list import friend_list
 
 
@@ -61,7 +62,7 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'profile_pic': self.profile_pic,
             'cover_photo': self.cover_photo,
-            'createdAt': self.createdAt.strftime('%Y')
+            'createdAt': (self.createdAt - timedelta(hours=8)).strftime('%Y')
         }
 
     def to_dictionary(self):

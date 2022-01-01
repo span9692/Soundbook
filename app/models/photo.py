@@ -1,5 +1,6 @@
 from .db import db
 from sqlalchemy.sql import func
+from datetime import timedelta
 
 class Photo(db.Model):
     __tablename__ = 'photos'
@@ -15,7 +16,7 @@ class Photo(db.Model):
             "photo": self.photo,
             "owner_id": self.owner_id,
             # "photographer": self.users.to_dict(),
-            "createdAt": self.createdAt
+            "createdAt": (self.createdAt - timedelta(hours=8))
         }
 
     users = db.relationship('User', back_populates='photos')

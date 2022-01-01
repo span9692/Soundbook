@@ -1,4 +1,5 @@
 from .db import db
+from datetime import timedelta
 # from app.models import User
 from sqlalchemy.sql import func
 
@@ -23,6 +24,6 @@ class Post(db.Model):
             "owner_id": self.owner_id,
             "profile_id": self.profile_id,
             "poster_info": self.users.to_dict(),
-            "createdAt": self.createdAt.strftime('%b %d, %Y %I:%M %p'),
-            "updatedAt": self.updatedAt.strftime('%b %d, %Y %I:%M %p')
+            "createdAt": (self.createdAt - timedelta(hours=8)).strftime('%b %d, %Y %I:%M %p'),
+            "updatedAt": (self.updatedAt - timedelta(hours=8)).strftime('%b %d, %Y %I:%M %p')
         }
