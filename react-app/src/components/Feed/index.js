@@ -83,8 +83,6 @@ function Feed({searchParams, setSearchParams}) {
     // only display friends post on the feed
     let reversed = temp.filter(el => profile_owner_friends.includes(el.owner_id) || el.owner_id === loggedUser.id)
 
-    const totalLength = allPosts.length;
-
     let commentCheck = allComments.map(el => el?.post_id)
     commentCheck = new Set(commentCheck)
     commentCheck = Array.from(commentCheck)
@@ -486,7 +484,7 @@ function Feed({searchParams, setSearchParams}) {
                             : null}
                         </div>))}
                         {reversed.length > 10 ?
-                        [reversed.slice(0, 10+5*counter).length < totalLength ?
+                        [reversed.slice(0, 10+5*counter).length < reversed.length ?
                         <div className='show-more-posts pointer' onClick={() => setCounter(prev=>prev+1)}><span className='show-more-posts-text'>Show More Posts</span></div>
                         : null
                         ] : null }

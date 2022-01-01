@@ -10,7 +10,7 @@ def seed_posts():
     post7 = Post(post_content='Woah this is awesome!', owner_id=6, profile_id=6)
     post8 = Post(post_content='Hi Soundbook! It\'s Lisa from Blackpink! 😄', owner_id=6, profile_id=6)
     post9 = Post(post_content='Yo this site is lit', owner_id=3, profile_id=3)
-    post10 = Post(post_content='Hi Mr. Ice Cube!', owner_id=5, profile_id=2)
+    post10 = Post(post_content='Hi Mr. Ice Cube!', owner_id=6, profile_id=2)
     post11 = Post(post_content='Hey everyone, Kendrick here', owner_id=17, profile_id=17)
     post12 = Post(post_content='Hi everyone, I\'m Billie Eilish!', owner_id=18, profile_id=18)
     post13 = Post(post_content='You good bro?', owner_id=17, profile_id=4)
