@@ -27,6 +27,7 @@ function Feed() {
     const [showEmojiEditPost, setShowEmojiEditPost] = useState(false)
     const [showEmojiComment, setShowEmojiComment] = useState(false)
     const [showEmojiEditComment, setShowEmojiEditComment] = useState(false)
+    const [counter, setCounter] = useState(0)
 
     const closeEmojis = () => {
         setShowEmoji(false)
@@ -79,8 +80,10 @@ function Feed() {
     const allPosts = useSelector(state => Object.values(state.post))
     const temp = []
     allPosts.forEach(el => temp.unshift(el))
-
+    // only display friends post on the feed
     let reversed = temp.filter(el => profile_owner_friends.includes(el.owner_id) || el.owner_id === loggedUser.id)
+
+    const totalLength = allPosts.length;
 
     let commentCheck = allComments.map(el => el?.post_id)
     commentCheck = new Set(commentCheck)
@@ -298,7 +301,7 @@ function Feed() {
                         }
 
                         {/* maps the posts*/}
-                        {reversed.map(post => (
+                        {reversed.slice(0, 10+5*counter).map(post => (
                         <div key={post.id} className='post-box last-post feed-containers'>
                             <div className='post-name-date'>
                                 <Link className='link-to-friend' to={`/users/${post.poster_info.id}`}>
@@ -482,6 +485,10 @@ function Feed() {
                             </div>
                             : null}
                         </div>))}
+                        {reversed.slice(0, 10+5*counter).length < totalLength ?
+                        <div className='show-more-posts pointer' onClick={() => setCounter(prev=>prev+1)}><span className='show-more-posts-text'>Show More Posts</span></div>
+                        : null
+                        }
                     </div>
                 </div>
                 <div onClick={()=> closeEmojis()} className='right-side-feed'>
