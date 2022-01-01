@@ -81,9 +81,8 @@ function Feed({searchParams, setSearchParams}) {
     const temp = []
     allPosts.forEach(el => temp.unshift(el))
     // only display friends post on the feed
-    let reversed = temp.filter(el => profile_owner_friends.includes(el.owner_id) || el.owner_id === loggedUser.id)
-
-    const totalLength = allPosts.length;
+    let reversed = temp.filter(el => profile_owner_friends.includes(el.owner_id) || el.owner_id === loggedUser.id || +el.profile_id === loggedUser.id)
+    console.log(reversed.length)
 
     let commentCheck = allComments.map(el => el?.post_id)
     commentCheck = new Set(commentCheck)
@@ -485,10 +484,11 @@ function Feed({searchParams, setSearchParams}) {
                             </div>
                             : null}
                         </div>))}
-                        {reversed.slice(0, 10+5*counter).length < totalLength ?
+                        {reversed.length > 10 ?
+                        [reversed.slice(0, 10+5*counter).length < reversed.length ?
                         <div className='show-more-posts pointer' onClick={() => setCounter(prev=>prev+1)}><span className='show-more-posts-text'>Show More Posts</span></div>
                         : null
-                        }
+                        ] : null }
                     </div>
                 </div>
                 <div onClick={()=> closeEmojis()} className='right-side-feed'>
