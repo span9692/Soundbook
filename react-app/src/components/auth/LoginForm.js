@@ -15,7 +15,7 @@ const LoginForm = () => {
 
 
   const demoLogin = () => {
-    dispatch(login('ojackson@gmail.com', 'password'))
+    dispatch(login('ayoung@gmail.com', 'password'))
   }
 
   const onLogin = async (e) => {
