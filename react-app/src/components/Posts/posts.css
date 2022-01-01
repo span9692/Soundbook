@@ -749,3 +749,20 @@
 .no-post-message {
     text-align: center;
 }
+
+.show-more-posts {
+    align-items: center;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size:.9rem;
+}
+
+.show-more-posts-text {
+    padding: .3rem .5rem;
+    border-radius: 5px;
+}
+
+.show-more-posts-text:hover {
+    background-color: rgb(216, 216, 216);
+}
