@@ -485,10 +485,11 @@ function Feed({searchParams, setSearchParams}) {
                             </div>
                             : null}
                         </div>))}
-                        {reversed.slice(0, 10+5*counter).length < totalLength ?
+                        {reversed.length > 10 ?
+                        [reversed.slice(0, 10+5*counter).length < totalLength ?
                         <div className='show-more-posts pointer' onClick={() => setCounter(prev=>prev+1)}><span className='show-more-posts-text'>Show More Posts</span></div>
                         : null
-                        }
+                        ] : null }
                     </div>
                 </div>
                 <div onClick={()=> closeEmojis()} className='right-side-feed'>

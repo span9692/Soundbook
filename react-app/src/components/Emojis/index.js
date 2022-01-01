@@ -19,11 +19,11 @@ function Emojis({location, setPostValue}) {
     } else if (location === 'profile-comment') {
         option = 'emoji-container5'
     }
-
+    // disableSearchBar={true}
     return (
         <>
             <div className={option}>
-                <Picker groupVisibility={{recently_used: false,}} disableSearchBar={true} onEmojiClick={onEmojiClick} />
+                <Picker groupVisibility={{recently_used: false,}} onEmojiClick={onEmojiClick} />
             </div>
         </>
     )
