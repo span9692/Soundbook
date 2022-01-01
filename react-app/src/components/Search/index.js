@@ -9,8 +9,18 @@ function Search() {
     const history = useHistory();
     const dispatch = useDispatch()
 
-    const searchResults = useSelector(state => Object.values(state.search))
-    // console.log('searchResults', searchResults)
+    let searchResults = useSelector(state => Object.values(state.search))
+
+    if (searchResults.length > 6) {
+        searchResults = searchResults.slice(0,6)
+    }
+
+    const shuffle = (arr) => {
+        arr.sort(()=>Math.random()-0.5);
+        return arr
+    }
+
+    searchResults = shuffle(searchResults)
 
     useEffect(() => {
         dispatch(searchUser(searchParams))
@@ -52,7 +62,7 @@ function Search() {
                         <div className='result-names'>
                             {result.first_name} {result.last_name}
                         </div>
-                        {result.alias ? (<div className='result-alias'> {result.alias} </div>) : null}                        
+                        {result.alias ? (<div className='result-alias'> {result.alias} </div>) : null}
                     </div>
                 </div>
                 ))}
