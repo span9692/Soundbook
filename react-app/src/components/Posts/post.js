@@ -10,7 +10,7 @@ import Emojis from '../Emojis'
 
 import { Modal } from '../../context/Modal'
 
-function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
+function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
     const [editValue, setEditValue] = useState('')
@@ -130,7 +130,7 @@ function Posts({ setDisplay, profileId, loggedUser, profile_owner, profile_photo
 
     return (
         <>
-            <div className='post-container'>
+            <div onCLick={()=> setSearchParams('')} className='post-container'>
                 <div className='user-info'>
                     <div onClick={()=> closeEmojis()} className='intro-container containers'>
                         <span className='profile-labels'>Intro</span>

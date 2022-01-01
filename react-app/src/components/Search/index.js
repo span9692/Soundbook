@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { searchUser } from "../../store/search";
 import './search.css'
 
-function Search() {
-    const [searchParams, setSearchParams] = useState('');
+function Search({searchParams, setSearchParams}) {
     const history = useHistory();
     const dispatch = useDispatch()
 

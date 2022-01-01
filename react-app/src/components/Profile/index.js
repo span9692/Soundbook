@@ -17,7 +17,7 @@ import EditProfilePhotoModal from '../EditProfilePhoto'
 import RespondModal from '../RespondModal'
 import { Modal } from '../../context/Modal'
 
-function Profile() {
+function Profile({setSearchParams}) {
     const dispatch = useDispatch()
     const [display, setDisplay] = useState('posts')
     const [showModal, setShowModal] = useState(false)
@@ -112,7 +112,7 @@ function Profile() {
 
     return (
         <>
-            <div className='profile-container'>
+            <div onClick={()=> setSearchParams('')} className='profile-container'>
                 <div className='profile-background-color'>
                     <div className='profile-images'>
                         <img className='cover-photo pointer' onClick={() => setShowModal(true)} src={profile_owner?.cover_photo} alt='Error'></img>
@@ -173,7 +173,7 @@ function Profile() {
                     </div>
                 </div>
             </div>
-            <div className='profile-bottom-half'>
+            <div onClick={()=> setSearchParams('')} className='profile-bottom-half'>
                 <div className='sideColumn'>
 
                 </div >

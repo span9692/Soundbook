@@ -13,7 +13,7 @@ import PhotosModal from '../PhotosModal'
 import VideoModal from '../VideoModal'
 import './feed.css'
 
-function Feed() {
+function Feed({searchParams, setSearchParams}) {
     const dispatch = useDispatch()
     const [postValue, setPostValue] = useState('')
     const [editValue, setEditValue] = useState('')
@@ -162,7 +162,7 @@ function Feed() {
 
     return (
         <>
-            <div className='feed-container'>
+            <div onClick={()=>setSearchParams('')} className='feed-container'>
                 <div className='left-side-feed'>
                     <div onClick={() => closeEmojis()} className='feed-side-column'>
                         <Link className='link-to-friend' to={`/users/${loggedUser.id}`}>

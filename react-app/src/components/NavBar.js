@@ -7,7 +7,7 @@ import Search from '../components/Search/index'
 import './navbar.css'
 import VideoModalNav from './VideoModal/vidmodalnav';
 
-const NavBar = () => {
+const NavBar = ({searchParams, setSearchParams}) => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
   const userId = user.id
@@ -18,11 +18,11 @@ const NavBar = () => {
 
   return (
     <>
-      <div className='nav-container'>
+      <div onClick={()=>setSearchParams('')} className='nav-container'>
         <div className='nav-left'>
           <Link className='fontAwesomeness1' to='/feed'><img className='soundbook-logo' src='https://res.cloudinary.com/photofinder/image/upload/v1640842211/soundbookLogo_a0qvza.png'></img></Link>
           <div>
-            <Search />
+            <Search searchParams={searchParams} setSearchParams={setSearchParams}/>
           </div>
         </div>
         <div className='nav-mid'>
