@@ -10,6 +10,7 @@ import Feed from './components/Feed';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [searchParams, setSearchParams] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,12 +32,12 @@ function App() {
           <Splash />
         </Route>
         <ProtectedRoute path='/feed' exact={true}>
-          <NavBar />
-          <Feed />
+          <NavBar searchParams={searchParams} setSearchParams={setSearchParams}/>
+          <Feed setSearchParams={setSearchParams}/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
-          <NavBar />
-          <Profile />
+          <NavBar searchParams={searchParams} setSearchParams={setSearchParams}/>
+          <Profile setSearchParams={setSearchParams}/>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
