@@ -31,7 +31,7 @@ def seed_comments():
     comment28 = Comment(comment_content='Thank you 🤗', user_id=1, post_id=27)
     comment29 = Comment(comment_content='the legend himself', user_id=17, post_id=28)
     comment30 = Comment(comment_content='likewise, u a cool dude', user_id=18, post_id=29)
-    comment31 = Comment(comment_content='where\s billie jean at?', user_id=10, post_id=30)
+    comment31 = Comment(comment_content='where\'s billie jean at?', user_id=10, post_id=30)
     comment32 = Comment(comment_content='#king', user_id=9, post_id=30)
     comment33 = Comment(comment_content='hiii', user_id=7, post_id=33)
     comment34 = Comment(comment_content='producin these beats', user_id=3, post_id=35)
@@ -115,10 +115,9 @@ def seed_comments():
     comment112 = Comment(comment_content='where Jenny doe?', user_id=17, post_id=82)
     comment113 = Comment(comment_content='what up?', user_id=3, post_id=83)
     comment114 = Comment(comment_content='I got something to say', user_id=2, post_id=83)
-
-
-
-
+    comment115 = Comment(comment_content='bye Mariah!', user_id=5, post_id=75)
+    comment116 = Comment(comment_content='all I want for Christmas is yooOUuUuU', user_id=10, post_id=75)
+    comment117 = Comment(comment_content='i can\'t wait to see you perform live again 🤗', user_id=15, post_id=40)
 
 
     db.session.add(comment1)
@@ -220,6 +219,7 @@ def seed_comments():
     db.session.add(comment97)
     db.session.add(comment98)
     db.session.add(comment99)
+    db.session.add(comment100)
     db.session.add(comment101)
     db.session.add(comment102)
     db.session.add(comment103)
@@ -234,6 +234,9 @@ def seed_comments():
     db.session.add(comment112)
     db.session.add(comment113)
     db.session.add(comment114)
+    db.session.add(comment115)
+    db.session.add(comment116)
+    db.session.add(comment117)
 
 
 

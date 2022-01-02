@@ -40,7 +40,7 @@ def seed_posts():
     post37 = Post(post_content='When\'s the new album coming out?', owner_id=14, profile_id=13)
     post38 = Post(post_content='What up King?', owner_id=11, profile_id=13)
     post39 = Post(post_content='I grew up listening to you music', owner_id=18, profile_id=14)
-    post40 = Post(post_content='Has anyone seen my puppie Freddie?', owner_id=5, profile_id=5)
+    post40 = Post(post_content='New tour starting next month!', owner_id=5, profile_id=5)
     post41 = Post(post_content='Hey Blinks! Thanks for all the support, we love you guys ❤️', owner_id=6, profile_id=6)
     post42 = Post(post_content='You\'re so sweet!', owner_id=16, profile_id=15)
     post43 = Post(post_content='Love your music Gaga', owner_id=4, profile_id=16)

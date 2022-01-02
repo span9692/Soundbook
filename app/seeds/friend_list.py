@@ -33,7 +33,7 @@ def seed_friend_list():
     db.session.execute(friend_list.insert().values(friendAdder_id=3, friendReceiver_id=11, confirmed=True))
     db.session.execute(friend_list.insert().values(friendAdder_id=3, friendReceiver_id=13, confirmed=True))
     db.session.execute(friend_list.insert().values(friendAdder_id=3, friendReceiver_id=15, confirmed=True))
-    db.session.execute(friend_list.insert().values(friendAdder_id=3, friendReceiver_id=16, confirmed=True))
+    db.session.execute(friend_list.insert().values(friendAdder_id=3, friendReceiver_id=9, confirmed=True))
     db.session.execute(friend_list.insert().values(friendAdder_id=3, friendReceiver_id=17, confirmed=True))
     db.session.execute(friend_list.insert().values(friendAdder_id=3, friendReceiver_id=18, confirmed=True))
     db.session.execute(friend_list.insert().values(friendAdder_id=7, friendReceiver_id=3, confirmed=False))
