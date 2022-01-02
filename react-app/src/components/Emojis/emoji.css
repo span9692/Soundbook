@@ -1,3 +1,8 @@
+.emoji-img {
+    width: 20px!important;
+    height: 20px!important;
+}
+
 .emoji-container1 {
     position: absolute;
     z-index: 3;
