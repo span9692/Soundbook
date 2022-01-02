@@ -69,7 +69,7 @@ def seed_posts():
     post66 = Post(post_content='Thanks for the add, always been a fan of your music', owner_id=17, profile_id=14)
     post67 = Post(post_content='Hi Taylor, I\'m a long time fan!', owner_id=18, profile_id=10)
     post68 = Post(post_content='Lovin the new track!', owner_id=18, profile_id=12)
-    post69 = Post(post_content='Omfgggggggggg it\'s Chesterrrrrr', owner_id=14, profile_id=5)
+    post69 = Post(post_content='Omfgggggggggg it\'s Chesterrrrrr', owner_id=5, profile_id=14)
     post70 = Post(post_content='Woah KDot!', owner_id=9, profile_id=17)
     post71 = Post(post_content='Heard the news! Let\'s go!!', owner_id=18, profile_id=7)
     post72 = Post(post_content='What you up to nowadays?', owner_id=14, profile_id=8)
