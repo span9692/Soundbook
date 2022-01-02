@@ -82,7 +82,6 @@ function Feed({searchParams, setSearchParams}) {
     allPosts.forEach(el => temp.unshift(el))
     // only display friends post on the feed
     let reversed = temp.filter(el => profile_owner_friends.includes(el.owner_id) || el.owner_id === loggedUser.id || +el.profile_id === loggedUser.id)
-    console.log(reversed.length)
 
     let commentCheck = allComments.map(el => el?.post_id)
     commentCheck = new Set(commentCheck)
