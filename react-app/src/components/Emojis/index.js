@@ -23,7 +23,7 @@ function Emojis({location, setPostValue}) {
     return (
         <>
             <div className={option}>
-                <Picker groupVisibility={{recently_used: false,}} onEmojiClick={onEmojiClick} />
+                <Picker groupVisibility={{recently_used: false,}} disableSearchBar={true} onEmojiClick={onEmojiClick} />
             </div>
         </>
     )

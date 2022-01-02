@@ -244,7 +244,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                             <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
                                 <img className='post-image-wall dim' src={loggedUser?.profile_pic}></img>
                             </Link>
-                            <form className='post-form' id='add-post-form'>
+                            <form onSubmit={addPost} className='post-form' id='add-post-form'>
                                 <input
                                     className='post-field'
                                     type='text'
@@ -252,6 +252,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                     value={postValue}
                                     onChange={(e) => setPostValue(e.target.value)}
                                 />
+                                <button type='submit' style={{display: 'none'}}>Submit</button>
                             </form>
                         </div>
                         <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
@@ -463,7 +464,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                         {+profileId === loggedUser.id ?
                         <span>There are no posts on your wall.</span>
                         :
-                        <span>There are no posts on {profile_owner.alias ? profile_owner.alias : profile_owner.first_name}'s wall.</span>
+                        <span>There are no posts on {profile_owner?.alias ? profile_owner?.alias : profile_owner?.first_name}'s wall.</span>
                         }
                     </div>}
                 </div>

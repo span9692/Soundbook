@@ -108,6 +108,7 @@ function Profile({setSearchParams}) {
         dispatch(getPosts(+userId))
         dispatch(getComments(+userId))
         dispatch(getFriends(+userId))
+        setDisplay('posts')
     }, [dispatch, userId])
 
     return (
