@@ -454,7 +454,7 @@ def seed_likes():
     db.session.add(post101)
     db.session.add(post102)
     db.session.add(post103)
-    db.session.add(post104)
+    db.session.add(post90)
     db.session.add(post105)
     db.session.add(post106)
     db.session.add(post107)
