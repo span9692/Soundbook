@@ -26,7 +26,7 @@ const NavBar = ({searchParams, setSearchParams}) => {
           </div>
         </div>
         <div className='nav-mid'>
-          <Link className='fontAwesomeness' to={`/users/${userId}`}><i class="fas fa-home"></i></Link>
+          <Link className='fontAwesomeness' to={`/feed`}><i class="fas fa-home"></i></Link>
           <VideoModalNav />
           <a className='fontAwesomeness' href="https://github.com/span9692" target="_blank"><i class="fab fa-github"></i></a>
           <a className='fontAwesomeness' href="https://www.linkedin.com/in/sean-pan-395a4593/" target="_blank"><i class="fab fa-linkedin"></i></a>
