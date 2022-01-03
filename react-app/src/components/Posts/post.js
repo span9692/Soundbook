@@ -82,6 +82,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
             profile_id: profile_owner.id
         }))
         setPostValue('')
+        closeEmojis()
     }
 
     // const removePost = (postId) => {
@@ -301,7 +302,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                     </div>
                                     <div className='edit-delete-button-container'>
                                         {loggedUser.id === post.owner_id ?
-                                        <div onClick={ () => {editId ? setEditId("") : setEditId(post?.id); setEditValue(post?.post_content); setShowEmojiEditPost(false)} } className='trash-can-post'>
+                                        <div onClick={ () => {editId && editId === post.id ? setEditId("") : setEditId(post?.id); setEditValue(post?.post_content); setShowEmojiEditPost(false)} } className='trash-can-post'>
                                             <i class="fas fa-pencil-alt"></i>
                                         </div>
                                         : null
@@ -361,7 +362,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                 </div>
                             }
                                 <div class='pointer'>
-                                    <span onClick={() => {commentBoxId ? setCommentBoxId('') : setCommentBoxId(post.id); setShowEmojiComment(false)}} className={commentBoxId === post.id ? 'comment1-button' : 'comment-button'}><i class="far fa-comment"></i> Comment</span>
+                                    <span onClick={() => {commentBoxId && commentBoxId === post.id ? setCommentBoxId('') : setCommentBoxId(post.id); setShowEmojiComment(false)}} className={commentBoxId === post.id ? 'comment1-button' : 'comment-button'}><i class="far fa-comment"></i> Comment</span>
                                 </div>
                             </div>
                             {commentCheck.includes(post?.id) ?
@@ -383,7 +384,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                                 </Link>
                                                 <div className='comment-icon-position'>
                                                     {loggedUser.id === comment.user_id ?
-                                                    <div className='comment-icon-position' onClick={() => {commentId ? setCommentId('') : setCommentId(comment.id); setEditCommentValue(comment.comment_content); setShowEmojiEditComment(false)}} >
+                                                    <div className='comment-icon-position' onClick={() => {commentId && commentId === comment.id ? setCommentId('') : setCommentId(comment.id); setEditCommentValue(comment.comment_content); setShowEmojiEditComment(false)}} >
                                                         <i class="fas fa-pencil-alt pencil-icon-comment pointer"></i>
                                                     </div>: null
                                                     }
