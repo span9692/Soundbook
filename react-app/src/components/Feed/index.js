@@ -304,7 +304,7 @@ function Feed({searchParams, setSearchParams}) {
                         }
 
                         {/* maps the posts*/}
-                        {reversed.slice(0, 10+5*counter).map(post => (
+                        {reversed.slice(0, 10+10*counter).map(post => (
                         <div key={post.id} className='post-box last-post feed-containers'>
                             <div className='post-name-date'>
                                 <Link className='link-to-friend' to={`/users/${post.poster_info.id}`}>
@@ -492,7 +492,7 @@ function Feed({searchParams, setSearchParams}) {
                             : null}
                         </div>))}
                         {reversed.length > 10 ?
-                        [reversed.slice(0, 10+5*counter).length < reversed.length ?
+                        [reversed.slice(0, 10+10*counter).length < reversed.length ?
                         <div className='show-more-posts pointer' onClick={() => setCounter(prev=>prev+1)}><span className='show-more-posts-text'>Show More Posts</span></div>
                         : null
                         ] : null }

@@ -288,7 +288,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                     {/* maps the posts */}
                     {reversed.length > 0 ?
                     <>
-                        {reversed.slice(0, 10+5*counter).map(post => (
+                        {reversed.slice(0, 10+10*counter).map(post => (
                         <div key={post.id} className='post-box last-post containers'>
                             <div className='post-name-date'>
                                 <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
@@ -464,7 +464,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                             : null}
                         </div>))}
 
-                        {reversed.slice(0, 10+5*counter).length < totalLength ?
+                        {reversed.slice(0, 10+10*counter).length < totalLength ?
                         <div className='show-more-posts pointer' onClick={() => setCounter(prev=>prev+1)}><span className='show-more-posts-text'>Show More Posts</span></div>
                         : null
                         }
