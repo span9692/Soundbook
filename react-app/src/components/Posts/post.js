@@ -9,6 +9,7 @@ import EditIntroModal from '../EditIntroModal'
 import Emojis from '../Emojis'
 
 import { Modal } from '../../context/Modal'
+import ConfirmDelete from '../DeleteConfirmModal'
 
 function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
@@ -82,9 +83,9 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
         setPostValue('')
     }
 
-    const removePost = (postId) => {
-        dispatch(deletePost(postId))
-    }
+    // const removePost = (postId) => {
+    //     dispatch(deletePost(postId))
+    // }
 
     const editPost = (e, postId) => {
         e.preventDefault()
@@ -309,9 +310,10 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                         : null
                                         }
                                         {loggedUser.id === profile_owner.id || post.owner_id === loggedUser.id ?
-                                        <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
-                                            <i class="fas fa-trash-alt"></i>
-                                        </div>
+                                        // <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
+                                        //     <i class="fas fa-trash-alt"></i>
+                                        // </div>
+                                        <ConfirmDelete postId={post.id}/>
                                         : null
                                         }
                                     </div>
