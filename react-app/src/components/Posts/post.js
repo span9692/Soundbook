@@ -10,6 +10,7 @@ import Emojis from '../Emojis'
 
 import { Modal } from '../../context/Modal'
 import ConfirmDelete from '../DeleteConfirmModal'
+import CommentDelete from '../DeleteCommentModal'
 
 function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
@@ -116,10 +117,6 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
         }))
         setCommentValue('')
         setCommentBoxId('')
-    }
-
-    const deleteComment = (commentId) => {
-        dispatch(removeComment(commentId))
     }
 
     const likeComment = (commentId) => {
@@ -391,9 +388,11 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                                     </div>: null
                                                     }
                                                     {loggedUser.id === profile_owner.id || comment.user_id === loggedUser.id ?
-                                                    <div className='comment-icon-position' onClick={() => deleteComment(comment.id)} >
-                                                        <i class="fas fa-trash-alt trash-icon-comment pointer"></i>
-                                                    </div>: null
+                                                    // <div className='comment-icon-position' onClick={() => deleteComment(comment.id)} >
+                                                    //     <i class="fas fa-trash-alt trash-icon-comment pointer"></i>
+                                                    // </div>
+                                                    <CommentDelete commentId={comment.id}/>
+                                                    : null
                                                     }
                                                 </div>
                                             </div>
