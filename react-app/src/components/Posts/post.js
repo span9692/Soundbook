@@ -29,6 +29,8 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
     const [indivPhoto, setIndivPhoto] = useState(false)
     const [counter, setCounter] = useState(0)
 
+    const [loaded, setLoaded] = useState(false)
+
     const closeEmojis = () => {
         setShowEmoji(false)
         setShowEmojiEditPost(false)
@@ -125,11 +127,12 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
 
     useEffect(()=> {
         setCommentValue('')
-        dispatch(getAllLikes())
+        dispatch(getAllLikes()).then(()=>setLoaded(true))
     }, [commentBoxId])
 
     return (
         <>
+            {loaded &&
             <div onCLick={()=> setSearchParams('')} className='post-container'>
                 <div className='user-info'>
                     <div onClick={()=> closeEmojis()} className='intro-container containers'>
@@ -468,7 +471,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                         }
                     </div>}
                 </div>
-            </div>
+            </div>}
         </>
     )
 }
