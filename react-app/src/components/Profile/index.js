@@ -7,7 +7,7 @@ import Posts from '../Posts/post'
 import { getPhotos } from '../../store/photo'
 import { getPosts } from '../../store/post'
 import { getComments } from '../../store/comment'
-import { addFriend, cancelRequest, getFriends } from '../../store/friend_list'
+import { getFriends } from '../../store/friend_list'
 import Friends from '../Friends'
 import Photos from '../Photos'
 import About from '../About'
@@ -16,6 +16,8 @@ import EditCoverPhotoModal from '../EditCoverPhotoModal'
 import EditProfilePhotoModal from '../EditProfilePhoto'
 import RespondModal from '../RespondModal'
 import { Modal } from '../../context/Modal'
+import CancelRequest from '../CancelRequest'
+import AddFriend from '../AddFriend'
 
 function Profile({setSearchParams}) {
     const dispatch = useDispatch()
@@ -32,16 +34,10 @@ function Profile({setSearchParams}) {
     const allComments = useSelector(state => Object.values(state.comment))
     const allFriends = useSelector(state => Object.values(state.friend_list))
 
+    const [load, setLoad] = useState(false)
+
 
     let option = null;
-
-    const cancelFriendRequest = () => {
-        dispatch(cancelRequest(loggedUser.id, profile_owner.id))
-    }
-
-    const newFriendRequest = () => {
-        dispatch(addFriend(loggedUser.id, profile_owner.id))
-    }
 
     if (loggedUser.id === +userId) {
         option = (
@@ -61,7 +57,7 @@ function Profile({setSearchParams}) {
             } else if (allFriends[i].friendAdder_id === loggedUser.id && allFriends[i].friendReceiver_id === +userId && allFriends[i].confirmed === false) {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn' onClick={()=>cancelFriendRequest()}><i class="fas fa-ban"></i>&nbsp; Cancel Request</button>
+                        <CancelRequest loggedUser={loggedUser.id} profile_owner={profile_owner.id}/>
                     </div>
                 )
                 break;
@@ -75,7 +71,7 @@ function Profile({setSearchParams}) {
             } else {
                 option = (
                     <div className='edit-profile-btn'>
-                        <button className='profile-nav-links edit-profileBtn' onClick={()=>newFriendRequest()}><i class="fas fa-user-plus"></i>&nbsp; Add Friend</button>
+                        <AddFriend loggedUser={loggedUser.id} profile_owner={profile_owner.id}/>
                     </div>
                 )
             }
@@ -103,15 +99,15 @@ function Profile({setSearchParams}) {
     }
 
     useEffect(()=> {
+        setDisplay('posts')
         dispatch(getUsers())
         dispatch(getPhotos(+userId))
         dispatch(getPosts(+userId))
         dispatch(getComments(+userId))
-        dispatch(getFriends(+userId))
-        setDisplay('posts')
+        dispatch(getFriends(+userId)).then(()=>setLoad(true))
     }, [dispatch, userId])
 
-    return (
+    return load && (
         <>
             <div onClick={()=> setSearchParams('')} className='profile-container'>
                 <div className='profile-background-color'>
