@@ -86,7 +86,8 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
         dispatch(deletePost(postId))
     }
 
-    const editPost = (postId) => {
+    const editPost = (e, postId) => {
+        e.preventDefault()
         dispatch(changePost(postId, editValue))
         setEditId('')
     }
@@ -99,7 +100,8 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
         dispatch(postUnlike(postId, loggedUser.id))
     }
 
-    const editComment = (commentId, editCommentValue) => {
+    const editComment = (e, commentId, editCommentValue) => {
+        e.preventDefault()
         setCommentId('')
         dispatch(changeComment(commentId, editCommentValue))
     }
@@ -317,15 +319,16 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                             </div>
                             <div>
                                 {editId == post.id ?
-                                <form className='edit-Form-Field'>
+                                <form onSubmit={(e)=> editPost(e, post.id)} className='edit-Form-Field'>
                                     <input
                                         className='show-post-edit-field'
                                         type='text'
                                         value={editValue}
                                         onChange={(e) => setEditValue(e.target.value)}
                                     ></input>
+                                    <button type='submit' style={{display: 'none'}}>Submit</button>
                                     <span onClick={()=>setShowEmojiEditPost(!showEmojiEditPost)} className='addEmoji-to-edit-post'><i class="far fa-smile"></i></span>
-                                    <span onClick={ editValue.length > 0 ? () => {editPost(post.id); setShowEmojiEditPost(false) }: null } className='save-edit-button'>Save</span>
+                                    <span onClick={ editValue.length > 0 ? (e) => {editPost(e, post.id); setShowEmojiEditPost(false) }: null } className='save-edit-button'>Save</span>
                                     {showEmojiEditPost === true ?
                                         <Emojis location={'profile-edit-post'} setPostValue={setEditValue}/>
                                         : null
@@ -395,15 +398,16 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                             {comment.id === commentId ?
                                             <>
                                                 <div className='position-relative'>
-                                                    <form className='edit-Form-Field'>
+                                                    <form onSubmit={(e)=>editComment(e, comment.id, editCommentValue)} className='edit-Form-Field'>
                                                         <input
                                                             className='show-comment-edit-field'
                                                             type='text'
                                                             value={editCommentValue}
                                                             onChange={(e) => setEditCommentValue(e.target.value)}
                                                         />
+                                                        <button type='submit' style={{display: 'none'}}>Submit</button>
                                                         <span onClick={()=>setShowEmojiEditComment(!showEmojiEditComment)} className='addEmoji-to-edit-comment'><i class="far fa-smile"></i></span>
-                                                        <span onClick={ editCommentValue.length > 0 ? () => editComment(comment.id, editCommentValue) : null } className='save-comment-button'>Save</span>
+                                                        <span onClick={ editCommentValue.length > 0 ? (e) => editComment(e, comment.id, editCommentValue) : null } className='save-comment-button'>Save</span>
                                                     </form>
                                                     {showEmojiEditComment === true ?
                                                         <Emojis location={'profile-edit-comment'} setPostValue={setEditCommentValue}/>
