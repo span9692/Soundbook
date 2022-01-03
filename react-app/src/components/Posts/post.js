@@ -104,7 +104,8 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
         dispatch(changeComment(commentId, editCommentValue))
     }
 
-    const addComment = (postId) => {
+    const addComment = (e, postId) => {
+        e.preventDefault()
         dispatch(newComment({
             comment_content: commentValue,
             post_id: postId,
@@ -438,7 +439,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                             <div className='position-relative'>
                                 <div className='add-comment-container'>
                                     <img className='post-image-wall' src={loggedUser.profile_pic}></img>
-                                    <form className='comment-form' id='add-comment-form'>
+                                    <form onSubmit={(e)=>addComment(e, commentBoxId)} className='comment-form' id='add-comment-form'>
                                         <input
                                             className='comment-field'
                                             type='text'
@@ -446,9 +447,10 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                             value={commentValue}
                                             onChange={(e) => setCommentValue(e.target.value)}
                                         />
+                                        <button type='submit' style={{display: 'none'}}>Submit</button>
                                     </form>
                                     <span onClick={()=>setShowEmojiComment(!showEmojiComment)} className='addEmoji-to-comment'><i class="far fa-smile"></i></span>
-                                    <div onClick={commentValue.length > 0 ? () => addComment(commentBoxId) : null} className='post-comment-button'>Post</div>
+                                    <div onClick={commentValue.length > 0 ? (e) => addComment(e, commentBoxId) : null} className='post-comment-button'>Post</div>
                                     {showEmojiComment === true ?
                                         <Emojis location={'profile-comment'} setPostValue={setCommentValue}/>
                                         : null
