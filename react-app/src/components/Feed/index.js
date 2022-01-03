@@ -287,7 +287,7 @@ function Feed({searchParams, setSearchParams}) {
                             </div>
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
                             <div className='post-box-buttons'>
-                                <div type='submit' onClick={ postValue.length > 0 ? ()=>{addPost(); setShowEmoji(false)} : ()=>setShowEmoji(false) } class='boxBtn pointer' form='add-post-form'>
+                                <div type='submit' onClick={ postValue.length > 0 ? (e)=>{addPost(e); setShowEmoji(false)} : ()=>setShowEmoji(false) } class='boxBtn pointer' form='add-post-form'>
                                     <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                                 </div>
                                 <div class='photoboxBtn unclickable'>
