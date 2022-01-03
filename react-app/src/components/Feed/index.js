@@ -101,7 +101,8 @@ function Feed({searchParams, setSearchParams}) {
         dispatch(deletePost(postId))
     }
 
-    const editPost = (postId) => {
+    const editPost = (e, postId) => {
+        e.preventDefault()
         dispatch(changePost(postId, editValue))
         setEditId('')
     }
@@ -114,12 +115,14 @@ function Feed({searchParams, setSearchParams}) {
         dispatch(postUnlike(postId, loggedUser.id))
     }
 
-    const editComment = (commentId, editCommentValue) => {
+    const editComment = (e, commentId, editCommentValue) => {
+        e.preventDefault()
         setCommentId('')
         dispatch(changeComment(commentId, editCommentValue))
     }
 
-    const addComment = (postId) => {
+    const addComment = (e, postId) => {
+        e.preventDefault()
         dispatch(newComment({
             comment_content: commentValue,
             post_id: postId,
@@ -342,15 +345,16 @@ function Feed({searchParams, setSearchParams}) {
                             <div className='position-relative'>
                                 {editId == post.id ?
                                 <>
-                                <form className='edit-Form-Field'>
+                                <form onSubmit={(e)=>editPost(e, post.id)} className='edit-Form-Field'>
                                     <input
                                         className='show-post-edit-field'
                                         type='text'
                                         value={editValue}
                                         onChange={(e) => setEditValue(e.target.value)}
                                     />
+                                    <button type='submit' style={{display: 'none'}}>Submit</button>
                                     <span onClick={()=>setShowEmojiEditPost(!showEmojiEditPost)} className='addEmoji-to-edit-post'><i class="far fa-smile"></i></span>
-                                    <span onClick={ editValue.length > 0 ? () => editPost(post.id) : null } className='save-edit-button'>Save</span>
+                                    <span onClick={ editValue.length > 0 ? (e) => editPost(e, post.id) : null } className='save-edit-button'>Save</span>
                                 </form>
                                 {showEmojiEditPost === true ?
                                     <Emojis location={'profile-edit-post'} setPostValue={setEditValue}/>
@@ -422,15 +426,16 @@ function Feed({searchParams, setSearchParams}) {
                                             {comment.id === commentId ?
                                             <>
                                                 <div className='position-relative'>
-                                                    <form className='edit-Form-Field'>
+                                                    <form onSubmit={(e)=>editComment(e, comment.id, editCommentValue)} className='edit-Form-Field'>
                                                         <input
                                                             className='show-comment-edit-1field'
                                                             type='text'
                                                             value={editCommentValue}
                                                             onChange={(e) => setEditCommentValue(e.target.value)}
                                                         />
+                                                        <button type='submit' style={{display: 'none'}}>Submit</button>
                                                         <span onClick={()=>setShowEmojiEditComment(!showEmojiEditComment)} className='addEmoji-to-edit-comment'><i class="far fa-smile"></i></span>
-                                                        <span onClick={ editCommentValue.length > 0 ? () => editComment(comment.id, editCommentValue) : null } className='save-comment-button'>Save</span>
+                                                        <span onClick={ editCommentValue.length > 0 ? (e) => editComment(e, comment.id, editCommentValue) : null } className='save-comment-button'>Save</span>
                                                     </form>
                                                     {showEmojiEditComment === true ?
                                                         <Emojis location={'profile-edit-comment'} setPostValue={setEditCommentValue}/>
@@ -466,7 +471,7 @@ function Feed({searchParams, setSearchParams}) {
                             <div className='position-relative'>
                                 <div className='add-comment-container'>
                                     <img className='post-image-wall' src={loggedUser.profile_pic}></img>
-                                    <form className='comment-form' id='add-comment-form'>
+                                    <form onSubmit={(e)=>addComment(e, commentBoxId)} className='comment-form' id='add-comment-form'>
                                         <input
                                             className='comment-field'
                                             type='text'
@@ -474,9 +479,10 @@ function Feed({searchParams, setSearchParams}) {
                                             value={commentValue}
                                             onChange={(e) => setCommentValue(e.target.value)}
                                         />
+                                        <button type='submit' style={{display: 'none'}}>Submit</button>
                                     </form>
                                     <span onClick={()=>setShowEmojiComment(!showEmojiComment)} className='addEmoji-to-comment'><i class="far fa-smile"></i></span>
-                                    <div onClick={commentValue.length > 0 ? () => addComment(commentBoxId) : null} className='post-comment-button'>Post</div>
+                                    <div onClick={commentValue.length > 0 ? (e) => addComment(e, commentBoxId) : null} className='post-comment-button'>Post</div>
                                     {showEmojiComment === true ?
                                         <Emojis location={'profile-comment'} setPostValue={setCommentValue}/>
                                         : null
