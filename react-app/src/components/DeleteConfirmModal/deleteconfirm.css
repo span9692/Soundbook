@@ -1,0 +1,49 @@
+.delete-post-modal {
+    display: flex;
+    align-items: flex-start;
+    background-color: white;
+    width: 525px!important;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-right: .5rem;
+    margin-top: 1rem;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 4px 8px rgb(0 0 0 / 10%);
+    color:black;
+    font-weight: bold;
+}
+
+.confirm-delete {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.delete-text {
+    font-size: 1.5rem!important;
+}
+
+.delete-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cancel-circle {
+    color: rgb(180, 180, 180);
+    font-size: 2rem;
+}
+
+.cancel-circle:hover {
+    color: rgb(138, 138, 138)
+}
+
+.you-sure {
+    font-weight: normal!important;
+    font-size: .9rem!important;
+}
+
+.delete-post-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: .5rem;
+}

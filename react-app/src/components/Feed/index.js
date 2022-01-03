@@ -7,6 +7,8 @@ import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '.
 import { getPhotos } from '../../store/photo'
 import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
+import CommentDelete from '../DeleteCommentModal'
+import ConfirmDelete from '../DeleteConfirmModal'
 import Emojis from '../Emojis'
 import FriendModal from '../FriendsModal'
 import PhotosModal from '../PhotosModal'
@@ -334,9 +336,10 @@ function Feed({searchParams, setSearchParams}) {
                                         : null
                                         }
                                         {loggedUser.id === post.profile_id || post.owner_id === loggedUser.id ?
-                                        <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
-                                            <i class="fas fa-trash-alt"></i>
-                                        </div>
+                                        // <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
+                                        //     <i class="fas fa-trash-alt"></i>
+                                        // </div>
+                                        <ConfirmDelete postId={post.id}/>
                                         : null
                                         }
                                     </div>
@@ -417,9 +420,11 @@ function Feed({searchParams, setSearchParams}) {
                                                     </div>: null
                                                     }
                                                     {loggedUser.id === post.profile_id || comment.user_id === loggedUser.id ?
-                                                    <div className='comment-icon-position' onClick={() => deleteComment(comment.id)} >
-                                                        <i class="fas fa-trash-alt trash-icon-comment pointer"></i>
-                                                    </div>: null
+                                                    // <div className='comment-icon-position' onClick={() => deleteComment(comment.id)} >
+                                                    //     <i class="fas fa-trash-alt trash-icon-comment pointer"></i>
+                                                    // </div>
+                                                    <CommentDelete commentId={comment.id}/>
+                                                    : null
                                                     }
                                                 </div>
                                             </div>

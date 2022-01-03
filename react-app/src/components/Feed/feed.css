@@ -258,6 +258,10 @@
     margin-right: .5rem;
 }
 
+.confirm-friend-request-btn:hover {
+    background-color: #1b6dda;
+}
+
 .delete-friend-request-btn {
     background-color: rgb(221, 221, 221);
     color: black;
@@ -266,6 +270,10 @@
     padding: .6rem .9rem;
     border-radius: 5px;
     margin-top: .2rem;
+}
+
+.delete-friend-request-btn:hover {
+    background-color: rgb(207, 207, 207);
 }
 
 /*contacts*/
