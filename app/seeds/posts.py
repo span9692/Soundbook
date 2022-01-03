@@ -33,7 +33,7 @@ def seed_posts():
     post30 = Post(post_content='Hey everyone, I\'m Michael', owner_id=13, profile_id=13)
     post31 = Post(post_content='You gon be at Coachella this year?', owner_id=11, profile_id=12)
     post32 = Post(post_content='Linkin Park 💯', owner_id=16, profile_id=14)
-    post33 = Post(post_content='Omfgggg Britneyyyy!', owner_id=7, profile_id=16)
+    post33 = Post(post_content='Omfgggg Britneyyyy!', owner_id=16, profile_id=7)
     post34 = Post(post_content='Hi Soundbook! I\'m Mariah Carey', owner_id=15, profile_id=15)
     post35 = Post(post_content='What\'s good Dre?', owner_id=8, profile_id=3)
     post36 = Post(post_content='Hey Kanye 😊', owner_id=15, profile_id=4)
