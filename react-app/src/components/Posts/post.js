@@ -72,7 +72,8 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
 
     const totalLength = allPosts.length;
 
-    const addPost = () => {
+    const addPost = (e) => {
+        e.preventDefault()
         dispatch(createPost({
             post_content: postValue,
             owner_id: loggedUser.id,
@@ -255,7 +256,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                     value={postValue}
                                     onChange={(e) => setPostValue(e.target.value)}
                                 />
-                                <button type='submit' style={{display: 'none'}}>Submit</button>
+                                <button type='submit' style={{display: 'none'}} form='add-post-form'>Submit</button>
                             </form>
                         </div>
                         <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>

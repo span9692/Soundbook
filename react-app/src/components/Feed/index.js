@@ -87,7 +87,8 @@ function Feed({searchParams, setSearchParams}) {
     commentCheck = new Set(commentCheck)
     commentCheck = Array.from(commentCheck)
 
-    const addPost = () => {
+    const addPost = (e) => {
+        e.preventDefault()
         dispatch(createPost({
             post_content: postValue,
             owner_id: loggedUser.id,
@@ -270,7 +271,7 @@ function Feed({searchParams, setSearchParams}) {
                                 <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
                                     <img className='post-image-wall dim' src={loggedUser?.profile_pic}></img>
                                 </Link>
-                                <form className='post-form' id='add-post-form'>
+                                <form onSubmit={addPost} className='post-form' id='add-post-form'>
                                     <input
                                         className='post-field'
                                         type='text'
@@ -278,6 +279,7 @@ function Feed({searchParams, setSearchParams}) {
                                         value={postValue}
                                         onChange={(e) => setPostValue(e.target.value)}
                                     />
+                                    <button type='submit' style={{display: 'none'}} form='add-post-form'>Submit</button>
                                 </form>
                             </div>
                             <hr style={{ marginTop: 1 + 'rem', marginBottom: 1 + 'rem' }} size='1' width='100%' color='#dddfe2'></hr>
