@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db
-from app.forms import SignUpForm, ProfileForm, LoginForm
+from app.forms import SignUpForm, ProfileForm, LoginForm, CoverForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.aws import (
     upload_file_to_s3, allowed_file, get_unique_filename)
@@ -78,11 +78,36 @@ def update_display(userId):
 
 @auth_routes.route('/cover/<int:userId>', methods=['PUT'])
 def update_cover(userId):
+
+    cover = CoverForm()
+    cover['csrf_token'].data = request.cookies['csrf_token']
+
+    if "cover_photo" not in cover.data:
+        return {"errors": "image required"}, 400
+
+    image = cover.data["cover_photo"]
+
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+    url = upload["url"]
+
     user = User.query.get(userId)
-    data = request.get_json()
-    user.cover_photo = data['coverPhoto']
-    db.session.commit()
-    return user.to_dict()
+
+    if cover.validate_on_submit():
+        user.cover_photo = url
+        db.session.commit()
+        return user.to_dict()
 
 @auth_routes.route('/profilephoto/<int:userId>', methods=['PUT'])
 def update_profilephoto(userId):

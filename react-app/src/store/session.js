@@ -117,15 +117,11 @@ export const updateName = ({userId, firstName, lastName, alias}) => async dispat
   }
 }
 
-export const updateCover = ({userId, coverPhoto}) => async dispatch => {
+export const updateCover = (formData) => async dispatch => {
+  const userId = formData.get('userId')
   const response = await fetch(`/api/auth/cover/${userId}`, {
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      coverPhoto
-    }),
+    body: formData
   })
 
   if (response.ok) {
