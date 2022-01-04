@@ -53,7 +53,7 @@ function CoverPhoto({loggedUser, setShowModal}) {
                 <hr style={{marginTop: 1+'rem', marginBottom: .5+'rem'}} size='1' width='100%' color='#dddfe2'></hr>
                 <div className='email-field'>
                     <div className='preview-upload'>
-                        <img className='aws-image-size' src={imagePreview || loggedUser.cover_photo}></img>
+                        <img className='aws-image-1size' src={imagePreview || loggedUser.cover_photo}></img>
                         <label htmlFor='aws' className='upload-btn pointer'>
                             <div className='upload-text'><i class="fas fa-plus"></i> Upload Photo</div>
                         </label>

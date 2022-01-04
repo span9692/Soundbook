@@ -19,7 +19,7 @@
 }
 
 .aws-image-size {
-    border-radius: 5%;
+    border-radius: 8px;
     margin-top: .3rem;
     object-fit: cover;
     width: 15rem;
