@@ -1,4 +1,59 @@
+.profile-form-photo {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: white;
+    min-width: 350px;
+    width: 20vw;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
 .invalid-photo-url {
     color: red;
     font-size: .8rem;
+}
+
+.aws-form {
+    display: none;
+}
+
+.aws-image-size {
+    border-radius: 5%;
+    margin-top: .3rem;
+    object-fit: cover;
+    width: 15rem;
+    height: 15rem;
+}
+
+.preview-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-btn {
+    height: 5%;
+    width: 66%;
+    margin-top: 1rem;
+    background-color: #daeaff;
+    border: none;
+    border-radius: 5px;
+    color: #1877F2;
+    font-weight: bold;
+    font-size: 1rem;
+    position: relative;
+    /* text-align: center; */
+    /* vertical-align: center; */
+
+}
+
+.upload-btn:hover {
+    background-color: #cee2fc;
+}
+
+.upload-text {
+    margin: auto;
+    padding: 3% 0;
+    text-align: center;
 }

@@ -41,8 +41,10 @@
     justify-content: flex-start;
     margin-left: .5rem;
 }
+
 .editBtns1 {
-    height: 3.8vh;
+    height: 100%;
+    padding: 5% 0;
     width: 65%;
     background-color: #1877F2;
     border: none;
@@ -57,7 +59,8 @@
 }
 
 .editBtns2 {
-    height: 3.8vh;
+    height: 100%;
+    padding: 5% 0;
     width: 65%;
     background-color: rgb(238, 238, 238);
     border: none;
