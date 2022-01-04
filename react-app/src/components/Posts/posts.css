@@ -139,11 +139,23 @@
     font-weight: 600;
     padding: .4rem;
     margin-top: -.4rem;
-    /* margin-bottom: -.4rem; */
-
 }
 
-.edit-profileBtn3:hover {
+.edit-profileBtn4 {
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    color: #1877f2;
+    font-size: .9rem;
+    font-weight: 600;
+    padding: .4rem;
+    margin-top: -.4rem;
+    margin-right: .3rem;
+}
+
+.edit-profileBtn3:hover,
+.edit-profileBtn4:hover {
     background-color: rgb(238, 238, 238);
 }
 

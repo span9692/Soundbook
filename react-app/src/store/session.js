@@ -117,15 +117,11 @@ export const updateName = ({userId, firstName, lastName, alias}) => async dispat
   }
 }
 
-export const updateCover = ({userId, coverPhoto}) => async dispatch => {
+export const updateCover = (formData) => async dispatch => {
+  const userId = formData.get('userId')
   const response = await fetch(`/api/auth/cover/${userId}`, {
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      coverPhoto
-    }),
+    body: formData
   })
 
   if (response.ok) {
@@ -134,15 +130,11 @@ export const updateCover = ({userId, coverPhoto}) => async dispatch => {
   }
 }
 
-export const updateProfilePic = (userId, profPic) => async dispatch => {
+export const updateProfilePic = (formData) => async dispatch => {
+  const userId = formData.get('userId')
   const response = await fetch(`/api/auth/profilephoto/${userId}`, {
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      profPic
-    }),
+    body: formData
   })
 
   if (response.ok) {

@@ -228,8 +228,8 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
 
                     <div onClick={()=> closeEmojis()} className='friends-container containers'>
                         <div className='photos-1label'>
-                            <span className='profile-labels'>Friends <span className='photos-count'>({friend_count})</span></span>
-                            <span className='edit-profileBtn3' onClick={() => setDisplay('friends')}>See All Friends</span>
+                            <span className='profile-labels'>&nbsp;Friends <span className='photos-count'>({friend_count})</span></span>
+                            <span className='edit-profileBtn4' onClick={() => setDisplay('friends')}>See All Friends</span>
                         </div>
                         <div className='nine-friends'>
                             {currentProfileFriends.map((friend) => (

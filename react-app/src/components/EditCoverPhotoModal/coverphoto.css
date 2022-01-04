@@ -9,3 +9,11 @@
     resize: none;
     height: 7rem;
 }
+
+.aws-image-1size {
+    border-radius: 8px;
+    margin-top: .3rem;
+    object-fit: cover;
+    width: 25rem;
+    height: 15rem;
+}
