@@ -1,7 +1,9 @@
 from flask import Blueprint, request, jsonify
 from app.models.db import db
-from app.models import Post, User, Comment
+from app.models import Post
 from sqlalchemy.sql import func
+from app.aws import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 post_routes = Blueprint('posts', __name__)
 

@@ -13,13 +13,19 @@ function ProfilePhoto({loggedUser, setShowModal}) {
     const updateProfilePhoto = async(e) => {
         e.preventDefault()
 
-        if(!/\.(jpe?g|png|gif|bmp)$/i.test(profilePhoto)){
-            setError('Must be a valid image URL')
-        } else {
-            dispatch(updateProfilePic(userId, profilePhoto))
-            dispatch(updatePicProfile(userId, profilePhoto))
-            setShowModal(false)
-        }
+        const formData = new FormData()
+        formData.append('userId', userId)
+        formData.append('profile_pic', profilePhoto)
+        dispatch(updateProfilePic(formData))
+        dispatch(updatePicProfile(formData))
+
+        // if(!/\.(jpe?g|png|gif|bmp)$/i.test(profilePhoto)){
+        //     setError('Must be a valid image URL')
+        // } else {
+        //     dispatch(updateProfilePic(userId, profilePhoto))
+        //     dispatch(updatePicProfile(userId, profilePhoto))
+        //     setShowModal(false)
+        // }
     }
 
     return (
@@ -35,13 +41,14 @@ function ProfilePhoto({loggedUser, setShowModal}) {
                     </div>
                     : null
                     }
-                    <textarea
+                    <input
                     className='signup-field field-size signup-font1 alias-field'
                     name='profilePhoto'
                     placeholder='URL'
-                    onChange={(e) => setProfilePhoto(e.target.value)}
-                    value={profilePhoto}
-                    ></textarea>
+                    type='file'
+                    accept='.jpg, .jpeg, .png, .gif'
+                    onChange={(e) => setProfilePhoto(e.target.files[0])}
+                    ></input>
                 </div>
                 <div className='save-or-cancel'>
                     <div className='edit-info-btns1'>
