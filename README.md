@@ -73,6 +73,9 @@ Soundbook is a fullstack app that allows artists to connect with one another all
    ```
    pipenv lock -r > requirements.txt
    ```
+ *IMPORTANT!*
+ 
+  After running the above command, navigate to `requirements.txt` in the root directory and add `email_validator==1.1.3` to the dependency list. This is due to a bug where the email_validator is not automatically added to the dependency list when installed.
    
 
 *ALSO IMPORTANT!*
