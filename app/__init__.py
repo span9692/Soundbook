@@ -15,8 +15,8 @@ from .api.friend_list_routes import friend_list_routes
 from .api.like_routes import like_routes
 
 from .seeds import seed_commands
-
 from .config import Config
+from .socket import socketio
 
 app = Flask(__name__)
 
@@ -43,6 +43,7 @@ app.register_blueprint(friend_list_routes, url_prefix='/api/friend')
 app.register_blueprint(like_routes, url_prefix='/api/like')
 db.init_app(app)
 Migrate(app, db)
+socketio.init_app(app)
 
 # Application Security
 CORS(app)
@@ -80,3 +81,6 @@ def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
+
+if __name__ == '__main__':
+    socketio.run(app)

@@ -10,7 +10,7 @@ const showPosts = data => {
   }
 }
 
-const newPost = data => {
+export const newPost = data => {
   return {
     type: CREATE_NEW_POST,
     data
@@ -44,6 +44,7 @@ export const getPosts = (id) => async dispatch => {
 }
 
 export const createPost = (data) => async dispatch => {
+  console.log('before post', data)
   const response = await fetch('/api/post/new', {
     method: "POST",
     headers: {"Content-Type":"application/json"},
