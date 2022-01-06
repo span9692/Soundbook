@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from app.models.db import db
 from app.models import Post
 from sqlalchemy.sql import func
+from app.socket import handle_add_post
 from app.aws import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -14,29 +15,6 @@ def allPosts():
 
 @post_routes.route('/<int:id>')
 def posts(id):
-    # posts = Post.query.options(joinload(User.id)).filter(Post.profile_id == id)
-    # posts = db.session.query(Post, User.first_name).join(User, Post.owner_id == User.id).filter(Post.profile_id == id)
-    # posts = db.session.query(Post, User.first_name).join(User, Post.owner_id == User.id).filter(Post.profile_id == id)
-    # posts = db.session.query(Post, User).join(User, Post.owner_id == User.id).filter(Post.profile_id == id).all()
-
-    # posts = Post.query.filter(Post.profile_id == id).all()
-    # print('mmmmmmmmmmmmmmmmmmmmmmmmmmm posts mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm', posts)
-    # users = User.query.filter(User.id == id)
-    # comments = Comment.query.filter(Comment.user_id == User.id).filter(Comment.post_id == Post.id)
-
-    # posts['users']  = [user.to_dict() for user in users]
-    # posts['comments'] = [comment.to_dict() for comment in comments]
-    # return posts
-    # print('mmmmmmmmmmmmmm', posts, 'mmmmmmmmmmmmmmmmmmmmmmmm')
-
-    # posts = Post.query.filter(Post.profile_id == id)
-    # comments = Comment.query.filter(Comment.user_id == User.id).filter(Comment.post_id == Post.id)
-    # # users = User.query.filter(User.id == id)
-    # res = {'posts': [post.to_dict() for post in posts]}
-    # res['comments'] = [comment.to_dict() for comment in comments]
-    # # res['users'] = [user.to_dict() for user in users]
-    # return res
-
     posts = Post.query.filter(Post.profile_id == id)
     return {'posts': [post.to_dict() for post in posts]}
 
@@ -50,6 +28,8 @@ def new_posts():
     )
     db.session.add(newPost)
     db.session.commit()
+    print('\n \n \n in the route', newPost.to_dict(),'\n \n')
+    # handle_add_post(newPost.to_dict())
     return newPost.to_dict()
 
 @post_routes.route('/<int:id>', methods=["DELETE"])

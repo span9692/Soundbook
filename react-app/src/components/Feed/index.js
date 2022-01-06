@@ -5,8 +5,9 @@ import { changeComment, getComments, newComment, removeComment } from '../../sto
 import { cancelRequest, confirmRequest, getFriends } from '../../store/friend_list'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
-import { changePost, createPost, deletePost, getAllPosts } from '../../store/post'
+import { newPost, changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
+import { io } from 'socket.io-client'
 import CommentDelete from '../DeleteCommentModal'
 import ConfirmDelete from '../DeleteConfirmModal'
 import Emojis from '../Emojis'
@@ -14,6 +15,7 @@ import FriendModal from '../FriendsModal'
 import PhotosModal from '../PhotosModal'
 import VideoModal from '../VideoModal'
 import './feed.css'
+let socket;
 
 function Feed({searchParams, setSearchParams}) {
     const dispatch = useDispatch()
@@ -164,6 +166,20 @@ function Feed({searchParams, setSearchParams}) {
         dispatch(getFriends(loggedUser.id))
         dispatch(getAllLikes())
     }, [dispatch, commentBoxId])
+
+    useEffect(()=> {
+        console.log('we here first')
+        socket = io()
+        socket.on('add_post',  async post => {
+            console.log('in the use effect', post)
+            let data = await post.json()
+            dispatch(newPost(data))
+        })
+
+        return () => {
+            socket.disconnect();
+        }
+    }, [])
 
     return (
         <>
