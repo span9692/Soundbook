@@ -34,7 +34,7 @@ function Splash() {
                            Soundbook <span className='asdf'><span className='at-text'>©</span></span> 2022
                         </div>
                         <div className="footer-text">
-                            Developer: Sean Pan, Will Short, Jose Cantu<span><a className='splash-logo' href="https://github.com/span9692" target="_blank"><i class="fab fa-github-square"></i></a> <a className='splash-logo' href="https://www.linkedin.com/in/sean-pan-395a4593/" target="_blank"><i class="fab fa-linkedin"></i></a></span>
+                            Developer: Sean Pan <span><a className='splash-logo' href="https://github.com/span9692" target="_blank"><i class="fab fa-github-square"></i></a> <a className='splash-logo' href="https://www.linkedin.com/in/sean-pan-395a4593/" target="_blank"><i class="fab fa-linkedin"></i></a></span>
                         </div>
                         {/* <div className="footer-text1">
                             <i class="fab fa-github-square"></i><i class="fab fa-linkedin"></i>

@@ -158,7 +158,6 @@ function Feed({searchParams, setSearchParams}) {
     }
 
     useEffect(()=> {
-        console.log('we here first')
         socket = io()
         socket.on('add_post', post => {
             dispatch(newPost(post))
