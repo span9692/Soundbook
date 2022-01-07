@@ -16,7 +16,7 @@ class Photo(db.Model):
             "photo": self.photo,
             "owner_id": self.owner_id,
             # "photographer": self.users.to_dict(),
-            "createdAt": (self.createdAt - timedelta(hours=8))
+            "createdAt": (self.createdAt - timedelta(hours=8)).strftime('%Y')
         }
 
     users = db.relationship('User', back_populates='photos')

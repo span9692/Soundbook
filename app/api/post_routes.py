@@ -29,7 +29,7 @@ def new_posts():
     db.session.add(newPost)
     db.session.commit()
     print('\n \n \n in the route', newPost.to_dict(),'\n \n')
-    # handle_add_post(newPost.to_dict())
+    handle_add_post(newPost.to_dict())
     return newPost.to_dict()
 
 @post_routes.route('/<int:id>', methods=["DELETE"])
