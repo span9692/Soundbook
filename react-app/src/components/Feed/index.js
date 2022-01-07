@@ -158,6 +158,18 @@ function Feed({searchParams, setSearchParams}) {
     }
 
     useEffect(()=> {
+        console.log('we here first')
+        socket = io()
+        socket.on('add_post', post => {
+            dispatch(newPost(post))
+        })
+
+        return () => {
+            socket.disconnect();
+        }
+    }, [])
+
+    useEffect(()=> {
         setCommentValue('')
         dispatch(getUsers())
         dispatch(getPhotos(loggedUser.id))
@@ -167,19 +179,6 @@ function Feed({searchParams, setSearchParams}) {
         dispatch(getAllLikes())
     }, [dispatch, commentBoxId])
 
-    useEffect(()=> {
-        console.log('we here first')
-        socket = io()
-        socket.on('add_post',  async post => {
-            console.log('in the use effect', post)
-            let data = await post.json()
-            dispatch(newPost(data))
-        })
-
-        return () => {
-            socket.disconnect();
-        }
-    }, [])
 
     return (
         <>

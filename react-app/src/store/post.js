@@ -51,6 +51,7 @@ export const createPost = (data) => async dispatch => {
     body: JSON.stringify(data)
   })
   const post = await response.json()
+  console.log('back in da thunk post', post)
   dispatch(newPost(post))
 }
 
