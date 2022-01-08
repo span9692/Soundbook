@@ -111,12 +111,14 @@ function Profile({setSearchParams}) {
             dispatch(removeRequest(friend))
         })
 
+        socket.on('add_friend', friend => {
+            dispatch(addNewFriend(friend))
+        })
+
         return () => {
             socket.disconnect();
         }
     }, [])
-
-//addNewFriend, removeRequest, yesRequest
 
     useEffect(()=> {
         setDisplay('posts')

@@ -195,6 +195,14 @@ function Feed({searchParams, setSearchParams}) {
             dispatch(yesRequest(friend))
         })
 
+        socket.on('decline_friend', friend => {
+            dispatch(removeRequest(friend))
+        })
+
+        socket.on('add_friend', friend => {
+            dispatch(addNewFriend(friend))
+        })
+
         return () => {
             socket.disconnect();
         }

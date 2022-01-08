@@ -51,3 +51,6 @@ def handle_confirm_friend(data):
 
 def handle_decline_friend(data):
     socketio.emit("decline_friend", data, broadcast=True)
+
+def handle_add_friend(data):
+    socketio.emit("add_friend", data, broadcast=True)

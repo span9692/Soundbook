@@ -63,10 +63,10 @@ export const addFriend = (adderId, recieverId) => async dispatch => {
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify({adderId, recieverId})
   })
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(addNewFriend(data))
-  }
+  // if (response.ok) {
+  //   const data = await response.json();
+  //   dispatch(addNewFriend(data))
+  // }
 }
 
 export const cancelRequest = (adderId, recieverId) => async dispatch => {
