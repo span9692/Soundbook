@@ -18,21 +18,21 @@ const first = data => {
   }
 }
 
-const addNewFriend = data => {
+export const addNewFriend = data => {
   return {
     type: ADD_NEW_FRIENDS,
     data
   }
 }
 
-const removeRequest = data => {
+export const removeRequest = data => {
   return {
     type: CANCEL_REQUEST,
     data
   }
 }
 
-const yesRequest = data => {
+export const yesRequest = data => {
   return {
     type: ACCEPT_REQUEST,
     data
@@ -63,10 +63,10 @@ export const addFriend = (adderId, recieverId) => async dispatch => {
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify({adderId, recieverId})
   })
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(addNewFriend(data))
-  }
+  // if (response.ok) {
+  //   const data = await response.json();
+  //   dispatch(addNewFriend(data))
+  // }
 }
 
 export const cancelRequest = (adderId, recieverId) => async dispatch => {

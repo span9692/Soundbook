@@ -13,7 +13,7 @@ const NavBar = ({searchParams, setSearchParams}) => {
   const userId = user.id
 
   useEffect(()=> {
-    dispatch(getUsers)
+    dispatch(getUsers())
 }, [dispatch])
 
   return (
@@ -30,7 +30,7 @@ const NavBar = ({searchParams, setSearchParams}) => {
           <VideoModalNav />
           <a className='fontAwesomeness' href="https://github.com/span9692" target="_blank"><i class="fab fa-github"></i></a>
           <a className='fontAwesomeness' href="https://www.linkedin.com/in/sean-pan-395a4593/" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <div className='fontAwesomeness unclickable'><i class="fas fa-address-card"></i></div>
+          <a className='fontAwesomeness' href="https://span9692.github.io/" target="_blank"><i class="fas fa-address-card"></i></a>
         </div>
         <div className='nav-right'>
           <Link className='firstName-profile-nav' to={`/users/${userId}`} exact={true}>

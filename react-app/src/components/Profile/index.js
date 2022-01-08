@@ -7,7 +7,8 @@ import Posts from '../Posts/post'
 import { getPhotos } from '../../store/photo'
 import { getPosts } from '../../store/post'
 import { getComments } from '../../store/comment'
-import { getFriends } from '../../store/friend_list'
+import { addNewFriend, removeRequest, yesRequest, getFriends } from '../../store/friend_list'
+import { io } from 'socket.io-client'
 import Friends from '../Friends'
 import Photos from '../Photos'
 import About from '../About'
@@ -18,6 +19,7 @@ import RespondModal from '../RespondModal'
 import { Modal } from '../../context/Modal'
 import CancelRequest from '../CancelRequest'
 import AddFriend from '../AddFriend'
+let socket;
 
 function Profile({setSearchParams}) {
     const dispatch = useDispatch()
@@ -57,7 +59,7 @@ function Profile({setSearchParams}) {
             } else if (allFriends[i].friendAdder_id === loggedUser.id && allFriends[i].friendReceiver_id === +userId && allFriends[i].confirmed === false) {
                 option = (
                     <div className='edit-profile-btn'>
-                        <CancelRequest loggedUser={loggedUser.id} profile_owner={profile_owner.id}/>
+                        <CancelRequest loggedUser={loggedUser?.id} profile_owner={profile_owner?.id}/>
                     </div>
                 )
                 break;
@@ -71,7 +73,7 @@ function Profile({setSearchParams}) {
             } else {
                 option = (
                     <div className='edit-profile-btn'>
-                        <AddFriend loggedUser={loggedUser.id} profile_owner={profile_owner.id}/>
+                        <AddFriend loggedUser={loggedUser?.id} profile_owner={profile_owner?.id}/>
                     </div>
                 )
             }
@@ -97,6 +99,26 @@ function Profile({setSearchParams}) {
             <About loggedUser={loggedUser} profile_owner={profile_owner}/>
         )
     }
+
+    useEffect(()=> {
+        socket = io()
+
+        socket.on('confirm_friend', friend => {
+            dispatch(yesRequest(friend))
+        })
+
+        socket.on('decline_friend', friend => {
+            dispatch(removeRequest(friend))
+        })
+
+        socket.on('add_friend', friend => {
+            dispatch(addNewFriend(friend))
+        })
+
+        return () => {
+            socket.disconnect();
+        }
+    }, [])
 
     useEffect(()=> {
         setDisplay('posts')

@@ -11,28 +11,28 @@ const showLikes = data => {
     }
 }
 
-const newLikePost = data => {
+export const newLikePost = data => {
     return {
         type: NEW_LIKE_POST,
         data
     }
 }
 
-const deleteLikePost = data => {
+export const deleteLikePost = data => {
     return {
         type: REMOVE_LIKE_POST,
         data
     }
 }
 
-const newLikeComment = data => {
+export const newLikeComment = data => {
     return {
         type: NEW_LIKE_COMMENT,
         data
     }
 }
 
-const deleteLikeComment = data => {
+export const deleteLikeComment = data => {
     return {
         type: REMOVE_LIKE_COMMENT,
         data

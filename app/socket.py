@@ -17,12 +17,40 @@ socketio = SocketIO(cors_allowed_origins=origins)
 
 # handle add friend
 def handle_add_post(data):
-    print('\n \n in the socket', data, '\n \n \n \n \n \n \n \n')
-    # data['createdAt'] = data['createdAt'].strftime(
     socketio.emit("add_post", data, broadcast=True)
 
-# def handle_delete_post(data):
-#     socketio.emit("delete_post", data, broadcast=True)
+def handle_delete_post(data):
+    socketio.emit("delete_post", data, broadcast=True)
 
-# def handle_edit_post(data):
-#     socketio.emit("edit_post", data, broadcast=True)
+def handle_edit_post(data):
+    socketio.emit("edit_post", data, broadcast=True)
+
+def handle_add_comment(data):
+    socketio.emit("add_comment", data, broadcast=True)
+
+def handle_delete_comment(data):
+    socketio.emit("delete_comment", data, broadcast=True)
+
+def handle_edit_comment(data):
+    socketio.emit("edit_comment", data, broadcast=True)
+
+def handle_add_like_post(data):
+    socketio.emit("add_like_post", data, broadcast=True)
+
+def handle_delete_like_post(data):
+    socketio.emit("delete_like_post", data, broadcast=True)
+
+def handle_add_like_comment(data):
+    socketio.emit("add_like_comment", data, broadcast=True)
+
+def handle_delete_like_comment(data):
+    socketio.emit("delete_like_comment", data, broadcast=True)
+
+def handle_confirm_friend(data):
+    socketio.emit("confirm_friend", data, broadcast=True)
+
+def handle_decline_friend(data):
+    socketio.emit("decline_friend", data, broadcast=True)
+
+def handle_add_friend(data):
+    socketio.emit("add_friend", data, broadcast=True)

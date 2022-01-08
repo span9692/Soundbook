@@ -17,14 +17,14 @@ export const newPost = data => {
   }
 }
 
-const removeOnePost = data => {
+export const removeOnePost = data => {
   return {
     type: DELETE_POST,
     data
   }
 }
 
-const modifyPost = data => {
+export const modifyPost = data => {
   return {
     type: EDIT_POST,
     data
