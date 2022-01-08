@@ -57,7 +57,7 @@ function Profile({setSearchParams}) {
             } else if (allFriends[i].friendAdder_id === loggedUser.id && allFriends[i].friendReceiver_id === +userId && allFriends[i].confirmed === false) {
                 option = (
                     <div className='edit-profile-btn'>
-                        <CancelRequest loggedUser={loggedUser.id} profile_owner={profile_owner.id}/>
+                        <CancelRequest loggedUser={loggedUser?.id} profile_owner={profile_owner?.id}/>
                     </div>
                 )
                 break;
@@ -71,7 +71,7 @@ function Profile({setSearchParams}) {
             } else {
                 option = (
                     <div className='edit-profile-btn'>
-                        <AddFriend loggedUser={loggedUser.id} profile_owner={profile_owner.id}/>
+                        <AddFriend loggedUser={loggedUser?.id} profile_owner={profile_owner?.id}/>
                     </div>
                 )
             }

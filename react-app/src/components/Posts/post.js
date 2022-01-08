@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addComment, deleteOneComment, modifyComment, changeComment, newComment } from '../../store/comment'
-import { newPost, removeOnePost, modifyPost, changePost, createPost, deletePost } from '../../store/post'
+import { newPost, removeOnePost, modifyPost, changePost, createPost } from '../../store/post'
 import { Link } from 'react-router-dom'
 import './posts.css'
-import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
+import { newLikePost, deleteLikePost, newLikeComment, deleteLikeComment, commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import EditIntroModal from '../EditIntroModal'
 import Emojis from '../Emojis'
 import { io } from 'socket.io-client'
@@ -86,10 +86,6 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
         closeEmojis()
     }
 
-    // const removePost = (postId) => {
-    //     dispatch(deletePost(postId))
-    // }
-
     const editPost = (e, postId) => {
         e.preventDefault()
         dispatch(changePost(postId, editValue))
@@ -147,7 +143,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
         socket.on('edit_post', post => {
             dispatch(modifyPost(post))
         })
-        
+
         socket.on('add_comment', comment => {
             dispatch(addComment(comment))
         })
@@ -160,11 +156,19 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
             dispatch(modifyComment(comment))
         })
 
+        socket.on('add_like_post', postLike => {
+            dispatch(newLikePost(postLike))
+        })
+
+        socket.on('delete_like_post', postLike => {
+            dispatch(deleteLikePost(postLike))
+        })
+
         return () => {
             socket.disconnect();
         }
     }, [])
-
+    // newLikePost, deleteLikePost, newLikeComment, deleteLikeComment
     return (
         <>
             {loaded &&
