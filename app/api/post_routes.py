@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from app.models.db import db
 from app.models import Post
 from sqlalchemy.sql import func
-from app.socket import handle_add_post
+from app.socket import handle_add_post, handle_delete_post, handle_edit_post
 from app.aws import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -28,7 +28,6 @@ def new_posts():
     )
     db.session.add(newPost)
     db.session.commit()
-    print('\n \n \n in the route', newPost.to_dict(),'\n \n')
     handle_add_post(newPost.to_dict())
     return newPost.to_dict()
 
@@ -37,6 +36,7 @@ def delete_posts(id):
     post = Post.query.get(id)
     db.session.delete(post)
     db.session.commit()
+    handle_delete_post(id)
     return jsonify({'message': f'Post {id} has been deleted'}), 200
 
 @post_routes.route('/edit', methods=['PUT'])
@@ -46,4 +46,5 @@ def edit_post():
     post.post_content = data['editValue']
     post.updatedAt = func.now()
     db.session.commit()
+    handle_edit_post(post.to_dict())
     return post.to_dict()

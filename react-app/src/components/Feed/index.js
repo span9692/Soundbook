@@ -5,7 +5,7 @@ import { changeComment, getComments, newComment, removeComment } from '../../sto
 import { cancelRequest, confirmRequest, getFriends } from '../../store/friend_list'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
-import { newPost, changePost, createPost, deletePost, getAllPosts } from '../../store/post'
+import { newPost, removeOnePost, modifyPost, changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
 import { io } from 'socket.io-client'
 import CommentDelete from '../DeleteCommentModal'
@@ -161,6 +161,14 @@ function Feed({searchParams, setSearchParams}) {
         socket = io()
         socket.on('add_post', post => {
             dispatch(newPost(post))
+        })
+
+        socket.on('delete_post', post => {
+            dispatch(removeOnePost(post))
+        })
+
+        socket.on('edit_post', post => {
+            dispatch(modifyPost(post))
         })
 
         return () => {
