@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app.models.db import db
-from app.socket import handle_add_like_post, handle_delete_like_post
+from app.socket import handle_add_like_post, handle_delete_like_post, handle_add_like_comment, handle_delete_like_comment
 from app.models import Like
 
 like_routes = Blueprint('likes', __name__)
@@ -40,6 +40,7 @@ def likeComment():
 
     db.session.add(newLike)
     db.session.commit()
+    handle_add_like_comment(newLike.to_dict())
     return newLike.to_dict()
 
 @like_routes.route('/comment/<int:commentId>/<int:userId>', methods=['DELETE'])
@@ -47,4 +48,5 @@ def unlikeComment(commentId, userId):
     unlike = Like.query.filter(Like.user_id == userId).filter(Like.comment_id == commentId).all()[0]
     db.session.delete(unlike)
     db.session.commit()
+    handle_delete_like_comment({'commentId':commentId, 'userId':userId})
     return jsonify({'message': 'Like has been deleted'}), 200

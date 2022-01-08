@@ -164,11 +164,19 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
             dispatch(deleteLikePost(postLike))
         })
 
+        socket.on('add_like_comment', commentLike => {
+            dispatch(newLikeComment(commentLike))
+        })
+
+        socket.on('delete_like_comment', commentLike => {
+            dispatch(deleteLikeComment(commentLike))
+        })
+
         return () => {
             socket.disconnect();
         }
     }, [])
-    // newLikePost, deleteLikePost, newLikeComment, deleteLikeComment
+    
     return (
         <>
             {loaded &&

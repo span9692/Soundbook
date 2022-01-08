@@ -39,3 +39,9 @@ def handle_add_like_post(data):
 
 def handle_delete_like_post(data):
     socketio.emit("delete_like_post", data, broadcast=True)
+
+def handle_add_like_comment(data):
+    socketio.emit("add_like_comment", data, broadcast=True)
+
+def handle_delete_like_comment(data):
+    socketio.emit("delete_like_comment", data, broadcast=True)

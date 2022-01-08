@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addComment, deleteOneComment, modifyComment, changeComment, getComments, newComment } from '../../store/comment'
 import { cancelRequest, confirmRequest, getFriends } from '../../store/friend_list'
-import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
+import { newLikePost, deleteLikePost, newLikeComment, deleteLikeComment, commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
 import { newPost, removeOnePost, modifyPost, changePost, createPost, deletePost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
@@ -179,11 +179,27 @@ function Feed({searchParams, setSearchParams}) {
             dispatch(modifyComment(comment))
         })
 
+        socket.on('add_like_post', postLike => {
+            dispatch(newLikePost(postLike))
+        })
+
+        socket.on('delete_like_post', postLike => {
+            dispatch(deleteLikePost(postLike))
+        })
+
+        socket.on('add_like_comment', commentLike => {
+            dispatch(newLikeComment(commentLike))
+        })
+
+        socket.on('delete_like_comment', commentLike => {
+            dispatch(deleteLikeComment(commentLike))
+        })
+
         return () => {
             socket.disconnect();
         }
     }, [])
-    // addComment, deleteOneComment, modifyComment
+
     useEffect(()=> {
         setCommentValue('')
         dispatch(getUsers())
