@@ -7,7 +7,8 @@ import Posts from '../Posts/post'
 import { getPhotos } from '../../store/photo'
 import { getPosts } from '../../store/post'
 import { getComments } from '../../store/comment'
-import { getFriends } from '../../store/friend_list'
+import { addNewFriend, removeRequest, yesRequest, getFriends } from '../../store/friend_list'
+import { io } from 'socket.io-client'
 import Friends from '../Friends'
 import Photos from '../Photos'
 import About from '../About'
@@ -18,6 +19,7 @@ import RespondModal from '../RespondModal'
 import { Modal } from '../../context/Modal'
 import CancelRequest from '../CancelRequest'
 import AddFriend from '../AddFriend'
+let socket;
 
 function Profile({setSearchParams}) {
     const dispatch = useDispatch()

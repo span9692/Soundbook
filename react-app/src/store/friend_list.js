@@ -18,21 +18,22 @@ const first = data => {
   }
 }
 
-const addNewFriend = data => {
+export const addNewFriend = data => {
   return {
     type: ADD_NEW_FRIENDS,
     data
   }
 }
 
-const removeRequest = data => {
+export const removeRequest = data => {
   return {
     type: CANCEL_REQUEST,
     data
   }
 }
 
-const yesRequest = data => {
+export const yesRequest = data => {
+  console.log('data', data)
   return {
     type: ACCEPT_REQUEST,
     data

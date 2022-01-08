@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addComment, deleteOneComment, modifyComment, changeComment, getComments, newComment } from '../../store/comment'
-import { cancelRequest, confirmRequest, getFriends } from '../../store/friend_list'
+import { addNewFriend, removeRequest, yesRequest, cancelRequest, confirmRequest, getFriends } from '../../store/friend_list'
 import { newLikePost, deleteLikePost, newLikeComment, deleteLikeComment, commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
-import { newPost, removeOnePost, modifyPost, changePost, createPost, deletePost, getAllPosts } from '../../store/post'
+import { newPost, removeOnePost, modifyPost, changePost, createPost, getAllPosts } from '../../store/post'
 import { getUsers } from '../../store/user'
 import { io } from 'socket.io-client'
 import CommentDelete from '../DeleteCommentModal'
@@ -102,10 +102,6 @@ function Feed({searchParams, setSearchParams}) {
         closeEmojis()
     }
 
-    const removePost = (postId) => {
-        dispatch(deletePost(postId))
-    }
-
     const editPost = (e, postId) => {
         e.preventDefault()
         dispatch(changePost(postId, editValue))
@@ -195,11 +191,15 @@ function Feed({searchParams, setSearchParams}) {
             dispatch(deleteLikeComment(commentLike))
         })
 
+        socket.on('confirm_friend', friend => {
+            dispatch(yesRequest(friend))
+        })
+
         return () => {
             socket.disconnect();
         }
     }, [])
-
+//addNewFriend, removeRequest, yesRequest
     useEffect(()=> {
         setCommentValue('')
         dispatch(getUsers())

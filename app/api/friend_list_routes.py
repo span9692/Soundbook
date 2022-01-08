@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from app.models import friend_list, db
 from sqlalchemy import or_
+from app.socket import handle_confirm_friend
 
 friend_list_routes = Blueprint('friend_list', __name__)
 
@@ -35,6 +36,8 @@ def acceptFriendRequest():
     data = request.get_json()
     db.session.execute(friend_list.update().where(friend_list.c.friendAdder_id==data['recieverId']).where(friend_list.c.friendReceiver_id==data['adderId']).values(confirmed=True))
     db.session.commit()
+    print('\n \n', {'friends':{'confirmed':True, 'friendAdder_id':data['adderId'], 'friendReceiver_id':data['recieverId']}}, '\n \n')
+    handle_confirm_friend({'friends':{'confirmed':True, 'friendAdder_id':data['adderId'], 'friendReceiver_id':data['recieverId']}})
     return {'friends':{'confirmed':True, 'friendAdder_id':data['adderId'], 'friendReceiver_id':data['recieverId']}}
 
 # users = User.query.filter(or_(User.first_name.ilike(f'%{data}%'), User.last_name.ilike(f'%{data}%')))

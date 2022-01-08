@@ -45,3 +45,6 @@ def handle_add_like_comment(data):
 
 def handle_delete_like_comment(data):
     socketio.emit("delete_like_comment", data, broadcast=True)
+
+def handle_confirm_friend(data):
+    socketio.emit("confirm_friend", data, broadcast=True)

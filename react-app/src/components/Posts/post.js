@@ -176,7 +176,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
             socket.disconnect();
         }
     }, [])
-    
+
     return (
         <>
             {loaded &&
