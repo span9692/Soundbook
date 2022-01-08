@@ -101,6 +101,20 @@ function Profile({setSearchParams}) {
     }
 
     useEffect(()=> {
+        socket = io()
+
+        socket.on('confirm_friend', friend => {
+            dispatch(yesRequest(friend))
+        })
+
+        return () => {
+            socket.disconnect();
+        }
+    }, [])
+    
+//addNewFriend, removeRequest, yesRequest
+
+    useEffect(()=> {
         setDisplay('posts')
         dispatch(getUsers())
         dispatch(getPhotos(+userId))
