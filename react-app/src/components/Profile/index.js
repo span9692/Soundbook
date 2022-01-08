@@ -107,11 +107,15 @@ function Profile({setSearchParams}) {
             dispatch(yesRequest(friend))
         })
 
+        socket.on('decline_friend', friend => {
+            dispatch(removeRequest(friend))
+        })
+
         return () => {
             socket.disconnect();
         }
     }, [])
-    
+
 //addNewFriend, removeRequest, yesRequest
 
     useEffect(()=> {

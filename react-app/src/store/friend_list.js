@@ -33,7 +33,6 @@ export const removeRequest = data => {
 }
 
 export const yesRequest = data => {
-  console.log('data', data)
   return {
     type: ACCEPT_REQUEST,
     data

@@ -13,7 +13,7 @@ const NavBar = ({searchParams, setSearchParams}) => {
   const userId = user.id
 
   useEffect(()=> {
-    dispatch(getUsers)
+    dispatch(getUsers())
 }, [dispatch])
 
   return (

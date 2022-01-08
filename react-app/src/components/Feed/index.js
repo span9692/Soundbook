@@ -200,6 +200,7 @@ function Feed({searchParams, setSearchParams}) {
         }
     }, [])
 //addNewFriend, removeRequest, yesRequest
+
     useEffect(()=> {
         setCommentValue('')
         dispatch(getUsers())
