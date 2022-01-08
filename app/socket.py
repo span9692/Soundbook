@@ -17,7 +17,6 @@ socketio = SocketIO(cors_allowed_origins=origins)
 
 # handle add friend
 def handle_add_post(data):
-    # data['createdAt'] = data['createdAt'].strftime(
     socketio.emit("add_post", data, broadcast=True)
 
 def handle_delete_post(data):
@@ -25,3 +24,12 @@ def handle_delete_post(data):
 
 def handle_edit_post(data):
     socketio.emit("edit_post", data, broadcast=True)
+
+def handle_add_comment(data):
+    socketio.emit("add_comment", data, broadcast=True)
+
+def handle_delete_comment(data):
+    socketio.emit("delete_comment", data, broadcast=True)
+
+def handle_edit_comment(data):
+    socketio.emit("edit_comment", data, broadcast=True)

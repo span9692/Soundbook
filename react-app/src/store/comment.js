@@ -10,21 +10,21 @@ const showComments = data => {
   }
 }
 
-const addComment = data => {
+export const addComment = data => {
   return {
     type: ADD_NEW_COMMENT,
     data
   }
 }
 
-const deleteOneComment = data => {
+export const deleteOneComment = data => {
   return {
     type: DELETE_COMMENT,
     data
   }
 }
 
-const modifyComment = data => {
+export const modifyComment = data => {
   return {
     type: EDIT_COMMENT,
     data

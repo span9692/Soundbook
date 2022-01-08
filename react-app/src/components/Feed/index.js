@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { changeComment, getComments, newComment, removeComment } from '../../store/comment'
+import { addComment, deleteOneComment, modifyComment, changeComment, getComments, newComment } from '../../store/comment'
 import { cancelRequest, confirmRequest, getFriends } from '../../store/friend_list'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import { getPhotos } from '../../store/photo'
@@ -126,7 +126,7 @@ function Feed({searchParams, setSearchParams}) {
         dispatch(changeComment(commentId, editCommentValue))
     }
 
-    const addComment = (e, postId) => {
+    const addNewComment = (e, postId) => {
         e.preventDefault()
         dispatch(newComment({
             comment_content: commentValue,
@@ -135,10 +135,6 @@ function Feed({searchParams, setSearchParams}) {
         }))
         setCommentValue('')
         setCommentBoxId('')
-    }
-
-    const deleteComment = (commentId) => {
-        dispatch(removeComment(commentId))
     }
 
     const likeComment = (commentId) => {
@@ -171,11 +167,23 @@ function Feed({searchParams, setSearchParams}) {
             dispatch(modifyPost(post))
         })
 
+        socket.on('add_comment', comment => {
+            dispatch(addComment(comment))
+        })
+
+        socket.on('delete_comment', comment => {
+            dispatch(deleteOneComment(comment))
+        })
+
+        socket.on('edit_comment', comment => {
+            dispatch(modifyComment(comment))
+        })
+
         return () => {
             socket.disconnect();
         }
     }, [])
-
+    // addComment, deleteOneComment, modifyComment
     useEffect(()=> {
         setCommentValue('')
         dispatch(getUsers())
@@ -499,7 +507,7 @@ function Feed({searchParams, setSearchParams}) {
                             <div className='position-relative'>
                                 <div className='add-comment-container'>
                                     <img className='post-image-wall' src={loggedUser.profile_pic}></img>
-                                    <form onSubmit={(e)=>addComment(e, commentBoxId)} className='comment-form' id='add-comment-form'>
+                                    <form onSubmit={(e)=>addNewComment(e, commentBoxId)} className='comment-form' id='add-comment-form'>
                                         <input
                                             className='comment-field'
                                             type='text'
@@ -510,7 +518,7 @@ function Feed({searchParams, setSearchParams}) {
                                         <button type='submit' style={{display: 'none'}}>Submit</button>
                                     </form>
                                     <span onClick={()=>setShowEmojiComment(!showEmojiComment)} className='addEmoji-to-comment'><i class="far fa-smile"></i></span>
-                                    <div onClick={commentValue.length > 0 ? (e) => addComment(e, commentBoxId) : null} className='post-comment-button'>Post</div>
+                                    <div onClick={commentValue.length > 0 ? (e) => addNewComment(e, commentBoxId) : null} className='post-comment-button'>Post</div>
                                     {showEmojiComment === true ?
                                         <Emojis location={'profile-comment'} setPostValue={setCommentValue}/>
                                         : null

@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeComment, newComment, removeComment } from '../../store/comment'
-import { changePost, createPost, deletePost } from '../../store/post'
+import { addComment, deleteOneComment, modifyComment, changeComment, newComment } from '../../store/comment'
+import { newPost, removeOnePost, modifyPost, changePost, createPost, deletePost } from '../../store/post'
 import { Link } from 'react-router-dom'
 import './posts.css'
 import { commentLike, commentUnlike, getAllLikes, postLike, postUnlike } from '../../store/like'
 import EditIntroModal from '../EditIntroModal'
 import Emojis from '../Emojis'
-
+import { io } from 'socket.io-client'
 import { Modal } from '../../context/Modal'
 import ConfirmDelete from '../DeleteConfirmModal'
 import CommentDelete from '../DeleteCommentModal'
+let socket;
 
 function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_owner, profile_photos, allPosts, allComments, allFriends, allUsersValues }) {
     const dispatch = useDispatch()
@@ -109,7 +110,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
         dispatch(changeComment(commentId, editCommentValue))
     }
 
-    const addComment = (e, postId) => {
+    const addNewComment = (e, postId) => {
         e.preventDefault()
         dispatch(newComment({
             comment_content: commentValue,
@@ -132,6 +133,37 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
         setCommentValue('')
         dispatch(getAllLikes()).then(()=>setLoaded(true))
     }, [commentBoxId])
+
+    useEffect(()=> {
+        socket = io()
+        socket.on('add_post', post => {
+            dispatch(newPost(post))
+        })
+
+        socket.on('delete_post', post => {
+            dispatch(removeOnePost(post))
+        })
+
+        socket.on('edit_post', post => {
+            dispatch(modifyPost(post))
+        })
+        
+        socket.on('add_comment', comment => {
+            dispatch(addComment(comment))
+        })
+
+        socket.on('delete_comment', comment => {
+            dispatch(deleteOneComment(comment))
+        })
+
+        socket.on('edit_comment', comment => {
+            dispatch(modifyComment(comment))
+        })
+
+        return () => {
+            socket.disconnect();
+        }
+    }, [])
 
     return (
         <>
@@ -445,7 +477,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                             <div className='position-relative'>
                                 <div className='add-comment-container'>
                                     <img className='post-image-wall' src={loggedUser.profile_pic}></img>
-                                    <form onSubmit={(e)=>addComment(e, commentBoxId)} className='comment-form' id='add-comment-form'>
+                                    <form onSubmit={(e)=>addNewComment(e, commentBoxId)} className='comment-form' id='add-comment-form'>
                                         <input
                                             className='comment-field'
                                             type='text'
@@ -456,7 +488,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                         <button type='submit' style={{display: 'none'}}>Submit</button>
                                     </form>
                                     <span onClick={()=>setShowEmojiComment(!showEmojiComment)} className='addEmoji-to-comment'><i class="far fa-smile"></i></span>
-                                    <div onClick={commentValue.length > 0 ? (e) => addComment(e, commentBoxId) : null} className='post-comment-button'>Post</div>
+                                    <div onClick={commentValue.length > 0 ? (e) => addNewComment(e, commentBoxId) : null} className='post-comment-button'>Post</div>
                                     {showEmojiComment === true ?
                                         <Emojis location={'profile-comment'} setPostValue={setCommentValue}/>
                                         : null
