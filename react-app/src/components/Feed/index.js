@@ -380,7 +380,7 @@ function Feed({searchParams, setSearchParams}) {
 
 
                                     { imagePreview ?
-                                    <img className='post-picture' src={imagePreview} alt=''></img>
+                                        <img className='post-picture' src={imagePreview} alt=''></img>
                                     : null }
 
 
