@@ -408,12 +408,12 @@ function Feed({searchParams, setSearchParams}) {
                                 <div onClick={()=>setShowEmoji(!showEmoji)} className='boxBtn pointer'>
                                     <i class="far fa-laugh"></i> <span className={showEmoji ? 'postBtns blue' : 'postBtns'}>Feeling</span>
                                 </div>
+                                {showEmoji === true ?
+                                <Emojis location={'feed-post'} setPostValue={setPostValue}/>
+                                : null
+                                }
                             </div>
                         </div>
-                        {showEmoji === true ?
-                        <Emojis location={'feed-post'} setPostValue={setPostValue}/>
-                        : null
-                        }
 
                         {/* maps the posts*/}
                         {reversed.slice(0, 10+10*counter).map(post => (
