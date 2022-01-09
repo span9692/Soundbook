@@ -33,6 +33,26 @@ function Feed({searchParams, setSearchParams}) {
     const [showEmojiEditComment, setShowEmojiEditComment] = useState(false)
     const [counter, setCounter] = useState(0)
 
+    const [imageFile, setImageFile] = useState('');
+    const [savedImageFile, setSavedImageFile] = useState('');
+    const [imagePreview, setImagePreview] = useState('');
+    const [savedImagePreview, setSavedImagePreview] = useState('');
+
+    const setImage = (e) => {
+        let file = e.target.files[0];
+        setImageFile(e.target.files[0]);
+
+        if (file) {
+            setSavedImageFile(file)
+            file = URL.createObjectURL(file);
+            setImagePreview(file);
+            setSavedImagePreview(file)
+        } else {
+            setImageFile(savedImageFile);
+            setImagePreview(savedImagePreview);
+        }
+    }
+
     const closeEmojis = () => {
         setShowEmoji(false)
         setShowEmojiEditPost(false)
@@ -93,6 +113,12 @@ function Feed({searchParams, setSearchParams}) {
 
     const addPost = (e) => {
         e.preventDefault()
+
+        const formData = new FormData()
+        formData.append('post_content', postValue)
+        formData.append('owner_id', loggedUser.id)
+        formData.append('profile_id', loggedUser.id)
+        formData.append('picture', imageFile)
         dispatch(createPost({
             post_content: postValue,
             owner_id: loggedUser.id,
@@ -340,6 +366,21 @@ function Feed({searchParams, setSearchParams}) {
                                         value={postValue}
                                         onChange={(e) => setPostValue(e.target.value)}
                                     />
+
+
+                                    <input
+                                        className='aws-form'
+                                        id='aws'
+                                        name='coverPhoto'
+                                        placeholder='URL'
+                                        type='file'
+                                        accept='.jpg, .jpeg, .png, .gif'
+                                        onChange={setImage}
+                                    ></input>
+
+                                    <img src={imagePreview} alt=''></img>
+
+                                    {/* {photo ? 'yay' : 'nooo'} */}
                                     <button type='submit' style={{display: 'none'}} form='add-post-form'>Submit</button>
                                 </form>
                             </div>
@@ -348,8 +389,17 @@ function Feed({searchParams, setSearchParams}) {
                                 <div type='submit' onClick={ postValue.length > 0 ? (e)=>{addPost(e); setShowEmoji(false)} : ()=>setShowEmoji(false) } class='boxBtn pointer' form='add-post-form'>
                                     <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                                 </div>
-                                <div class='photoboxBtn unclickable'>
-                                    <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
+
+
+
+                                <div class='photoboxBtn pointer' htmlFor='aws'>
+
+
+                                    <label htmlFor='aws'>
+                                        <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
+                                    </label>
+
+
                                 </div>
                                 <div onClick={()=>setShowEmoji(!showEmoji)} className='boxBtn pointer'>
                                     <i class="far fa-laugh"></i> <span className={showEmoji ? 'postBtns blue' : 'postBtns'}>Feeling</span>
