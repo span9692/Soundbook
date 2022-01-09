@@ -378,7 +378,11 @@ function Feed({searchParams, setSearchParams}) {
                                         onChange={setImage}
                                     ></input>
 
-                                    <img src={imagePreview} alt=''></img>
+
+                                    { imagePreview ?
+                                    <img className='post-picture' src={imagePreview} alt=''></img>
+                                    : null }
+
 
                                     {/* {photo ? 'yay' : 'nooo'} */}
                                     <button type='submit' style={{display: 'none'}} form='add-post-form'>Submit</button>

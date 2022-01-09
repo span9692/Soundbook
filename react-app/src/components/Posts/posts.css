@@ -268,8 +268,9 @@
 
 .post-name-row {
     display: flex;
-    align-items: center;
-    margin-right: 1rem; /*right side of post box*/
+    align-items: flex-start;
+    margin-right: 1rem;
+    /*right side of post box*/
 }
 
 .post-image-wall {
