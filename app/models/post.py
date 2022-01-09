@@ -9,6 +9,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     post_content = db.Column(db.String(500), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    picture = db.Column(db.String(500), nullable=True)
     profile_id = db.Column(db.Integer, nullable=False)
     createdAt = db.Column(db.DateTime(timezone=False), default=func.now())
     updatedAt = db.Column(db.DateTime(timezone=False), default=func.now())
