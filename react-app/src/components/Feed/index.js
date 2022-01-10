@@ -38,6 +38,18 @@ function Feed({searchParams, setSearchParams}) {
     const [imagePreview, setImagePreview] = useState('');
     const [savedImagePreview, setSavedImagePreview] = useState('');
 
+    const reset_picture = () => {
+        setImageFile('')
+        setSavedImageFile('')
+        setImagePreview('')
+        setSavedImagePreview('')
+    }
+
+    console.log('imageFile', imageFile)
+    console.log('savedImageFile', savedImageFile)
+    console.log('imagePreview', imagePreview)
+    console.log('savedImagePreview', savedImagePreview)
+
     const setImage = (e) => {
         let file = e.target.files[0];
         setImageFile(e.target.files[0]);
@@ -380,7 +392,14 @@ function Feed({searchParams, setSearchParams}) {
 
 
                                     { imagePreview ?
-                                        <img className='post-picture' src={imagePreview} alt=''></img>
+                                        <>
+                                            <img className='post-picture' src={imagePreview} alt=''></img>
+                                            <div onClick={()=>reset_picture()}>
+                                                <i class="cancel-picture pointer fas fa-times-circle"></i>
+                                            </div>
+
+
+                                        </>
                                     : null }
 
 
@@ -400,7 +419,9 @@ function Feed({searchParams, setSearchParams}) {
 
 
                                     <label htmlFor='aws'>
-                                        <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
+                                        <div className='pointer'>
+                                            <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
+                                        </div>
                                     </label>
 
 

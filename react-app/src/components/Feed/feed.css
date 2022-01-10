@@ -334,7 +334,21 @@
     box-sizing: border-box;
     padding-top: .5rem;
     padding-bottom: .5rem;
-    /* background-color: rgb(238, 238, 238);
-    border: solid rgb(238, 238, 238); */
+    background-color: rgb(238, 238, 238);
+    border: solid rgb(238, 238, 238);
     border-radius: 5px;
+}
+
+.cancel-picture {
+    position: absolute;
+    top: 5rem;
+    right: 2.3rem;
+    z-index: 4;
+    /* color: rgb(180, 180, 180); */
+    color: rgb(70, 70, 70);
+    font-size: 1.5rem;
+}
+
+.cancel-picture:hover {
+    color: black
 }
