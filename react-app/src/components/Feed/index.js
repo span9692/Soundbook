@@ -45,10 +45,10 @@ function Feed({searchParams, setSearchParams}) {
         setSavedImagePreview('')
     }
 
-    console.log('imageFile', imageFile)
-    console.log('savedImageFile', savedImageFile)
-    console.log('imagePreview', imagePreview)
-    console.log('savedImagePreview', savedImagePreview)
+    // console.log('imageFile', imageFile)
+    // console.log('savedImageFile', savedImageFile)
+    // console.log('imagePreview', imagePreview)
+    // console.log('savedImagePreview', savedImagePreview)
 
     const setImage = (e) => {
         let file = e.target.files[0];
@@ -123,7 +123,7 @@ function Feed({searchParams, setSearchParams}) {
     commentCheck = new Set(commentCheck)
     commentCheck = Array.from(commentCheck)
 
-    const addPost = (e) => {
+    const addPost = async(e) => {
         e.preventDefault()
 
         const formData = new FormData()
@@ -131,13 +131,13 @@ function Feed({searchParams, setSearchParams}) {
         formData.append('owner_id', loggedUser.id)
         formData.append('profile_id', loggedUser.id)
         formData.append('picture', imageFile)
-        dispatch(createPost({
-            post_content: postValue,
-            owner_id: loggedUser.id,
-            profile_id: loggedUser.id
-        }))
+        // for (let key of formData.entries()) {
+        //     console.log(key[0] + ', ' + key[1]);
+        // }
+        dispatch(createPost(formData))
         setPostValue('')
         closeEmojis()
+        reset_picture()
     }
 
     const editPost = (e, postId) => {
@@ -383,7 +383,7 @@ function Feed({searchParams, setSearchParams}) {
                                     <input
                                         className='aws-form'
                                         id='aws'
-                                        name='coverPhoto'
+                                        name='picture'
                                         placeholder='URL'
                                         type='file'
                                         accept='.jpg, .jpeg, .png, .gif'
