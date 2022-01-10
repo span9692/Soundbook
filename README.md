@@ -10,9 +10,7 @@ React.js and Redux for the front end and Python with Flask for the backend.
 
 Soundbook is a fullstack app that allows artists to connect with one another all over the world. Artists can customize their profile pages by creating posts, adding photos, and updating their personal info. By connecting with other artists, artists can see, comment, and like each other's posts. 
 
-![feed](https://res.cloudinary.com/photofinder/image/upload/v1640727220/Capture_a9jsms.jpg)
-
-![profile](https://res.cloudinary.com/photofinder/image/upload/v1640734120/Capture_rs9gqq.jpg)
+![feed](https://res.cloudinary.com/photofinder/image/upload/v1641779285/soundbook_btbesc.gif)
 
 # Frontend Overview
 - Javascript
