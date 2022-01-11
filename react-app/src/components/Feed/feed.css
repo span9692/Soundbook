@@ -62,6 +62,7 @@
 
 .feed-main-column {
     width: 34%;
+    min-width: 540px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -202,7 +203,8 @@
     padding: .7rem;
     /* padding-right: 3rem; */
     margin-right: .5rem;
-    max-width: 380px;
+    /* max-width: 380px; */
+    width: 20rem;
     margin-top: 1rem;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 4px 8px rgb(0 0 0 / 10%);
     color:#c2c1c1
@@ -365,7 +367,7 @@
 .cancel1-picture {
     position: absolute;
     top: 4rem;
-    right: .5rem;
+    right: 1%;
     z-index: 4;
     /* color: rgb(180, 180, 180); */
     color: rgb(70, 70, 70);
@@ -375,4 +377,47 @@
 .cancel1-picture:hover,
 .cancel-picture:hover {
     color: black
+}
+
+@media (max-width: 1300px) {
+    .left-side-feed {
+        display: none;
+    }
+
+    .feed-main-column {
+        width: 50%;
+        margin: 0vw 7vw 0vw 2vw
+    }
+
+    .right-side-feed {
+        width: 33%;
+        /* margin-right: -1rem; */
+    }
+
+    .feed-side-column2 {
+        margin-right: -.1rem!important;
+    }
+}
+
+
+@media (max-width: 935px) {
+    .right-side-feed {
+        display: none;
+    }
+
+    .feed-main-column {
+        width: 572px;
+        margin: auto;
+    }
+}
+
+@media screen {
+    .right-side-feed {
+        display: none;
+    }
+
+    .feed-main-column {
+        width: 572px;
+        margin: auto;
+    }
 }

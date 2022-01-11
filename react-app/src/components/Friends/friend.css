@@ -57,6 +57,7 @@
 
 .friend-name {
     margin-left: .7rem;
+    font-size: 1vw;
 }
 
 .friend-name:hover {
