@@ -33,6 +33,38 @@ function Feed({searchParams, setSearchParams}) {
     const [showEmojiEditComment, setShowEmojiEditComment] = useState(false)
     const [counter, setCounter] = useState(0)
 
+    const [imageFile, setImageFile] = useState('');
+    const [savedImageFile, setSavedImageFile] = useState('');
+    const [imagePreview, setImagePreview] = useState('');
+    const [savedImagePreview, setSavedImagePreview] = useState('');
+
+    const reset_picture = () => {
+        setImageFile('')
+        setSavedImageFile('')
+        setImagePreview('')
+        setSavedImagePreview('')
+    }
+
+    // console.log('imageFile', imageFile)
+    // console.log('savedImageFile', savedImageFile)
+    // console.log('imagePreview', imagePreview)
+    // console.log('savedImagePreview', savedImagePreview)
+
+    const setImage = (e) => {
+        let file = e.target.files[0];
+        setImageFile(e.target.files[0]);
+
+        if (file) {
+            setSavedImageFile(file)
+            file = URL.createObjectURL(file);
+            setImagePreview(file);
+            setSavedImagePreview(file)
+        } else {
+            setImageFile(savedImageFile);
+            setImagePreview(savedImagePreview);
+        }
+    }
+
     const closeEmojis = () => {
         setShowEmoji(false)
         setShowEmojiEditPost(false)
@@ -91,15 +123,21 @@ function Feed({searchParams, setSearchParams}) {
     commentCheck = new Set(commentCheck)
     commentCheck = Array.from(commentCheck)
 
-    const addPost = (e) => {
+    const addPost = async(e) => {
         e.preventDefault()
-        dispatch(createPost({
-            post_content: postValue,
-            owner_id: loggedUser.id,
-            profile_id: loggedUser.id
-        }))
+
+        const formData = new FormData()
+        formData.append('post_content', postValue)
+        formData.append('owner_id', loggedUser.id)
+        formData.append('profile_id', loggedUser.id)
+        formData.append('picture', imageFile)
+        // for (let key of formData.entries()) {
+        //     console.log(key[0] + ', ' + key[1]);
+        // }
+        dispatch(createPost(formData))
         setPostValue('')
         closeEmojis()
+        reset_picture()
     }
 
     const editPost = (e, postId) => {
@@ -340,6 +378,32 @@ function Feed({searchParams, setSearchParams}) {
                                         value={postValue}
                                         onChange={(e) => setPostValue(e.target.value)}
                                     />
+
+
+                                    <input
+                                        className='aws-form'
+                                        id='aws'
+                                        name='picture'
+                                        placeholder='URL'
+                                        type='file'
+                                        accept='.jpg, .jpeg, .png, .gif'
+                                        onChange={setImage}
+                                    ></input>
+
+
+                                    { imagePreview ?
+                                        <>
+                                            <img className='post-picture' src={imagePreview} alt=''></img>
+                                            <div onClick={()=>reset_picture()}>
+                                                <i class="cancel-picture pointer fas fa-times-circle"></i>
+                                            </div>
+
+
+                                        </>
+                                    : null }
+
+
+                                    {/* {photo ? 'yay' : 'nooo'} */}
                                     <button type='submit' style={{display: 'none'}} form='add-post-form'>Submit</button>
                                 </form>
                             </div>
@@ -348,18 +412,29 @@ function Feed({searchParams, setSearchParams}) {
                                 <div type='submit' onClick={ postValue.length > 0 ? (e)=>{addPost(e); setShowEmoji(false)} : ()=>setShowEmoji(false) } class='boxBtn pointer' form='add-post-form'>
                                     <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                                 </div>
-                                <div class='photoboxBtn unclickable'>
-                                    <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
+
+
+
+                                <div class='photoboxBtn pointer' htmlFor='aws'>
+
+
+                                    <label htmlFor='aws'>
+                                        <div className='pointer'>
+                                            <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
+                                        </div>
+                                    </label>
+
+
                                 </div>
                                 <div onClick={()=>setShowEmoji(!showEmoji)} className='boxBtn pointer'>
                                     <i class="far fa-laugh"></i> <span className={showEmoji ? 'postBtns blue' : 'postBtns'}>Feeling</span>
                                 </div>
+                                {showEmoji === true ?
+                                <Emojis location={'feed-post'} setPostValue={setPostValue}/>
+                                : null
+                                }
                             </div>
                         </div>
-                        {showEmoji === true ?
-                        <Emojis location={'feed-post'} setPostValue={setPostValue}/>
-                        : null
-                        }
 
                         {/* maps the posts*/}
                         {reversed.slice(0, 10+10*counter).map(post => (
@@ -415,12 +490,17 @@ function Feed({searchParams, setSearchParams}) {
                                     <span onClick={()=>setShowEmojiEditPost(!showEmojiEditPost)} className='addEmoji-to-edit-post'><i class="far fa-smile"></i></span>
                                     <span onClick={ editValue.length > 0 ? (e) => editPost(e, post.id) : null } className='save-edit-button'>Save</span>
                                 </form>
+                                <img className='post1-picture' src={post.picture}></img>
                                 {showEmojiEditPost === true ?
                                     <Emojis location={'profile-edit-post'} setPostValue={setEditValue}/>
                                     : null
                                 }
                                 </>
-                                : post.post_content
+                                :
+                                <>
+                                    {post.post_content}
+                                    <img className='post1-picture' src={post.picture}></img>
+                                </>
                                 }
                             </div>
                             {allLikes.filter(like => like.post_id === post.id).length > 0 ? //# of likes on post

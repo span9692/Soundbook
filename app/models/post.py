@@ -23,6 +23,7 @@ class Post(db.Model):
             "id": self.id,
             "post_content": self.post_content,
             "owner_id": self.owner_id,
+            "picture": self.picture,
             "profile_id": self.profile_id,
             "poster_info": self.users.to_dict(),
             "createdAt": (self.createdAt - timedelta(hours=8)).strftime('%b %d, %Y %I:%M %p'),
