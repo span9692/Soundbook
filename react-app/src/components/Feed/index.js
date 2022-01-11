@@ -490,12 +490,17 @@ function Feed({searchParams, setSearchParams}) {
                                     <span onClick={()=>setShowEmojiEditPost(!showEmojiEditPost)} className='addEmoji-to-edit-post'><i class="far fa-smile"></i></span>
                                     <span onClick={ editValue.length > 0 ? (e) => editPost(e, post.id) : null } className='save-edit-button'>Save</span>
                                 </form>
+                                <img className='post1-picture' src={post.picture}></img>
                                 {showEmojiEditPost === true ?
                                     <Emojis location={'profile-edit-post'} setPostValue={setEditValue}/>
                                     : null
                                 }
                                 </>
-                                : post.post_content
+                                :
+                                <>
+                                    {post.post_content}
+                                    <img className='post1-picture' src={post.picture}></img>
+                                </>
                                 }
                             </div>
                             {allLikes.filter(like => like.post_id === post.id).length > 0 ? //# of likes on post

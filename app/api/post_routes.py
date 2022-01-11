@@ -23,9 +23,8 @@ def posts(id):
 def new_posts():
     post = PostForm()
     post['csrf_token'].data = request.cookies['csrf_token']
-    data = request.get_json()
 
-    print('\n \n', post['picture'].data, '\n \n')
+    url = None
 
     if post["picture"].data:
 
@@ -53,7 +52,7 @@ def new_posts():
             profile_id=post['profile_id'].data,
             picture=url
         )
-        print('\n \n', newPost, '\n \n')
+        # print('\n \n', newPost, '\n \n')
         db.session.add(newPost)
         db.session.commit()
         handle_add_post(newPost.to_dict())
