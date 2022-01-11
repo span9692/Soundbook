@@ -410,14 +410,14 @@
     }
 }
 
-@media screen and (max-device-width: 400px) {
+@media screen and (max-device-width: 572px) {
     .feed-main-column {
         width: 100%;
         margin: auto;
     }
 
     .right-side-feed {
-        display: none;
+        display: none!important;
     }
 }
 
