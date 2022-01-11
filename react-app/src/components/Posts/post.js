@@ -34,6 +34,33 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
 
     const [loaded, setLoaded] = useState(false)
 
+    const [imageFile, setImageFile] = useState('');
+    const [savedImageFile, setSavedImageFile] = useState('');
+    const [imagePreview, setImagePreview] = useState('');
+    const [savedImagePreview, setSavedImagePreview] = useState('');
+
+    const reset_picture = () => {
+        setImageFile('')
+        setSavedImageFile('')
+        setImagePreview('')
+        setSavedImagePreview('')
+    }
+
+    const setImage = (e) => {
+        let file = e.target.files[0];
+        setImageFile(e.target.files[0]);
+
+        if (file) {
+            setSavedImageFile(file)
+            file = URL.createObjectURL(file);
+            setImagePreview(file);
+            setSavedImagePreview(file)
+        } else {
+            setImageFile(savedImageFile);
+            setImagePreview(savedImagePreview);
+        }
+    }
+
     const closeEmojis = () => {
         setShowEmoji(false)
         setShowEmojiEditPost(false)
@@ -75,15 +102,19 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
 
     const totalLength = allPosts.length;
 
-    const addPost = (e) => {
+    const addPost = async(e) => {
         e.preventDefault()
-        dispatch(createPost({
-            post_content: postValue,
-            owner_id: loggedUser.id,
-            profile_id: profile_owner.id
-        }))
+
+        const formData = new FormData()
+        formData.append('post_content', postValue)
+        formData.append('owner_id', loggedUser.id)
+        formData.append('profile_id', profileId)
+        formData.append('picture', imageFile)
+
+        dispatch(createPost(formData))
         setPostValue('')
         closeEmojis()
+        reset_picture()
     }
 
     const editPost = (e, postId) => {
@@ -176,7 +207,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
             socket.disconnect();
         }
     }, [])
-    
+
     return (
         <>
             {loaded &&
@@ -302,6 +333,27 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                     value={postValue}
                                     onChange={(e) => setPostValue(e.target.value)}
                                 />
+
+                                <input
+                                    className='aws-form'
+                                    id='aws'
+                                    name='picture'
+                                    placeholder='URL'
+                                    type='file'
+                                    accept='.jpg, .jpeg, .png, .gif'
+                                    onChange={setImage}
+                                ></input>
+                                { imagePreview ?
+                                    <>
+                                        <img className='post-picture' src={imagePreview} alt=''></img>
+                                        <div onClick={()=>reset_picture()}>
+                                            <i class="cancel1-picture pointer fas fa-times-circle"></i>
+                                        </div>
+
+
+                                    </>
+                                : null }
+
                                 <button type='submit' style={{display: 'none'}} form='add-post-form'>Submit</button>
                             </form>
                         </div>
@@ -310,8 +362,16 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                             <div type='submit' onClick={ postValue.length > 0 ? (e)=>{addPost(e); setShowEmoji(false)} : ()=>setShowEmoji(false) } class='boxBtn pointer' form='add-post-form'>
                                 <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
-                            <div class='photoboxBtn unclickable'>
-                                <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
+                            <div class='photoboxBtn pointer' htmlFor='aws'>
+
+
+                                <label htmlFor='aws'>
+                                    <div className='pointer'>
+                                        <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
+                                    </div>
+                                </label>
+
+
                             </div>
                             <div onClick={()=>setShowEmoji(!showEmoji)} className='boxBtn pointer'>
                                 <i class="far fa-laugh"></i> <span className={showEmoji ? 'postBtns blue' : 'postBtns'}>Feeling</span>
@@ -363,6 +423,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                             </div>
                             <div>
                                 {editId == post.id ?
+                                <>
                                 <form onSubmit={(e)=> editPost(e, post.id)} className='edit-Form-Field'>
                                     <input
                                         className='show-post-edit-field'
@@ -377,7 +438,13 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                         <Emojis location={'profile-edit-post'} setPostValue={setEditValue}/>
                                         : null
                                     }
-                                </form> : post.post_content
+                                </form>
+                                <img className='post1-picture' src={post.picture}></img>
+                                </>:
+                                <>
+                                    {post.post_content}
+                                    <img className='post1-picture' src={post.picture}></img>
+                                </>
                                 }
                             </div>
                             {allLikes.filter(like => like.post_id === post.id).length > 0 ? //temporary like/unlike switch
