@@ -365,7 +365,7 @@
 .cancel1-picture {
     position: absolute;
     top: 4rem;
-    right: .5rem;
+    right: 1%;
     z-index: 4;
     /* color: rgb(180, 180, 180); */
     color: rgb(70, 70, 70);
