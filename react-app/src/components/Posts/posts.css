@@ -304,6 +304,7 @@
     width: 100%;
     border-color: rgb(238, 238, 238);
     border: none;
+    position: relative;
 }
 
 .post-field {

@@ -354,14 +354,25 @@
 
 .cancel-picture {
     position: absolute;
-    top: 5rem;
-    right: 2.3rem;
+    top: 18%;
+    right: 2%;
     z-index: 4;
     /* color: rgb(180, 180, 180); */
     color: rgb(70, 70, 70);
     font-size: 1.5rem;
 }
 
+.cancel1-picture {
+    position: absolute;
+    top: 4rem;
+    right: .5rem;
+    z-index: 4;
+    /* color: rgb(180, 180, 180); */
+    color: rgb(70, 70, 70);
+    font-size: 1.5rem;
+}
+
+.cancel1-picture:hover,
 .cancel-picture:hover {
     color: black
 }

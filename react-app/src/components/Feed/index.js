@@ -131,9 +131,7 @@ function Feed({searchParams, setSearchParams}) {
         formData.append('owner_id', loggedUser.id)
         formData.append('profile_id', loggedUser.id)
         formData.append('picture', imageFile)
-        // for (let key of formData.entries()) {
-        //     console.log(key[0] + ', ' + key[1]);
-        // }
+
         dispatch(createPost(formData))
         setPostValue('')
         closeEmojis()
@@ -403,7 +401,6 @@ function Feed({searchParams, setSearchParams}) {
                                     : null }
 
 
-                                    {/* {photo ? 'yay' : 'nooo'} */}
                                     <button type='submit' style={{display: 'none'}} form='add-post-form'>Submit</button>
                                 </form>
                             </div>
