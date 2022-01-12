@@ -22,6 +22,7 @@
     object-fit: cover;
     position: relative;
     width: 50%;
+    /* min-width: 935px; */
     max-height: 35rem;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 12px;
@@ -75,8 +76,9 @@
     display: flex;
     justify-content: space-between;
     width: 60%;
+    min-width: 625px;
     padding-bottom: .5rem;
-    margin-left: 20%;
+    margin: auto;
     background-color: white;
     color: rgb(151, 151, 151);
 }
@@ -166,8 +168,13 @@
     right: 25%;
 }
 
+.position-relative {
+    position: relative;
+}
+
 .edit-profile-picture {
     width: fit-content;
+    /* font-size: .2rem!important; */
     display: flex;
     position: absolute;
     bottom: 1%;
@@ -187,4 +194,26 @@
 
 .mainColumn {
     width: 60%;
+    margin: auto;
+    width: 1057px;
+}
+
+@media (max-width: 800px) {
+    .user-info {
+        display: none!important;
+    }
+
+    .post-container-right {
+        margin: auto!important;
+    }
+}
+
+@media screen and (max-device-width: 572px) {
+    .user-info {
+        display: none!important;
+    }
+
+    .post-container-right {
+        width: 100%!important;
+    }
 }
