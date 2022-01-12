@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     padding-top: 16vh;
+    margin:auto;
     width: 100%;
 }
 
@@ -12,7 +13,7 @@
     justify-content: center;
     padding-bottom: 3%;
     flex-direction: column;
-    padding-right: 3%;
+    margin-right: 3%;
     width: 30vw;
 }
 
@@ -23,12 +24,12 @@
 .splash-text {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: #1877f2;
-    font-size: 7vh;
+    font-size: 5vw;
     font-weight: bolder;
 }
 
 .splash-subtitle {
-    font-size: 4vh;
+    font-size: 2vw;
 }
 
 #footer {
@@ -67,4 +68,62 @@
 .footer-last-line {
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 690px) {
+    .splash-page-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center!important;
+    }
+
+    #footer {
+        display: none;
+    }
+
+    .splash-subtitle {
+        display: none;
+    }
+
+    .splash-left {
+        width: 100%;
+    }
+
+    .splash-right {
+        padding: 0px!important;
+    }
+
+    .splash-text {
+        font-size: 40px;
+        text-align: center!important;
+    }
+}
+
+@media screen and (max-device-width: 690px) {
+    .splash-page-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center!important;
+    }
+
+    #footer {
+        display: none;
+    }
+
+    .splash-subtitle {
+        display: none;
+    }
+
+    .splash-left {
+        width: 100%;
+    }
+
+    .splash-right {
+        padding: 0px!important;
+    }
+
+    .splash-text {
+        font-size: 40px;
+        text-align: center!important;
+    }
 }

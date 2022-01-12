@@ -92,3 +92,19 @@
     margin-bottom: .5rem;
     margin-left: .4rem;
 }
+
+@media (max-width: 690px) {
+    .login-form {
+        margin: auto;
+        width: 350px;
+        /* box-sizing: border-box; */
+    }
+}
+
+@media screen and (max-device-width: 690px) {
+    .login-form {
+        margin: auto;
+        width: 350px;
+        /* box-sizing: border-box; */
+    }
+}
