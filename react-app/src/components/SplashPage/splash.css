@@ -101,6 +101,7 @@
 
 @media screen and (max-device-width: 690px) {
     .splash-page-container {
+        padding-top: 25vh!important;
         display: flex;
         flex-direction: column;
         justify-content: center!important;
@@ -123,7 +124,7 @@
     }
 
     .splash-text {
-        font-size: 40px;
+        font-size: 60px;
         text-align: center!important;
     }
 }

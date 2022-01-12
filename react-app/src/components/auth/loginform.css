@@ -104,7 +104,7 @@
 @media screen and (max-device-width: 690px) {
     .login-form {
         margin: auto;
-        width: 350px;
+        width: 550px;
         /* box-sizing: border-box; */
     }
 }
