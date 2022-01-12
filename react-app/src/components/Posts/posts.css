@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     margin-left: .5rem;
+    min-width: 577px;
 }
 
 .intro-container {
@@ -31,6 +32,21 @@
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     margin-top: 1rem;
     margin-right: .5rem;
+    min-width: 420px;
+    /* width: 100%;
+    box-sizing: border-box; */
+    background-color: white;
+}
+
+.container1s {
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    margin-top: 1rem;
+    margin-right: .5rem;
+    min-width: 400px;
+    width: 100%;
+    /* box-sizing: border-box; */
     background-color: white;
 }
 
@@ -122,7 +138,7 @@
 }
 
 .profile-nav-links {
-    font-size: 1rem;
+    font-size: 100%;
     font-weight: 600;
     margin-left: 0px;
     margin-right: 10px;
@@ -160,11 +176,13 @@
 }
 
 .posted-photos {
-    width: 7.3vw;
-    height: 7.3vw;
+    height: 8rem;
+    width: 8rem;
     margin: 2px;
     box-sizing: border-box;
     object-fit: cover;
+
+    position: relative;
 }
 
 .photos-container {
@@ -216,28 +234,37 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin-top: -1.5rem;
-    margin-bottom: .3rem;
-    margin-left: .5vw;
+
+    justify-content: center;
+    margin-top: -.9rem;
+    /* margin-bottom: .3rem; */
 }
+
+/* .nine-images {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin-top: -.5rem;
+} */
 
 .indiv-portrait {
     display: flex;
     flex-direction: column;
     /* margin-left: .7rem; */
-    padding-left: .5rem;
+    /* padding-left: .5rem; */
 }
 
 .friends-portrait {
-    width: 7vw;
-    height: 7vw;
+    width: 8rem;
+    height: 8rem;
     box-sizing: border-box;
     border-radius: 12px;
     object-fit: cover;
 }
 
 .portrait-name {
-    font-size: .65vw;
+    font-size: 75%;
     margin-left: .3rem;
     font-weight: bold;
     text-decoration: none;
@@ -246,17 +273,21 @@
 
 .friend-link {
     text-decoration: none;
-    margin-left: .2rem;
-    margin-right: .2rem;
-    margin-top: 1rem;
+    margin: 2px;
+    box-sizing: border-box;
+    width: 30%;
     /* box-sizing: border-box; */
 }
 
-/* .friends-container,
-.photos-container {
-    min-width: 466px;
-} */
+/* .posted-photos {
+    height: 8rem;
+    width: 8rem;
+    margin: 2px;
+    box-sizing: border-box;
+    object-fit: cover;
 
+    position: relative;
+} */
 
 
 .post-box {

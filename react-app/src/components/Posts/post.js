@@ -320,7 +320,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                 </div>
 
                 <div className='post-container-right'>
-                    <div className='post-box containers'>
+                    <div className='post-box container1s'>
                         <div className='post-name-row'>
                             <Link className='link-to-friend-post' to={`/users/${loggedUser.id}`}>
                                 <img className='post-image-wall dim' src={loggedUser?.profile_pic}></img>
@@ -392,7 +392,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                     {reversed.length > 0 ?
                     <>
                         {reversed.slice(0, 10+10*counter).map(post => (
-                        <div key={post.id} className='post-box last-post containers'>
+                        <div key={post.id} className='post-box last-post container1s'>
                             <div className='post-name-date'>
                                 <Link className='link-to-friend-post' to={`/users/${post.poster_info.id}`}>
                                     <img className='post-image-wall dim' src={post.poster_info.profile_pic}></img>
