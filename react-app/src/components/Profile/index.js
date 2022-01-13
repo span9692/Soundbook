@@ -34,9 +34,19 @@ function Profile({setSearchParams}) {
     const profile_owner = allUsersValues.filter(user => user.id === +userId)[0]
     const allPosts = useSelector(state => Object.values(state.post)).filter(el => el.profile_id === +userId)
     const allComments = useSelector(state => Object.values(state.comment))
+    // let friend = useSelector(state => state.friend_list)
     const allFriends = useSelector(state => Object.values(state.friend_list))
-
+    // console.log('friend', friend)
+    // console.log('allFriends', allFriends)
     const [load, setLoad] = useState(false)
+
+    // const requester_id = [];
+    // allFriends.forEach(friend => {
+    //     if (friend.confirmed === false && friend.friendReceiver_id === loggedUser.id) {
+    //         requester_id.push(friend.friendAdder_id)
+    //     }
+    // })
+    // const friend_request_list = allUsersValues.filter(el => requester_id.includes(el.id))
 
 
     let option = null;
@@ -88,7 +98,7 @@ function Profile({setSearchParams}) {
         )
     } else if (display === 'friends') {
         content = (
-            <Friends profileId={userId} allFriends={allFriends} allUsersValues={allUsersValues}/>
+            <Friends />
         )
     } else if (display === 'photos') {
         content = (

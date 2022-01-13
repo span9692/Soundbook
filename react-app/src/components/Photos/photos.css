@@ -19,19 +19,33 @@
     flex-wrap: wrap;
     width: 100%;
     box-sizing: border-box;
-    margin-left: .4rem;/* padding-left: 1vw; */
+    margin-left: 1rem;
+    /* padding-left: 1vw; */
 }
 
 .all-photos {
     /* width: 11rem;
     height: 11rem; */
-    width: 11vw;
-    height: 11vw;
+    width: 190px;
+    height: 190px;
     object-fit: cover;
     border-radius: 8px;
     margin: .3rem .3rem;
 }
 
+/* .photo-display-sizing {
+    width: 20%;
+    box-sizing: border-box;
+} */
+
 .no-pictures-padding {
     margin-top: -.5rem;
+}
+
+@media screen and (max-device-width:600px) {
+    .all-photos {
+        width: 180px;
+        height: 180px;
+        margin-left: 0px;
+    }
 }

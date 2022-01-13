@@ -16,14 +16,7 @@
 
 .friend-box {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.friend-box1 {
-    display: flex;
-    justify-content: flex-start;
+    /* justify-content: space-around; */
     flex-wrap: wrap;
     width: 100%;
 }
@@ -43,8 +36,8 @@
 }
 
 .square-portraits {
-    width: 5rem!important;
-    height: 5rem!important;
+    width: 5vw!important;
+    height: 5vw!important;
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid rgb(223, 223, 223);
@@ -62,4 +55,55 @@
 
 .friend-name:hover {
     text-decoration: underline;
+}
+
+.friend-page-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.friend-request1-buttons {
+    display: flex;
+    margin-left: .7rem;
+}
+
+.confirm-friend-request1-btn {
+    background-color: #1877F2;
+    color: white;
+    font-size: .9vw;
+    font-weight: bold;
+    padding: .5vw .9vh;
+    border-radius: 5px;
+    margin-top: .2rem;
+    margin-right: .5rem;
+}
+
+.confirm-friend-request1-btn:hover {
+    background-color: #1b6dda;
+}
+
+.delete-friend-request1-btn {
+    background-color: rgb(221, 221, 221);
+    color: black;
+    font-size: .9vw;
+    font-weight: bold;
+    padding: .5vw .9vh;
+    border-radius: 5px;
+    margin-top: .2rem;
+}
+
+.delete-friend-request1-btn:hover {
+    background-color: rgb(207, 207, 207);
+}
+
+
+@media (min-width: 1570px) {
+    .friend-name {
+        font-size: 16px;
+    }
+
+    .confirm-friend-request1-btn,
+    .delete-friend-request1-btn {
+        font-size: 15px!important;
+    }
 }

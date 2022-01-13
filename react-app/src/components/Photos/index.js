@@ -14,14 +14,16 @@ function Photos({profile_photos}) {
                 <div className='all-photo-box'>
                     {profile_photos.map((photo, index) => (
                         <>
-                            <img key={photo.id} onClick={() => {setShowModal(true); setIndivPhoto(index)}} className='all-photos pointer' src={photo.photo}></img>
-                            {showModal && indivPhoto === index && (
-                                <Modal onClose={() => setShowModal(false)}>
-                                    <div className='modal-photo-borders'>
-                                        <img onClick={()=>setShowModal(false)} className='indiv-photo-modal' src={photo.photo}></img>
-                                    </div>
-                                </Modal>
-                            )}
+                            <div className='photo-display-sizing'>
+                                <img key={photo.id} onClick={() => {setShowModal(true); setIndivPhoto(index)}} className='all-photos pointer' src={photo.photo}></img>
+                                {showModal && indivPhoto === index && (
+                                    <Modal onClose={() => setShowModal(false)}>
+                                        <div className='modal-photo-borders'>
+                                            <img onClick={()=>setShowModal(false)} className='indiv-photo-modal' src={photo.photo}></img>
+                                        </div>
+                                    </Modal>
+                                )}
+                            </div>
                         </>
                     ))}
                 </div>
