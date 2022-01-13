@@ -16,14 +16,7 @@
 
 .friend-box {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.friend-box1 {
-    display: flex;
-    justify-content: flex-start;
+    /* justify-content: space-around; */
     flex-wrap: wrap;
     width: 100%;
 }
@@ -43,8 +36,8 @@
 }
 
 .square-portraits {
-    width: 5rem!important;
-    height: 5rem!important;
+    width: 5vw!important;
+    height: 5vw!important;
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid rgb(223, 223, 223);
@@ -62,4 +55,10 @@
 
 .friend-name:hover {
     text-decoration: underline;
+}
+
+@media (min-width: 1570px) {
+    .friend-name {
+        font-size: 16px;
+    }
 }

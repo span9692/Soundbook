@@ -19,7 +19,7 @@ function Friends({profileId, allFriends, allUsersValues}) {
         <>
             <div className='friends-container'>
                 <span className='friend-text'>Friends <span className='photos-counter'>({currentProfileFriends.length})</span></span>
-                <div className={currentProfileFriends.length % 3 === 0 ? 'friend-box' : 'friend-box1'}>
+                <div className='friend-box'>
                     {currentProfileFriends.length > 0 ?
                     (currentProfileFriends.map(friend => (
                         <div key={friend.id} className='indiv-friend-box'>
