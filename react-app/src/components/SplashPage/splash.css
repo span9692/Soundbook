@@ -24,12 +24,12 @@
 .splash-text {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: #1877f2;
-    font-size: 5vw;
+    font-size: 4.7vw;
     font-weight: bolder;
 }
 
 .splash-subtitle {
-    font-size: 2vw;
+    font-size: 1.7vw;
 }
 
 #footer {
@@ -72,6 +72,7 @@
 
 @media (max-width: 690px) {
     .splash-page-container {
+        padding-top: 20vh!important;
         display: flex;
         flex-direction: column;
         justify-content: center!important;
