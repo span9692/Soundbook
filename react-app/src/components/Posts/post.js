@@ -443,7 +443,10 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                 </>:
                                 <>
                                     {post.post_content}
+                                    {post.picture ?
                                     <img className='post1-picture' src={post.picture}></img>
+                                    : null
+                                    }
                                 </>
                                 }
                             </div>

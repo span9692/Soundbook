@@ -496,7 +496,10 @@ function Feed({searchParams, setSearchParams}) {
                                 :
                                 <>
                                     {post.post_content}
+                                    {post.picture ?
                                     <img className='post1-picture' src={post.picture}></img>
+                                    : null
+                                    }
                                 </>
                                 }
                             </div>
