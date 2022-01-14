@@ -336,7 +336,7 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
 
                                 <input
                                     className='aws-form'
-                                    id='aws'
+                                    id='saws'
                                     name='picture'
                                     placeholder='URL'
                                     type='file'
@@ -362,10 +362,10 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                             <div type='submit' onClick={ postValue.length > 0 ? (e)=>{addPost(e); setShowEmoji(false)} : ()=>setShowEmoji(false) } class='boxBtn pointer' form='add-post-form'>
                                 <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
-                            <div class='photoboxBtn pointer' htmlFor='aws'>
+                            <div class='photoboxBtn pointer' htmlFor='saws'>
 
 
-                                <label htmlFor='aws'>
+                                <label htmlFor='saws'>
                                     <div className='pointer'>
                                         <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
                                     </div>
