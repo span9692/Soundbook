@@ -235,7 +235,8 @@
     flex-wrap: wrap;
     width: 100%;
 
-    justify-content: center;
+    /* justify-content: center; */
+    margin-left: .7rem;
     margin-top: -.9rem;
     /* margin-bottom: .3rem; */
 }
