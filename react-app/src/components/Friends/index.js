@@ -57,8 +57,8 @@ function Friends() {
 
     unknown = shuffle(unknown)
 
-    if (unknown.length > 3) {
-        unknown = unknown.slice(0,3)
+    if (unknown.length > 6) {
+        unknown = unknown.slice(0,6)
     }
 
     useEffect(() => {
