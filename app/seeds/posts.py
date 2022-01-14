@@ -3,7 +3,7 @@ from app.models import db, Post
 def seed_posts():
     post1 = Post(post_content='testing...testing...1 2 3', owner_id=1, profile_id=1)
     post2 = Post(post_content='It\'s up and running!! 😱', owner_id=1, profile_id=1)
-    post3 = Post(post_content='Welcome to Soundbook!', owner_id=1, profile_id=1)
+    post3 = Post(post_content='Welcome to Soundbook!', owner_id=1, profile_id=1, picture='https://res.cloudinary.com/photofinder/image/upload/v1641779285/soundbook_btbesc.gif')
     post4 = Post(post_content='What\'s good Soundbook, I\'m Ice Cube and I\'m Straight Outta Compton', owner_id=2, profile_id=2)
     post5 = Post(post_content='Soundbook what\'s good, Dre here', owner_id=3, profile_id=3)
     post6 = Post(post_content='Who\'s the genius behind this site?', owner_id=4, profile_id=4)
