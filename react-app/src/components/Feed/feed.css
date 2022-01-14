@@ -216,16 +216,19 @@
     /* background-color: white; */
     border-radius: 8px;
     padding: .7rem;
-    padding-right: 8.2rem;
+    /* padding-right: 8.2rem; */
     margin-right: .5rem;
+    width: 20rem;
     margin-top: 1rem;
     /* box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%); */
     color:black;
     margin-bottom: -1rem;
+    text-align: center;
 }
 
 .no-friend-text {
-    margin-left: 8.2rem;
+    margin: auto;
+
     font-size: .9rem;
 }
 
