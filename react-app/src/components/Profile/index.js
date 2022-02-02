@@ -188,8 +188,6 @@ function Profile({setSearchParams}) {
                             }
                         </div>
                     </div>
-                    {/* hr styling style={{marginTop:  1+'rem', marginBottom: 1+'rem'}}  */}
-                    {/* <hr style={{marginLeft:  19.4+'vw'}} size='1' width='63%' color='#dddfe2'></hr> */}
                     <hr style={{marginLeft: 18.3+'%'}} size='1' width='63%' color='#dddfe2'></hr>
                     <div className='profile-nav'>
                         <div className='nav-links'>
