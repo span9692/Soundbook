@@ -191,13 +191,11 @@ function Profile({setSearchParams}) {
             </div>
             <div onClick={()=> setSearchParams('')} className='profile-bottom-half'>
                 {/* <div className='sideColumn'>
-
                 </div > */}
                 <div className='mainColumn'>
                     {content}
                 </div>
                 {/* <div className='sideColumn'>
-
                 </div> */}
             </div>
         </>

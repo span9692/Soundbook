@@ -412,9 +412,6 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                         : null
                                         }
                                         {loggedUser.id === profile_owner.id || post.owner_id === loggedUser.id ?
-                                        // <div onClick={ ()=> removePost(post.id) } className='trash-can-post'>
-                                        //     <i class="fas fa-trash-alt"></i>
-                                        // </div>
                                         <ConfirmDelete postId={post.id}/>
                                         : null
                                         }
