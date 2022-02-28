@@ -363,15 +363,11 @@ function Posts({ setSearchParams, setDisplay, profileId, loggedUser, profile_own
                                 <i class="fas fa-pen"></i> <span className='postBtns'>Post</span>
                             </div>
                             <div class='photoboxBtn pointer' htmlFor='saws'>
-
-
                                 <label htmlFor='saws'>
                                     <div className='pointer'>
                                         <i class="fas fa-images"></i> <span className='postBtns'>Photo</span>
                                     </div>
                                 </label>
-
-
                             </div>
                             <div onClick={()=>setShowEmoji(!showEmoji)} className='boxBtn pointer'>
                                 <i class="far fa-laugh"></i> <span className={showEmoji ? 'postBtns blue' : 'postBtns'}>Feeling</span>
